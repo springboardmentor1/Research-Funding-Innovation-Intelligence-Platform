@@ -1,0 +1,71 @@
+{
+  "publications": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["id", "title"],
+        "properties": {
+          "id": {
+            "bsonType": "string",
+            "description": "OpenAlex ID (e.g., https://openalex.org/W...)"
+          },
+          "title": {
+            "bsonType": "string"
+          },
+          "publication_date": {
+            "bsonType": "string"
+          },
+          "abstract": {
+            "bsonType": "string"
+          },
+          "authorships": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object"
+            }
+          },
+          "concepts": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "patents": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["patent_id", "title"],
+        "properties": {
+          "patent_id": {
+            "bsonType": "string"
+          },
+          "title": {
+            "bsonType": "string"
+          },
+          "abstract": {
+            "bsonType": "string"
+          },
+          "assignees": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object"
+            }
+          },
+          "inventors": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object"
+            }
+          },
+          "date": {
+            "bsonType": "string"
+          }
+        }
+      }
+    }
+  }
+}
