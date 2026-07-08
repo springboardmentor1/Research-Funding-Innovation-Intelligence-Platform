@@ -99,6 +99,10 @@ def download_nih_funding():
     save_csv(records,
              "datasets/funding/nih_funding.csv")
 
+# -----------------------------
+# Patent Downloader
+# -----------------------------
+
 
 
 # -----------------------------
