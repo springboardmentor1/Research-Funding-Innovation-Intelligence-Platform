@@ -1,6 +1,23 @@
 from fastapi import FastAPI
+from app.database.connection import engine, Base
+from app.models.user import User  # Import user model to register it in SQLAlchemy metadata
+from app.routes.auth import router as auth_router
 
-app = FastAPI()
+# Attempt to create database tables on startup.
+# Note: In production development, Alembic migrations are preferred.
+try:
+    Base.metadata.create_all(bind=engine)
+except Exception as e:
+    print(f"Database connection or table creation failed on startup: {e}")
+
+app = FastAPI(
+    title="Research Funding & Innovation Intelligence Platform API",
+    description="AI-powered platform backend helping discover grants, analyze technology trends, and evaluate innovation standing.",
+    version="1.0.0"
+)
+
+# Register routes
+app.include_router(auth_router)
 
 @app.get("/")
 def home():
