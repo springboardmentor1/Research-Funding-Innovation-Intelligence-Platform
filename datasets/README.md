@@ -16,6 +16,32 @@ This directory is designed to organize scientific publications, patent files, an
 
 ## Folder Structure
 
-- **[publications/](file:///c:/Users/Admin/OneDrive/Desktop/ATM/Research-Funding-Innovation-Intelligence-Platform/datasets/publications)**: Scientific literature and articles databases.
-- **[patents/](file:///c:/Users/Admin/OneDrive/Desktop/ATM/Research-Funding-Innovation-Intelligence-Platform/datasets/patents)**: Patent documents, classifications, and registries.
-- **[funding/](file:///c:/Users/Admin/OneDrive/Desktop/ATM/Research-Funding-Innovation-Intelligence-Platform/datasets/funding)**: Sponsoring agencies and opportunity lists.
+```text
+datasets/
+│
+├── raw/
+│   ├── publications/
+│   │      publications_raw.csv
+│   └── patents/
+│          patents_raw.csv
+│
+├── processed/
+│   ├── publications/
+│   │      publications_processed.csv
+│   └── patents/
+│          patents_processed.csv
+│
+├── scripts/
+│   ├── fetch_publications.py
+│   ├── preprocess_publications.py
+│   ├── fetch_patents.py
+│   └── preprocess_patents.py
+│
+└── README.md
+```
+
+### Subdirectories Overview
+
+- **[raw/](file:///c:/Users/Admin/OneDrive/Desktop/ATM/Research-Funding-Innovation-Intelligence-Platform/datasets/raw)**: Contains the initial fetched datasets directly exported from public APIs in CSV format.
+- **[processed/](file:///c:/Users/Admin/OneDrive/Desktop/ATM/Research-Funding-Innovation-Intelligence-Platform/datasets/processed)**: Contains the preprocessed and cleaned datasets with handled null values, unified typologies, and deduped rows.
+- **[scripts/](file:///c:/Users/Admin/OneDrive/Desktop/ATM/Research-Funding-Innovation-Intelligence-Platform/datasets/scripts)**: Data fetching and preprocessing scripts.
