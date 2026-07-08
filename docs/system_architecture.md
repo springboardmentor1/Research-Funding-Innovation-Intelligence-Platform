@@ -1,5 +1,9 @@
 # System Architecture
 
+The following diagram illustrates the overall architecture of the Research Funding & Innovation Intelligence Platform.
+
+![System Architecture](images/system_architecture.jpeg)
+
 ## Architecture Overview
 
 The system follows a modular architecture consisting of:
