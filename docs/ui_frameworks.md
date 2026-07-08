@@ -1,5 +1,9 @@
 # UI Frameworks
 
+The following diagram represents the UI Framework of the project.
+
+![UI Framework](images/ui_workflow.png)
+
 ## Frontend Technologies
 
 ### React.js
