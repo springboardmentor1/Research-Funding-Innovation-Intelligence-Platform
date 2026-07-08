@@ -1,9 +1,8 @@
 from app.schemas.user import (
     UserCreate,
-    UserResponse,
-    UserLogin
+    UserResponse
 )
-
+from fastapi.security import OAuth2PasswordRequestForm
 from app.schemas.token import Token
 
 from app.services.auth_service import (
@@ -45,18 +44,18 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     response_model=Token
 )
 def login(
-    credentials: UserLogin,
+    form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db)
 ):
     user = authenticate_user(
         db,
-        credentials.email,
-        credentials.password
+        form_data.username,
+        form_data.password
     )
 
     if not user:
         raise HTTPException(
-            status_code=401,
+            status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid email or password"
         )
 
