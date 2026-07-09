@@ -1,0 +1,25 @@
+# Python virtual environment
+backend/venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Node modules (frontend)
+frontend/node_modules/
+
+# Build files
+frontend/dist/
+
+# IDE settings
+.vscode/
+
+# Dataset temporary files
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
