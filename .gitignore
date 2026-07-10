@@ -1,0 +1,35 @@
+# Backend
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.whl
+*.egg
+*.egg-info/
+dist/
+build/
+.Python
+env/
+venv/
+ENV/
+.venv
+*.db
+*.sqlite3
+*.db-journal
+*.swp
+*.swo
+*~
+.DS_Store
+.env
+.env.local
+.env.*.local
+backend/sql_app.db
+backend/data_exports
+
+# Frontend
+frontend/node_modules/
+frontend/.vite
+frontend/dist
+frontend/build
+frontend/.DS_Store
