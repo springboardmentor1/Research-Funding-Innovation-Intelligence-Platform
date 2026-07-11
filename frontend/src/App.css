@@ -1,0 +1,19 @@
+body{
+    background:#f5f7fa;
+}
+
+.navbar{
+    padding:15px;
+}
+
+h1{
+    color:#1f3b73;
+}
+
+input{
+    border-radius:10px !important;
+}
+
+button{
+    padding:10px 25px !important;
+}
