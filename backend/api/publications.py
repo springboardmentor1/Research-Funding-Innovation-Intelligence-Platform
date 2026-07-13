@@ -1,25 +1,11 @@
 from flask import Blueprint, jsonify
+import pandas as pd
 
 publications_bp = Blueprint("publications", __name__)
 
-@publications_bp.route("/publications", methods=["GET"])
-def get_publications():
+@publications_bp.route("/publications")
+def publications():
 
-    publications = [
-        {
-            "id": 1,
-            "title": "Artificial Intelligence in Healthcare",
-            "authors": "John Smith",
-            "year": 2024,
-            "citations": 120
-        },
-        {
-            "id": 2,
-            "title": "Machine Learning for Climate Change",
-            "authors": "Alice Brown",
-            "year": 2023,
-            "citations": 95
-        }
-    ]
+    df = pd.read_csv("../datasets/publications/openalex_cleaned.csv")
 
-    return jsonify(publications)
+    return jsonify(df.head(100).to_dict(orient="records"))

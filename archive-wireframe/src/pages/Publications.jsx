@@ -1,48 +1,95 @@
-import { useEffect, useState } from "react";
+import Layout from "../components/Layout";
+import { useContext, useEffect, useState } from "react";
+import { SearchContext } from "../context/SearchContext";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { getPublications } from "../api/publicationApi";
 
 function Publications() {
   const [publications, setPublications] = useState([]);
 
+  // Get search text from the navbar
+  const { search } = useContext(SearchContext);
+
   useEffect(() => {
-    async function loadData() {
-      const data = await getPublications();
-      setPublications(data);
+    async function loadPublications() {
+      try {
+        const data = await getPublications();
+        setPublications(data);
+      } catch (error) {
+        console.error(error);
+      }
     }
 
-    loadData();
+    loadPublications();
   }, []);
 
+  if (publications.length === 0) {
+    return (
+      <Layout>
+        <LoadingSpinner />
+      </Layout>
+    );
+  }
+
+  // Filter publications based on search
+  const filteredPublications = publications.filter((pub) =>
+    pub.title?.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div style={{ padding: "30px" }}>
-      <h1>Publications</h1>
+    <Layout>
+      <div style={{ padding: "30px" }}>
+        <h1>Publications</h1>
 
-      {publications.map((publication) => (
-        <div
-          key={publication.id}
-          style={{
-            border: "1px solid #ddd",
-            padding: "15px",
-            marginTop: "15px",
-            borderRadius: "8px",
-          }}
-        >
-          <h3>{publication.title}</h3>
+        {filteredPublications.length === 0 ? (
+          <h3>No publications found.</h3>
+        ) : (
+          filteredPublications.map((pub, index) => (
+            <div
+              key={index}
+              style={{
+                border: "1px solid #ddd",
+                padding: "15px",
+                marginBottom: "15px",
+                borderRadius: "8px",
+                background: "#fff",
+              }}
+            >
+              <h3>{pub.title}</h3>
 
-          <p>
-            <b>Authors:</b> {publication.authors}
-          </p>
+              <p>
+                <strong>Publication Year:</strong>{" "}
+                {pub.publication_year}
+              </p>
 
-          <p>
-            <b>Year:</b> {publication.year}
-          </p>
+              <p>
+                <strong>Type:</strong> {pub.type}
+              </p>
 
-          <p>
-            <b>Citations:</b> {publication.citations}
-          </p>
-        </div>
-      ))}
-    </div>
+              <p>
+                <strong>Citations:</strong>{" "}
+                {pub.cited_by_count.toLocaleString()}
+              </p>
+
+              <p>
+                <strong>DOI:</strong>{" "}
+                {pub.doi && pub.doi !== "Not Available" ? (
+                  <a
+                    href={pub.doi}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {pub.doi}
+                  </a>
+                ) : (
+                  "Not Available"
+                )}
+              </p>
+            </div>
+          ))
+        )}
+      </div>
+    </Layout>
   );
 }
 

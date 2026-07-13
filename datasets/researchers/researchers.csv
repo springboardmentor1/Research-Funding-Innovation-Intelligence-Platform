@@ -1,0 +1,11 @@
+researcher_name,orcid,institution,works_count,cited_by_count,country
+Andrew Ng,0000-0001-1234-5678,Stanford University,250,125000,USA
+Geoffrey Hinton,0000-0002-2345-6789,University of Toronto,320,185000,Canada
+Yoshua Bengio,0000-0003-3456-7890,University of Montreal,300,175000,Canada
+Fei-Fei Li,0000-0004-4567-8901,Stanford University,210,98000,USA
+Ashok Jhunjhunwala,0000-0005-5678-9012,IIT Madras,180,25000,India
+P. Anandan,0000-0006-6789-0123,Microsoft Research,165,22000,India
+Anima Anandkumar,0000-0007-7890-1234,NVIDIA Research,230,68000,USA
+Jitendra Malik,0000-0008-8901-2345,UC Berkeley,280,110000,USA
+Pushmeet Kohli,0000-0009-9012-3456,Google DeepMind,190,42000,UK
+Kris Sankaran,0000-0010-0123-4567,Google Research,140,18000,USA

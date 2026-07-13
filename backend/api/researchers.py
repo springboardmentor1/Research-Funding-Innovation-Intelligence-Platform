@@ -1,19 +1,15 @@
 from flask import Blueprint, jsonify
+import pandas as pd
 
 researchers_bp = Blueprint("researchers", __name__)
 
-@researchers_bp.route("/researchers", methods=["GET"])
-def get_researchers():
+@researchers_bp.route("/researchers")
+def researchers():
 
-    researchers = [
-        {
-            "name": "John Smith",
-            "field": "Artificial Intelligence"
-        },
-        {
-            "name": "Alice Brown",
-            "field": "Machine Learning"
-        }
-    ]
+    df = pd.read_csv("../datasets/researchers/researchers.csv")
 
-    return jsonify(researchers)
+    df = df.fillna("")
+
+    return jsonify(
+        df.to_dict(orient="records")
+    )

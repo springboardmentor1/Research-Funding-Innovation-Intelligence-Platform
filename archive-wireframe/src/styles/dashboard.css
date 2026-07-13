@@ -1,0 +1,260 @@
+body{
+    margin:0;
+    background:#f5f7fb;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+.main-content{
+    padding:30px;
+}
+
+.section-title{
+    font-size:30px;
+    font-weight:700;
+    color:#1f2937;
+    margin-bottom:25px;
+}
+/* KPI Grid */
+.kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+/* KPI Card */
+.kpi-card{
+    background:#ffffff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+    border-top:5px solid #2563eb;
+}
+
+.kpi-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.kpi-title{
+    color:#6b7280;
+    font-size:16px;
+    margin-bottom:15px;
+}
+
+.kpi-value{
+    font-size:42px;
+    font-weight:bold;
+    color:#111827;
+}
+
+.kpi-footer{
+    margin-top:12px;
+    color:#10b981;
+    font-size:14px;
+}
+/* Chart Card */
+
+.chart-card{
+    background:#ffffff;
+    margin-top:35px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.chart-title{
+    font-size:24px;
+    font-weight:600;
+    color:#1f2937;
+    margin-bottom:25px;
+}
+
+.chart-container{
+    height:420px;
+}
+/* Recent Activity Card */
+
+.table-card{
+    background:#ffffff;
+    margin-top:35px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.table-title{
+    font-size:24px;
+    font-weight:600;
+    color:#1f2937;
+    margin-bottom:20px;
+}
+
+.activity-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.activity-table thead{
+    background:#2563eb;
+    color:white;
+}
+
+.activity-table th{
+    padding:15px;
+    text-align:left;
+}
+
+.activity-table td{
+    padding:15px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.activity-table tbody tr:nth-child(even){
+    background:#f8fafc;
+}
+
+.activity-table tbody tr:hover{
+    background:#dbeafe;
+    transition:0.3s;
+}
+/* ===========================
+   TOP NAVBAR
+=========================== */
+
+.top-navbar{
+    height:70px;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.search-box{
+    width:320px;
+    padding:10px 15px;
+    border-radius:8px;
+    border:1px solid #d1d5db;
+    outline:none;
+    font-size:15px;
+}
+
+.search-box:focus{
+    border:1px solid #2563eb;
+}
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar{
+    width:240px;
+    background:#1f2937;
+    color:white;
+    min-height:100vh;
+    padding:25px 15px;
+}
+
+.sidebar-title{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:25px;
+    text-align:center;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px 15px;
+    margin-bottom:10px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#2563eb;
+    transform:translateX(5px);
+}
+.sidebar a.active{
+    background:#2563eb;
+    font-weight:bold;
+}
+.kpi-publications{
+    border-top:5px solid #2563eb;
+}
+
+.kpi-funding{
+    border-top:5px solid #16a34a;
+}
+
+.kpi-patents{
+    border-top:5px solid #f59e0b;
+}
+
+.kpi-organizations{
+    border-top:5px solid #9333ea;
+}
+
+.kpi-researchers{
+    border-top:5px solid #ef4444;
+}
+/* Dashboard Header */
+
+.dashboard-header{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    padding:30px;
+    border-radius:15px;
+    margin-bottom:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.dashboard-header h1{
+    margin:0;
+    font-size:32px;
+}
+
+.dashboard-header p{
+    margin-top:10px;
+    opacity:.9;
+    font-size:16px;
+}
+/* Loading Spinner */
+
+.loader-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:300px;
+}
+
+.loader{
+    width:50px;
+    height:50px;
+    border:5px solid #e5e7eb;
+    border-top:5px solid #2563eb;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+.loader-container p{
+    margin-top:15px;
+    color:#6b7280;
+}

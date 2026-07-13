@@ -3,8 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 
+import { SearchProvider } from "./context/SearchContext";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <SearchProvider>
+      <App />
+    </SearchProvider>
   </StrictMode>
 );

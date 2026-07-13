@@ -1,22 +1,39 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../styles/dashboard.css";
 
 function SideNavbar() {
   return (
-    <aside
-      style={{
-        width: "220px",
-        borderRight: "1px solid #ddd",
-        padding: "20px",
-        minHeight: "100vh",
-      }}
-    >
-      <p><Link to="/">Dashboard</Link></p>
-      <p><Link to="/publications">Publications</Link></p>
-      <p><Link to="/funding">Funding</Link></p>
-      <p><Link to="/patents">Patents</Link></p>
-      <p><Link to="/organizations">Organizations</Link></p>
-      <p><Link to="/researchers">Researchers</Link></p>
-      <p><Link to="/reports">Reports</Link></p>
+    <aside className="sidebar">
+
+      <div className="sidebar-title">
+        Dashboard
+      </div>
+<NavLink to="/">🏠 Dashboard</NavLink>
+
+<NavLink to="/publications">
+  📄 Publications
+</NavLink>
+
+<NavLink to="/funding">
+  💰 Funding
+</NavLink>
+
+<NavLink to="/patents">
+  📜 Patents
+</NavLink>
+
+<NavLink to="/organizations">
+  🏢 Organizations
+</NavLink>
+
+<NavLink to="/researchers">
+  👨‍🔬 Researchers
+</NavLink>
+
+<NavLink to="/reports">
+  📊 Reports
+</NavLink>
+
     </aside>
   );
 }

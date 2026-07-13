@@ -1,27 +1,17 @@
-import TopNavbar from "../components/TopNavbar";
-import SideNavbar from "../components/SideNavbar";
+import Layout from "../components/Layout";
+import DashboardHeader from "../components/DashboardHeader";
 import KPISection from "../components/KPISection";
 import ChartSection from "../components/ChartSection";
-import ActivityTable from "../components/ActivityTable";
-import Footer from "../components/Footer";
+import RecentActivity from "../components/RecentActivity";
 
 function Dashboard() {
   return (
-    <>
-      <TopNavbar />
-
-      <div style={{ display: "flex" }}>
-        <SideNavbar />
-
-        <main style={{ flex: 1, padding: "30px" }}>
-          <KPISection />
-          <ChartSection />
-          <ActivityTable />
-        </main>
-      </div>
-
-      <Footer />
-    </>
+    <Layout>
+      <DashboardHeader />
+      <KPISection />
+      <ChartSection />
+      <RecentActivity />
+    </Layout>
   );
 }
 

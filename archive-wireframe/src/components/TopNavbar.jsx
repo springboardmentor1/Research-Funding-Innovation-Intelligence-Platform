@@ -1,23 +1,22 @@
+import "../styles/dashboard.css";
+import { useContext } from "react";
+import { SearchContext } from "../context/SearchContext";
+
 function TopNavbar() {
+  const { search, setSearch } = useContext(SearchContext);
+
   return (
-    <header
-      style={{
-        padding: "20px",
-        borderBottom: "1px solid #ddd",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <h2>ARCHIVE</h2>
+    <header className="top-navbar">
+      <div className="logo">
+        📚 ARCHIVE
+      </div>
 
       <input
+        className="search-box"
         type="text"
-        placeholder="Search..."
-        style={{
-          padding: "8px",
-          border: "1px solid #ccc",
-          borderRadius: "6px",
-        }}
+        placeholder="Search publications..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
     </header>
   );

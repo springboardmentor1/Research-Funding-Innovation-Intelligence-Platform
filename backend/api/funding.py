@@ -1,21 +1,15 @@
 from flask import Blueprint, jsonify
+import pandas as pd
 
 funding_bp = Blueprint("funding", __name__)
 
-@funding_bp.route("/funding", methods=["GET"])
-def get_funding():
+@funding_bp.route("/funding")
+def funding():
 
-    funding = [
-        {
-            "agency": "NSF",
-            "amount": 250000,
-            "year": 2024
-        },
-        {
-            "agency": "DST India",
-            "amount": 500000,
-            "year": 2023
-        }
-    ]
+    df = pd.read_csv("../datasets/funding/nih_funding.csv")
 
-    return jsonify(funding)
+    df = df.fillna("")
+
+    return jsonify(
+        df.head(100).to_dict(orient="records")
+    )

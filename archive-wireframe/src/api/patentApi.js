@@ -1,4 +1,11 @@
+const API_URL = "http://127.0.0.1:5000";
+
 export async function getPatents() {
-  const response = await fetch("http://127.0.0.1:5000/patents");
+  const response = await fetch(`${API_URL}/patents`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch patents");
+  }
+
   return await response.json();
 }
