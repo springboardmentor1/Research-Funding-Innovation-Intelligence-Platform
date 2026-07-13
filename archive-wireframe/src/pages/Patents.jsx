@@ -1,5 +1,11 @@
+import MainLayout from "../layouts/MainLayout";
+
 function Patents() {
-  return <h1>Patents Page</h1>;
+  return (
+    <MainLayout>
+      <h1>Patents</h1>
+    </MainLayout>
+  );
 }
 
 export default Patents;

@@ -1,5 +1,11 @@
+import MainLayout from "../layouts/MainLayout";
+
 function Organizations() {
-  return <h1>Organizations Page</h1>;
+  return (
+    <MainLayout>
+      <h1>Organizations</h1>
+    </MainLayout>
+  );
 }
 
 export default Organizations;

@@ -1,5 +1,11 @@
+import MainLayout from "../layouts/MainLayout";
+
 function Researchers() {
-  return <h1>Researchers Page</h1>;
+  return (
+    <MainLayout>
+      <h1>Researchers</h1>
+    </MainLayout>
+  );
 }
 
 export default Researchers;

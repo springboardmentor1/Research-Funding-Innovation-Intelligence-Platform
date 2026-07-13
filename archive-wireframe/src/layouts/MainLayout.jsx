@@ -1,11 +1,8 @@
 import TopNavbar from "../components/TopNavbar";
 import SideNavbar from "../components/SideNavbar";
-import KPISection from "../components/KPISection";
-import ChartSection from "../components/ChartSection";
-import ActivityTable from "../components/ActivityTable";
 import Footer from "../components/Footer";
 
-function Dashboard() {
+function MainLayout({ children }) {
   return (
     <>
       <TopNavbar />
@@ -14,9 +11,7 @@ function Dashboard() {
         <SideNavbar />
 
         <main style={{ flex: 1, padding: "30px" }}>
-          <KPISection />
-          <ChartSection />
-          <ActivityTable />
+          {children}
         </main>
       </div>
 
@@ -25,4 +20,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default MainLayout;

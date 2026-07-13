@@ -1,5 +1,11 @@
+import MainLayout from "../layouts/MainLayout";
+
 function Funding() {
-  return <h1>Funding Page</h1>;
+  return (
+    <MainLayout>
+      <h1>Funding</h1>
+    </MainLayout>
+  );
 }
 
 export default Funding;

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 import Publications from "./pages/Publications";
 import Funding from "./pages/Funding";
 import Patents from "./pages/Patents";
@@ -13,6 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/publications" element={<Publications />} />
         <Route path="/funding" element={<Funding />} />
         <Route path="/patents" element={<Patents />} />

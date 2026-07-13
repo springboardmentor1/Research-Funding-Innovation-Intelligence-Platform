@@ -1,10 +1,33 @@
 from flask import Flask
+from flask_cors import CORS
+
+from api.publications import publications_bp
+from api.funding import funding_bp
+from api.patents import patents_bp
+from api.organizations import organizations_bp
+from api.researchers import researchers_bp
 
 app = Flask(__name__)
+CORS(app)
+
+app.register_blueprint(publications_bp)
+app.register_blueprint(funding_bp)
+app.register_blueprint(patents_bp)
+app.register_blueprint(organizations_bp)
+app.register_blueprint(researchers_bp)
 
 @app.route("/")
 def home():
-    return "Research Funding & Innovation Intelligence Backend"
+    return {
+        "project": "Research Funding & Innovation Intelligence Platform",
+        "status": "Backend Running"
+    }
+
+@app.route("/health")
+def health():
+    return {
+        "status": "Healthy"
+    }
 
 if __name__ == "__main__":
     app.run(debug=True)
