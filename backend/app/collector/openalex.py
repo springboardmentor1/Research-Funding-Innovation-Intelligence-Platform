@@ -193,6 +193,20 @@ class OpenAlexCollector(BaseCollector):
                     )
                     authors_list_db.append(author_obj)
 
+                # Extract abstract if available
+                abstract = None
+                abstract_inverted = item.get("abstract_inverted_index")
+                if abstract_inverted:
+                    # Reconstruct abstract from inverted index
+                    max_index = max([idx for indices in abstract_inverted.values() for idx in indices], default=-1)
+                    if max_index >= 0:
+                        abstract_list = [""] * (max_index + 1)
+                        for word, positions in abstract_inverted.items():
+                            for pos in positions:
+                                if 0 <= pos <= max_index:
+                                    abstract_list[pos] = word
+                        abstract = " ".join(abstract_list)
+                
                 # 3. Upsert Publication & Bind Authors
                 self.storage.upsert_publication(
                     db=db,
@@ -203,7 +217,8 @@ class OpenAlexCollector(BaseCollector):
                     journal=journal,
                     citation_count=citation_count,
                     concept_id=concept_id_db,
-                    authors=authors_list_db
+                    authors=authors_list_db,
+                    abstract=abstract
                 )
                 saved_pubs += 1
 

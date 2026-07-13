@@ -1,8 +1,17 @@
+"""
+Configuration module for the Research Funding & Innovation Intelligence Platform.
+
+Provides settings management using Pydantic Settings with environment variable support.
+"""
 from pydantic_settings import BaseSettings
 from typing import Optional
 
 
 class Settings(BaseSettings):
+    """
+    Application configuration settings.
+    Loads values from environment variables or .env file.
+    """
     APP_NAME: str = "FastAPI App"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
@@ -29,4 +38,5 @@ class Settings(BaseSettings):
         case_sensitive = True
 
 
+# Global settings instance
 settings = Settings()

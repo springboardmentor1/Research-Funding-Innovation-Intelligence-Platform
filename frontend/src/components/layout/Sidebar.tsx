@@ -20,6 +20,7 @@ import {
   Settings,
   HelpCircle,
   Beaker,
+  BookOpen,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
@@ -43,6 +44,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     {
       label: "Intelligence",
       items: [
+        { to: "/publications", label: "Publications", icon: BookOpen },
         { to: "/funding", label: "Funding Discovery", icon: Wallet, badge: "12" },
         { to: "/trends", label: "Research Trends", icon: TrendingUp },
         { to: "/patents", label: "Patent Intelligence", icon: Shield },

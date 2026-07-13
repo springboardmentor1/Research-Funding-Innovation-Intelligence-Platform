@@ -21,6 +21,7 @@ import { Route as AppSettingsRouteImport } from './routes/_app.settings'
 import { Route as AppSearchRouteImport } from './routes/_app.search'
 import { Route as AppSavedRouteImport } from './routes/_app.saved'
 import { Route as AppReportsRouteImport } from './routes/_app.reports'
+import { Route as AppPublicationsRouteImport } from './routes/_app.publications'
 import { Route as AppProjectsRouteImport } from './routes/_app.projects'
 import { Route as AppPatentsRouteImport } from './routes/_app.patents'
 import { Route as AppNotificationsRouteImport } from './routes/_app.notifications'
@@ -90,6 +91,11 @@ const AppSavedRoute = AppSavedRouteImport.update({
 const AppReportsRoute = AppReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPublicationsRoute = AppPublicationsRouteImport.update({
+  id: '/publications',
+  path: '/publications',
   getParentRoute: () => AppRoute,
 } as any)
 const AppProjectsRoute = AppProjectsRouteImport.update({
@@ -163,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof AppNotificationsRoute
   '/patents': typeof AppPatentsRoute
   '/projects': typeof AppProjectsRoute
+  '/publications': typeof AppPublicationsRoute
   '/reports': typeof AppReportsRoute
   '/saved': typeof AppSavedRoute
   '/search': typeof AppSearchRoute
@@ -186,6 +193,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof AppNotificationsRoute
   '/patents': typeof AppPatentsRoute
   '/projects': typeof AppProjectsRoute
+  '/publications': typeof AppPublicationsRoute
   '/reports': typeof AppReportsRoute
   '/saved': typeof AppSavedRoute
   '/search': typeof AppSearchRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/_app/notifications': typeof AppNotificationsRoute
   '/_app/patents': typeof AppPatentsRoute
   '/_app/projects': typeof AppProjectsRoute
+  '/_app/publications': typeof AppPublicationsRoute
   '/_app/reports': typeof AppReportsRoute
   '/_app/saved': typeof AppSavedRoute
   '/_app/search': typeof AppSearchRoute
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/patents'
     | '/projects'
+    | '/publications'
     | '/reports'
     | '/saved'
     | '/search'
@@ -262,6 +272,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/patents'
     | '/projects'
+    | '/publications'
     | '/reports'
     | '/saved'
     | '/search'
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/_app/notifications'
     | '/_app/patents'
     | '/_app/projects'
+    | '/_app/publications'
     | '/_app/reports'
     | '/_app/saved'
     | '/_app/search'
@@ -390,6 +402,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppReportsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/publications': {
+      id: '/_app/publications'
+      path: '/publications'
+      fullPath: '/publications'
+      preLoaderRoute: typeof AppPublicationsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/projects': {
       id: '/_app/projects'
       path: '/projects'
@@ -482,6 +501,7 @@ interface AppRouteChildren {
   AppNotificationsRoute: typeof AppNotificationsRoute
   AppPatentsRoute: typeof AppPatentsRoute
   AppProjectsRoute: typeof AppProjectsRoute
+  AppPublicationsRoute: typeof AppPublicationsRoute
   AppReportsRoute: typeof AppReportsRoute
   AppSavedRoute: typeof AppSavedRoute
   AppSearchRoute: typeof AppSearchRoute
@@ -505,6 +525,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppNotificationsRoute: AppNotificationsRoute,
   AppPatentsRoute: AppPatentsRoute,
   AppProjectsRoute: AppProjectsRoute,
+  AppPublicationsRoute: AppPublicationsRoute,
   AppReportsRoute: AppReportsRoute,
   AppSavedRoute: AppSavedRoute,
   AppSearchRoute: AppSearchRoute,

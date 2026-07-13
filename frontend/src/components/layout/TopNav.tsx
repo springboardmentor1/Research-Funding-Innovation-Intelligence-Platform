@@ -1,8 +1,37 @@
 import { Bell, Command, Menu, Moon, Search, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+
+// Helper function to get user initials
+const getUserInitials = (name: string) => {
+  return name
+    .split(" ")
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+};
+
+// Helper function to get display role
+const getDisplayRole = (role: string) => {
+  switch (role) {
+    case "researcher":
+      return "Researcher";
+    case "startup_founder":
+      return "Startup Founder";
+    case "innovation_manager":
+      return "Innovation Manager";
+    case "administrator":
+      return "Administrator";
+    default:
+      return "User";
+  }
+};
 
 export function TopNav({ onOpenSidebar }: { onOpenSidebar: () => void }) {
   const [dark, setDark] = useState(false);
+  const { user } = useAuth();
+  
   useEffect(() => {
     const root = document.documentElement;
     if (dark) root.classList.add("dark");
@@ -50,15 +79,17 @@ export function TopNav({ onOpenSidebar }: { onOpenSidebar: () => void }) {
             <Bell className="h-4.5 w-4.5" />
             <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-[color:var(--warning)] ring-2 ring-background" />
           </button>
-          <div className="hidden items-center gap-3 rounded-xl border border-border/60 px-2.5 py-1.5 sm:flex">
-            <div className="grid h-8 w-8 place-items-center rounded-lg gradient-primary text-xs font-bold text-primary-foreground">
-              EL
+          {user && (
+            <div className="hidden items-center gap-3 rounded-xl border border-border/60 px-2.5 py-1.5 sm:flex">
+              <div className="grid h-8 w-8 place-items-center rounded-lg gradient-primary text-xs font-bold text-primary-foreground">
+                {getUserInitials(user.name)}
+              </div>
+              <div className="hidden pr-1 text-left leading-tight md:block">
+                <div className="text-sm font-semibold">{user.name}</div>
+                <div className="text-[11px] text-muted-foreground">{getDisplayRole(user.role)}</div>
+              </div>
             </div>
-            <div className="hidden pr-1 text-left leading-tight md:block">
-              <div className="text-sm font-semibold">Dr. Elena Ríos</div>
-              <div className="text-[11px] text-muted-foreground">Principal Investigator</div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </header>

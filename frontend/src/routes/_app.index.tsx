@@ -64,6 +64,18 @@ function Dashboard() {
     retry: 1,
   });
 
+  const { data: dbPublications } = useQuery({
+    queryKey: ["publications-limit"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:8000/api/v1/data/publications?limit=3", {
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      });
+      if (!res.ok) throw new Error("Failed to fetch publications");
+      return res.json();
+    },
+    retry: 1,
+  });
+
   const dynamicKpis = [
     { id: "1", label: "Active Grants", value: stats ? `$${(stats.grants_amount_sum / 1e6).toFixed(1)}M` : "N/A", delta: stats ? `${stats.grants_count} opportunities` : "", icon: "wallet", tone: "success" },
     { id: "2", label: "Innovation Score", value: "N/A", delta: "", icon: "sparkles", tone: "ai" },
@@ -84,6 +96,19 @@ function Dashboard() {
         ai: dg.description || dg.ai_brief ? (dg.description || dg.ai_brief).substring(0, 120) + "..." : "",
       }))
     : [];
+
+  const displayPublications = dbPublications && dbPublications.length > 0
+    ? dbPublications.map((dp: any) => ({
+        id: dp.id,
+        title: dp.title,
+        authors: dp.authors_str || "Unknown",
+        journal: dp.journal || "Unknown",
+        year: dp.publication_year || dp.year || "N/A",
+        citations: dp.citation_count || dp.citations || 0,
+      }))
+    : [];
+
+  const hasAnyData = displayGrants.length > 0 || displayPublications.length > 0 || (stats && (stats.publications_count > 0 || stats.patents_count > 0 || stats.grants_count > 0));
 
   return (
     <div className="mx-auto max-w-[1400px] space-y-6">
@@ -154,12 +179,56 @@ function Dashboard() {
         </SectionCard>
       )}
 
-      {/* Row 3: placeholders if no data */}
-      {displayGrants.length === 0 && (
+      {/* Row 3: publications */}
+      {displayPublications.length > 0 && (
+        <SectionCard
+          title="Latest publications"
+          description="Your research outputs and citations"
+          actions={
+            <Link to="/publications" className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
+              View all <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          }
+        >
+          <div className="space-y-3">
+            {displayPublications.map((p) => (
+              <PublicationMini key={p.id} p={p} />
+            ))}
+          </div>
+        </SectionCard>
+      )}
+
+      {/* Row 4: placeholders if no data at all */}
+      {!hasAnyData && (
         <SectionCard title="Data Collection">
           <p className="text-muted-foreground">Run the data collector to fetch real funding, publications, and patents from external sources.</p>
         </SectionCard>
       )}
+    </div>
+  );
+}
+
+function PublicationMini({ p }: { p: any }) {
+  return (
+    <div className="group flex items-start gap-3 rounded-2xl border border-border/60 bg-card/60 p-4 transition-all">
+      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+        <BookOpen className="h-4 w-4" />
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="line-clamp-2 text-sm font-semibold leading-snug">{p.title}</h3>
+          <div className="shrink-0 text-right">
+            <div className="text-[11px] font-bold text-[color:var(--success)]">{p.citations} citations</div>
+            <div className="text-[11px] text-muted-foreground">{p.year}</div>
+          </div>
+        </div>
+        <p className="mt-1 line-clamp-1 text-xs text-muted-foreground">
+          {p.authors}
+        </p>
+        <p className="mt-1 line-clamp-1 text-xs text-muted-foreground">
+          {p.journal}
+        </p>
+      </div>
     </div>
   );
 }

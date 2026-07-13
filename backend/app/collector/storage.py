@@ -157,15 +157,27 @@ class StorageCoordinator:
         citation_count: int = 0,
         concept_id: Optional[int] = None,
         authors: Optional[List[Author]] = None,
+        abstract: Optional[str] = None,
     ) -> Publication:
         """Upsert publication/work record and manage author associations."""
         pub = db.query(Publication).filter(Publication.openalex_id == openalex_id).first()
+        
+        # Generate authors_str from authors list
+        authors_str = None
+        if authors:
+            author_names = [a.name for a in authors]
+            authors_str = ", ".join(author_names)
+        
         if pub:
             pub.title = title
             pub.doi = doi
             pub.publication_year = publication_year
+            pub.year = publication_year  # Compatibility
             pub.journal = journal
             pub.citation_count = citation_count
+            pub.citations = citation_count  # Compatibility
+            pub.authors_str = authors_str
+            pub.abstract = abstract
             if concept_id:
                 pub.concept_id = concept_id
         else:
@@ -174,9 +186,13 @@ class StorageCoordinator:
                 title=title,
                 doi=doi,
                 publication_year=publication_year,
+                year=publication_year,  # Compatibility
                 journal=journal,
                 citation_count=citation_count,
+                citations=citation_count,  # Compatibility
                 concept_id=concept_id,
+                authors_str=authors_str,
+                abstract=abstract,
             )
             db.add(pub)
 

@@ -1,3 +1,8 @@
+"""
+User API endpoints.
+
+Provides endpoints for user registration, login, profile management, and admin user listing.
+"""
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
@@ -13,6 +18,19 @@ router = APIRouter()
 
 @router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 def register_user(user: UserCreate, db: Session = Depends(get_db)):
+    """
+    Register a new user.
+    
+    Args:
+        user: User registration data
+        db: Database session
+        
+    Returns:
+        Created user data
+        
+    Raises:
+        HTTPException: If email is already registered
+    """
     db_user = get_user_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
@@ -24,6 +42,19 @@ def register_user(user: UserCreate, db: Session = Depends(get_db)):
 
 @router.post("/login", response_model=Token)
 def login_user(login_data: LoginRequest, db: Session = Depends(get_db)):
+    """
+    Authenticate a user and return an access token.
+    
+    Args:
+        login_data: Login credentials (email and password)
+        db: Database session
+        
+    Returns:
+        JWT access token
+        
+    Raises:
+        HTTPException: If credentials are invalid
+    """
     db_user = get_user_by_email(db, email=login_data.email)
     if not db_user:
         raise HTTPException(
@@ -41,6 +72,15 @@ def login_user(login_data: LoginRequest, db: Session = Depends(get_db)):
 
 @router.get("/me", response_model=UserResponse)
 def get_current_user_info(current_user: User = Depends(get_current_user)):
+    """
+    Retrieve the current authenticated user's profile.
+    
+    Args:
+        current_user: Current authenticated user (from dependency)
+        
+    Returns:
+        User profile data
+    """
     return current_user
 
 
@@ -50,6 +90,20 @@ def update_current_user_info(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    """
+    Update the current authenticated user's profile.
+    
+    Args:
+        user_update: User update data
+        db: Database session
+        current_user: Current authenticated user (from dependency)
+        
+    Returns:
+        Updated user profile data
+        
+    Raises:
+        HTTPException: If new email is already registered
+    """
     if user_update.name is not None:
         current_user.name = user_update.name
     if user_update.email is not None:
@@ -83,4 +137,14 @@ def get_all_users_admin(
     db: Session = Depends(get_db),
     current_user: User = Depends(require_roles([UserRole.ADMINISTRATOR]))
 ):
+    """
+    Retrieve all users (admin only).
+    
+    Args:
+        db: Database session
+        current_user: Current authenticated user (must be administrator)
+        
+    Returns:
+        List of all users
+    """
     return get_users(db=db)

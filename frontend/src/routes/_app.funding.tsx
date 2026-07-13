@@ -12,7 +12,6 @@ import {
   Zap,
 } from "lucide-react";
 import { PageHeader, SectionCard } from "@/components/shared/PageHeader";
-import { fundingOpportunities } from "@/lib/mock-data";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/context/AuthContext";
 
@@ -42,7 +41,7 @@ function FundingPage() {
     retry: 1,
   });
 
-  const displayGrants = dbGrants && dbGrants.length > 0 ? dbGrants : fundingOpportunities;
+  const displayGrants = dbGrants && dbGrants.length > 0 ? dbGrants : [];
 
   return (
     <div className="mx-auto max-w-[1400px] space-y-6">
@@ -98,9 +97,17 @@ function FundingPage() {
 
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px]">
         <div className="grid gap-4 md:grid-cols-2">
-          {displayGrants.map((f: any) => (
-            <FundingCard key={f.id} f={f} />
-          ))}
+          {displayGrants.length > 0 ? (
+            displayGrants.map((f: any) => (
+              <FundingCard key={f.id} f={f} />
+            ))
+          ) : (
+            <SectionCard className="md:col-span-2" title="No Funding Data">
+              <p className="text-sm text-muted-foreground">
+                Run the data collector to fetch real funding opportunities from Grants.gov and other sources.
+              </p>
+            </SectionCard>
+          )}
         </div>
         <div className="space-y-4">
           <SectionCard title="AI insight" description="Why these matches">

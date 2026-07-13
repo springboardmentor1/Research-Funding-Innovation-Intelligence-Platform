@@ -28,7 +28,7 @@ class BaseCollector:
         self.max_retries = max_retries
         self.backoff_factor = backoff_factor
         self.logger = logging.getLogger(f"collector.{name}")
-        self.client = httpx.Client(timeout=30.0)
+        self.client = httpx.Client(timeout=30.0, follow_redirects=True)  # Follow redirects
         self.last_request_time = 0.0
 
     def _apply_rate_limit(self):

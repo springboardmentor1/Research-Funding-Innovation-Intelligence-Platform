@@ -1,3 +1,8 @@
+"""
+Research data API endpoints.
+
+Provides endpoints for retrieving publications, patents, grant opportunities, and dashboard statistics.
+"""
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from typing import List, Optional
@@ -22,6 +27,19 @@ def read_publications(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    """
+    Retrieve a list of publications with pagination and optional search.
+    
+    Args:
+        skip: Number of records to skip
+        limit: Maximum number of records to return
+        keyword: Optional search keyword
+        db: Database session
+        current_user: Current authenticated user
+        
+    Returns:
+        List of publications
+    """
     return get_publications(db=db, skip=skip, limit=limit, keyword=keyword)
 
 
@@ -33,6 +51,19 @@ def read_patents(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    """
+    Retrieve a list of patents with pagination and optional search.
+    
+    Args:
+        skip: Number of records to skip
+        limit: Maximum number of records to return
+        keyword: Optional search keyword
+        db: Database session
+        current_user: Current authenticated user
+        
+    Returns:
+        List of patents
+    """
     return get_patents(db=db, skip=skip, limit=limit, keyword=keyword)
 
 
@@ -44,6 +75,19 @@ def read_grants(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    """
+    Retrieve a list of grant opportunities with pagination and optional search.
+    
+    Args:
+        skip: Number of records to skip
+        limit: Maximum number of records to return
+        keyword: Optional search keyword
+        db: Database session
+        current_user: Current authenticated user
+        
+    Returns:
+        List of grant opportunities
+    """
     return get_grants(db=db, skip=skip, limit=limit, keyword=keyword)
 
 
@@ -52,4 +96,14 @@ def read_dashboard_stats(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
+    """
+    Retrieve dashboard statistics.
+    
+    Args:
+        db: Database session
+        current_user: Current authenticated user
+        
+    Returns:
+        Dashboard statistics including counts and sums
+    """
     return get_dashboard_stats(db=db)

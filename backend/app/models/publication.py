@@ -15,12 +15,15 @@ publication_authors = Table(
 class Publication(BaseModel):
     __tablename__ = "publications"
 
+    openalex_id = Column(String, unique=True, index=True, nullable=True)
     title = Column(String, nullable=False)
-    authors_str = Column(String, nullable=False)
+    authors_str = Column(String, nullable=True)
     journal = Column(String, nullable=True)
     abstract = Column(Text, nullable=True)
-    year = Column(Integer, nullable=True)
+    publication_year = Column(Integer, nullable=True)
+    year = Column(Integer, nullable=True)  # Keep for compatibility
     citations = Column(Integer, default=0)
+    citation_count = Column(Integer, default=0)  # Keep for compatibility
     doi = Column(String, nullable=True, unique=True)
     concept_id = Column(Integer, ForeignKey('concepts.id'), nullable=True)
 

@@ -38,7 +38,7 @@ function PatentsPage() {
     retry: 1,
   });
 
-  const displayPatents = dbPatents && dbPatents.length > 0 ? dbPatents : patents;
+  const displayPatents = dbPatents && dbPatents.length > 0 ? dbPatents : [];
 
   return (
     <div className="mx-auto max-w-[1400px] space-y-6">
@@ -100,48 +100,54 @@ function PatentsPage() {
       </div>
 
       <SectionCard title="Recent patents" description="Filings and grants relevant to your profile">
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] text-sm">
-            <thead>
-              <tr className="text-left text-xs uppercase tracking-wider text-muted-foreground">
-                <th className="py-3">Patent</th>
-                <th className="py-3">Assignee</th>
-                <th className="py-3">Filed</th>
-                <th className="py-3">Citations</th>
-                <th className="py-3">Status</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border/60">
-              {displayPatents.map((p: any) => (
-                <tr key={p.id} className="align-top">
-                  <td className="py-3.5">
-                    <div className="flex items-start gap-3">
-                      <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-                        <Shield className="h-4 w-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-[11px] font-mono text-muted-foreground">{p.application_number || p.id}</div>
-                        <div className="truncate font-semibold">{p.title}</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-3.5 text-foreground/80">{p.assignee}</td>
-                  <td className="py-3.5 text-foreground/80">{p.filing_date ? new Date(p.filing_date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "N/A"}</td>
-                  <td className="py-3.5 font-semibold">{p.citations}</td>
-                  <td className="py-3.5">
-                    <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium">{p.status}</span>
-                  </td>
-                  <td className="py-3.5 text-right">
-                    <button className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
-                      View <ExternalLink className="h-3 w-3" />
-                    </button>
-                  </td>
+        {displayPatents.length > 0 ? (
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[720px] text-sm">
+              <thead>
+                <tr className="text-left text-xs uppercase tracking-wider text-muted-foreground">
+                  <th className="py-3">Patent</th>
+                  <th className="py-3">Assignee</th>
+                  <th className="py-3">Filed</th>
+                  <th className="py-3">Citations</th>
+                  <th className="py-3">Status</th>
+                  <th />
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="divide-y divide-border/60">
+                {displayPatents.map((p: any) => (
+                  <tr key={p.id} className="align-top">
+                    <td className="py-3.5">
+                      <div className="flex items-start gap-3">
+                        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+                          <Shield className="h-4 w-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-[11px] font-mono text-muted-foreground">{p.application_number || p.id}</div>
+                          <div className="truncate font-semibold">{p.title}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-3.5 text-foreground/80">{p.assignee}</td>
+                    <td className="py-3.5 text-foreground/80">{p.filing_date ? new Date(p.filing_date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }) : "N/A"}</td>
+                    <td className="py-3.5 font-semibold">{p.citations}</td>
+                    <td className="py-3.5">
+                      <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium">{p.status}</span>
+                    </td>
+                    <td className="py-3.5 text-right">
+                      <button className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
+                        View <ExternalLink className="h-3 w-3" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground">
+            Run the data collector to fetch real patent data from PatentsView and other sources.
+          </p>
+        )}
       </SectionCard>
     </div>
   );
