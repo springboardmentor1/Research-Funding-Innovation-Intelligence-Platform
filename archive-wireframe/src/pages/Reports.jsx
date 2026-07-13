@@ -1,3 +1,4 @@
+import Layout from "../components/Layout";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useEffect, useState } from "react";
 import { getReports } from "../api/reportApi";
@@ -27,61 +28,198 @@ function Reports() {
   };
 
   if (!report) {
-  return <LoadingSpinner />;
-}
+    return (
+      <Layout>
+        <LoadingSpinner />
+      </Layout>
+    );
+  }
 
   return (
-    <div style={{ padding: "30px" }}>
-      <h1>Research Intelligence Report</h1>
+  <Layout>
+    <div
+      style={{
+        maxWidth: "900px",
+        margin: "40px auto",
+        background: "#fff",
+        padding: "40px",
+        borderRadius: "15px",
+        boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+      }}
+    >
+      {/* Report Header */}
 
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px,1fr))",
-          gap: "20px",
-          marginTop: "30px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "18px",
+          marginBottom: "10px",
         }}
       >
-        <div className="card">
-          <h2>{report.publications}</h2>
-          <p>📄 Publications</p>
-        </div>
+        <span style={{ fontSize: "54px" }}>📊</span>
 
-        <div className="card">
-          <h2>{report.funding}</h2>
-          <p>💰 Funding Projects</p>
-        </div>
-
-        <div className="card">
-          <h2>{report.patents}</h2>
-          <p>📜 Patents</p>
-        </div>
-
-        <div className="card">
-          <h2>{report.organizations}</h2>
-          <p>🏢 Organizations</p>
-        </div>
-
-        <div className="card">
-          <h2>{report.researchers}</h2>
-          <p>👨‍🔬 Researchers</p>
-        </div>
+        <h1
+          style={{
+            margin: 0,
+            fontSize: "48px",
+            fontWeight: "700",
+            color: "#111827",
+            lineHeight: "1.2",
+          }}
+        >
+          Research Intelligence Report
+        </h1>
       </div>
 
-      <div style={{ marginTop: "40px" }}>
+      <p
+        style={{
+          textAlign: "center",
+          color: "#6b7280",
+          fontSize: "18px",
+          marginBottom: "35px",
+        }}
+      >
+        Summary of Publications, Funding, Patents, Organizations and Researchers
+      </p>
+
+      <hr />
+
+      <h2
+        style={{
+          textAlign: "center",
+          marginTop: "35px",
+          marginBottom: "30px",
+          color: "#111827",
+        }}
+      >
+        Database Summary
+      </h2>
+
+      <table
+        style={{
+          width: "100%",
+          borderCollapse: "collapse",
+          fontSize: "18px",
+        }}
+      >
+        <tbody>
+          <tr style={{ borderBottom: "1px solid #e5e7eb" }}>
+            <td style={{ padding: "14px 0" }}>
+              📚 <strong>Publications</strong>
+            </td>
+            <td
+              style={{
+                textAlign: "right",
+                fontWeight: "bold",
+              }}
+            >
+              {report.publications}
+            </td>
+          </tr>
+
+          <tr style={{ borderBottom: "1px solid #e5e7eb" }}>
+            <td style={{ padding: "14px 0" }}>
+              💰 <strong>Funding Projects</strong>
+            </td>
+            <td
+              style={{
+                textAlign: "right",
+                fontWeight: "bold",
+              }}
+            >
+              {report.funding}
+            </td>
+          </tr>
+
+          <tr style={{ borderBottom: "1px solid #e5e7eb" }}>
+            <td style={{ padding: "14px 0" }}>
+              📜 <strong>Patents</strong>
+            </td>
+            <td
+              style={{
+                textAlign: "right",
+                fontWeight: "bold",
+              }}
+            >
+              {report.patents}
+            </td>
+          </tr>
+
+          <tr style={{ borderBottom: "1px solid #e5e7eb" }}>
+            <td style={{ padding: "14px 0" }}>
+              🏢 <strong>Organizations</strong>
+            </td>
+            <td
+              style={{
+                textAlign: "right",
+                fontWeight: "bold",
+              }}
+            >
+              {report.organizations}
+            </td>
+          </tr>
+
+          <tr>
+            <td style={{ padding: "14px 0" }}>
+              👨‍🔬 <strong>Researchers</strong>
+            </td>
+            <td
+              style={{
+                textAlign: "right",
+                fontWeight: "bold",
+              }}
+            >
+              {report.researchers}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "20px",
+          marginTop: "40px",
+        }}
+      >
         <button
           onClick={downloadCSV}
-          style={{ marginRight: "15px" }}
+          style={{
+            background: "#2563eb",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            padding: "12px 28px",
+            cursor: "pointer",
+            fontSize: "16px",
+            fontWeight: "600",
+          }}
         >
-          Download CSV
+          📄 Download CSV
         </button>
 
-        <button onClick={downloadPDF}>
-          Download PDF
+        <button
+          onClick={downloadPDF}
+          style={{
+            background: "#16a34a",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            padding: "12px 28px",
+            cursor: "pointer",
+            fontSize: "16px",
+            fontWeight: "600",
+          }}
+        >
+          📑 Download PDF
         </button>
       </div>
     </div>
-  );
+  </Layout>
+);
 }
 
 export default Reports;

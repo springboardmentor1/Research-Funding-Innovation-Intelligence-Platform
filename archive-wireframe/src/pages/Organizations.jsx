@@ -1,9 +1,13 @@
+import Layout from "../components/Layout";
+import { useContext, useEffect, useState } from "react";
+import { SearchContext } from "../context/SearchContext";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { useEffect, useState } from "react";
 import { getOrganizations } from "../api/organizationApi";
 
 function Organizations() {
   const [organizations, setOrganizations] = useState([]);
+
+  const { search } = useContext(SearchContext);
 
   useEffect(() => {
     async function loadOrganizations() {
@@ -19,35 +23,78 @@ function Organizations() {
   }, []);
 
   if (organizations.length === 0) {
-    return <LoadingSpinner />;
+    return (
+      <Layout>
+        <LoadingSpinner />
+      </Layout>
+    );
   }
 
-  return (
-    <div>
-      <h1>Organizations</h1>
+  const filteredOrganizations = organizations.filter((item) =>
+    (item.organization_name || "")
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
 
-      {organizations.map((item, index) => (
-        <div
-          key={index}
+  return (
+    <Layout>
+      <div style={{ padding: "30px" }}>
+        <h1
           style={{
-            border: "1px solid #ddd",
-            padding: "15px",
-            marginBottom: "15px",
-            borderRadius: "8px",
+            marginBottom: "25px",
+            color: "#1f2937",
           }}
         >
-          <h3>{item.organization_name}</h3>
+          🏢 Organizations
+        </h1>
 
-          <p>
-            <strong>Country:</strong> {item.country}
-          </p>
+        {filteredOrganizations.length === 0 ? (
+          <h3>No organizations found.</h3>
+        ) : (
+          filteredOrganizations.map((item, index) => (
+            <div
+              key={index}
+              style={{
+                background: "#fff",
+                borderRadius: "12px",
+                padding: "20px",
+                marginBottom: "20px",
+                boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
+                border: "1px solid #e5e7eb",
+              }}
+            >
+              <h2
+                style={{
+                  marginBottom: "15px",
+                  color: "#2563eb",
+                }}
+              >
+                {item.organization_name}
+              </h2>
 
-          <p>
-            <strong>Type:</strong> {item.organization_type}
-          </p>
-        </div>
-      ))}
-    </div>
+              <p>
+                <strong>🌍 Country:</strong> {item.country}
+              </p>
+
+              <p>
+                <strong>🏷 Type:</strong> {item.type}
+              </p>
+
+              <p>
+                <strong>🌐 Website:</strong>{" "}
+                <a
+                  href={item.website}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {item.website}
+                </a>
+              </p>
+            </div>
+          ))
+        )}
+      </div>
+    </Layout>
   );
 }
 
