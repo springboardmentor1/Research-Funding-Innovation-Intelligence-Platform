@@ -187,6 +187,36 @@ def run_tests():
     except Exception as e:
         print_result("Search Profiles (filtered by domain)", False, str(e))
 
+    # 12. Test Funding Recommendations
+    recommendations_exist = False
+    sample_grant_id = None
+    try:
+        res = httpx.get(f"{BASE_URL}/recommendations/grants", headers=researcher_headers)
+        if res.status_code == 200:
+            recs = res.json()
+            recommendations_exist = len(recs) > 0
+            if recommendations_exist:
+                sample_grant_id = recs[0].get("grant_id")
+                top_score = recs[0].get("match_score")
+                print_result("Fetch Grant Recommendations", True, f"Found {len(recs)} grants. Top score: {top_score}%")
+            else:
+                print_result("Fetch Grant Recommendations", True, "No recommendations returned (empty list)")
+        else:
+            print_result("Fetch Grant Recommendations", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("Fetch Grant Recommendations", False, str(e))
+
+    # 13. Test Single Grant Matching Diagnostics
+    if sample_grant_id:
+        try:
+            res = httpx.get(f"{BASE_URL}/recommendations/grants/{sample_grant_id}/match", headers=researcher_headers)
+            if res.status_code == 200:
+                print_result("Fetch Grant Match Breakdown", True, f"Score details for {sample_grant_id}: {res.json().get('match_rationale')}")
+            else:
+                print_result("Fetch Grant Match Breakdown", False, f"Status {res.status_code}: {res.text}")
+        except Exception as e:
+            print_result("Fetch Grant Match Breakdown", False, str(e))
+
     print("="*60)
     print("Verification Completed.")
     print("="*60)

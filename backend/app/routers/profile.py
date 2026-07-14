@@ -82,10 +82,10 @@ def search_profiles(
     if organization:
         query = query.filter(ResearchProfile.organization.ilike(f"%{organization}%"))
     if domain:
-        # PostgreSQL JSON path query search or pythonic check if postgres is not used.
+        from sqlalchemy import cast, String
         # To remain database-agnostic in SQLAlchemy query for JSON list:
-        # We can cast/check elements in JSON. A safe, simple way is:
-        query = query.filter(ResearchProfile.research_domains.cast(str).ilike(f"%{domain}%"))
+        # We cast the JSON column to String and check for domain inclusion.
+        query = query.filter(cast(ResearchProfile.research_domains, String).ilike(f"%{domain}%"))
         
     return query.all()
 

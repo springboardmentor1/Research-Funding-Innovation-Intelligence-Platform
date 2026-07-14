@@ -1,19 +1,21 @@
+import bcrypt
 from datetime import datetime, timedelta, timezone
 from jose import jwt, JWTError
-from passlib.context import CryptContext
 from app.core.config import settings
 
-# Initialize password hashing context
-# Deprecated warnings for passlib bcrypt can be ignored or handled by using bcrypt backend explicitly
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Verify a plain text password against its hashed value."""
-    return pwd_context.verify(plain_password, hashed_password)
+    """Verify a plain text password against its hashed value using bcrypt directly."""
+    try:
+        return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
+    except Exception:
+        return False
 
 def get_password_hash(password: str) -> str:
-    """Generate bcrypt hash of a plain text password."""
-    return pwd_context.hash(password)
+    """Generate bcrypt hash of a plain text password using bcrypt directly."""
+    # Generate salt and hash the password
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password.encode("utf-8"), salt)
+    return hashed.decode("utf-8")
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
     """Generate a JWT access token containing the payload data."""
