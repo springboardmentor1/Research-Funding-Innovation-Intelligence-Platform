@@ -1,0 +1,180 @@
+{
+  "funding_opportunities_per_year": {
+    "2026": 2767,
+    "2027": 2233
+  },
+  "application_deadline_timeline": {
+    "timeline": [
+      {
+        "year": 2026,
+        "opportunities": 2767,
+        "growth_percentage": null
+      },
+      {
+        "year": 2027,
+        "opportunities": 2233,
+        "growth_percentage": -19.3
+      }
+    ],
+    "average_growth_rate": -19.3,
+    "trend": "Declining"
+  },
+  "funding_opportunities_by_domain": {
+    "Electrical Engineering": 200,
+    "Natural Language Processing": 200,
+    "Blockchain": 200,
+    "Artificial Intelligence": 200,
+    "Materials Science": 200,
+    "Cloud Computing": 200,
+    "Civil Engineering": 200,
+    "Cyber Security": 200,
+    "Biotechnology": 200,
+    "Robotics": 200,
+    "Computer Vision": 200,
+    "Renewable Energy": 200,
+    "Deep Learning": 200,
+    "Mechanical Engineering": 200,
+    "Physics": 200,
+    "Data Science": 200,
+    "Software Engineering": 200,
+    "Chemistry": 200,
+    "Mathematics": 200,
+    "Quantum Computing": 200,
+    "Healthcare": 200,
+    "Environmental Science": 200,
+    "Internet of Things": 200,
+    "Machine Learning": 200,
+    "Chemical Engineering": 200
+  },
+  "funding_type_distribution": {
+    "Grant": 1019,
+    "Contract": 1016,
+    "Award": 1004,
+    "Cooperative Agreement": 983,
+    "Fellowship": 978
+  },
+  "country_distribution": {
+    "US": 1678,
+    "EU": 1127,
+    "CA": 586,
+    "AU": 552,
+    "GB": 539,
+    "JP": 518
+  },
+  "funding_amount_statistics": {
+    "total_funding_amount": 5150564000.0,
+    "average_funding_amount": 1030112.8,
+    "max_funding_amount": 2000000.0,
+    "min_funding_amount": 50000.0
+  },
+  "average_funding_amount_per_domain": {
+    "Artificial Intelligence": 1022595.0,
+    "Biotechnology": 1033610.0,
+    "Blockchain": 1028640.0,
+    "Chemical Engineering": 969600.0,
+    "Chemistry": 1031285.0,
+    "Civil Engineering": 988270.0,
+    "Cloud Computing": 1051800.0,
+    "Computer Vision": 1055370.0,
+    "Cyber Security": 1030570.0,
+    "Data Science": 980100.0,
+    "Deep Learning": 991160.0,
+    "Electrical Engineering": 1018200.0,
+    "Environmental Science": 1110305.0,
+    "Healthcare": 1072690.0,
+    "Internet of Things": 972270.0,
+    "Machine Learning": 1012275.0,
+    "Materials Science": 1006905.0,
+    "Mathematics": 1037130.0,
+    "Mechanical Engineering": 1100440.0,
+    "Natural Language Processing": 1046650.0,
+    "Physics": 1030540.0,
+    "Quantum Computing": 1053610.0,
+    "Renewable Energy": 1064465.0,
+    "Robotics": 1003340.0,
+    "Software Engineering": 1041000.0
+  },
+  "top_funding_agencies": {
+    "Canadian Institutes of Health Research": 586,
+    "National Institutes of Health": 576,
+    "National Science Foundation": 568,
+    "Horizon Europe": 564,
+    "European Research Council": 563,
+    "Australian Research Council": 552,
+    "UK Research and Innovation": 539,
+    "Department of Energy": 534,
+    "Japan Society for the Promotion of Science": 518
+  },
+  "top_keywords": {
+    "cihr": 586,
+    "nih": 576,
+    "nsf": 568,
+    "heu": 564,
+    "erc": 563,
+    "arc": 552,
+    "ukri": 539,
+    "doe": 534,
+    "jsps": 518,
+    "thermodynamics": 297,
+    "deep learning": 280,
+    "electrical engineering": 200,
+    "civil engineering": 200,
+    "software engineering": 200,
+    "cyber security": 200,
+    "data science": 200,
+    "chemical engineering": 200,
+    "biotechnology": 200,
+    "physics": 200,
+    "mechanical engineering": 200
+  },
+  "dataset_summary": {
+    "total_funding_opportunities": 5000,
+    "unique_funding_agencies": 9,
+    "research_domains_covered": [
+      "Artificial Intelligence",
+      "Biotechnology",
+      "Blockchain",
+      "Chemical Engineering",
+      "Chemistry",
+      "Civil Engineering",
+      "Cloud Computing",
+      "Computer Vision",
+      "Cyber Security",
+      "Data Science",
+      "Deep Learning",
+      "Electrical Engineering",
+      "Environmental Science",
+      "Healthcare",
+      "Internet of Things",
+      "Machine Learning",
+      "Materials Science",
+      "Mathematics",
+      "Mechanical Engineering",
+      "Natural Language Processing",
+      "Physics",
+      "Quantum Computing",
+      "Renewable Energy",
+      "Robotics",
+      "Software Engineering"
+    ],
+    "funding_types_covered": [
+      "Award",
+      "Contract",
+      "Cooperative Agreement",
+      "Fellowship",
+      "Grant"
+    ],
+    "countries_covered": [
+      "AU",
+      "CA",
+      "EU",
+      "GB",
+      "JP",
+      "US"
+    ],
+    "years_covered": {
+      "min_year": 2026,
+      "max_year": 2027
+    }
+  }
+}
