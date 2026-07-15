@@ -1,0 +1,223 @@
+{
+  "patents_per_year": {
+    "2021": 124,
+    "2022": 917,
+    "2023": 1096,
+    "2024": 1119,
+    "2025": 1096,
+    "2026": 646,
+    "2027": 2
+  },
+  "patent_activity_timeline": {
+    "timeline": [
+      {
+        "year": 2021,
+        "patents": 124,
+        "growth_percentage": null
+      },
+      {
+        "year": 2022,
+        "patents": 917,
+        "growth_percentage": 639.52
+      },
+      {
+        "year": 2023,
+        "patents": 1096,
+        "growth_percentage": 19.52
+      },
+      {
+        "year": 2024,
+        "patents": 1119,
+        "growth_percentage": 2.1
+      },
+      {
+        "year": 2025,
+        "patents": 1096,
+        "growth_percentage": -2.06
+      },
+      {
+        "year": 2026,
+        "patents": 646,
+        "growth_percentage": -41.06
+      },
+      {
+        "year": 2027,
+        "patents": 2,
+        "growth_percentage": -99.69
+      }
+    ],
+    "average_growth_rate": 86.39,
+    "trend": "Increasing"
+  },
+  "patents_by_technology_domain": {
+    "Natural Language Processing": 200,
+    "Artificial Intelligence": 200,
+    "Biotechnology": 200,
+    "Smart Manufacturing": 200,
+    "Machine Learning": 200,
+    "Robotics": 200,
+    "FinTech": 200,
+    "Software Engineering": 200,
+    "Data Science": 200,
+    "Semiconductor Technology": 200,
+    "Blockchain": 200,
+    "Internet of Things": 200,
+    "Cloud Computing": 200,
+    "Renewable Energy": 200,
+    "Cyber Security": 200,
+    "Deep Learning": 200,
+    "Healthcare": 200,
+    "Quantum Computing": 200,
+    "Agriculture Technology": 200,
+    "Space Technology": 200,
+    "Computer Vision": 200,
+    "Autonomous Vehicles": 200,
+    "Medical Devices": 200,
+    "5G / 6G Communications": 200,
+    "Smart Cities": 200
+  },
+  "average_patents_per_domain": {
+    "5G / 6G Communications": 33.33,
+    "Agriculture Technology": 33.33,
+    "Artificial Intelligence": 28.57,
+    "Autonomous Vehicles": 33.33,
+    "Biotechnology": 33.33,
+    "Blockchain": 33.33,
+    "Cloud Computing": 33.33,
+    "Computer Vision": 33.33,
+    "Cyber Security": 33.33,
+    "Data Science": 33.33,
+    "Deep Learning": 33.33,
+    "FinTech": 33.33,
+    "Healthcare": 33.33,
+    "Internet of Things": 33.33,
+    "Machine Learning": 33.33,
+    "Medical Devices": 33.33,
+    "Natural Language Processing": 28.57,
+    "Quantum Computing": 33.33,
+    "Renewable Energy": 33.33,
+    "Robotics": 33.33,
+    "Semiconductor Technology": 33.33,
+    "Smart Cities": 33.33,
+    "Smart Manufacturing": 33.33,
+    "Software Engineering": 33.33,
+    "Space Technology": 33.33
+  },
+  "top_assignees": {
+    "Institute of Technology & Natural Language Processing Research Group": 200,
+    "Institute of Technology & Renewable Energy Research Group": 200,
+    "Institute of Technology & 5G / 6G Communications Research Group": 200,
+    "Institute of Technology & Medical Devices Research Group": 200,
+    "Institute of Technology & Autonomous Vehicles Research Group": 200,
+    "Institute of Technology & Computer Vision Research Group": 200,
+    "Institute of Technology & Space Technology Research Group": 200,
+    "Institute of Technology & Agriculture Technology Research Group": 200,
+    "Institute of Technology & Quantum Computing Research Group": 200,
+    "Institute of Technology & Healthcare Research Group": 200
+  },
+  "top_inventors": {
+    "Dr. Alex Inventor_117": 25,
+    "Dr. Taylor Scientist_45": 25,
+    "Dr. Taylor Scientist_185": 25,
+    "Dr. Alex Inventor_185": 25,
+    "Dr. Taylor Scientist_99": 25,
+    "Dr. Alex Inventor_99": 25,
+    "Dr. Taylor Scientist_80": 25,
+    "Dr. Alex Inventor_80": 25,
+    "Dr. Taylor Scientist_165": 25,
+    "Dr. Alex Inventor_165": 25
+  },
+  "patent_status_distribution": {
+    "GRANTED": {
+      "count": 3013,
+      "percentage": 60.26
+    },
+    "FILED": {
+      "count": 1987,
+      "percentage": 39.74
+    }
+  },
+  "country_distribution": {
+    "US": 5000
+  },
+  "top_classifications": {
+    "G06F 17/67 (IPC)": 73,
+    "G06F 17/88 (IPC)": 73,
+    "G06F 17/56 (IPC)": 73,
+    "H04L 9/49 (CPC)": 72,
+    "G06F 17/23 (IPC)": 71,
+    "G06F 17/89 (IPC)": 71,
+    "G06F 17/51 (IPC)": 70,
+    "H04L 9/16 (CPC)": 70,
+    "G06F 17/91 (IPC)": 68,
+    "H04L 9/10 (CPC)": 68,
+    "G06F 17/50 (IPC)": 68,
+    "H04L 9/65 (CPC)": 67,
+    "G06F 17/59 (IPC)": 67,
+    "H04L 9/34 (CPC)": 67,
+    "H04L 9/67 (CPC)": 66,
+    "H04L 9/29 (CPC)": 66,
+    "H04L 9/85 (CPC)": 66,
+    "H04L 9/13 (CPC)": 66,
+    "H04L 9/58 (CPC)": 65,
+    "H04L 9/18 (CPC)": 65
+  },
+  "top_keywords": {
+    "system": 5000,
+    "adaptive": 5000,
+    "automation": 5000,
+    "Natural Language Processing": 200,
+    "Renewable Energy": 200,
+    "5G / 6G Communications": 200,
+    "Medical Devices": 200,
+    "Autonomous Vehicles": 200,
+    "Computer Vision": 200,
+    "Space Technology": 200,
+    "Agriculture Technology": 200,
+    "Quantum Computing": 200,
+    "Healthcare": 200,
+    "Deep Learning": 200,
+    "Cyber Security": 200,
+    "Internet of Things": 200,
+    "Cloud Computing": 200,
+    "Blockchain": 200,
+    "Semiconductor Technology": 200,
+    "Data Science": 200
+  },
+  "dataset_summary": {
+    "total_patents": 5000,
+    "unique_inventors": 400,
+    "unique_assignees": 25,
+    "years_covered": {
+      "min_year": 2021,
+      "max_year": 2027
+    },
+    "technology_domains_covered": [
+      "5G / 6G Communications",
+      "Agriculture Technology",
+      "Artificial Intelligence",
+      "Autonomous Vehicles",
+      "Biotechnology",
+      "Blockchain",
+      "Cloud Computing",
+      "Computer Vision",
+      "Cyber Security",
+      "Data Science",
+      "Deep Learning",
+      "FinTech",
+      "Healthcare",
+      "Internet of Things",
+      "Machine Learning",
+      "Medical Devices",
+      "Natural Language Processing",
+      "Quantum Computing",
+      "Renewable Energy",
+      "Robotics",
+      "Semiconductor Technology",
+      "Smart Cities",
+      "Smart Manufacturing",
+      "Software Engineering",
+      "Space Technology"
+    ]
+  }
+}
