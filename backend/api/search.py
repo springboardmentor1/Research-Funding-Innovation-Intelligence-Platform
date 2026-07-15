@@ -3,25 +3,64 @@ import pandas as pd
 
 search_bp = Blueprint("search", __name__)
 
+
 @search_bp.route("/search")
 def search():
 
     query = request.args.get("q", "").lower()
 
-    publications = pd.read_csv("../datasets/publications/openalex_cleaned.csv")
-    funding = pd.read_csv("../datasets/funding/nih_funding.csv")
+    results = {
+        "publications": [],
+        "funding": [],
+        "patents": [],
+        "organizations": [],
+        "researchers": []
+    }
 
-    # Search Publications
-    pub_results = publications[
-        publications["title"].fillna("").str.lower().str.contains(query)
-    ].head(20)
+    # ---------------- Publications ----------------
 
-    # Search Funding
-    fund_results = funding[
-        funding["project_title"].fillna("").str.lower().str.contains(query)
-    ].head(20)
+    publications = pd.read_csv("../datasets/publications/openalex_cleaned.csv").fillna("")
 
-    return jsonify({
-        "publications": pub_results.to_dict(orient="records"),
-        "funding": fund_results.to_dict(orient="records")
-    })
+    results["publications"] = publications[
+        publications["title"].str.lower().str.contains(query)
+    ].head(10).to_dict(orient="records")
+
+
+    # ---------------- Funding ----------------
+
+    funding = pd.read_csv("../datasets/funding/nih_funding.csv").fillna("")
+
+    if "project_title" in funding.columns:
+
+        results["funding"] = funding[
+            funding["project_title"].str.lower().str.contains(query)
+        ].head(10).to_dict(orient="records")
+
+
+    # ---------------- Patents ----------------
+
+    patents = pd.read_csv("../datasets/patents/patents.csv").fillna("")
+
+    results["patents"] = patents[
+        patents["patent_title"].str.lower().str.contains(query)
+    ].head(10).to_dict(orient="records")
+
+
+    # ---------------- Organizations ----------------
+
+    organizations = pd.read_csv("../datasets/organizations/organizations.csv").fillna("")
+
+    results["organizations"] = organizations[
+        organizations["organization_name"].str.lower().str.contains(query)
+    ].head(10).to_dict(orient="records")
+
+
+    # ---------------- Researchers ----------------
+
+    researchers = pd.read_csv("../datasets/researchers/researchers.csv").fillna("")
+
+    results["researchers"] = researchers[
+        researchers["researcher_name"].str.lower().str.contains(query)
+    ].head(10).to_dict(orient="records")
+
+    return jsonify(results)

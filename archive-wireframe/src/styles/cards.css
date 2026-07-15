@@ -1,0 +1,35 @@
+/* Reusable Card */
+
+.card{
+    background:#ffffff;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    border:1px solid #e5e7eb;
+    box-shadow:0 3px 10px rgba(0,0,0,.06);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+
+.card h3{
+    margin-top:0;
+    color:#1f2937;
+}
+
+.card p{
+    color:#4b5563;
+    line-height:1.7;
+}
+
+.card a{
+    color:#2563eb;
+    text-decoration:none;
+}
+
+.card a:hover{
+    text-decoration:underline;
+}

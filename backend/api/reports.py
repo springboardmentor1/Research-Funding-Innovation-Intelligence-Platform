@@ -1,23 +1,27 @@
-from reportlab.platypus import SimpleDocTemplate, Paragraph
-from reportlab.lib.styles import getSampleStyleSheet
 from flask import Blueprint, jsonify, send_file
 import pandas as pd
-import csv
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+from reportlab.lib import colors
 
 reports_bp = Blueprint("reports", __name__)
 
 
-# ===========================
-# Reports Summary API
-# ===========================
+PUBLICATIONS = "../datasets/publications/openalex_cleaned.csv"
+FUNDING = "../datasets/funding/nih_funding.csv"
+PATENTS = "../datasets/patents/patents.csv"
+ORGANIZATIONS = "../datasets/organizations/organizations.csv"
+RESEARCHERS = "../datasets/researchers/researchers.csv"
+
+
 @reports_bp.route("/reports")
 def reports():
 
-    publications = pd.read_csv("../datasets/publications/openalex_cleaned.csv")
-    funding = pd.read_csv("../datasets/funding/nih_funding.csv")
-    patents = pd.read_csv("../datasets/patents/patents.csv")
-    organizations = pd.read_csv("../datasets/organizations/organizations.csv")
-    researchers = pd.read_csv("../datasets/researchers/researchers.csv")
+    publications = pd.read_csv(PUBLICATIONS)
+    funding = pd.read_csv(FUNDING)
+    patents = pd.read_csv(PATENTS)
+    organizations = pd.read_csv(ORGANIZATIONS)
+    researchers = pd.read_csv(RESEARCHERS)
 
     return jsonify({
         "publications": len(publications),
@@ -28,60 +32,84 @@ def reports():
     })
 
 
-# ===========================
-# Download CSV API
-# ===========================
 @reports_bp.route("/reports/export")
-def export_report():
+def export_csv():
 
-    publications = pd.read_csv("../datasets/publications/openalex_cleaned.csv")
-    funding = pd.read_csv("../datasets/funding/nih_funding.csv")
-    patents = pd.read_csv("../datasets/patents/patents.csv")
-    organizations = pd.read_csv("../datasets/organizations/organizations.csv")
-    researchers = pd.read_csv("../datasets/researchers/researchers.csv")
+    publications = pd.read_csv(PUBLICATIONS)
+    funding = pd.read_csv(FUNDING)
+    patents = pd.read_csv(PATENTS)
+    organizations = pd.read_csv(ORGANIZATIONS)
+    researchers = pd.read_csv(RESEARCHERS)
 
-    filename = "report_summary.csv"
+    summary = pd.DataFrame({
+        "Dataset": [
+            "Publications",
+            "Funding",
+            "Patents",
+            "Organizations",
+            "Researchers"
+        ],
+        "Records": [
+            len(publications),
+            len(funding),
+            len(patents),
+            len(organizations),
+            len(researchers)
+        ]
+    })
 
-    with open(filename, "w", newline="", encoding="utf-8") as file:
-        writer = csv.writer(file)
+    output_file = "../datasets/research_summary.csv"
 
-        writer.writerow(["Module", "Count"])
-        writer.writerow(["Publications", len(publications)])
-        writer.writerow(["Funding", len(funding)])
-        writer.writerow(["Patents", len(patents)])
-        writer.writerow(["Organizations", len(organizations)])
-        writer.writerow(["Researchers", len(researchers)])
+    summary.to_csv(output_file, index=False)
 
-    return send_file(filename, as_attachment=True)
+    return send_file(
+        output_file,
+        as_attachment=True
+    )
 
 
 @reports_bp.route("/reports/pdf")
 def export_pdf():
 
-    publications = pd.read_csv("../datasets/publications/openalex_cleaned.csv")
-    funding = pd.read_csv("../datasets/funding/nih_funding.csv")
-    patents = pd.read_csv("../datasets/patents/patents.csv")
-    organizations = pd.read_csv("../datasets/organizations/organizations.csv")
-    researchers = pd.read_csv("../datasets/researchers/researchers.csv")
+    publications = pd.read_csv(PUBLICATIONS)
+    funding = pd.read_csv(FUNDING)
+    patents = pd.read_csv(PATENTS)
+    organizations = pd.read_csv(ORGANIZATIONS)
+    researchers = pd.read_csv(RESEARCHERS)
 
-    filename = "Research_Report.pdf"
+    pdf_file = "../datasets/research_summary.pdf"
 
-    doc = SimpleDocTemplate(filename)
+    doc = SimpleDocTemplate(pdf_file, pagesize=letter)
 
-    styles = getSampleStyleSheet()
+    data = [
+        ["Dataset", "Number of Records"],
+        ["Publications", len(publications)],
+        ["Funding", len(funding)],
+        ["Patents", len(patents)],
+        ["Organizations", len(organizations)],
+        ["Researchers", len(researchers)],
+    ]
 
-    elements = []
+    table = Table(data)
 
-    elements.append(Paragraph("<b>Research Funding & Innovation Intelligence Platform</b>", styles["Title"]))
+    table.setStyle(TableStyle([
+        ("BACKGROUND", (0,0), (-1,0), colors.HexColor("#2563eb")),
+        ("TEXTCOLOR",(0,0),(-1,0),colors.white),
 
-    elements.append(Paragraph("<br/>", styles["Normal"]))
+        ("FONTNAME",(0,0),(-1,0),"Helvetica-Bold"),
 
-    elements.append(Paragraph(f"Total Publications : {len(publications)}", styles["Heading2"]))
-    elements.append(Paragraph(f"Total Funding Projects : {len(funding)}", styles["Heading2"]))
-    elements.append(Paragraph(f"Total Patents : {len(patents)}", styles["Heading2"]))
-    elements.append(Paragraph(f"Total Organizations : {len(organizations)}", styles["Heading2"]))
-    elements.append(Paragraph(f"Total Researchers : {len(researchers)}", styles["Heading2"]))
+        ("GRID",(0,0),(-1,-1),1,colors.grey),
 
-    doc.build(elements)
+        ("BACKGROUND",(0,1),(-1,-1),colors.beige),
 
-    return send_file(filename, as_attachment=True)
+        ("BOTTOMPADDING",(0,0),(-1,0),12),
+
+        ("ALIGN",(0,0),(-1,-1),"CENTER"),
+    ]))
+
+    doc.build([table])
+
+    return send_file(
+        pdf_file,
+        as_attachment=True
+    )

@@ -1,0 +1,14 @@
+.page-container{
+    padding:30px;
+}
+
+.page-title{
+    font-size:32px;
+    color:#1f2937;
+    margin-bottom:25px;
+}
+
+.page-subtitle{
+    color:#6b7280;
+    margin-bottom:25px;
+}

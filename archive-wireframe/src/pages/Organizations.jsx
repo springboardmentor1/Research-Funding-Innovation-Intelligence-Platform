@@ -7,6 +7,9 @@ import { getOrganizations } from "../api/organizationApi";
 function Organizations() {
   const [organizations, setOrganizations] = useState([]);
 
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+
   const { search } = useContext(SearchContext);
 
   useEffect(() => {
@@ -30,23 +33,126 @@ function Organizations() {
     );
   }
 
-  const filteredOrganizations = organizations.filter((item) =>
-    (item.organization_name || "")
-      .toLowerCase()
-      .includes(search.toLowerCase())
-  );
+  const filteredOrganizations = organizations.filter((item) => {
+
+    const matchesSearch =
+      (item.organization_name || "")
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+    const matchesCountry =
+      selectedCountry === "" ||
+      item.country === selectedCountry;
+
+    const matchesType =
+      selectedType === "" ||
+      item.type === selectedType;
+
+    return (
+      matchesSearch &&
+      matchesCountry &&
+      matchesType
+    );
+  });
 
   return (
     <Layout>
       <div style={{ padding: "30px" }}>
-        <h1
+
+        <h1>🏢 Organizations</h1>
+
+        {/* Filters */}
+
+        <div
           style={{
-            marginBottom: "25px",
-            color: "#1f2937",
+            display: "flex",
+            gap: "15px",
+            flexWrap: "wrap",
+            margin: "25px 0",
           }}
         >
-          🏢 Organizations
-        </h1>
+
+          <select
+            value={selectedCountry}
+            onChange={(e) =>
+              setSelectedCountry(e.target.value)
+            }
+            style={{
+              padding: "10px",
+              borderRadius: "8px",
+              border: "1px solid #ccc",
+            }}
+          >
+            <option value="">All Countries</option>
+
+            {[...new Set(organizations.map(o => o.country))]
+              .filter(Boolean)
+              .sort()
+              .map(country => (
+                <option
+                  key={country}
+                  value={country}
+                >
+                  {country}
+                </option>
+              ))}
+          </select>
+
+          <select
+            value={selectedType}
+            onChange={(e) =>
+              setSelectedType(e.target.value)
+            }
+            style={{
+              padding: "10px",
+              borderRadius: "8px",
+              border: "1px solid #ccc",
+            }}
+          >
+            <option value="">All Types</option>
+
+            {[...new Set(organizations.map(o => o.type))]
+              .filter(Boolean)
+              .sort()
+              .map(type => (
+                <option
+                  key={type}
+                  value={type}
+                >
+                  {type}
+                </option>
+              ))}
+          </select>
+
+          <button
+            onClick={() => {
+              setSelectedCountry("");
+              setSelectedType("");
+            }}
+            style={{
+              padding: "10px 18px",
+              background: "#ef4444",
+              color: "white",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontWeight: "bold",
+            }}
+          >
+            Reset Filters
+          </button>
+
+        </div>
+
+        <p
+          style={{
+            color: "#6b7280",
+            marginBottom: "20px",
+            fontWeight: "500",
+          }}
+        >
+          Showing <strong>{filteredOrganizations.length}</strong> organization(s)
+        </p>
 
         {filteredOrganizations.length === 0 ? (
           <h3>No organizations found.</h3>
@@ -59,14 +165,14 @@ function Organizations() {
                 borderRadius: "12px",
                 padding: "20px",
                 marginBottom: "20px",
-                boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
                 border: "1px solid #e5e7eb",
+                boxShadow: "0 4px 12px rgba(0,0,0,.08)",
               }}
             >
               <h2
                 style={{
-                  marginBottom: "15px",
                   color: "#2563eb",
+                  marginBottom: "15px",
                 }}
               >
                 {item.organization_name}
@@ -90,9 +196,11 @@ function Organizations() {
                   {item.website}
                 </a>
               </p>
+
             </div>
           ))
         )}
+
       </div>
     </Layout>
   );
