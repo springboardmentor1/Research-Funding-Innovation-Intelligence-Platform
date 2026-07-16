@@ -11,6 +11,7 @@ class FundingOpportunityBase(BaseModel):
     funding_amount: float
     deadline: date
     eligibility: str
+    min_experience: int = 0
     application_url: str
     status: str = "Open"
 
@@ -27,6 +28,7 @@ class FundingOpportunityUpdate(BaseModel):
     funding_amount: float | None = None
     deadline: date | None = None
     eligibility: str | None = None
+    min_experience: int | None = None
     application_url: str | None = None
     status: str | None = None
 

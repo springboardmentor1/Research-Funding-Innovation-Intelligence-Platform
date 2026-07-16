@@ -17,7 +17,7 @@ class FundingOpportunity(Base):
     __tablename__ = "funding_opportunities"
 
     id = Column(Integer, primary_key=True, index=True)
-
+    min_experience = Column(Integer, default=0)
     title = Column(String(255), nullable=False)
 
     agency = Column(String(255), nullable=False)
@@ -32,6 +32,8 @@ class FundingOpportunity(Base):
 
     eligibility = Column(Text, nullable=False)
 
+    min_experience = Column(Integer, default=0)
+    
     application_url = Column(String(500), nullable=False)
 
     status = Column(

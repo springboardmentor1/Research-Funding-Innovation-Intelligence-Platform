@@ -27,28 +27,35 @@ def get_matching_funding(db: Session, user_id: int):
     )
 
     recommendations = []
-
     for funding in opportunities:
 
         score = 0
         reasons = []
 
-        # Rule 1
+        # Rule 1 - Research Area Match
         if (
             funding.research_area.lower()
             == profile.research_area.lower()
         ):
-            score += 70
+            score += 40
             reasons.append("Research area matches")
 
-        # Rule 2
-        if funding.status.lower() == "open":
+        # Rule 2 - Experience Match
+        if (
+            profile.experience_years is not None
+            and profile.experience_years >= funding.min_experience
+        ):
             score += 20
+            reasons.append("Experience requirement satisfied")
+
+        # Rule 3 - Funding Status
+        if funding.status.lower() == "open":
+            score += 5
             reasons.append("Funding is open")
 
-        # Rule 3
+        # Rule 4 - Deadline
         if funding.deadline >= date.today():
-            score += 10
+            score += 5
             reasons.append("Application deadline is active")
 
         recommendations.append(
@@ -58,10 +65,5 @@ def get_matching_funding(db: Session, user_id: int):
                 "reasons": reasons,
             }
         )
-
-    recommendations.sort(
-        key=lambda x: x["score"],
-        reverse=True,
-    )
 
     return recommendations
