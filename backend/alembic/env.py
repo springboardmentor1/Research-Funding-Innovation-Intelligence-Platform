@@ -2,7 +2,7 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config, pool
 from alembic import context
-
+from app.models.funding_opportunity import FundingOpportunity
 from app.core.database import Base
 from app.core.config import DATABASE_URL
 
