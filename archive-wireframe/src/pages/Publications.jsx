@@ -5,38 +5,89 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { getPublications } from "../api/publicationApi";
 
 function Publications() {
-  const [publications, setPublications] = useState([]);
 
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedType, setSelectedType] = useState("");
+const [publications, setPublications] = useState([]);
 
-  const { search } = useContext(SearchContext);
+const [currentPage, setCurrentPage] = useState(1);
+const [totalPages, setTotalPages] = useState(1);
+const [totalRecords, setTotalRecords] = useState(0);
 
-  useEffect(() => {
-    async function loadPublications() {
-      try {
-        const data = await getPublications();
-        setPublications(data);
-      } catch (error) {
-        console.error(error);
-      }
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState("");
+
+const perPage = 20;
+
+const [selectedYear, setSelectedYear] = useState("");
+const [selectedType, setSelectedType] = useState("");
+const [sortBy, setSortBy] = useState("newest");
+
+const { search } = useContext(SearchContext);
+
+useEffect(() => {
+
+  async function loadPublications() {
+
+    setLoading(true);
+    setError("");
+
+    try {
+
+      const response = await getPublications(
+        currentPage,
+        perPage,
+        search,
+        sortBy
+      );
+
+      setPublications(response.data);
+      setTotalPages(response.total_pages);
+      setTotalRecords(response.total_records);
+
+    } catch (err) {
+
+      console.error(err);
+      setError("Failed to load publications.");
+
+    } finally {
+
+      setLoading(false);
+
     }
 
-    loadPublications();
-  }, []);
-
-  if (publications.length === 0) {
-    return (
-      <Layout>
-        <LoadingSpinner />
-      </Layout>
-    );
   }
 
-  // Filter Publications
+  loadPublications();
+
+}, [currentPage, search, sortBy]);
+
+  if (loading) {
+  return (
+    <Layout>
+      <LoadingSpinner />
+    </Layout>
+  );
+}
+
+if (error) {
+  return (
+    <Layout>
+      <div
+        style={{
+          padding: "40px",
+          textAlign: "center",
+          color: "#dc2626",
+          fontWeight: "bold",
+        }}
+      >
+        {error}
+      </div>
+    </Layout>
+  );
+}
+
+  // Local Filters
+
   const filteredPublications = publications.filter((pub) => {
-    const matchesSearch =
-      pub.title?.toLowerCase().includes(search.toLowerCase());
 
     const matchesYear =
       selectedYear === "" ||
@@ -46,12 +97,19 @@ function Publications() {
       selectedType === "" ||
       pub.type === selectedType;
 
-    return matchesSearch && matchesYear && matchesType;
+    return matchesYear && matchesType;
+
   });
 
   return (
+
     <Layout>
-      <div style={{ padding: "30px" }}>
+
+      <div
+        style={{
+          padding: "30px",
+        }}
+      >
 
         <h1>📚 Publications</h1>
 
@@ -65,7 +123,8 @@ function Publications() {
             flexWrap: "wrap",
           }}
         >
-          {/* Year Filter */}
+
+          {/* Year */}
 
           <select
             value={selectedYear}
@@ -81,13 +140,16 @@ function Publications() {
             {[...new Set(publications.map((p) => p.publication_year))]
               .sort((a, b) => b - a)
               .map((year) => (
-                <option key={year} value={year}>
+                <option
+                  key={year}
+                  value={year}
+                >
                   {year}
                 </option>
               ))}
           </select>
 
-          {/* Type Filter */}
+          {/* Type */}
 
           <select
             value={selectedType}
@@ -103,18 +165,57 @@ function Publications() {
             {[...new Set(publications.map((p) => p.type))]
               .filter(Boolean)
               .map((type) => (
-                <option key={type} value={type}>
+                <option
+                  key={type}
+                  value={type}
+                >
                   {type}
                 </option>
               ))}
           </select>
+          {/* Sort */}
 
-          {/* Reset Filters */}
+<select
+  value={sortBy}
+  onChange={(e) => {
+    setSortBy(e.target.value);
+    setCurrentPage(1);
+  }}
+  style={{
+    padding: "10px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+  }}
+>
+  <option value="newest">Newest First</option>
+
+  <option value="oldest">Oldest First</option>
+
+  <option value="citations_desc">
+    Most Cited
+  </option>
+
+  <option value="citations_asc">
+    Least Cited
+  </option>
+
+  <option value="title_asc">
+    Title A-Z
+  </option>
+
+  <option value="title_desc">
+    Title Z-A
+  </option>
+</select>
+
+          {/* Reset */}
 
           <button
             onClick={() => {
-              setSelectedYear("");
-              setSelectedType("");
+             setSelectedYear("");
+             setSelectedType("");
+             setSortBy("newest");
+             setCurrentPage(1);
             }}
             style={{
               padding: "10px 18px",
@@ -128,9 +229,10 @@ function Publications() {
           >
             Reset Filters
           </button>
+
         </div>
 
-        {/* Results Count */}
+        {/* Results */}
 
         <p
           style={{
@@ -139,13 +241,33 @@ function Publications() {
             fontWeight: "500",
           }}
         >
-          Showing <strong>{filteredPublications.length}</strong> publication(s)
+            Showing
+
+<strong>
+{" "}
+{filteredPublications.length}
+</strong>
+
+of
+
+<strong>
+{" "}
+{totalRecords}
+</strong>
+
+publication(s)
+
+
         </p>
 
         {filteredPublications.length === 0 ? (
+
           <h3>No publications found.</h3>
+
         ) : (
+
           filteredPublications.map((pub, index) => (
+
             <div
               key={index}
               style={{
@@ -157,6 +279,7 @@ function Publications() {
                 boxShadow: "0 4px 12px rgba(0,0,0,.08)",
               }}
             >
+
               <h3>{pub.title}</h3>
 
               <p>
@@ -165,12 +288,13 @@ function Publications() {
               </p>
 
               <p>
-                <strong>📄 Type:</strong> {pub.type}
+                <strong>📄 Type:</strong>{" "}
+                {pub.type}
               </p>
 
               <p>
                 <strong>⭐ Citations:</strong>{" "}
-                {Number(pub.cited_by_count).toLocaleString()}
+                {Number(pub.cited_by_count || 0).toLocaleString()}
               </p>
 
               <p>
@@ -187,12 +311,84 @@ function Publications() {
                   "Not Available"
                 )}
               </p>
+
             </div>
+
           ))
-        )}
+                  )}
+
+        {/* Pagination */}
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "15px",
+            marginTop: "35px",
+          }}
+        >
+
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage(currentPage - 1)}
+            style={{
+              padding: "10px 18px",
+              background:
+                currentPage === 1 ? "#d1d5db" : "#2563eb",
+              color: "#fff",
+              border: "none",
+              borderRadius: "8px",
+              cursor:
+                currentPage === 1
+                  ? "not-allowed"
+                  : "pointer",
+              fontWeight: "bold",
+            }}
+          >
+            ← Previous
+          </button>
+
+          <span
+            style={{
+              fontWeight: "bold",
+              fontSize: "16px",
+              color: "#374151",
+            }}
+          >
+            Page {currentPage} of {totalPages}
+          </span>
+
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage(currentPage + 1)}
+            style={{
+              padding: "10px 18px",
+              background:
+                currentPage === totalPages
+                  ? "#d1d5db"
+                  : "#2563eb",
+              color: "#fff",
+              border: "none",
+              borderRadius: "8px",
+              cursor:
+                currentPage === totalPages
+                  ? "not-allowed"
+                  : "pointer",
+              fontWeight: "bold",
+            }}
+          >
+            Next →
+          </button>
+
+        </div>
+
       </div>
+
     </Layout>
+
   );
+
 }
 
 export default Publications;
