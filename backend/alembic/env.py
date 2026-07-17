@@ -9,6 +9,7 @@ from app.core.config import DATABASE_URL
 # Import all models here
 from app.models.user import User
 from app.models.research_profile import ResearchProfile
+from app.models.publication import Publication
 
 
 config = context.config

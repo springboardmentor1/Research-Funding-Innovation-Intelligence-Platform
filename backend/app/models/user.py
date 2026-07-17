@@ -19,7 +19,12 @@ class User(Base):
 
     is_active = Column(Boolean, default=True)
     research_profile = relationship(
-    "ResearchProfile",
-    back_populates="user",
-    uselist=False
-)
+        "ResearchProfile",
+        back_populates="user",
+        uselist=False
+    )
+    publications = relationship(
+        "Publication",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )

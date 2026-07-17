@@ -8,6 +8,7 @@ from app.api.users import router as user_router
 from app.api import recommendations
 from app.api import funding_opportunity
 from app.api import research_profile
+from app.api import publications
 from app.core.database import Base, engine
 
 app = FastAPI(
@@ -23,6 +24,7 @@ app.include_router(admin_router)
 app.include_router(research_profile.router)
 app.include_router(funding_opportunity.router)
 app.include_router(recommendations.router)
+app.include_router(publications.router)
 
 @app.get("/")
 def root():

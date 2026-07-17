@@ -58,6 +58,7 @@ def get_matching_funding(db: Session, user_id: int):
         ):
             score += 15
             reasons.append("Eligibility criteria satisfied")
+            
         # Rule 4 - Bio Keyword Match
         if profile.bio and funding.description:
             profile_keywords = profile.bio.lower().split()
