@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import func, distinct
 
 from app.models.publication import Publication
 from app.schemas.publication import (
@@ -70,3 +71,41 @@ def delete_publication(
 ):
     db.delete(publication)
     db.commit()
+
+
+
+def get_publication_summary(
+    db: Session,
+    user_id: int,
+):
+    total_publications = (
+        db.query(func.count(Publication.id))
+        .filter(Publication.user_id == user_id)
+        .scalar()
+    )
+
+    total_research_areas = (
+        db.query(
+            func.count(
+                distinct(Publication.research_area)
+            )
+        )
+        .filter(Publication.user_id == user_id)
+        .scalar()
+    )
+
+    total_journals = (
+        db.query(
+            func.count(
+                distinct(Publication.journal)
+            )
+        )
+        .filter(Publication.user_id == user_id)
+        .scalar()
+    )
+
+    return {
+        "total_publications": total_publications,
+        "total_research_areas": total_research_areas,
+        "total_journals": total_journals,
+    }

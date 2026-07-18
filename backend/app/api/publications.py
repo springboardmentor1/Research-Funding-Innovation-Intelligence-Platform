@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.core.dependencies import get_current_user
 from app.models.user import User
-
+from app.schemas.publication_analytics import PublicationSummary
 from app.schemas.publication import (
     PublicationCreate,
     PublicationUpdate,
@@ -17,6 +17,7 @@ from app.services.publication_service import (
     get_publication,
     update_publication,
     delete_publication,
+    get_publication_summary,
 )
 
 router = APIRouter(
@@ -48,6 +49,18 @@ def get_my_publications(
         user_id=current_user.id,
     )
 
+@router.get(
+    "/analytics/summary",
+    response_model=PublicationSummary,
+)
+def publication_summary(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return get_publication_summary(
+        db=db,
+        user_id=current_user.id,
+    )
 
 @router.get("/{publication_id}", response_model=PublicationResponse)
 def get_publication_by_id(

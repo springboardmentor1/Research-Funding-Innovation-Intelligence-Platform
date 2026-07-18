@@ -5,6 +5,7 @@ from pydantic import BaseModel, ConfigDict
 
 class PublicationBase(BaseModel):
     title: str
+    authors: str
     journal: str
     publication_date: date
     research_area: str

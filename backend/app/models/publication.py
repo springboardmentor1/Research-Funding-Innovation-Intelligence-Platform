@@ -25,6 +25,8 @@ class Publication(Base):
 
     title = Column(String(255), nullable=False)
 
+    authors = Column(Text, nullable=False)
+
     journal = Column(String(255), nullable=False)
 
     publication_date = Column(Date, nullable=False)
