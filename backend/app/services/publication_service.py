@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from sqlalchemy import func, distinct
+from sqlalchemy import func, distinct, extract
 
 from app.models.publication import Publication
 from app.schemas.publication import (
@@ -109,3 +109,104 @@ def get_publication_summary(
         "total_research_areas": total_research_areas,
         "total_journals": total_journals,
     }
+def get_yearly_publication_trend(
+    db: Session,
+    user_id: int,
+):
+    results = (
+        db.query(
+            extract(
+                "year",
+                Publication.publication_date,
+            ).label("year"),
+            func.count(
+                Publication.id
+            ).label("count"),
+        )
+        .filter(
+            Publication.user_id == user_id
+        )
+        .group_by(
+            extract(
+                "year",
+                Publication.publication_date,
+            )
+        )
+        .order_by(
+            extract(
+                "year",
+                Publication.publication_date,
+            )
+        )
+        .all()
+    )
+
+    return [
+        {
+            "year": int(row.year),
+            "count": row.count,
+        }
+        for row in results
+    ]
+
+def get_research_area_trend(
+    db: Session,
+    user_id: int,
+):
+    results = (
+        db.query(
+            Publication.research_area,
+            func.count(
+                Publication.id
+            ).label("count"),
+        )
+        .filter(
+            Publication.user_id == user_id
+        )
+        .group_by(
+            Publication.research_area
+        )
+        .order_by(
+            func.count(Publication.id).desc()
+        )
+        .all()
+    )
+
+    return [
+        {
+            "research_area": row.research_area,
+            "count": row.count,
+        }
+        for row in results
+    ]
+
+def get_journal_trend(
+    db: Session,
+    user_id: int,
+):
+    results = (
+        db.query(
+            Publication.journal,
+            func.count(
+                Publication.id
+            ).label("count"),
+        )
+        .filter(
+            Publication.user_id == user_id
+        )
+        .group_by(
+            Publication.journal
+        )
+        .order_by(
+            func.count(Publication.id).desc()
+        )
+        .all()
+    )
+
+    return [
+        {
+            "journal": row.journal,
+            "count": row.count,
+        }
+        for row in results
+    ]

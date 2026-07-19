@@ -17,6 +17,16 @@ class ResearchAreaTrend(BaseModel):
     count: int
 
 
+class ResearchAreaTrend(BaseModel):
+    research_area: str
+    count: int
+
+
+class JournalTrend(BaseModel):
+    journal: str
+    count: int
+
+
 class JournalTrend(BaseModel):
     journal: str
     count: int

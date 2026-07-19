@@ -10,13 +10,22 @@ from app.schemas.publication import (
     PublicationUpdate,
     PublicationResponse,
 )
+from app.schemas.publication_analytics import (
+    PublicationSummary,
+    YearlyPublicationTrend,
+    ResearchAreaTrend,
+    JournalTrend,
+)
 
 from app.services.publication_service import (
     create_publication,
     get_publications,
     get_publication,
+    get_yearly_publication_trend,
+    get_research_area_trend,
     update_publication,
     delete_publication,
+    get_journal_trend,
     get_publication_summary,
 )
 
@@ -102,6 +111,18 @@ def update_my_publication(
         publication_data=publication_data,
     )
 
+@router.get(
+    "/analytics/yearly",
+    response_model=list[YearlyPublicationTrend],
+)
+def yearly_publication_trend(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return get_yearly_publication_trend(
+        db=db,
+        user_id=current_user.id,
+    )
 
 @router.delete("/{publication_id}")
 def delete_my_publication(
@@ -124,3 +145,29 @@ def delete_my_publication(
     )
 
     return {"message": "Publication deleted successfully"}
+
+@router.get(
+    "/analytics/research-areas",
+    response_model=list[ResearchAreaTrend],
+)
+def research_area_trend(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return get_research_area_trend(
+        db=db,
+        user_id=current_user.id,
+    )
+
+@router.get(
+    "/analytics/journals",
+    response_model=list[JournalTrend],
+)
+def journal_trend(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return get_journal_trend(
+        db=db,
+        user_id=current_user.id,
+    )
