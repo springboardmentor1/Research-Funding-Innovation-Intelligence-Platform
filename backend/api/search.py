@@ -7,7 +7,7 @@ search_bp = Blueprint("search", __name__)
 @search_bp.route("/search")
 def search():
 
-    query = request.args.get("q", "").lower()
+    query = request.args.get("q", "").lower().strip()
 
     results = {
         "publications": [],

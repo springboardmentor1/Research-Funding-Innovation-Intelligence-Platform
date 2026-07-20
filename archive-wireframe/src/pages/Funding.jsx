@@ -47,7 +47,11 @@ function Funding() {
     }
 
     loadFunding();
-  }, [currentPage, search, sortBy]);
+  }, [currentPage, search, sortBy, perPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
 
   if (loading) {
     return (
@@ -89,6 +93,7 @@ function Funding() {
   return (
     <Layout>
       <div style={{ padding: "30px" }}>
+
         <h1>💰 Funding Projects</h1>
 
         <div
@@ -99,6 +104,7 @@ function Funding() {
             margin: "25px 0",
           }}
         >
+
           <select
             value={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}
@@ -156,18 +162,10 @@ function Funding() {
           >
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
-            <option value="amount_desc">
-              Highest Award
-            </option>
-            <option value="amount_asc">
-              Lowest Award
-            </option>
-            <option value="title_asc">
-              Project A-Z
-            </option>
-            <option value="title_desc">
-              Project Z-A
-            </option>
+            <option value="amount_desc">Highest Award</option>
+            <option value="amount_asc">Lowest Award</option>
+            <option value="title_asc">Project A-Z</option>
+            <option value="title_desc">Project Z-A</option>
           </select>
 
           <button
@@ -189,6 +187,7 @@ function Funding() {
           >
             Reset Filters
           </button>
+
         </div>
 
         <p
@@ -205,7 +204,7 @@ function Funding() {
         {filteredFunding.length === 0 ? (
           <h3>No funding projects found.</h3>
         ) : (
-          filteredFunding.map((item, index) => (
+                    filteredFunding.map((item, index) => (
             <div
               key={index}
               style={{
@@ -214,8 +213,7 @@ function Funding() {
                 padding: "20px",
                 marginBottom: "20px",
                 border: "1px solid #e5e7eb",
-                boxShadow:
-                  "0 4px 12px rgba(0,0,0,.08)",
+                boxShadow: "0 4px 12px rgba(0,0,0,.08)",
               }}
             >
               <h2
@@ -243,45 +241,78 @@ function Funding() {
               </p>
 
               <p>
-                <strong>💵 Award Amount:</strong> $
-                {Number(
-                  item.award_amount || 0
-                ).toLocaleString()}
+                <strong>💵 Award Amount:</strong>{" "}
+                $
+                {Number(item.award_amount || 0).toLocaleString()}
               </p>
             </div>
           ))
         )}
 
+        {/* Pagination */}
+
         <div
           style={{
             display: "flex",
             justifyContent: "center",
+            alignItems: "center",
             gap: "15px",
             marginTop: "35px",
           }}
         >
           <button
             disabled={currentPage === 1}
-            onClick={() =>
-              setCurrentPage(currentPage - 1)
-            }
+            onClick={() => setCurrentPage(currentPage - 1)}
+            style={{
+              padding: "10px 18px",
+              background:
+                currentPage === 1 ? "#d1d5db" : "#2563eb",
+              color: "#fff",
+              border: "none",
+              borderRadius: "8px",
+              cursor:
+                currentPage === 1
+                  ? "not-allowed"
+                  : "pointer",
+              fontWeight: "bold",
+            }}
           >
             ← Previous
           </button>
 
-          <span>
+          <span
+            style={{
+              fontWeight: "bold",
+              fontSize: "16px",
+              color: "#374151",
+            }}
+          >
             Page {currentPage} of {totalPages}
           </span>
 
           <button
             disabled={currentPage === totalPages}
-            onClick={() =>
-              setCurrentPage(currentPage + 1)
-            }
+            onClick={() => setCurrentPage(currentPage + 1)}
+            style={{
+              padding: "10px 18px",
+              background:
+                currentPage === totalPages
+                  ? "#d1d5db"
+                  : "#2563eb",
+              color: "#fff",
+              border: "none",
+              borderRadius: "8px",
+              cursor:
+                currentPage === totalPages
+                  ? "not-allowed"
+                  : "pointer",
+              fontWeight: "bold",
+            }}
           >
             Next →
           </button>
         </div>
+
       </div>
     </Layout>
   );
