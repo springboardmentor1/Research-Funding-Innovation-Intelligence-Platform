@@ -327,3 +327,111 @@ def rank_funding_results(
     Delegates to rank_funding_opportunities to maintain backward-compatibility.
     """
     return rank_funding_opportunities(matching_results)
+
+
+def get_personalized_recommendations(
+    db: Session,
+    user_id: str,
+    country: Optional[str] = None,
+    funding_type: Optional[str] = None,
+    minimum_match_score: Optional[float] = None,
+    limit: int = 10
+) -> List[Dict[str, Any]]:
+    """
+    Generate, filter, rank and explain funding opportunity recommendations for an authenticated researcher.
+
+    Priority 1: Query from PostgreSQL database.
+    Priority 2: Fall back to preprocessed CSV.
+    """
+    # 1. Fetch researcher profile
+    profile = db.query(ResearchProfile).filter(ResearchProfile.user_id == user_id).first()
+    if not profile:
+        raise ValueError(f"Research profile not found for user {user_id}")
+
+    # 2. Extract profile features
+    profile_features = extract_profile_features(profile)
+
+    # 3. Load funding dataset (explicit Priority 1: DB, Priority 2: CSV)
+    funding_dataset = load_funding_dataset(db, source="database")
+
+    # 4. Filter by eligibility (geographic and OPEN status)
+    eligible_opportunities = filter_by_eligibility(funding_dataset, profile_features)
+
+    # 5. Compute match scores
+    scored_opportunities = []
+    for opp in eligible_opportunities:
+        scored_opportunities.append(calculate_match_score(opp, profile_features))
+
+    # 6. Apply optional filtering query parameters
+    filtered_recommendations = []
+    for opp in scored_opportunities:
+        # Filter by country (case-insensitive)
+        if country:
+            opp_country = opp.get("country")
+            if not opp_country or opp_country.strip().lower() != country.strip().lower():
+                continue
+
+        # Filter by funding type (case-insensitive)
+        if funding_type:
+            opp_type = opp.get("funding_type")
+            if not opp_type or opp_type.strip().lower() != funding_type.strip().lower():
+                continue
+
+        # Filter by minimum match score (handle both 0-1 and 0-100 ranges)
+        if minimum_match_score is not None:
+            threshold = minimum_match_score / 100.0 if minimum_match_score > 1.0 else minimum_match_score
+            if opp.get("match_score", 0.0) < threshold:
+                continue
+
+        filtered_recommendations.append(opp)
+
+    # 7. Rank opportunities
+    ranked_opportunities = rank_funding_opportunities(filtered_recommendations)
+
+    # 8. Format results, limit, and generate dynamic recommendation reason
+    results = []
+    for opp in ranked_opportunities[:limit]:
+        opp_kws_str = opp.get("keywords", "")
+        opp_kws = [k.strip().lower() for k in opp_kws_str.split(",") if k.strip()]
+        profile_kws = profile_features.get("keywords", [])
+
+        # Calculate matching keywords intersection
+        intersection = set(opp_kws).intersection(set(profile_kws))
+        keyword_matches = ", ".join(list(intersection)) if intersection else "None"
+
+        # Check if research domain matches
+        opp_domain = opp.get("research_domain", "Unknown Domain")
+        prof_domain = profile_features.get("research_domain", "Unknown Domain")
+        domain_match = "Aligned" if opp_domain == prof_domain else "Unmatched"
+
+        # Check if country restriction aligns
+        opp_country = opp.get("country", "Global")
+        geo_eligibility = f"Country Eligible ({opp_country})"
+
+        # Funding type
+        f_type = opp.get("funding_type") or "Grant"
+
+        # Construct explanation format matching recommendations specification
+        explanation = (
+            f"Matched because: "
+            f"• Research Domain: {opp_domain} ({domain_match}) "
+            f"• Keyword Match: {keyword_matches} "
+            f"• Eligibility: {geo_eligibility} "
+            f"• Funding Type: {f_type}"
+        )
+
+        results.append({
+            "funding_id": opp.get("funding_id") or str(opp.get("id")),
+            "title": opp.get("funding_title") or opp.get("title"),
+            "funding_agency": opp.get("funding_agency") or "Unknown Sponsor",
+            "research_domain": opp_domain,
+            "funding_amount": opp.get("funding_amount"),
+            "funding_type": f_type,
+            "country": opp_country,
+            "application_deadline": opp.get("application_deadline") or opp.get("deadline"),
+            "deadline": opp.get("application_deadline") or opp.get("deadline"),
+            "match_score": round(opp.get("match_score", 0.0) * 100, 2),
+            "recommendation_reason": explanation
+        })
+
+    return results
