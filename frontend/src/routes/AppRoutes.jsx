@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../pages/auth/Login';
 import Register from '../pages/auth/Register';
+import Dashboard from '../pages/Dashboard';
 import ResearcherDashboard from '../pages/researcher/ResearcherDashboard';
 import ResearchProfile from '../pages/researcher/ResearchProfile';
 import StartupDashboard from '../pages/startup/StartupDashboard';
@@ -21,7 +22,10 @@ export default function AppRoutes() {
       <Route path="/register" element={<Register />} />
 
       {/* Default Path */}
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+      {/* Unified Dashboard */}
+      <Route path="/dashboard" element={<Dashboard />} />
 
       {/* Researcher Routes */}
       <Route path="/researcher/dashboard" element={<ResearcherDashboard />} />
