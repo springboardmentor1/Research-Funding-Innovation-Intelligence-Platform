@@ -107,7 +107,6 @@ def funding_trends():
         trends.fillna("").to_dict(orient="records")
     )
 
-
 # ==========================================================
 # Patent Countries
 # ==========================================================
@@ -127,17 +126,17 @@ def patent_countries():
             .fillna("Unknown")
             .astype(str)
             .str.replace("#", "", regex=False)
+            .str.strip()
         )
 
         countries = (
-            df.groupby("Applicant Country")
-              .size()
-              .reset_index(name="count")
-              .rename(columns={
-                  "Applicant Country": "country"
-              })
-              .sort_values("count", ascending=False)
+            df["Applicant Country"]
+            .value_counts()
+            .head(10)                    # Top 10 countries only
+            .reset_index()
         )
+
+        countries.columns = ["country", "count"]
 
     else:
 

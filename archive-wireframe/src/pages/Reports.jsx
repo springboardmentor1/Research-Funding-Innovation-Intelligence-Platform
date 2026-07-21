@@ -4,26 +4,38 @@ const API_URL = "http://127.0.0.1:5000";
 
 function Reports() {
 
-  const reports = [
-    {
-      title: "📚 Publications",
-      csv: `${API_URL}/reports/publications/csv`,
-      pdf: `${API_URL}/reports/publications/pdf`,
-      description: "Download all publication records."
-    },
-    {
-      title: "💰 Funding",
-      csv: `${API_URL}/reports/funding/csv`,
-      pdf: `${API_URL}/reports/funding/pdf`,
-      description: "Download all funding projects."
-    },
-    {
-      title: "📜 Patents",
-      csv: `${API_URL}/reports/patents/csv`,
-      pdf: `${API_URL}/reports/patents/pdf`,
-      description: "Download all patent records."
-    }
-  ];
+const reports = [
+  {
+    title: "📚 Publications",
+    csv: `${API_URL}/reports/publications/csv`,
+    pdf: `${API_URL}/reports/publications/pdf`,
+    description: "Download all publication records."
+  },
+  {
+    title: "💰 Funding",
+    csv: `${API_URL}/reports/funding/csv`,
+    pdf: `${API_URL}/reports/funding/pdf`,
+    description: "Download all funding projects."
+  },
+  {
+    title: "📜 Patents",
+    csv: `${API_URL}/reports/patents/csv`,
+    pdf: `${API_URL}/reports/patents/pdf`,
+    description: "Download all patent records."
+  },
+  {
+    title: "🏢 Organizations",
+    csv: `${API_URL}/reports/organizations/csv`,
+    pdf: `${API_URL}/reports/organizations/pdf`,
+    description: "Download all organization records."
+  },
+  {
+    title: "👨‍🔬 Researchers",
+    csv: `${API_URL}/reports/researchers/csv`,
+    pdf: `${API_URL}/reports/researchers/pdf`,
+    description: "Download all researcher records."
+  }
+];
 
   return (
     <Layout>

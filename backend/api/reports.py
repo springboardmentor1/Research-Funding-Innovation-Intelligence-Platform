@@ -210,12 +210,15 @@ def funding_csv():
 @reports_bp.route("/reports/funding/pdf")
 def funding_pdf():
 
-    df = pd.read_csv(FUNDING)
+    df = pd.read_csv(
+        FUNDING,
+        low_memory=False
+    ).fillna("")
 
     data = [[
         "Project",
         "Organization",
-        "PI",
+        "Contact PI",
         "Year",
         "Award"
     ]]
@@ -224,10 +227,10 @@ def funding_pdf():
 
         data.append([
             str(row["project_title"])[:35],
-            str(row["organization"])[:20],
-            str(row["principal_investigator"])[:18],
-            row["fiscal_year"],
-            row["award_amount"]
+            str(row["organization.org_name"])[:22],
+            str(row["contact_pi_name"])[:20],
+            str(row["fiscal_year"]),
+            str(row["award_amount"])
         ])
 
     output = "../datasets/funding_report.pdf"
@@ -266,25 +269,134 @@ def patents_csv():
 @reports_bp.route("/reports/patents/pdf")
 def patents_pdf():
 
-    df = pd.read_csv(PATENTS)
+    df = pd.read_csv(
+        PATENTS,
+        low_memory=False
+    ).fillna("")
 
     data = [[
-        "Patent",
-        "Number",
+        "Title",
+        "Publication No",
         "Inventor",
-        "Country"
+        "Applicant Country"
     ]]
 
     for _, row in df.head(30).iterrows():
 
         data.append([
-            str(row["patent_title"])[:35],
-            row["patent_number"],
-            str(row["inventor"])[:20],
-            row["country"]
+            str(row["Title"])[:40],
+            str(row["Publication Number"]),
+            str(row["Inventor Name"])[:25],
+            str(row["Applicant Country"]).replace("#", "")
         ])
 
     output = "../datasets/patents_report.pdf"
+
+    create_pdf(data, output)
+
+    return send_file(
+        output,
+        as_attachment=True
+    )
+# ---------------------------------------------------
+# Organizations CSV
+# ---------------------------------------------------
+
+@reports_bp.route("/reports/organizations/csv")
+def organizations_csv():
+
+    df = pd.read_csv(ORGANIZATIONS)
+
+    output = "../datasets/organizations_export.csv"
+
+    df.to_csv(output, index=False)
+
+    return send_file(
+        output,
+        as_attachment=True
+    )
+# ---------------------------------------------------
+# Organizations PDF
+# ---------------------------------------------------
+
+@reports_bp.route("/reports/organizations/pdf")
+def organizations_pdf():
+
+    df = pd.read_csv(ORGANIZATIONS).fillna("")
+
+    data = [[
+        "Organization",
+        "Country",
+        "Type",
+        "City",
+        "Works",
+        "Citations"
+    ]]
+
+    for _, row in df.head(30).iterrows():
+
+        data.append([
+            str(row["organization_name"])[:35],
+            str(row["country"]),
+            str(row["type"]),
+            str(row["city"])[:20],
+            f'{int(row["works_count"]):,}',
+            f'{int(row["cited_by_count"]):,}'
+        ])
+
+    output = "../datasets/organizations_report.pdf"
+
+    create_pdf(data, output)
+
+    return send_file(
+        output,
+        as_attachment=True
+    )
+# ---------------------------------------------------
+# Researchers CSV
+# ---------------------------------------------------
+
+@reports_bp.route("/reports/researchers/csv")
+def researchers_csv():
+
+    df = pd.read_csv(RESEARCHERS)
+
+    output = "../datasets/researchers_export.csv"
+
+    df.to_csv(output, index=False)
+
+    return send_file(
+        output,
+        as_attachment=True
+    )
+# ---------------------------------------------------
+# Researchers PDF
+# ---------------------------------------------------
+
+@reports_bp.route("/reports/researchers/pdf")
+def researchers_pdf():
+
+    df = pd.read_csv(RESEARCHERS).fillna("")
+
+    data = [[
+        "Researcher",
+        "Institution",
+        "Country",
+        "Works",
+        "Citations"
+    ]]
+
+    for _, row in df.head(30).iterrows():
+
+        data.append([
+            str(row["researcher_name"])[:30],
+            str(row["institution"])[:28],
+            str(row["country"]),
+            f'{int(row["works_count"]):,}',
+            f'{int(row["cited_by_count"]):,}'
+        ])
+
+    output = "../datasets/researchers_report.pdf"
 
     create_pdf(data, output)
 
