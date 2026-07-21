@@ -15,6 +15,7 @@ from app.routers import dashboard
 from app.routers import publications
 from app.routers import patents
 
+from app.routers import funding
 
 app = FastAPI(
     title="Research Funding Platform"
@@ -33,7 +34,7 @@ app.include_router(dashboard.router)
 app.include_router(publications.router)
 app.include_router(patents.router)
 
-
+app.include_router(funding.router)
 
 
 @app.get("/")
