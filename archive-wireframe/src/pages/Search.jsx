@@ -35,11 +35,7 @@ function Search() {
 
   return (
     <Layout>
-      <div
-        style={{
-          padding: "30px",
-        }}
-      >
+      <div style={{ padding: "30px" }}>
         <h1>🔍 Global Research Search</h1>
 
         <p
@@ -56,11 +52,44 @@ function Search() {
         {loading && <LoadingSpinner />}
 
         {!loading && results && (
-          <div
-            style={{
-              marginTop: "40px",
-            }}
-          >
+          <>
+            {/* Summary */}
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))",
+                gap: "15px",
+                marginTop: "30px",
+                marginBottom: "40px",
+              }}
+            >
+              <SummaryCard
+                title="📚 Publications"
+                count={results.publications.length}
+              />
+
+              <SummaryCard
+                title="💰 Funding"
+                count={results.funding.length}
+              />
+
+              <SummaryCard
+                title="📜 Patents"
+                count={results.patents.length}
+              />
+
+              <SummaryCard
+                title="🏢 Organizations"
+                count={results.organizations.length}
+              />
+
+              <SummaryCard
+                title="👨‍🔬 Researchers"
+                count={results.researchers.length}
+              />
+            </div>
+
             {/* Publications */}
 
             <SectionTitle title="📚 Publications" />
@@ -72,9 +101,13 @@ function Search() {
                 <Card key={index}>
                   <h3>{item.title}</h3>
 
-                  <p>Year: {item.publication_year}</p>
+                  <p>
+                    <strong>Year:</strong> {item.publication_year}
+                  </p>
 
-                  <p>Type: {item.type}</p>
+                  <p>
+                    <strong>Type:</strong> {item.type}
+                  </p>
                 </Card>
               ))
             )}
@@ -90,7 +123,20 @@ function Search() {
                 <Card key={index}>
                   <h3>{item.project_title}</h3>
 
-                  <p>Organization: {item.organization}</p>
+                  <p>
+                    <strong>Organization:</strong>{" "}
+                    {item.organization}
+                  </p>
+
+                  <p>
+                    <strong>Principal Investigator:</strong>{" "}
+                    {item.principal_investigator}
+                  </p>
+
+                  <p>
+                    <strong>Fiscal Year:</strong>{" "}
+                    {item.fiscal_year}
+                  </p>
                 </Card>
               ))
             )}
@@ -104,11 +150,27 @@ function Search() {
             ) : (
               results.patents.map((item, index) => (
                 <Card key={index}>
-                  <h3>{item.patent_title}</h3>
+                  <h3>{item.Title}</h3>
 
-                  <p>Inventor: {item.inventor}</p>
+                  <p>
+                    <strong>Publication No:</strong>{" "}
+                    {item["Publication Number"]}
+                  </p>
 
-                  <p>Assignee: {item.assignee}</p>
+                  <p>
+                    <strong>Inventor:</strong>{" "}
+                    {item["Inventor Name"]}
+                  </p>
+
+                  <p>
+                    <strong>Applicant:</strong>{" "}
+                    {item["Applicant Name"]}
+                  </p>
+
+                  <p>
+                    <strong>Country:</strong>{" "}
+                    {String(item["Applicant Country"]).replace(/#/g, "")}
+                  </p>
                 </Card>
               ))
             )}
@@ -124,9 +186,13 @@ function Search() {
                 <Card key={index}>
                   <h3>{item.organization_name}</h3>
 
-                  <p>Country: {item.country}</p>
+                  <p>
+                    <strong>Country:</strong> {item.country}
+                  </p>
 
-                  <p>Type: {item.type}</p>
+                  <p>
+                    <strong>Type:</strong> {item.type}
+                  </p>
                 </Card>
               ))
             )}
@@ -142,16 +208,54 @@ function Search() {
                 <Card key={index}>
                   <h3>{item.researcher_name}</h3>
 
-                  <p>Institution: {item.institution}</p>
+                  <p>
+                    <strong>Institution:</strong>{" "}
+                    {item.institution}
+                  </p>
 
-                  <p>Country: {item.country}</p>
+                  <p>
+                    <strong>Country:</strong> {item.country}
+                  </p>
                 </Card>
               ))
             )}
-          </div>
+          </>
         )}
       </div>
     </Layout>
+  );
+}
+
+function SummaryCard({ title, count }) {
+  return (
+    <div
+      style={{
+        background: "#ffffff",
+        borderRadius: "12px",
+        padding: "20px",
+        textAlign: "center",
+        boxShadow: "0 3px 8px rgba(0,0,0,.08)",
+      }}
+    >
+      <h3>{title}</h3>
+
+      <h1
+        style={{
+          color: "#2563eb",
+          margin: "10px 0",
+        }}
+      >
+        {count}
+      </h1>
+
+      <p
+        style={{
+          color: "#6b7280",
+        }}
+      >
+        Results Found
+      </p>
+    </div>
   );
 }
 
