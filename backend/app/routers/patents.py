@@ -2,6 +2,8 @@ from fastapi import APIRouter
 
 from app.services.patent_service import search_patents
 
+
+
 router = APIRouter(
     prefix="/api/patents",
     tags=["Patents"]

@@ -2,7 +2,7 @@ from datetime import date, datetime
 from typing import Optional
 
 from pydantic import BaseModel
-
+from typing import List
 
 class FundingBase(BaseModel):
     title: str
@@ -37,6 +37,17 @@ class FundingUpdate(BaseModel):
 class FundingResponse(FundingBase):
     id: int
     created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+class FundingRecommendationResponse(BaseModel):
+    funding_id: int
+    title: str
+    agency: str
+    research_area: str
+    match_score: int
+    matched_keywords: List[str]
 
     class Config:
         from_attributes = True
