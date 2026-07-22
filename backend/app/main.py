@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.database.connection import engine, Base
 from app.models.user import User  # Import user model to register it in SQLAlchemy metadata
 from app.models.profile import ResearchProfile  # Import profile model to register it in metadata
@@ -22,6 +23,20 @@ app = FastAPI(
     title="Research Funding & Innovation Intelligence Platform API",
     description="AI-powered platform backend helping discover grants, analyze technology trends, and evaluate innovation standing.",
     version="1.0.0"
+)
+
+# Enable CORS for frontend applications
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Register routes

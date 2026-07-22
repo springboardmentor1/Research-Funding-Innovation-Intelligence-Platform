@@ -1,0 +1,26 @@
+Domain,Total_Patents,Share_Percentage,Top_Country,Top_Assignee,Top_IPC_CPC,Emerging_Keywords,Filing_Trend
+5G / 6G Communications,200,4.0,US,Institute of Technology & 5G / 6G Communications Research Group,G06F 17/34 (IPC) | H04L 9/85 (CPC),"5G / 6G Communications, automation, system",Declining
+Agriculture Technology,200,4.0,US,Institute of Technology & Agriculture Technology Research Group,G06F 17/17 (IPC) | H04L 9/85 (CPC),"Agriculture Technology, automation, system",Declining
+Artificial Intelligence,200,4.0,US,Institute of Technology & Artificial Intelligence Research Group,G06F 17/88 (IPC) | H04L 9/42 (CPC),"Artificial Intelligence, automation, system",Declining
+Autonomous Vehicles,200,4.0,US,Institute of Technology & Autonomous Vehicles Research Group,G06F 17/59 (IPC) | H04L 9/81 (CPC),"Autonomous Vehicles, automation, system",Declining
+Biotechnology,200,4.0,US,Institute of Technology & Biotechnology Research Group,G06F 17/90 (IPC) | H04L 9/79 (CPC),"Biotechnology, automation, system",Declining
+Blockchain,200,4.0,US,Institute of Technology & Blockchain Research Group,G06F 17/50 (IPC) | H04L 9/14 (CPC),"Blockchain, automation, system",Declining
+Cloud Computing,200,4.0,US,Institute of Technology & Cloud Computing Research Group,G06F 17/50 (IPC) | H04L 9/32 (CPC),"Cloud Computing, automation, system",Declining
+Computer Vision,200,4.0,US,Institute of Technology & Computer Vision Research Group,G06F 17/24 (IPC) | H04L 9/62 (CPC),"Computer Vision, automation, system",Declining
+Cyber Security,200,4.0,US,Institute of Technology & Cyber Security Research Group,G06F 17/81 (IPC) | H04L 9/12 (CPC),"Cyber Security, automation, system",Declining
+Data Science,200,4.0,US,Institute of Technology & Data Science Research Group,G06F 17/84 (IPC) | H04L 9/65 (CPC),"Data Science, automation, system",Declining
+Deep Learning,200,4.0,US,Institute of Technology & Deep Learning Research Group,G06F 17/69 (IPC) | H04L 9/34 (CPC),"Deep Learning, automation, system",Declining
+FinTech,200,4.0,US,Institute of Technology & FinTech Research Group,G06F 17/73 (IPC) | H04L 9/43 (CPC),"FinTech, automation, system",Declining
+Healthcare,200,4.0,US,Institute of Technology & Healthcare Research Group,G06F 17/71 (IPC) | H04L 9/89 (CPC),"Healthcare, automation, system",Declining
+Internet of Things,200,4.0,US,Institute of Technology & Internet of Things Research Group,G06F 17/55 (IPC) | H04L 9/62 (CPC),"Internet of Things, automation, system",Declining
+Machine Learning,200,4.0,US,Institute of Technology & Machine Learning Research Group,G06F 17/86 (IPC) | H04L 9/83 (CPC),"Machine Learning, automation, system",Declining
+Medical Devices,200,4.0,US,Institute of Technology & Medical Devices Research Group,G06F 17/95 (IPC) | H04L 9/49 (CPC),"Medical Devices, automation, system",Declining
+Natural Language Processing,200,4.0,US,Institute of Technology & Natural Language Processing Research Group,G06F 17/89 (IPC) | H04L 9/86 (CPC),"Natural Language Processing, automation, system",Growing
+Quantum Computing,200,4.0,US,Institute of Technology & Quantum Computing Research Group,G06F 17/22 (IPC) | H04L 9/38 (CPC),"Quantum Computing, automation, system",Declining
+Renewable Energy,200,4.0,US,Institute of Technology & Renewable Energy Research Group,G06F 17/42 (IPC) | H04L 9/58 (CPC),"Renewable Energy, automation, system",Declining
+Robotics,200,4.0,US,Institute of Technology & Robotics Research Group,G06F 17/10 (IPC) | H04L 9/73 (CPC),"Robotics, automation, system",Declining
+Semiconductor Technology,200,4.0,US,Institute of Technology & Semiconductor Technology Research Group,G06F 17/12 (IPC) | H04L 9/90 (CPC),"Semiconductor Technology, automation, system",Declining
+Smart Cities,200,4.0,US,Institute of Technology & Smart Cities Research Group,G06F 17/49 (IPC) | H04L 9/47 (CPC),"Smart Cities, automation, system",Stable
+Smart Manufacturing,200,4.0,US,Institute of Technology & Smart Manufacturing Research Group,G06F 17/21 (IPC) | H04L 9/84 (CPC),"Smart Manufacturing, automation, system",Declining
+Software Engineering,200,4.0,US,Institute of Technology & Software Engineering Research Group,G06F 17/84 (IPC) | H04L 9/56 (CPC),"Software Engineering, automation, system",Stable
+Space Technology,200,4.0,US,Institute of Technology & Space Technology Research Group,G06F 17/91 (IPC) | H04L 9/14 (CPC),"Space Technology, automation, system",Declining
