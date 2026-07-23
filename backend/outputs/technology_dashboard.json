@@ -1,0 +1,684 @@
+{
+  "summary_kpis": {
+    "total_technology_domains": 25,
+    "top_emerging_technology": "Natural Language Processing",
+    "high_momentum_domains_count": 0,
+    "emerging_technologies_count": 1,
+    "technology_convergence_hubs": 6,
+    "primary_strategic_action": "Accelerate R&D in High-Momentum Emerging Technologies"
+  },
+  "maturity_distribution_chart": [
+    {
+      "status": "Emerging",
+      "count": 1
+    },
+    {
+      "status": "Growing",
+      "count": 0
+    },
+    {
+      "status": "Mature",
+      "count": 2
+    },
+    {
+      "status": "Declining",
+      "count": 22
+    }
+  ],
+  "emerging_technology_leaderboard": [
+    {
+      "technology": "Natural Language Processing",
+      "growth_percentage": 29.03,
+      "maturity_stage": "Emerging",
+      "patent_volume": 200
+    }
+  ],
+  "momentum_radar": [
+    {
+      "domain": "5G / 6G Communications",
+      "momentum_score": 40.7,
+      "momentum_level": "Medium",
+      "patent_growth": -12.5,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Agriculture Technology",
+      "momentum_score": 31.1,
+      "momentum_level": "Low",
+      "patent_growth": -35.9,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Artificial Intelligence",
+      "momentum_score": 36.8,
+      "momentum_level": "Medium",
+      "patent_growth": -21.95,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Autonomous Vehicles",
+      "momentum_score": 37.4,
+      "momentum_level": "Medium",
+      "patent_growth": -20.59,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Biotechnology",
+      "momentum_score": 26.6,
+      "momentum_level": "Low",
+      "patent_growth": -46.81,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Blockchain",
+      "momentum_score": 25.3,
+      "momentum_level": "Low",
+      "patent_growth": -50.0,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Cloud Computing",
+      "momentum_score": 36.6,
+      "momentum_level": "Medium",
+      "patent_growth": -22.5,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Computer Vision",
+      "momentum_score": 27.8,
+      "momentum_level": "Low",
+      "patent_growth": -43.9,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Cyber Security",
+      "momentum_score": 38.4,
+      "momentum_level": "Medium",
+      "patent_growth": -18.18,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Data Science",
+      "momentum_score": 34.4,
+      "momentum_level": "Low",
+      "patent_growth": -27.78,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Deep Learning",
+      "momentum_score": 24.8,
+      "momentum_level": "Low",
+      "patent_growth": -51.11,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "FinTech",
+      "momentum_score": 35.6,
+      "momentum_level": "Medium",
+      "patent_growth": -25.0,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Healthcare",
+      "momentum_score": 36.6,
+      "momentum_level": "Medium",
+      "patent_growth": -22.5,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Internet of Things",
+      "momentum_score": 40.3,
+      "momentum_level": "Medium",
+      "patent_growth": -13.51,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Machine Learning",
+      "momentum_score": 28.4,
+      "momentum_level": "Low",
+      "patent_growth": -42.5,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Medical Devices",
+      "momentum_score": 30.7,
+      "momentum_level": "Low",
+      "patent_growth": -36.84,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Natural Language Processing",
+      "momentum_score": 57.8,
+      "momentum_level": "Medium",
+      "patent_growth": 29.03,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Quantum Computing",
+      "momentum_score": 32.5,
+      "momentum_level": "Low",
+      "patent_growth": -32.5,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Renewable Energy",
+      "momentum_score": 35.8,
+      "momentum_level": "Medium",
+      "patent_growth": -24.39,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Robotics",
+      "momentum_score": 34.4,
+      "momentum_level": "Low",
+      "patent_growth": -27.91,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Semiconductor Technology",
+      "momentum_score": 38.2,
+      "momentum_level": "Medium",
+      "patent_growth": -18.75,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Smart Cities",
+      "momentum_score": 45.9,
+      "momentum_level": "Medium",
+      "patent_growth": 0.0,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Smart Manufacturing",
+      "momentum_score": 33.6,
+      "momentum_level": "Low",
+      "patent_growth": -29.73,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Software Engineering",
+      "momentum_score": 45.9,
+      "momentum_level": "Medium",
+      "patent_growth": 0.0,
+      "geographic_spread": 1
+    },
+    {
+      "domain": "Space Technology",
+      "momentum_score": 22.8,
+      "momentum_level": "Low",
+      "patent_growth": -56.0,
+      "geographic_spread": 1
+    }
+  ],
+  "convergence_network": {
+    "nodes": [
+      {
+        "id": "5G / 6G Communications",
+        "group": "Declining"
+      },
+      {
+        "id": "Agriculture Technology",
+        "group": "Declining"
+      },
+      {
+        "id": "Artificial Intelligence",
+        "group": "Declining"
+      },
+      {
+        "id": "Autonomous Vehicles",
+        "group": "Declining"
+      },
+      {
+        "id": "Biotechnology",
+        "group": "Declining"
+      },
+      {
+        "id": "Blockchain",
+        "group": "Declining"
+      },
+      {
+        "id": "Cloud Computing",
+        "group": "Declining"
+      },
+      {
+        "id": "Computer Vision",
+        "group": "Declining"
+      },
+      {
+        "id": "Cyber Security",
+        "group": "Declining"
+      },
+      {
+        "id": "Data Science",
+        "group": "Declining"
+      },
+      {
+        "id": "Deep Learning",
+        "group": "Declining"
+      },
+      {
+        "id": "FinTech",
+        "group": "Declining"
+      },
+      {
+        "id": "Healthcare",
+        "group": "Declining"
+      },
+      {
+        "id": "Internet of Things",
+        "group": "Declining"
+      },
+      {
+        "id": "Machine Learning",
+        "group": "Declining"
+      },
+      {
+        "id": "Medical Devices",
+        "group": "Declining"
+      },
+      {
+        "id": "Natural Language Processing",
+        "group": "Emerging"
+      },
+      {
+        "id": "Quantum Computing",
+        "group": "Declining"
+      },
+      {
+        "id": "Renewable Energy",
+        "group": "Declining"
+      },
+      {
+        "id": "Robotics",
+        "group": "Declining"
+      },
+      {
+        "id": "Semiconductor Technology",
+        "group": "Declining"
+      },
+      {
+        "id": "Smart Cities",
+        "group": "Mature"
+      },
+      {
+        "id": "Smart Manufacturing",
+        "group": "Declining"
+      },
+      {
+        "id": "Software Engineering",
+        "group": "Mature"
+      },
+      {
+        "id": "Space Technology",
+        "group": "Declining"
+      }
+    ],
+    "links": [
+      {
+        "source": "Artificial Intelligence",
+        "target": "Internet of Things",
+        "value": 25.0,
+        "concept": "AIoT (Artificial Intelligence of Things)"
+      },
+      {
+        "source": "Artificial Intelligence",
+        "target": "Biotechnology",
+        "value": 25.0,
+        "concept": "Bio-AI & Computational Genomics"
+      },
+      {
+        "source": "Quantum Computing",
+        "target": "Cybersecurity",
+        "value": 25.0,
+        "concept": "Post-Quantum Cryptography & Quantum Security"
+      },
+      {
+        "source": "Autonomous Vehicles",
+        "target": "Robotics",
+        "value": 25.0,
+        "concept": "Autonomous Mobile Robotics (AMR)"
+      },
+      {
+        "source": "Blockchain",
+        "target": "Cybersecurity",
+        "value": 25.0,
+        "concept": "Decentralized Zero-Trust Security"
+      },
+      {
+        "source": "Renewable Energy",
+        "target": "Cloud Computing",
+        "value": 25.0,
+        "concept": "Smart Grid Energy Analytics"
+      }
+    ]
+  },
+  "adoption_stages_breakdown": [
+    {
+      "domain": "5G / 6G Communications",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Agriculture Technology",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Artificial Intelligence",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Autonomous Vehicles",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Biotechnology",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Blockchain",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Cloud Computing",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Computer Vision",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Cyber Security",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Data Science",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Deep Learning",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "FinTech",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Healthcare",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Internet of Things",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Machine Learning",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Medical Devices",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Natural Language Processing",
+      "stage": "Early Adoption",
+      "velocity": "High"
+    },
+    {
+      "domain": "Quantum Computing",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Renewable Energy",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Robotics",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Semiconductor Technology",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Smart Cities",
+      "stage": "Late Majority",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Smart Manufacturing",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Software Engineering",
+      "stage": "Late Majority",
+      "velocity": "Moderate"
+    },
+    {
+      "domain": "Space Technology",
+      "stage": "Mainstream / Saturated",
+      "velocity": "Moderate"
+    }
+  ],
+  "strategic_matrix": [
+    {
+      "domain": "Natural Language Processing",
+      "status": "Emerging",
+      "momentum": "Medium",
+      "opportunity_score": 88.7,
+      "risk_level": "High",
+      "recommendation": "Monitor closely \u2014 High disruptive innovation potential. Initiate pilot R&D projects and monitor key patent filings."
+    },
+    {
+      "domain": "Smart Cities",
+      "status": "Mature",
+      "momentum": "Medium",
+      "opportunity_score": 69.2,
+      "risk_level": "Low",
+      "recommendation": "Commercialization opportunity \u2014 Optimize operational efficiency, leverage established IP for cross-licensing, and focus on market expansion."
+    },
+    {
+      "domain": "Software Engineering",
+      "status": "Mature",
+      "momentum": "Medium",
+      "opportunity_score": 69.2,
+      "risk_level": "Low",
+      "recommendation": "Commercialization opportunity \u2014 Optimize operational efficiency, leverage established IP for cross-licensing, and focus on market expansion."
+    },
+    {
+      "domain": "5G / 6G Communications",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 38.8,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Internet of Things",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 38.2,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Cyber Security",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 35.9,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Semiconductor Technology",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 35.6,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Autonomous Vehicles",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 34.7,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Artificial Intelligence",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 34.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Cloud Computing",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 33.8,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Healthcare",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 33.8,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Renewable Energy",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 32.8,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "FinTech",
+      "status": "Declining",
+      "momentum": "Medium",
+      "opportunity_score": 32.5,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Data Science",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 31.1,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Robotics",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 31.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Smart Manufacturing",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.1,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Quantum Computing",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Agriculture Technology",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Medical Devices",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Machine Learning",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Computer Vision",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Biotechnology",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Blockchain",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Deep Learning",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    {
+      "domain": "Space Technology",
+      "status": "Declining",
+      "momentum": "Low",
+      "opportunity_score": 30.0,
+      "risk_level": "High",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    }
+  ]
+}
