@@ -1,0 +1,482 @@
+{
+  "summary_kpis": {
+    "total_domains_evaluated": 25,
+    "highest_scoring_domain": "Natural Language Processing",
+    "highest_overall_score": 55.4,
+    "immediate_investment_count": 0,
+    "ready_commercialization_count": 0,
+    "low_risk_domains_count": 0
+  },
+  "score_distribution_chart": [
+    {
+      "classification": "Excellent",
+      "count": 0
+    },
+    {
+      "classification": "Strong",
+      "count": 0
+    },
+    {
+      "classification": "Moderate",
+      "count": 3
+    },
+    {
+      "classification": "Weak",
+      "count": 22
+    }
+  ],
+  "investment_category_breakdown": [
+    {
+      "category": "Immediate Investment",
+      "count": 0
+    },
+    {
+      "category": "Strategic Monitoring",
+      "count": 0
+    },
+    {
+      "category": "Future Research",
+      "count": 3
+    },
+    {
+      "category": "Low Priority",
+      "count": 22
+    }
+  ],
+  "priority_leaderboard": [
+    {
+      "rank": 1,
+      "domain": "Natural Language Processing",
+      "overall_score": 55.4,
+      "investment_category": "Future Research",
+      "innovation_score": 66.2,
+      "readiness_score": 36.8
+    },
+    {
+      "rank": 2,
+      "domain": "Smart Cities",
+      "overall_score": 50.0,
+      "investment_category": "Future Research",
+      "innovation_score": 57.8,
+      "readiness_score": 68.8
+    },
+    {
+      "rank": 3,
+      "domain": "Software Engineering",
+      "overall_score": 50.0,
+      "investment_category": "Future Research",
+      "innovation_score": 57.8,
+      "readiness_score": 68.8
+    },
+    {
+      "rank": 4,
+      "domain": "5G / 6G Communications",
+      "overall_score": 36.4,
+      "investment_category": "Low Priority",
+      "innovation_score": 46.0,
+      "readiness_score": 48.5
+    },
+    {
+      "rank": 5,
+      "domain": "Internet of Things",
+      "overall_score": 35.1,
+      "investment_category": "Low Priority",
+      "innovation_score": 42.9,
+      "readiness_score": 48.5
+    },
+    {
+      "rank": 6,
+      "domain": "Cyber Security",
+      "overall_score": 35.0,
+      "investment_category": "Low Priority",
+      "innovation_score": 45.2,
+      "readiness_score": 48.5
+    },
+    {
+      "rank": 7,
+      "domain": "Semiconductor Technology",
+      "overall_score": 34.9,
+      "investment_category": "Low Priority",
+      "innovation_score": 45.1,
+      "readiness_score": 48.5
+    },
+    {
+      "rank": 8,
+      "domain": "Healthcare",
+      "overall_score": 34.5,
+      "investment_category": "Low Priority",
+      "innovation_score": 44.6,
+      "readiness_score": 48.5
+    },
+    {
+      "rank": 9,
+      "domain": "FinTech",
+      "overall_score": 34.3,
+      "investment_category": "Low Priority",
+      "innovation_score": 44.2,
+      "readiness_score": 48.5
+    },
+    {
+      "rank": 10,
+      "domain": "Data Science",
+      "overall_score": 34.1,
+      "investment_category": "Low Priority",
+      "innovation_score": 43.8,
+      "readiness_score": 48.5
+    }
+  ],
+  "radar_chart_data": [
+    {
+      "domain": "Natural Language Processing",
+      "innovation_score": 66.2,
+      "readiness_score": 36.8,
+      "opportunity_score": 58.7,
+      "safety_score": 55.5
+    },
+    {
+      "domain": "Smart Cities",
+      "innovation_score": 57.8,
+      "readiness_score": 68.8,
+      "opportunity_score": 28.1,
+      "safety_score": 37.3
+    },
+    {
+      "domain": "Software Engineering",
+      "innovation_score": 57.8,
+      "readiness_score": 68.8,
+      "opportunity_score": 28.1,
+      "safety_score": 37.3
+    },
+    {
+      "domain": "5G / 6G Communications",
+      "innovation_score": 46.0,
+      "readiness_score": 48.5,
+      "opportunity_score": 19.8,
+      "safety_score": 21.5
+    },
+    {
+      "domain": "Internet of Things",
+      "innovation_score": 42.9,
+      "readiness_score": 48.5,
+      "opportunity_score": 19.1,
+      "safety_score": 21.4
+    },
+    {
+      "domain": "Cyber Security",
+      "innovation_score": 45.2,
+      "readiness_score": 48.5,
+      "opportunity_score": 16.0,
+      "safety_score": 20.7
+    },
+    {
+      "domain": "Semiconductor Technology",
+      "innovation_score": 45.1,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.6,
+      "safety_score": 20.6
+    },
+    {
+      "domain": "Healthcare",
+      "innovation_score": 44.6,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 20.1
+    },
+    {
+      "domain": "FinTech",
+      "innovation_score": 44.2,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 19.7
+    },
+    {
+      "domain": "Data Science",
+      "innovation_score": 43.8,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 19.3
+    },
+    {
+      "domain": "Smart Manufacturing",
+      "innovation_score": 43.5,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 19.0
+    },
+    {
+      "domain": "Agriculture Technology",
+      "innovation_score": 42.6,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 18.1
+    },
+    {
+      "domain": "Autonomous Vehicles",
+      "innovation_score": 41.8,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 20.3
+    },
+    {
+      "domain": "Medical Devices",
+      "innovation_score": 42.5,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 18.0
+    },
+    {
+      "domain": "Artificial Intelligence",
+      "innovation_score": 41.6,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 20.1
+    },
+    {
+      "domain": "Cloud Computing",
+      "innovation_score": 41.6,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 20.1
+    },
+    {
+      "domain": "Renewable Energy",
+      "innovation_score": 41.3,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 19.8
+    },
+    {
+      "domain": "Machine Learning",
+      "innovation_score": 41.7,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 17.2
+    },
+    {
+      "domain": "Robotics",
+      "innovation_score": 40.8,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 19.3
+    },
+    {
+      "domain": "Computer Vision",
+      "innovation_score": 41.5,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 17.0
+    },
+    {
+      "domain": "Quantum Computing",
+      "innovation_score": 40.1,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 18.6
+    },
+    {
+      "domain": "Deep Learning",
+      "innovation_score": 40.4,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 15.9
+    },
+    {
+      "domain": "Space Technology",
+      "innovation_score": 39.7,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 15.2
+    },
+    {
+      "domain": "Biotechnology",
+      "innovation_score": 38.1,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 16.6
+    },
+    {
+      "domain": "Blockchain",
+      "innovation_score": 37.6,
+      "readiness_score": 48.5,
+      "opportunity_score": 15.0,
+      "safety_score": 16.1
+    }
+  ],
+  "risk_vs_opportunity_matrix": [
+    {
+      "domain": "Natural Language Processing",
+      "market_opportunity": 58.7,
+      "technology_risk": 44.5,
+      "overall_score": 55.4,
+      "category": "Future Research"
+    },
+    {
+      "domain": "Smart Cities",
+      "market_opportunity": 28.1,
+      "technology_risk": 62.7,
+      "overall_score": 50.0,
+      "category": "Future Research"
+    },
+    {
+      "domain": "Software Engineering",
+      "market_opportunity": 28.1,
+      "technology_risk": 62.7,
+      "overall_score": 50.0,
+      "category": "Future Research"
+    },
+    {
+      "domain": "5G / 6G Communications",
+      "market_opportunity": 19.8,
+      "technology_risk": 78.5,
+      "overall_score": 36.4,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Internet of Things",
+      "market_opportunity": 19.1,
+      "technology_risk": 78.6,
+      "overall_score": 35.1,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Cyber Security",
+      "market_opportunity": 16.0,
+      "technology_risk": 79.3,
+      "overall_score": 35.0,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Semiconductor Technology",
+      "market_opportunity": 15.6,
+      "technology_risk": 79.4,
+      "overall_score": 34.9,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Healthcare",
+      "market_opportunity": 15.0,
+      "technology_risk": 79.9,
+      "overall_score": 34.5,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "FinTech",
+      "market_opportunity": 15.0,
+      "technology_risk": 80.3,
+      "overall_score": 34.3,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Data Science",
+      "market_opportunity": 15.0,
+      "technology_risk": 80.7,
+      "overall_score": 34.1,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Smart Manufacturing",
+      "market_opportunity": 15.0,
+      "technology_risk": 81.0,
+      "overall_score": 34.0,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Agriculture Technology",
+      "market_opportunity": 15.0,
+      "technology_risk": 81.9,
+      "overall_score": 33.5,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Autonomous Vehicles",
+      "market_opportunity": 15.0,
+      "technology_risk": 79.7,
+      "overall_score": 33.5,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Medical Devices",
+      "market_opportunity": 15.0,
+      "technology_risk": 82.0,
+      "overall_score": 33.5,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Artificial Intelligence",
+      "market_opportunity": 15.0,
+      "technology_risk": 79.9,
+      "overall_score": 33.4,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Cloud Computing",
+      "market_opportunity": 15.0,
+      "technology_risk": 79.9,
+      "overall_score": 33.4,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Renewable Energy",
+      "market_opportunity": 15.0,
+      "technology_risk": 80.2,
+      "overall_score": 33.3,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Machine Learning",
+      "market_opportunity": 15.0,
+      "technology_risk": 82.8,
+      "overall_score": 33.0,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Robotics",
+      "market_opportunity": 15.0,
+      "technology_risk": 80.7,
+      "overall_score": 33.0,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Computer Vision",
+      "market_opportunity": 15.0,
+      "technology_risk": 83.0,
+      "overall_score": 32.9,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Quantum Computing",
+      "market_opportunity": 15.0,
+      "technology_risk": 81.4,
+      "overall_score": 32.7,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Deep Learning",
+      "market_opportunity": 15.0,
+      "technology_risk": 84.1,
+      "overall_score": 32.4,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Space Technology",
+      "market_opportunity": 15.0,
+      "technology_risk": 84.8,
+      "overall_score": 32.0,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Biotechnology",
+      "market_opportunity": 15.0,
+      "technology_risk": 83.4,
+      "overall_score": 31.7,
+      "category": "Low Priority"
+    },
+    {
+      "domain": "Blockchain",
+      "market_opportunity": 15.0,
+      "technology_risk": 83.9,
+      "overall_score": 31.4,
+      "category": "Low Priority"
+    }
+  ]
+}

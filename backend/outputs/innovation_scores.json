@@ -1,0 +1,1245 @@
+{
+  "metadata": {
+    "total_domains_scored": 25,
+    "top_priority_domain": "Natural Language Processing",
+    "immediate_investment_count": 0,
+    "workflow_status": "Active"
+  },
+  "innovation_scores": {
+    "5G / 6G Communications": {
+      "score": 46.0,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 40.7,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Agriculture Technology": {
+      "score": 42.6,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 31.1,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Artificial Intelligence": {
+      "score": 41.6,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 36.8,
+        "maturity_score": 35.0,
+        "convergence_strength": 25.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Autonomous Vehicles": {
+      "score": 41.8,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 37.4,
+        "maturity_score": 35.0,
+        "convergence_strength": 25.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Biotechnology": {
+      "score": 38.1,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 26.6,
+        "maturity_score": 35.0,
+        "convergence_strength": 25.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Blockchain": {
+      "score": 37.6,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 25.3,
+        "maturity_score": 35.0,
+        "convergence_strength": 25.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Cloud Computing": {
+      "score": 41.6,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 36.6,
+        "maturity_score": 35.0,
+        "convergence_strength": 25.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Computer Vision": {
+      "score": 41.5,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 27.8,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Cyber Security": {
+      "score": 45.2,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 38.4,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Data Science": {
+      "score": 43.8,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 34.4,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Deep Learning": {
+      "score": 40.4,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 24.8,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "FinTech": {
+      "score": 44.2,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 35.6,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Healthcare": {
+      "score": 44.6,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 36.6,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Internet of Things": {
+      "score": 42.9,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 40.3,
+        "maturity_score": 35.0,
+        "convergence_strength": 25.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Machine Learning": {
+      "score": 41.7,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 28.4,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Medical Devices": {
+      "score": 42.5,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 30.7,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Natural Language Processing": {
+      "score": 66.2,
+      "classification": "Moderate",
+      "components": {
+        "momentum_score": 57.8,
+        "maturity_score": 90.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 10.0
+      }
+    },
+    "Quantum Computing": {
+      "score": 40.1,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 32.5,
+        "maturity_score": 35.0,
+        "convergence_strength": 25.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Renewable Energy": {
+      "score": 41.3,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 35.8,
+        "maturity_score": 35.0,
+        "convergence_strength": 25.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Robotics": {
+      "score": 40.8,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 34.4,
+        "maturity_score": 35.0,
+        "convergence_strength": 25.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Semiconductor Technology": {
+      "score": 45.1,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 38.2,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Smart Cities": {
+      "score": 57.8,
+      "classification": "Moderate",
+      "components": {
+        "momentum_score": 45.9,
+        "maturity_score": 75.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Smart Manufacturing": {
+      "score": 43.5,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 33.6,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Software Engineering": {
+      "score": 57.8,
+      "classification": "Moderate",
+      "components": {
+        "momentum_score": 45.9,
+        "maturity_score": 75.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    },
+    "Space Technology": {
+      "score": 39.7,
+      "classification": "Weak",
+      "components": {
+        "momentum_score": 22.8,
+        "maturity_score": 35.0,
+        "convergence_strength": 40.0,
+        "patent_volume_score": 100.0,
+        "emerging_bonus": 0.0
+      }
+    }
+  },
+  "commercialization_readiness": {
+    "5G / 6G Communications": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Agriculture Technology": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Artificial Intelligence": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Autonomous Vehicles": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Biotechnology": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Blockchain": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Cloud Computing": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Computer Vision": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Cyber Security": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Data Science": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Deep Learning": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "FinTech": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Healthcare": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Internet of Things": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Machine Learning": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Medical Devices": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Natural Language Processing": {
+      "score": 36.8,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 50.0,
+        "adoption_stage_readiness": 45.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Quantum Computing": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Renewable Energy": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Robotics": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Semiconductor Technology": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Smart Cities": {
+      "score": 68.8,
+      "classification": "Nearly Ready",
+      "components": {
+        "maturity_readiness": 95.0,
+        "adoption_stage_readiness": 85.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Smart Manufacturing": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Software Engineering": {
+      "score": 68.8,
+      "classification": "Nearly Ready",
+      "components": {
+        "maturity_readiness": 95.0,
+        "adoption_stage_readiness": 85.0,
+        "assignee_participation_score": 4.0
+      }
+    },
+    "Space Technology": {
+      "score": 48.5,
+      "classification": "Early Research",
+      "components": {
+        "maturity_readiness": 40.0,
+        "adoption_stage_readiness": 90.0,
+        "assignee_participation_score": 4.0
+      }
+    }
+  },
+  "market_opportunities": {
+    "5G / 6G Communications": {
+      "score": 19.8,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 12.5,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Agriculture Technology": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Artificial Intelligence": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Autonomous Vehicles": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Biotechnology": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Blockchain": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Cloud Computing": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Computer Vision": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Cyber Security": {
+      "score": 16.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 3.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Data Science": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Deep Learning": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "FinTech": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Healthcare": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Internet of Things": {
+      "score": 19.1,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 10.8,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Machine Learning": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Medical Devices": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Natural Language Processing": {
+      "score": 58.7,
+      "opportunity_level": "Medium",
+      "components": {
+        "growth_factor_score": 81.7,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 90.0
+      }
+    },
+    "Quantum Computing": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Renewable Energy": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Robotics": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Semiconductor Technology": {
+      "score": 15.6,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 2.1,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Smart Cities": {
+      "score": 28.1,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 33.3,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Smart Manufacturing": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Software Engineering": {
+      "score": 28.1,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 33.3,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    },
+    "Space Technology": {
+      "score": 15.0,
+      "opportunity_level": "Low",
+      "components": {
+        "growth_factor_score": 0.0,
+        "geographic_spread_score": 10.0,
+        "emerging_velocity_score": 45.0
+      }
+    }
+  },
+  "technology_risk": {
+    "5G / 6G Communications": {
+      "score": 78.5,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 59.3,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Agriculture Technology": {
+      "score": 81.9,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 68.9,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Artificial Intelligence": {
+      "score": 79.9,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 63.2,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Autonomous Vehicles": {
+      "score": 79.7,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 62.6,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Biotechnology": {
+      "score": 83.4,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 73.4,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Blockchain": {
+      "score": 83.9,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 74.7,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Cloud Computing": {
+      "score": 79.9,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 63.4,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Computer Vision": {
+      "score": 83.0,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 72.2,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Cyber Security": {
+      "score": 79.3,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 61.6,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Data Science": {
+      "score": 80.7,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 65.6,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Deep Learning": {
+      "score": 84.1,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 75.2,
+        "low_participation_risk": 95.0
+      }
+    },
+    "FinTech": {
+      "score": 80.3,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 64.4,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Healthcare": {
+      "score": 79.9,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 63.4,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Internet of Things": {
+      "score": 78.6,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 59.7,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Machine Learning": {
+      "score": 82.8,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 71.6,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Medical Devices": {
+      "score": 82.0,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 69.3,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Natural Language Processing": {
+      "score": 44.5,
+      "risk_level": "Moderate Risk",
+      "components": {
+        "growth_contraction_risk": 15.0,
+        "weak_momentum_risk": 42.2,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Quantum Computing": {
+      "score": 81.4,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 67.5,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Renewable Energy": {
+      "score": 80.2,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 64.2,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Robotics": {
+      "score": 80.7,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 65.6,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Semiconductor Technology": {
+      "score": 79.4,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 61.8,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Smart Cities": {
+      "score": 62.7,
+      "risk_level": "Moderate Risk",
+      "components": {
+        "growth_contraction_risk": 50.0,
+        "weak_momentum_risk": 54.1,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Smart Manufacturing": {
+      "score": 81.0,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 66.4,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Software Engineering": {
+      "score": 62.7,
+      "risk_level": "Moderate Risk",
+      "components": {
+        "growth_contraction_risk": 50.0,
+        "weak_momentum_risk": 54.1,
+        "low_participation_risk": 95.0
+      }
+    },
+    "Space Technology": {
+      "score": 84.8,
+      "risk_level": "High Risk",
+      "components": {
+        "growth_contraction_risk": 85.0,
+        "weak_momentum_risk": 77.2,
+        "low_participation_risk": 95.0
+      }
+    }
+  },
+  "priority_rankings": {
+    "Natural Language Processing": {
+      "overall_score": 55.4,
+      "priority_rank": 1,
+      "investment_category": "Future Research"
+    },
+    "Smart Cities": {
+      "overall_score": 50.0,
+      "priority_rank": 2,
+      "investment_category": "Future Research"
+    },
+    "Software Engineering": {
+      "overall_score": 50.0,
+      "priority_rank": 3,
+      "investment_category": "Future Research"
+    },
+    "5G / 6G Communications": {
+      "overall_score": 36.4,
+      "priority_rank": 4,
+      "investment_category": "Low Priority"
+    },
+    "Internet of Things": {
+      "overall_score": 35.1,
+      "priority_rank": 5,
+      "investment_category": "Low Priority"
+    },
+    "Cyber Security": {
+      "overall_score": 35.0,
+      "priority_rank": 6,
+      "investment_category": "Low Priority"
+    },
+    "Semiconductor Technology": {
+      "overall_score": 34.9,
+      "priority_rank": 7,
+      "investment_category": "Low Priority"
+    },
+    "Healthcare": {
+      "overall_score": 34.5,
+      "priority_rank": 8,
+      "investment_category": "Low Priority"
+    },
+    "FinTech": {
+      "overall_score": 34.3,
+      "priority_rank": 9,
+      "investment_category": "Low Priority"
+    },
+    "Data Science": {
+      "overall_score": 34.1,
+      "priority_rank": 10,
+      "investment_category": "Low Priority"
+    },
+    "Smart Manufacturing": {
+      "overall_score": 34.0,
+      "priority_rank": 11,
+      "investment_category": "Low Priority"
+    },
+    "Agriculture Technology": {
+      "overall_score": 33.5,
+      "priority_rank": 12,
+      "investment_category": "Low Priority"
+    },
+    "Autonomous Vehicles": {
+      "overall_score": 33.5,
+      "priority_rank": 13,
+      "investment_category": "Low Priority"
+    },
+    "Medical Devices": {
+      "overall_score": 33.5,
+      "priority_rank": 14,
+      "investment_category": "Low Priority"
+    },
+    "Artificial Intelligence": {
+      "overall_score": 33.4,
+      "priority_rank": 15,
+      "investment_category": "Low Priority"
+    },
+    "Cloud Computing": {
+      "overall_score": 33.4,
+      "priority_rank": 16,
+      "investment_category": "Low Priority"
+    },
+    "Renewable Energy": {
+      "overall_score": 33.3,
+      "priority_rank": 17,
+      "investment_category": "Low Priority"
+    },
+    "Machine Learning": {
+      "overall_score": 33.0,
+      "priority_rank": 18,
+      "investment_category": "Low Priority"
+    },
+    "Robotics": {
+      "overall_score": 33.0,
+      "priority_rank": 19,
+      "investment_category": "Low Priority"
+    },
+    "Computer Vision": {
+      "overall_score": 32.9,
+      "priority_rank": 20,
+      "investment_category": "Low Priority"
+    },
+    "Quantum Computing": {
+      "overall_score": 32.7,
+      "priority_rank": 21,
+      "investment_category": "Low Priority"
+    },
+    "Deep Learning": {
+      "overall_score": 32.4,
+      "priority_rank": 22,
+      "investment_category": "Low Priority"
+    },
+    "Space Technology": {
+      "overall_score": 32.0,
+      "priority_rank": 23,
+      "investment_category": "Low Priority"
+    },
+    "Biotechnology": {
+      "overall_score": 31.7,
+      "priority_rank": 24,
+      "investment_category": "Low Priority"
+    },
+    "Blockchain": {
+      "overall_score": 31.4,
+      "priority_rank": 25,
+      "investment_category": "Low Priority"
+    }
+  },
+  "strategic_recommendations": {
+    "Natural Language Processing": {
+      "overall_score": 55.4,
+      "priority_rank": 1,
+      "category": "Future Research",
+      "recommendation": "Commercialization Partnership \u2014 Medium maturity domain. Explore joint R&D partnerships, licensing, and technology transfers."
+    },
+    "Smart Cities": {
+      "overall_score": 50.0,
+      "priority_rank": 2,
+      "category": "Future Research",
+      "recommendation": "Commercialization Partnership \u2014 Medium maturity domain. Explore joint R&D partnerships, licensing, and technology transfers."
+    },
+    "Software Engineering": {
+      "overall_score": 50.0,
+      "priority_rank": 3,
+      "category": "Future Research",
+      "recommendation": "Commercialization Partnership \u2014 Medium maturity domain. Explore joint R&D partnerships, licensing, and technology transfers."
+    },
+    "5G / 6G Communications": {
+      "overall_score": 36.4,
+      "priority_rank": 4,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Internet of Things": {
+      "overall_score": 35.1,
+      "priority_rank": 5,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Cyber Security": {
+      "overall_score": 35.0,
+      "priority_rank": 6,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Semiconductor Technology": {
+      "overall_score": 34.9,
+      "priority_rank": 7,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Healthcare": {
+      "overall_score": 34.5,
+      "priority_rank": 8,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "FinTech": {
+      "overall_score": 34.3,
+      "priority_rank": 9,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Data Science": {
+      "overall_score": 34.1,
+      "priority_rank": 10,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Smart Manufacturing": {
+      "overall_score": 34.0,
+      "priority_rank": 11,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Agriculture Technology": {
+      "overall_score": 33.5,
+      "priority_rank": 12,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Autonomous Vehicles": {
+      "overall_score": 33.5,
+      "priority_rank": 13,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Medical Devices": {
+      "overall_score": 33.5,
+      "priority_rank": 14,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Artificial Intelligence": {
+      "overall_score": 33.4,
+      "priority_rank": 15,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Cloud Computing": {
+      "overall_score": 33.4,
+      "priority_rank": 16,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Renewable Energy": {
+      "overall_score": 33.3,
+      "priority_rank": 17,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Machine Learning": {
+      "overall_score": 33.0,
+      "priority_rank": 18,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Robotics": {
+      "overall_score": 33.0,
+      "priority_rank": 19,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Computer Vision": {
+      "overall_score": 32.9,
+      "priority_rank": 20,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Quantum Computing": {
+      "overall_score": 32.7,
+      "priority_rank": 21,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Deep Learning": {
+      "overall_score": 32.4,
+      "priority_rank": 22,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Space Technology": {
+      "overall_score": 32.0,
+      "priority_rank": 23,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Biotechnology": {
+      "overall_score": 31.7,
+      "priority_rank": 24,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    },
+    "Blockchain": {
+      "overall_score": 31.4,
+      "priority_rank": 25,
+      "category": "Low Priority",
+      "recommendation": "Low Priority / Divestment \u2014 High technology risk or declining activity. Reallocate resources to high-momentum domains."
+    }
+  }
+}
