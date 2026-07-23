@@ -1,0 +1,16 @@
+Patent ID,Title,Inventor,Technology,Year,Abstract
+P001,Brain MRI AI Diagnosis System,John Smith,Healthcare AI,2024,An AI-powered system for automated detection of brain abnormalities in MRI scans using convolutional neural networks
+P002,Autonomous Vehicle Navigation Module,Sarah Chen,Robotics,2023,A multi-sensor fusion system enabling safe autonomous navigation in urban environments
+P003,Quantum Error Correction Algorithm,Dr. Raj Patel,Quantum Computing,2024,Novel error correction protocol reducing decoherence in quantum circuits by 40%
+P004,Natural Language Processing Engine for Hindi,Priya Sharma,NLP,2023,Deep learning model achieving 96% accuracy on Hindi language understanding tasks
+P005,Federated Learning Privacy Framework,Alex Johnson,Machine Learning,2024,A differential privacy mechanism for federated learning preserving user data confidentiality
+P006,Smart Grid Energy Optimization,Maria Garcia,Energy AI,2022,AI-based load balancing and predictive maintenance system for electrical grids
+P007,Drug Discovery Molecular Predictor,Dr. Emily Watson,Bioinformatics,2024,Graph neural network for predicting drug-protein binding affinity with 92% accuracy
+P008,Agricultural Crop Disease Detector,Ravi Kumar,Computer Vision,2023,Real-time plant disease identification using edge AI on mobile devices
+P009,Cybersecurity Intrusion Detection AI,James Lee,Cybersecurity,2024,Unsupervised anomaly detection system for network traffic analysis
+P010,Explainable AI Medical Diagnosis,Dr. Lisa Park,Healthcare AI,2022,Framework providing human-interpretable explanations for AI-based medical decisions
+P011,Robotic Prosthetic Hand Controller,Tom Wilson,Robotics,2023,Neural interface-driven prosthetic hand with 20-degree-of-freedom control
+P012,IoT Sensor Fusion Platform,Anita Desai,IoT,2024,Middleware for real-time aggregation and analysis of heterogeneous IoT sensor data
+P013,Multilingual Speech Recognition System,Carlos Rodriguez,NLP,2023,End-to-end speech recognition supporting 12 Indian languages
+P014,Satellite Image Segmentation AI,Dr. Neha Gupta,Computer Vision,2024,High-resolution land-use classification from satellite imagery using transformer models
+P015,Blockchain-AI Supply Chain Tracker,Michael Brown,Blockchain,2023,Decentralized supply chain monitoring using AI-powered anomaly detection on blockchain

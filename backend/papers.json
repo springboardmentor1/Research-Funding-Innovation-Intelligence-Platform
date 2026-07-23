@@ -1,0 +1,243 @@
+[
+  {
+    "id": "https://openalex.org/W2134833483",
+    "title": "The PRISMA statement for reporting systematic reviews and meta-analyses of studies that evaluate healthcare interventions: explanation and elaboration",
+    "authors": [
+      "A. Liberati",
+      "Doug Altman",
+      "Jennifer Tetzlaff",
+      "Cynthia D. Mulrow",
+      "Peter C Gøtzsche",
+      "John P. A. Ioannidis",
+      "Mike Clarke",
+      "P.J. Devereaux",
+      "Jos Kleijnen",
+      "David Moher"
+    ],
+    "publication_year": 2009,
+    "doi": "https://doi.org/10.1136/bmj.b2700",
+    "abstract": "Systematic reviews and meta-analyses are essential to summarise evidence relating to efficacy and safety of healthcare interventions accurately and reliably. The clarity and transparency of these reports, however, are not optimal. Poor reporting of systematic reviews diminishes their value to clinicians, policy makers, and other users. Since the development of the QUOROM (quality of reporting of meta-analysis) statement-a reporting guideline published in 1999-there have been several conceptual, methodological, and practical advances regarding the conduct and reporting of systematic reviews and meta-analyses. Also, reviews of published systematic reviews have found that key information about these studies is often poorly reported. Realising these issues, an international group that included experienced authors and methodologists developed PRISMA (preferred reporting items for systematic reviews and meta-analyses) as an evolution of the original QUOROM guideline for systematic reviews and meta-analyses of evaluations of health care interventions. The PRISMA statement consists of a 27-item checklist and a four-phase flow diagram. The checklist includes items deemed essential for transparent reporting of a systematic review. In this explanation and elaboration document, we explain the meaning and rationale for each checklist item. For each item, we include an example of good reporting and, where possible, references to relevant empirical studies and methodological literature. The PRISMA statement, this document, and the associated website (www.prisma-statement.org/) should be helpful resources to improve reporting of systematic reviews and meta-analyses.",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2905810301",
+    "title": "A guide to deep learning in healthcare",
+    "authors": [
+      "Andre Esteva",
+      "Alexandre Robicquet",
+      "Bharath Ramsundar",
+      "Volodymyr Kuleshov",
+      "Mark A. DePristo",
+      "Katherine Chou",
+      "Claire Cui",
+      "Greg S. Corrado",
+      "Sebastian Thrun",
+      "Jeff Dean"
+    ],
+    "publication_year": 2018,
+    "doi": "https://doi.org/10.1038/s41591-018-0316-z",
+    "abstract": "Abstract not available",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2756578555",
+    "title": "AMSTAR 2: a critical appraisal tool for systematic reviews that include randomised or non-randomised studies of healthcare interventions, or both",
+    "authors": [
+      "Beverley Shea",
+      "Barnaby C Reeves",
+      "George A. Wells",
+      "Micere Thuku",
+      "Candyce Hamel",
+      "Julian Moran",
+      "David Moher",
+      "Peter Tugwell",
+      "Vivian Welch",
+      "Elizabeth Kristjansson",
+      "David Henry"
+    ],
+    "publication_year": 2017,
+    "doi": "https://doi.org/10.1136/bmj.j4008",
+    "abstract": "The number of published systematic reviews of studies of healthcare interventions has increased rapidly and these are used extensively for clinical and policy decisions. Systematic reviews are subject to a range of biases and increasingly include non-randomised studies of interventions. It is important that users can distinguish high quality reviews. Many instruments have been designed to evaluate different aspects of reviews, but there are few comprehensive critical appraisal instruments. AMSTAR was developed to evaluate systematic reviews of randomised trials. In this paper, we report on the updating of AMSTAR and its adaptation to enable more detailed assessment of systematic reviews that include randomised or non-randomised studies of healthcare interventions, or both. With moves to base more decisions on real world observational evidence we believe that AMSTAR 2 will assist decision makers in the identification of high quality systematic reviews, including those based on non-randomised studies of healthcare interventions<i>.</i>",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2664267452",
+    "title": "Artificial intelligence in healthcare: past, present and future",
+    "authors": [
+      "Fei Jiang",
+      "Yong Jiang",
+      "Hui Zhi",
+      "Yi Dong",
+      "Hao Li",
+      "Sufeng Ma",
+      "Yilong Wang",
+      "Yilong Wang",
+      "Qiang Dong",
+      "Haipeng Shen",
+      "Yongjun Wang",
+      "Yongjun Wang"
+    ],
+    "publication_year": 2017,
+    "doi": "https://doi.org/10.1136/svn-2017-000101",
+    "abstract": "Artificial intelligence (AI) aims to mimic human cognitive functions. It is bringing a paradigm shift to healthcare, powered by increasing availability of healthcare data and rapid progress of analytics techniques. We survey the current status of AI applications in healthcare and discuss its future. AI can be applied to various types of healthcare data (structured and unstructured). Popular AI techniques include machine learning methods for structured data, such as the classical support vector machine and neural network, and the modern deep learning, as well as natural language processing for unstructured data. Major disease areas that use AI tools include cancer, neurology and cardiology. We then review in more details the AI applications in stroke, in the three major areas of early detection and diagnosis, treatment, as well as outcome prediction and prognosis evaluation. We conclude with discussion about pioneer AI systems, such as IBM Watson, and hurdles for real-life deployment of AI.",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2953532875",
+    "title": "The potential for artificial intelligence in healthcare",
+    "authors": [
+      "Thomas H. Davenport",
+      "Ravi Kalakota"
+    ],
+    "publication_year": 2019,
+    "doi": "https://doi.org/10.7861/futurehosp.6-2-94",
+    "abstract": "The complexity and rise of data in healthcare means that artificial intelligence (AI) will increasingly be applied within the field. Several types of AI are already being employed by payers and providers of care, and life sciences companies. The key categories of applications involve diagnosis and treatment recommendations, patient engagement and adherence, and administrative activities. Although there are many instances in which AI can perform healthcare tasks as well or better than humans, implementation factors will prevent large-scale automation of healthcare professional jobs for a considerable period. Ethical issues in the application of AI to healthcare are also discussed.",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2105501846",
+    "title": "Audit and feedback: effects on professional practice and healthcare outcomes",
+    "authors": [
+      "Noah Ivers",
+      "Gro Jamtvedt",
+      "Signe Flottorp",
+      "Jane Young",
+      "Jan Odgaard‐Jensen",
+      "Simon French",
+      "Mary Ann O’Brien",
+      "Marit Johansen",
+      "Jeremy Grimshaw",
+      "Andrew D Oxman"
+    ],
+    "publication_year": 2012,
+    "doi": "https://doi.org/10.1002/14651858.cd000259.pub3",
+    "abstract": "BACKGROUND: Audit and feedback is widely used as a strategy to improve professional practice either on its own or as a component of multifaceted quality improvement interventions. This is based on the belief that healthcare professionals are prompted to modify their practice when given performance feedback showing that their clinical practice is inconsistent with a desirable target. Despite its prevalence as a quality improvement strategy, there remains uncertainty regarding both the effectiveness of audit and feedback in improving healthcare practice and the characteristics of audit and feedback that lead to greater impact. OBJECTIVES: To assess the effects of audit and feedback on the practice of healthcare professionals and patient outcomes and to examine factors that may explain variation in the effectiveness of audit and feedback. SEARCH METHODS: We searched the Cochrane Central Register of Controlled Trials (CENTRAL) 2010, Issue 4, part of The Cochrane Library. www.thecochranelibrary.com, including the Cochrane Effective Practice and Organisation of Care (EPOC) Group Specialised Register (searched 10 December 2010); MEDLINE, Ovid (1950 to November Week 3 2010) (searched 09 December 2010); EMBASE, Ovid (1980 to 2010 Week 48) (searched 09 December 2010); CINAHL, Ebsco (1981 to present) (searched 10 December 2010); Science Citation Index and Social Sciences Citation Index, ISI Web of Science (1975 to present) (searched 12-15 September 2011). SELECTION CRITERIA: Randomised trials of audit and feedback (defined as a summary of clinical performance over a specified period of time) that reported objectively measured health professional practice or patient outcomes. In the case of multifaceted interventions, only trials in which audit and feedback was considered the core, essential aspect of at least one intervention arm were included. DATA COLLECTION AND ANALYSIS: All data were abstracted by two independent review authors. For the primary outcome(s) in each study, we calculated the median absolute risk difference (RD) (adjusted for baseline performance) of compliance with desired practice compliance for dichotomous outcomes and the median percent change relative to the control group for continuous outcomes. Across studies the median effect size was weighted by number of health professionals involved in each study. We investigated the following factors as possible explanations for the variation in the effectiveness of interventions across comparisons: format of feedback, source of feedback, frequency of feedback, instructions for improvement, direction of change required, baseline performance, profession of recipient, and risk of bias within the trial itself. We also conducted exploratory analyses to assess the role of context and the targeted clinical behaviour. Quantitative (meta-regression), visual, and qualitative analyses were undertaken to examine variation in effect size related to these factors. MAIN RESULTS: We included and analysed 140 studies for this review. In the main analyses, a total of 108 comparisons from 70 studies compared any intervention in which audit and feedback was a core, essential component to usual care and evaluated effects on professional practice. After excluding studies at high risk of bias, there were 82 comparisons from 49 studies featuring dichotomous outcomes, and the weighted median adjusted RD was a 4.3% (interquartile range (IQR) 0.5% to 16%) absolute increase in healthcare professionals' compliance with desired practice. Across 26 comparisons from 21 studies with continuous outcomes, the weighted median adjusted percent change relative to control was 1.3% (IQR = 1.3% to 28.9%). For patient outcomes, the weighted median RD was -0.4% (IQR -1.3% to 1.6%) for 12 comparisons from six studies reporting dichotomous outcomes and the weighted median percentage change was 17% (IQR 1.5% to 17%) for eight comparisons from five studies reporting continuous outcomes. Multivariable meta-regression indicated that feedback may be more effective when baseline performance is low, the source is a supervisor or colleague, it is provided more than once, it is delivered in both verbal and written formats, and when it includes both explicit targets and an action plan. In addition, the effect size varied based on the clinical behaviour targeted by the intervention. AUTHORS' CONCLUSIONS: Audit and feedback generally leads to small but potentially important improvements in professional practice. The effectiveness of audit and feedback seems to depend on baseline performance and how the feedback is provided. Future studies of audit and feedback should directly compare different ways of providing feedback.",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2895763047",
+    "title": "Artificial intelligence in healthcare",
+    "authors": [
+      "Kun‐Hsing Yu",
+      "Andrew L. Beam",
+      "Isaac S. Kohane"
+    ],
+    "publication_year": 2018,
+    "doi": "https://doi.org/10.1038/s41551-018-0305-z",
+    "abstract": "Abstract not available",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2582406074",
+    "title": "Acceptability of healthcare interventions: an overview of reviews and development of a theoretical framework",
+    "authors": [
+      "Mandeep Sekhon",
+      "Martin Cartwright",
+      "Jill Francis"
+    ],
+    "publication_year": 2017,
+    "doi": "https://doi.org/10.1186/s12913-017-2031-8",
+    "abstract": "BACKGROUND: It is increasingly acknowledged that 'acceptability' should be considered when designing, evaluating and implementing healthcare interventions. However, the published literature offers little guidance on how to define or assess acceptability. The purpose of this study was to develop a multi-construct theoretical framework of acceptability of healthcare interventions that can be applied to assess prospective (i.e. anticipated) and retrospective (i.e. experienced) acceptability from the perspective of intervention delivers and recipients. METHODS: Two methods were used to select the component constructs of acceptability. 1) An overview of reviews was conducted to identify systematic reviews that claim to define, theorise or measure acceptability of healthcare interventions. 2) Principles of inductive and deductive reasoning were applied to theorise the concept of acceptability and develop a theoretical framework. Steps included (1) defining acceptability; (2) describing its properties and scope and (3) identifying component constructs and empirical indicators. RESULTS: From the 43 reviews included in the overview, none explicitly theorised or defined acceptability. Measures used to assess acceptability focused on behaviour (e.g. dropout rates) (23 reviews), affect (i.e. feelings) (5 reviews), cognition (i.e. perceptions) (7 reviews) or a combination of these (8 reviews). From the methods described above we propose a definition: Acceptability is a multi-faceted construct that reflects the extent to which people delivering or receiving a healthcare intervention consider it to be appropriate, based on anticipated or experienced cognitive and emotional responses to the intervention. The theoretical framework of acceptability (TFA) consists of seven component constructs: affective attitude, burden, perceived effectiveness, ethicality, intervention coherence, opportunity costs, and self-efficacy. CONCLUSION: Despite frequent claims that healthcare interventions have assessed acceptability, it is evident that acceptability research could be more robust. The proposed definition of acceptability and the TFA can inform assessment tools and evaluations of the acceptability of new or existing interventions.",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2120751691",
+    "title": "Big data analytics in healthcare: promise and potential",
+    "authors": [
+      "Wullianallur Raghupathi",
+      "Viju Raghupathi"
+    ],
+    "publication_year": 2014,
+    "doi": "https://doi.org/10.1186/2047-2501-2-3",
+    "abstract": "OBJECTIVE: To describe the promise and potential of big data analytics in healthcare. METHODS: The paper describes the nascent field of big data analytics in healthcare, discusses the benefits, outlines an architectural framework and methodology, describes examples reported in the literature, briefly discusses the challenges, and offers conclusions. RESULTS: The paper provides a broad overview of big data analytics for healthcare researchers and practitioners. CONCLUSIONS: Big data analytics in healthcare is evolving into a promising field for providing insight from very large data sets and improving outcomes while reducing costs. Its potential is great; however there remain challenges to overcome.",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2917386416",
+    "title": "Wearable biosensors for healthcare monitoring",
+    "authors": [
+      "Jayoung Kim",
+      "Alan S. Campbell",
+      "Berta Esteban‐Fernández de Ávila",
+      "Joseph Wang"
+    ],
+    "publication_year": 2019,
+    "doi": "https://doi.org/10.1038/s41587-019-0045-y",
+    "abstract": "Abstract not available",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W4211194064",
+    "title": "Guidelines for the Management of Adults with Hospital-acquired, Ventilator-associated, and Healthcare-associated Pneumonia",
+    "authors": [],
+    "publication_year": 2005,
+    "doi": "https://doi.org/10.1164/rccm.200405-644st",
+    "abstract": "Abstract not available",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W4386958277",
+    "title": "Revolutionizing healthcare: the role of artificial intelligence in clinical practice",
+    "authors": [
+      "Shuroug A. Alowais",
+      "Sahar S. Alghamdi",
+      "Nada Alsuhebany",
+      "Tariq Alqahtani",
+      "Abdulrahman Alshaya",
+      "Sumaya N. Almohareb",
+      "Atheer Aldairem",
+      "Mohammed Alrashed",
+      "Khalid Bin Saleh",
+      "Hisham A. Badreldin",
+      "Majed S. Al Yami",
+      "Shmeylan Al Harbi",
+      "Abdulkareem Albekairy"
+    ],
+    "publication_year": 2023,
+    "doi": "https://doi.org/10.1186/s12909-023-04698-z",
+    "abstract": "INTRODUCTION: Healthcare systems are complex and challenging for all stakeholders, but artificial intelligence (AI) has transformed various fields, including healthcare, with the potential to improve patient care and quality of life. Rapid AI advancements can revolutionize healthcare by integrating it into clinical practice. Reporting AI's role in clinical practice is crucial for successful implementation by equipping healthcare providers with essential knowledge and tools. RESEARCH SIGNIFICANCE: This review article provides a comprehensive and up-to-date overview of the current state of AI in clinical practice, including its potential applications in disease diagnosis, treatment recommendations, and patient engagement. It also discusses the associated challenges, covering ethical and legal considerations and the need for human expertise. By doing so, it enhances understanding of AI's significance in healthcare and supports healthcare organizations in effectively adopting AI technologies. MATERIALS AND METHODS: The current investigation analyzed the use of AI in the healthcare system with a comprehensive review of relevant indexed literature, such as PubMed/Medline, Scopus, and EMBASE, with no time constraints but limited to articles published in English. The focused question explores the impact of applying AI in healthcare settings and the potential outcomes of this application. RESULTS: Integrating AI into healthcare holds excellent potential for improving disease diagnosis, treatment selection, and clinical laboratory testing. AI tools can leverage large datasets and identify patterns to surpass human performance in several healthcare aspects. AI offers increased accuracy, reduced costs, and time savings while minimizing human errors. It can revolutionize personalized medicine, optimize medication dosages, enhance population health management, establish guidelines, provide virtual health assistants, support mental health care, improve patient education, and influence patient-physician trust. CONCLUSION: AI can be used to diagnose diseases, develop personalized treatment plans, and assist clinicians with decision-making. Rather than simply automating tasks, AI is about developing technologies that can enhance patient care across healthcare settings. However, challenges related to data privacy, bias, and the need for human expertise must be addressed for the responsible and effective implementation of AI in healthcare.",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2087865186",
+    "title": "Antimicrobial-Resistant Pathogens Associated With Healthcare-Associated Infections: Annual Summary of Data Reported to the National Healthcare Safety Network at the Centers for Disease Control and Prevention, 2006–2007",
+    "authors": [
+      "Alicia Hidrón",
+      "Jonathan R. Edwards",
+      "Jean B. Patel",
+      "Teresa Horan",
+      "Dawn Sievert",
+      "Daniel A. Pollock",
+      "Scott K. Fridkin",
+      "National Healthcare Safety Network Team and Participating National Healthcare Safety Network Facilities"
+    ],
+    "publication_year": 2008,
+    "doi": "https://doi.org/10.1086/591861",
+    "abstract": "OBJECTIVE: To describe the frequency of selected antimicrobial resistance patterns among pathogens causing device-associated and procedure-associated healthcare-associated infections (HAIs) reported by hospitals in the National Healthcare Safety Network (NHSN). METHODS: Data are included on HAIs (ie, central line-associated bloodstream infections, catheter-associated urinary tract infections, ventilator-associated pneumonia, and surgical site infections) reported to the Patient Safety Component of the NHSN between January 2006 and October 2007. The results of antimicrobial susceptibility testing of up to 3 pathogenic isolates per HAI by a hospital were evaluated to define antimicrobial-resistance in the pathogenic isolates. The pooled mean proportions of pathogenic isolates interpreted as resistant to selected antimicrobial agents were calculated by type of HAI and overall. The incidence rates of specific device-associated infections were calculated for selected antimicrobial-resistant pathogens according to type of patient care area; the variability in the reported rates is described. RESULTS: Overall, 463 hospitals reported 1 or more HAIs: 412 (89%) were general acute care hospitals, and 309 (67%) had 200-1,000 beds. There were 28,502 HAIs reported among 25,384 patients. The 10 most common pathogens (accounting for 84% of any HAIs) were coagulase-negative staphylococci (15%), Staphylococcus aureus (15%), Enterococcus species (12%), Candida species (11%), Escherichia coli (10%), Pseudomonas aeruginosa (8%), Klebsiella pneumoniae (6%), Enterobacter species (5%), Acinetobacter baumannii (3%), and Klebsiella oxytoca (2%). The pooled mean proportion of pathogenic isolates resistant to antimicrobial agents varied significantly across types of HAI for some pathogen-antimicrobial combinations. As many as 16% of all HAIs were associated with the following multidrug-resistant pathogens: methicillin-resistant S. aureus (8% of HAIs), vancomycin-resistant Enterococcus faecium (4%), carbapenem-resistant P. aeruginosa (2%), extended-spectrum cephalosporin-resistant K. pneumoniae (1%), extended-spectrum cephalosporin-resistant E. coli (0.5%), and carbapenem-resistant A. baumannii, K. pneumoniae, K. oxytoca, and E. coli (0.5%). Nationwide, the majority of units reported no HAIs due to these antimicrobial-resistant pathogens.",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W2594519269",
+    "title": "Implicit bias in healthcare professionals: a systematic review",
+    "authors": [
+      "Chloë FitzGerald",
+      "Samia Hurst"
+    ],
+    "publication_year": 2017,
+    "doi": "https://doi.org/10.1186/s12910-017-0179-8",
+    "abstract": "BACKGROUND: Implicit biases involve associations outside conscious awareness that lead to a negative evaluation of a person on the basis of irrelevant characteristics such as race or gender. This review examines the evidence that healthcare professionals display implicit biases towards patients. METHODS: PubMed, PsychINFO, PsychARTICLE and CINAHL were searched for peer-reviewed articles published between 1st March 2003 and 31st March 2013. Two reviewers assessed the eligibility of the identified papers based on precise content and quality criteria. The references of eligible papers were examined to identify further eligible studies. RESULTS: Forty two articles were identified as eligible. Seventeen used an implicit measure (Implicit Association Test in fifteen and subliminal priming in two), to test the biases of healthcare professionals. Twenty five articles employed a between-subjects design, using vignettes to examine the influence of patient characteristics on healthcare professionals' attitudes, diagnoses, and treatment decisions. The second method was included although it does not isolate implicit attitudes because it is recognised by psychologists who specialise in implicit cognition as a way of detecting the possible presence of implicit bias. Twenty seven studies examined racial/ethnic biases; ten other biases were investigated, including gender, age and weight. Thirty five articles found evidence of implicit bias in healthcare professionals; all the studies that investigated correlations found a significant positive relationship between level of implicit bias and lower quality of care. DISCUSSION: The evidence indicates that healthcare professionals exhibit the same levels of implicit bias as the wider population. The interactions between multiple patient characteristics and between healthcare professional and patient characteristics reveal the complexity of the phenomenon of implicit bias and its influence on clinician-patient interaction. The most convincing studies from our review are those that combine the IAT and a method measuring the quality of treatment in the actual world. Correlational evidence indicates that biases are likely to influence diagnosis and treatment decisions and levels of care in some circumstances and need to be further investigated. Our review also indicates that there may sometimes be a gap between the norm of impartiality and the extent to which it is embraced by healthcare professionals for some of the tested characteristics. CONCLUSIONS: Our findings highlight the need for the healthcare profession to address the role of implicit biases in disparities in healthcare. More research in actual care settings and a greater homogeneity in methods employed to test implicit biases in healthcare is needed.",
+    "search_topic": "healthcare"
+  },
+  {
+    "id": "https://openalex.org/W646529589",
+    "title": "Qualitative Research in Nursing and Healthcare",
+    "authors": [
+      "Immy Holloway",
+      "Stephanie Wheeler"
+    ],
+    "publication_year": 2016,
+    "doi": null,
+    "abstract": "Preface. Acknowledgements. Part One: Introduction to Qualitative Research: Initial Stages. 1 The Nature and Utility of Qualitative Research. What is qualitative research? The main features of qualitative research. The place of theory in qualitative research. The usefulness of qualitative research in healthcare. Choosing an approach for health research. Problematic issues in qualitative research. Conclusion. Summary. References. Further reading. 2 The Paradigm Debate: The Place of Qualitative Research. Theoretical frameworks and ontological position. The paradigm debate. Conflicting or complementary perspectives? Final comment. References. Further reading. 3 Initial Steps in the Research Process. Selecting and formulating the research question. The literature review. Writing a research proposal. Access and entry to the setting. Summary. References. Further reading. 4 Ethical Considerations. The basic ethical framework for research. Ethics in qualitative research. Researching one's peers. The research relationship. Research in the researcher's workplace. The role of research ethics committees. Summary. References. Further reading. 5 The Issue of Supervision. The responsibilities of supervisor and student. Writing and relationships. Practical aspects of supervision. Single or joint supervision. Problems with supervision. Summary. References. Further reading. Part Two: Data Collection. 6 Interviewing. Interviews as sources of data. The interview process. Types of interview. Probing, prompting and summarising. The social context of the interview. Unexpected outcomes: qualitative interviewing and therapy. Length and timing of interviews. Recording interview data. The interviewer-participant relationship. Problematic issues and challenges in interviewing. Interviewing through electronic media. Ethical issues in interviewing. Strengths and weaknesses of interviewing. Summary. References. Further reading. 7 Participant Observation and Documents as Sources of Data. Participant observation. The origins of participant observation. Immersion in culture and setting. Documentary sources of data. Images as sources of data. Summary. References. Further reading. 8 Focus Groups as Qualitative Research. What is a focus group? The origin and purpose of focus groups. Sample size and composition. Conducting focus group interviews. Analysing and reporting focus group data. Advantages and limitations of focus groups. Critical comments on focus group interviews in healthcare. Summary. References. Further reading. 9 Sampling and Site Selection. Purposeful (or purposive) sampling. Sampling types. Sampling decisions. How shall we name them? Summary. References. Part Three: Approaches to Qualitative Research. 10 Ethnography. The historical perspective. A focus on culture. Ethnographic methods. Ethnography in healthcare. The main features of ethnography. Fieldwork. Doing and writing ethnography. Pitfalls and problems. Summary. References. Further reading. 11 Grounded Theory. History and origin. The main features of grounded theory. Data collection, theoretical sampling and analysis. Pitfalls and problems. Glaser's critique and further development. Constructivist grounded theory. Which approach for the health researcher? Summary. References. Further reading. 12 Narrative Inquiry. The nature of narrative and story. Narrative research. Types of narrative. Illness narratives. Narrative interviewing. Narrative analysis. Problematic issues. Conclusion. Summary. References. Further reading. 13 Phenomenology. Intentionality and the early stages of phenomenology. Schools of phenomenology. The phenomenological research process: doing phenomenology. Procedures for data collection and analysis. Phenomenology and health research. Choice of approach: descriptive or interpretive phenomenology. Summary. References. Further reading. 14 Action Research. What is action research? The origins of action research. Action research in healthcare. The main features of action research. Practical steps. Trustworthiness in AR. Problems and critique. Summary. References. Further reading. 15 Additional Approaches. Case study research. Conversation analysis. Critical incident technique. Discourse analysis. Feminist research. Performative social science. Conclusion. References. Further reading. 16 Mixed Methods: Combining Qualitative and Quantitative Research. The nature of mixed methods studies. Doing mixed methods research. Types of mixed methods research. The place and purpose of the literature. Triangulation. Critique of MMR. Conclusion. Summary. References. Further reading. Part Four: Data Analysis and Completion. 17 Data Analysis: Procedures, Practices and Computers. The process of data analysis. Coding and categorising. Problems of QDA. Computer-aided analysis of qualitative data. Problems and critique. Summary. References. Further reading. 18 Establishing Quality: Trustworthiness or Validity. Quality. An alternative perspective: trustworthiness. Trustworthiness. Strategies to ensure trustworthiness. Quality and creativity. Summary. References. Further reading. 19 Writing up Qualitative Research. The research account. Use of the first person. The format of the report. Critical assessment and evaluation. Guide to appraisal. Publishing and presenting the research. Summary. References Further reading. Glossary. Index.",
+    "search_topic": "healthcare"
+  }
+]
