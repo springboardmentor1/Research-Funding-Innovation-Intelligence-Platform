@@ -9,25 +9,20 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.routers import auth
+from app.routers import auth, profiles, recommendations
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
-    version="0.2.0",
+    version="0.3.0",
     description="AI-powered research funding and innovation intelligence.",
 )
 
 # CORS: browsers block a page served from one origin from calling another.
-# Your React dev server is http://localhost:5173 and this API is
-# http://localhost:8000 - different ports mean different ORIGINS, so without
-# this middleware every fetch() from React fails with a CORS error.
-#
-# The failure is confusing because the request DOES reach the server and the
-# server DOES respond; the browser then discards the response. You will see
-# a 200 in your terminal and an error in the console.
-#
-# allow_credentials=True requires explicit origins - "*" is rejected by the
-# spec in that combination.
+# React dev runs on :5173, this API on :8000 - different ports mean different
+# ORIGINS, so without this every fetch() from React fails. The failure is
+# confusing because the request DOES reach the server and the server DOES
+# respond; the browser then discards the response. You see 200 in your
+# terminal and an error in the console.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
@@ -37,10 +32,11 @@ app.add_middleware(
 )
 
 app.include_router(auth.router, prefix=settings.API_V1)
+app.include_router(profiles.router, prefix=settings.API_V1)
+app.include_router(recommendations.router, prefix=settings.API_V1)
 
 
 @app.get("/health", tags=["system"])
 def health():
-    """Liveness probe. Deployment platforms poll this to decide whether your
-    container is alive. Keep it dependency-free and fast."""
+    """Liveness probe. Keep it dependency-free and fast."""
     return {"status": "ok", "service": settings.PROJECT_NAME}
