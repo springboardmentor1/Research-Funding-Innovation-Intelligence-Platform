@@ -1,0 +1,357 @@
+{
+  "summary_kpis": {
+    "total_patents": 5000,
+    "total_domains": 25,
+    "top_assignee": "Institute of Technology & Natural Language Processing Research Group",
+    "top_country": "US",
+    "top_emerging_cluster": "Emerging Applied Innovations",
+    "annual_filing_trend": "Declining"
+  },
+  "domain_distribution_chart": [
+    {
+      "domain": "5G / 6G Communications",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Agriculture Technology",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Artificial Intelligence",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Autonomous Vehicles",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Biotechnology",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Blockchain",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Cloud Computing",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Computer Vision",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Cyber Security",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Data Science",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Deep Learning",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "FinTech",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Healthcare",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Internet of Things",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Machine Learning",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Medical Devices",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Natural Language Processing",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Quantum Computing",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Renewable Energy",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Robotics",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Semiconductor Technology",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Smart Cities",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Smart Manufacturing",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Software Engineering",
+      "count": 200,
+      "share": 4.0
+    },
+    {
+      "domain": "Space Technology",
+      "count": 200,
+      "share": 4.0
+    }
+  ],
+  "geographic_map_data": [
+    {
+      "country_code": "US",
+      "patent_count": 5000,
+      "share_percentage": 100.0,
+      "primary_technology_domain": "Natural Language Processing"
+    }
+  ],
+  "assignee_leaderboard": [
+    {
+      "assignee": "Institute of Technology & Natural Language Processing Research Group",
+      "patents": 200,
+      "domain": "Natural Language Processing"
+    },
+    {
+      "assignee": "Institute of Technology & Renewable Energy Research Group",
+      "patents": 200,
+      "domain": "Renewable Energy"
+    },
+    {
+      "assignee": "Institute of Technology & 5G / 6G Communications Research Group",
+      "patents": 200,
+      "domain": "5G / 6G Communications"
+    },
+    {
+      "assignee": "Institute of Technology & Medical Devices Research Group",
+      "patents": 200,
+      "domain": "Medical Devices"
+    },
+    {
+      "assignee": "Institute of Technology & Autonomous Vehicles Research Group",
+      "patents": 200,
+      "domain": "Autonomous Vehicles"
+    },
+    {
+      "assignee": "Institute of Technology & Computer Vision Research Group",
+      "patents": 200,
+      "domain": "Computer Vision"
+    },
+    {
+      "assignee": "Institute of Technology & Space Technology Research Group",
+      "patents": 200,
+      "domain": "Space Technology"
+    },
+    {
+      "assignee": "Institute of Technology & Agriculture Technology Research Group",
+      "patents": 200,
+      "domain": "Agriculture Technology"
+    },
+    {
+      "assignee": "Institute of Technology & Quantum Computing Research Group",
+      "patents": 200,
+      "domain": "Quantum Computing"
+    },
+    {
+      "assignee": "Institute of Technology & Healthcare Research Group",
+      "patents": 200,
+      "domain": "Healthcare"
+    }
+  ],
+  "classification_breakdown": [
+    {
+      "code": "G06F 17/23 (IPC) | H04L 9/85 (CPC)",
+      "count": 5,
+      "share_percentage": 0.1
+    },
+    {
+      "code": "G06F 17/90 (IPC) | H04L 9/79 (CPC)",
+      "count": 5,
+      "share_percentage": 0.1
+    },
+    {
+      "code": "G06F 17/69 (IPC) | H04L 9/34 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/48 (IPC) | H04L 9/92 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/37 (IPC) | H04L 9/21 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/91 (IPC) | H04L 9/14 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/95 (IPC) | H04L 9/49 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/98 (IPC) | H04L 9/87 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/14 (IPC) | H04L 9/49 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/10 (IPC) | H04L 9/66 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    }
+  ],
+  "emerging_clusters": [
+    {
+      "cluster_name": "Emerging Applied Innovations",
+      "patent_volume": 5000,
+      "share_percentage": 100.0,
+      "top_emerging_terms": [
+        "adaptive",
+        "automation",
+        "Method",
+        "system",
+        "Natural Language Processing"
+      ]
+    },
+    {
+      "cluster_name": "Cybersecurity & Networks",
+      "patent_volume": 2600,
+      "share_percentage": 52.0,
+      "top_emerging_terms": [
+        "System for Natural Language Processing Automation via Adaptive Networks",
+        "System for Smart Manufacturing Automation via Adaptive Networks",
+        "System for FinTech Automation via Adaptive Networks",
+        "System for Software Engineering Automation via Adaptive Networks",
+        "System for Data Science Automation via Adaptive Networks"
+      ]
+    },
+    {
+      "cluster_name": "Artificial Intelligence & ML",
+      "patent_volume": 800,
+      "share_percentage": 16.0,
+      "top_emerging_terms": [
+        "System for Artificial Intelligence Automation via Adaptive Networks",
+        "Artificial Intelligence",
+        "System for Machine Learning Automation via Adaptive Networks",
+        "Machine Learning",
+        "Blockchain"
+      ]
+    },
+    {
+      "cluster_name": "Biotechnology & HealthTech",
+      "patent_volume": 600,
+      "share_percentage": 12.0,
+      "top_emerging_terms": [
+        "Biotechnology",
+        "System for Biotechnology Automation via Adaptive Networks",
+        "Healthcare",
+        "System for Healthcare Automation via Adaptive Networks",
+        "System for Medical Devices Automation via Adaptive Networks"
+      ]
+    },
+    {
+      "cluster_name": "Robotics & Autonomous Systems",
+      "patent_volume": 400,
+      "share_percentage": 8.0,
+      "top_emerging_terms": [
+        "System for Robotics Automation via Adaptive Networks",
+        "Robotics",
+        "Autonomous Vehicles",
+        "System for Autonomous Vehicles Automation via Adaptive Networks"
+      ]
+    },
+    {
+      "cluster_name": "Quantum & Hardware Systems",
+      "patent_volume": 400,
+      "share_percentage": 8.0,
+      "top_emerging_terms": [
+        "System for Semiconductor Technology Automation via Adaptive Networks",
+        "Semiconductor Technology",
+        "System for Quantum Computing Automation via Adaptive Networks",
+        "Quantum Computing"
+      ]
+    },
+    {
+      "cluster_name": "Clean Energy & Energy Systems",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "top_emerging_terms": [
+        "System for Renewable Energy Automation via Adaptive Networks",
+        "Renewable Energy"
+      ]
+    }
+  ],
+  "filing_timeline": [
+    {
+      "year": 2021,
+      "filings": 964,
+      "growth_percentage": null
+    },
+    {
+      "year": 2022,
+      "filings": 1084,
+      "growth_percentage": 12.45
+    },
+    {
+      "year": 2023,
+      "filings": 1130,
+      "growth_percentage": 4.24
+    },
+    {
+      "year": 2024,
+      "filings": 1127,
+      "growth_percentage": -0.27
+    },
+    {
+      "year": 2025,
+      "filings": 695,
+      "growth_percentage": -38.33
+    }
+  ]
+}

@@ -1,0 +1,696 @@
+{
+  "metadata": {
+    "total_patents_analyzed": 5000,
+    "unique_domains_count": 25,
+    "countries_represented": 1,
+    "innovation_concentration_hhi_top3_share": 100.0
+  },
+  "technology_landscape": {
+    "5G / 6G Communications": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & 5G / 6G Communications Research Group",
+      "top_ipc_cpc": "G06F 17/34 (IPC) | H04L 9/85 (CPC)",
+      "top_keywords": [
+        "5G / 6G Communications",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Agriculture Technology": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Agriculture Technology Research Group",
+      "top_ipc_cpc": "G06F 17/17 (IPC) | H04L 9/85 (CPC)",
+      "top_keywords": [
+        "Agriculture Technology",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Artificial Intelligence": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Artificial Intelligence Research Group",
+      "top_ipc_cpc": "G06F 17/88 (IPC) | H04L 9/42 (CPC)",
+      "top_keywords": [
+        "Artificial Intelligence",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Autonomous Vehicles": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Autonomous Vehicles Research Group",
+      "top_ipc_cpc": "G06F 17/59 (IPC) | H04L 9/81 (CPC)",
+      "top_keywords": [
+        "Autonomous Vehicles",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Biotechnology": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Biotechnology Research Group",
+      "top_ipc_cpc": "G06F 17/90 (IPC) | H04L 9/79 (CPC)",
+      "top_keywords": [
+        "Biotechnology",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Blockchain": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Blockchain Research Group",
+      "top_ipc_cpc": "G06F 17/50 (IPC) | H04L 9/14 (CPC)",
+      "top_keywords": [
+        "Blockchain",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Cloud Computing": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Cloud Computing Research Group",
+      "top_ipc_cpc": "G06F 17/50 (IPC) | H04L 9/32 (CPC)",
+      "top_keywords": [
+        "Cloud Computing",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Computer Vision": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Computer Vision Research Group",
+      "top_ipc_cpc": "G06F 17/24 (IPC) | H04L 9/62 (CPC)",
+      "top_keywords": [
+        "Computer Vision",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Cyber Security": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Cyber Security Research Group",
+      "top_ipc_cpc": "G06F 17/81 (IPC) | H04L 9/12 (CPC)",
+      "top_keywords": [
+        "Cyber Security",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Data Science": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Data Science Research Group",
+      "top_ipc_cpc": "G06F 17/84 (IPC) | H04L 9/65 (CPC)",
+      "top_keywords": [
+        "Data Science",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Deep Learning": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Deep Learning Research Group",
+      "top_ipc_cpc": "G06F 17/69 (IPC) | H04L 9/34 (CPC)",
+      "top_keywords": [
+        "Deep Learning",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "FinTech": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & FinTech Research Group",
+      "top_ipc_cpc": "G06F 17/73 (IPC) | H04L 9/43 (CPC)",
+      "top_keywords": [
+        "FinTech",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Healthcare": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Healthcare Research Group",
+      "top_ipc_cpc": "G06F 17/71 (IPC) | H04L 9/89 (CPC)",
+      "top_keywords": [
+        "Healthcare",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Internet of Things": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Internet of Things Research Group",
+      "top_ipc_cpc": "G06F 17/55 (IPC) | H04L 9/62 (CPC)",
+      "top_keywords": [
+        "Internet of Things",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Machine Learning": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Machine Learning Research Group",
+      "top_ipc_cpc": "G06F 17/86 (IPC) | H04L 9/83 (CPC)",
+      "top_keywords": [
+        "Machine Learning",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Medical Devices": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Medical Devices Research Group",
+      "top_ipc_cpc": "G06F 17/95 (IPC) | H04L 9/49 (CPC)",
+      "top_keywords": [
+        "Medical Devices",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Natural Language Processing": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Natural Language Processing Research Group",
+      "top_ipc_cpc": "G06F 17/89 (IPC) | H04L 9/86 (CPC)",
+      "top_keywords": [
+        "Natural Language Processing",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Growing"
+    },
+    "Quantum Computing": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Quantum Computing Research Group",
+      "top_ipc_cpc": "G06F 17/22 (IPC) | H04L 9/38 (CPC)",
+      "top_keywords": [
+        "Quantum Computing",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Renewable Energy": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Renewable Energy Research Group",
+      "top_ipc_cpc": "G06F 17/42 (IPC) | H04L 9/58 (CPC)",
+      "top_keywords": [
+        "Renewable Energy",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Robotics": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Robotics Research Group",
+      "top_ipc_cpc": "G06F 17/10 (IPC) | H04L 9/73 (CPC)",
+      "top_keywords": [
+        "Robotics",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Semiconductor Technology": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Semiconductor Technology Research Group",
+      "top_ipc_cpc": "G06F 17/12 (IPC) | H04L 9/90 (CPC)",
+      "top_keywords": [
+        "Semiconductor Technology",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Smart Cities": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Smart Cities Research Group",
+      "top_ipc_cpc": "G06F 17/49 (IPC) | H04L 9/47 (CPC)",
+      "top_keywords": [
+        "Smart Cities",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Stable"
+    },
+    "Smart Manufacturing": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Smart Manufacturing Research Group",
+      "top_ipc_cpc": "G06F 17/21 (IPC) | H04L 9/84 (CPC)",
+      "top_keywords": [
+        "Smart Manufacturing",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    },
+    "Software Engineering": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Software Engineering Research Group",
+      "top_ipc_cpc": "G06F 17/84 (IPC) | H04L 9/56 (CPC)",
+      "top_keywords": [
+        "Software Engineering",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Stable"
+    },
+    "Space Technology": {
+      "total_patents": 200,
+      "share_percentage": 4.0,
+      "top_country": "US",
+      "top_assignee": "Institute of Technology & Space Technology Research Group",
+      "top_ipc_cpc": "G06F 17/91 (IPC) | H04L 9/14 (CPC)",
+      "top_keywords": [
+        "Space Technology",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "filing_trend": "Declining"
+    }
+  },
+  "geographic_distribution": [
+    {
+      "country_code": "US",
+      "patent_count": 5000,
+      "share_percentage": 100.0,
+      "primary_technology_domain": "Natural Language Processing"
+    }
+  ],
+  "top_assignees": [
+    {
+      "assignee_name": "Institute of Technology & Natural Language Processing Research Group",
+      "patent_count": 200,
+      "primary_domain": "Natural Language Processing",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 122,
+        "FILED": 78
+      }
+    },
+    {
+      "assignee_name": "Institute of Technology & Renewable Energy Research Group",
+      "patent_count": 200,
+      "primary_domain": "Renewable Energy",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 131,
+        "FILED": 69
+      }
+    },
+    {
+      "assignee_name": "Institute of Technology & 5G / 6G Communications Research Group",
+      "patent_count": 200,
+      "primary_domain": "5G / 6G Communications",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 122,
+        "FILED": 78
+      }
+    },
+    {
+      "assignee_name": "Institute of Technology & Medical Devices Research Group",
+      "patent_count": 200,
+      "primary_domain": "Medical Devices",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 112,
+        "FILED": 88
+      }
+    },
+    {
+      "assignee_name": "Institute of Technology & Autonomous Vehicles Research Group",
+      "patent_count": 200,
+      "primary_domain": "Autonomous Vehicles",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 122,
+        "FILED": 78
+      }
+    },
+    {
+      "assignee_name": "Institute of Technology & Computer Vision Research Group",
+      "patent_count": 200,
+      "primary_domain": "Computer Vision",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 131,
+        "FILED": 69
+      }
+    },
+    {
+      "assignee_name": "Institute of Technology & Space Technology Research Group",
+      "patent_count": 200,
+      "primary_domain": "Space Technology",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 122,
+        "FILED": 78
+      }
+    },
+    {
+      "assignee_name": "Institute of Technology & Agriculture Technology Research Group",
+      "patent_count": 200,
+      "primary_domain": "Agriculture Technology",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 117,
+        "FILED": 83
+      }
+    },
+    {
+      "assignee_name": "Institute of Technology & Quantum Computing Research Group",
+      "patent_count": 200,
+      "primary_domain": "Quantum Computing",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 117,
+        "FILED": 83
+      }
+    },
+    {
+      "assignee_name": "Institute of Technology & Healthcare Research Group",
+      "patent_count": 200,
+      "primary_domain": "Healthcare",
+      "headquarters_country": "US",
+      "patent_statuses": {
+        "GRANTED": 119,
+        "FILED": 81
+      }
+    }
+  ],
+  "leading_inventors": [
+    {
+      "inventor_name": "Dr. Alex Inventor_117",
+      "patent_count": 25,
+      "primary_domain": "Natural Language Processing",
+      "primary_assignee": "Institute of Technology & Natural Language Processing Research Group"
+    },
+    {
+      "inventor_name": "Dr. Taylor Scientist_117",
+      "patent_count": 25,
+      "primary_domain": "Natural Language Processing",
+      "primary_assignee": "Institute of Technology & Natural Language Processing Research Group"
+    },
+    {
+      "inventor_name": "Dr. Alex Inventor_26",
+      "patent_count": 25,
+      "primary_domain": "Artificial Intelligence",
+      "primary_assignee": "Institute of Technology & Artificial Intelligence Research Group"
+    },
+    {
+      "inventor_name": "Dr. Taylor Scientist_26",
+      "patent_count": 25,
+      "primary_domain": "Artificial Intelligence",
+      "primary_assignee": "Institute of Technology & Artificial Intelligence Research Group"
+    },
+    {
+      "inventor_name": "Dr. Alex Inventor_125",
+      "patent_count": 25,
+      "primary_domain": "Natural Language Processing",
+      "primary_assignee": "Institute of Technology & Natural Language Processing Research Group"
+    },
+    {
+      "inventor_name": "Dr. Taylor Scientist_125",
+      "patent_count": 25,
+      "primary_domain": "Natural Language Processing",
+      "primary_assignee": "Institute of Technology & Natural Language Processing Research Group"
+    },
+    {
+      "inventor_name": "Dr. Alex Inventor_144",
+      "patent_count": 25,
+      "primary_domain": "Biotechnology",
+      "primary_assignee": "Institute of Technology & Biotechnology Research Group"
+    },
+    {
+      "inventor_name": "Dr. Taylor Scientist_144",
+      "patent_count": 25,
+      "primary_domain": "Biotechnology",
+      "primary_assignee": "Institute of Technology & Biotechnology Research Group"
+    },
+    {
+      "inventor_name": "Dr. Alex Inventor_3",
+      "patent_count": 25,
+      "primary_domain": "Smart Manufacturing",
+      "primary_assignee": "Institute of Technology & Smart Manufacturing Research Group"
+    },
+    {
+      "inventor_name": "Dr. Taylor Scientist_3",
+      "patent_count": 25,
+      "primary_domain": "Smart Manufacturing",
+      "primary_assignee": "Institute of Technology & Smart Manufacturing Research Group"
+    }
+  ],
+  "ipc_cpc_classifications": [
+    {
+      "code": "G06F 17/23 (IPC) | H04L 9/85 (CPC)",
+      "count": 5,
+      "share_percentage": 0.1
+    },
+    {
+      "code": "G06F 17/90 (IPC) | H04L 9/79 (CPC)",
+      "count": 5,
+      "share_percentage": 0.1
+    },
+    {
+      "code": "G06F 17/69 (IPC) | H04L 9/34 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/48 (IPC) | H04L 9/92 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/37 (IPC) | H04L 9/21 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/91 (IPC) | H04L 9/14 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/95 (IPC) | H04L 9/49 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/98 (IPC) | H04L 9/87 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/14 (IPC) | H04L 9/49 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    },
+    {
+      "code": "G06F 17/10 (IPC) | H04L 9/66 (CPC)",
+      "count": 4,
+      "share_percentage": 0.08
+    }
+  ],
+  "emerging_technology_clusters": [
+    {
+      "cluster_name": "Emerging Applied Innovations",
+      "patent_volume": 5000,
+      "share_percentage": 100.0,
+      "top_emerging_terms": [
+        "adaptive",
+        "automation",
+        "Method",
+        "system",
+        "Natural Language Processing"
+      ]
+    },
+    {
+      "cluster_name": "Cybersecurity & Networks",
+      "patent_volume": 2600,
+      "share_percentage": 52.0,
+      "top_emerging_terms": [
+        "System for Natural Language Processing Automation via Adaptive Networks",
+        "System for Smart Manufacturing Automation via Adaptive Networks",
+        "System for FinTech Automation via Adaptive Networks",
+        "System for Software Engineering Automation via Adaptive Networks",
+        "System for Data Science Automation via Adaptive Networks"
+      ]
+    },
+    {
+      "cluster_name": "Artificial Intelligence & ML",
+      "patent_volume": 800,
+      "share_percentage": 16.0,
+      "top_emerging_terms": [
+        "System for Artificial Intelligence Automation via Adaptive Networks",
+        "Artificial Intelligence",
+        "System for Machine Learning Automation via Adaptive Networks",
+        "Machine Learning",
+        "Blockchain"
+      ]
+    },
+    {
+      "cluster_name": "Biotechnology & HealthTech",
+      "patent_volume": 600,
+      "share_percentage": 12.0,
+      "top_emerging_terms": [
+        "Biotechnology",
+        "System for Biotechnology Automation via Adaptive Networks",
+        "Healthcare",
+        "System for Healthcare Automation via Adaptive Networks",
+        "System for Medical Devices Automation via Adaptive Networks"
+      ]
+    },
+    {
+      "cluster_name": "Robotics & Autonomous Systems",
+      "patent_volume": 400,
+      "share_percentage": 8.0,
+      "top_emerging_terms": [
+        "System for Robotics Automation via Adaptive Networks",
+        "Robotics",
+        "Autonomous Vehicles",
+        "System for Autonomous Vehicles Automation via Adaptive Networks"
+      ]
+    },
+    {
+      "cluster_name": "Quantum & Hardware Systems",
+      "patent_volume": 400,
+      "share_percentage": 8.0,
+      "top_emerging_terms": [
+        "System for Semiconductor Technology Automation via Adaptive Networks",
+        "Semiconductor Technology",
+        "System for Quantum Computing Automation via Adaptive Networks",
+        "Quantum Computing"
+      ]
+    },
+    {
+      "cluster_name": "Clean Energy & Energy Systems",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "top_emerging_terms": [
+        "System for Renewable Energy Automation via Adaptive Networks",
+        "Renewable Energy"
+      ]
+    }
+  ],
+  "filing_activity_timeline": {
+    "timeline": [
+      {
+        "year": 2021,
+        "filings": 964,
+        "growth_percentage": null
+      },
+      {
+        "year": 2022,
+        "filings": 1084,
+        "growth_percentage": 12.45
+      },
+      {
+        "year": 2023,
+        "filings": 1130,
+        "growth_percentage": 4.24
+      },
+      {
+        "year": 2024,
+        "filings": 1127,
+        "growth_percentage": -0.27
+      },
+      {
+        "year": 2025,
+        "filings": 695,
+        "growth_percentage": -38.33
+      }
+    ],
+    "average_growth_rate": -5.48,
+    "overall_trend": "Declining"
+  }
+}

@@ -1,0 +1,1833 @@
+{
+  "metadata": {
+    "total_patents_analyzed": 5000,
+    "unique_domains_analyzed": 25,
+    "emerging_technologies_count": 1,
+    "convergence_pairs_identified": 6,
+    "engine_status": "Active"
+  },
+  "technology_maturity": {
+    "5G / 6G Communications": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -12.5,
+      "recent_filing_ratio": 37.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Agriculture Technology": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -35.9,
+      "recent_filing_ratio": 43.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Artificial Intelligence": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -21.95,
+      "recent_filing_ratio": 41.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Autonomous Vehicles": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -20.59,
+      "recent_filing_ratio": 33.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Biotechnology": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -46.81,
+      "recent_filing_ratio": 38.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Blockchain": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -50.0,
+      "recent_filing_ratio": 33.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Cloud Computing": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -22.5,
+      "recent_filing_ratio": 37.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Computer Vision": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -43.9,
+      "recent_filing_ratio": 36.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Cyber Security": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -18.18,
+      "recent_filing_ratio": 42.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Data Science": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -27.78,
+      "recent_filing_ratio": 35.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Deep Learning": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -51.11,
+      "recent_filing_ratio": 29.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "FinTech": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -25.0,
+      "recent_filing_ratio": 36.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Healthcare": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -22.5,
+      "recent_filing_ratio": 37.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Internet of Things": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -13.51,
+      "recent_filing_ratio": 39.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Machine Learning": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -42.5,
+      "recent_filing_ratio": 34.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Medical Devices": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -36.84,
+      "recent_filing_ratio": 29.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Natural Language Processing": {
+      "maturity_status": "Emerging",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": 29.03,
+      "recent_filing_ratio": 40.0,
+      "filing_activity_trend": "Growing",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Accelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Quantum Computing": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -32.5,
+      "recent_filing_ratio": 32.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Renewable Energy": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -24.39,
+      "recent_filing_ratio": 36.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Robotics": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -27.91,
+      "recent_filing_ratio": 40.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Semiconductor Technology": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -18.75,
+      "recent_filing_ratio": 37.5,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Smart Cities": {
+      "maturity_status": "Mature",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": 0.0,
+      "recent_filing_ratio": 38.5,
+      "filing_activity_trend": "Stable",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Steady",
+        "market_readiness": "High"
+      }
+    },
+    "Smart Manufacturing": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -29.73,
+      "recent_filing_ratio": 34.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    },
+    "Software Engineering": {
+      "maturity_status": "Mature",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": 0.0,
+      "recent_filing_ratio": 38.0,
+      "filing_activity_trend": "Stable",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Steady",
+        "market_readiness": "High"
+      }
+    },
+    "Space Technology": {
+      "maturity_status": "Declining",
+      "patent_volume": 200,
+      "share_percentage": 4.0,
+      "growth_rate_percentage": -56.0,
+      "recent_filing_ratio": 31.0,
+      "filing_activity_trend": "Declining",
+      "indicators": {
+        "volume_tier": "Medium",
+        "velocity": "Decelerating",
+        "market_readiness": "Early"
+      }
+    }
+  },
+  "emerging_technologies": [
+    {
+      "technology_name": "Natural Language Processing",
+      "maturity_stage": "Emerging",
+      "growth_percentage": 29.03,
+      "patent_volume": 200,
+      "keyword_velocity": [
+        "Natural Language Processing",
+        "automation",
+        "system",
+        "adaptive"
+      ],
+      "assignee_expansion_count": 1,
+      "top_ipc_cpc": "G06F 17/89 (IPC) | H04L 9/86 (CPC)",
+      "supporting_metrics": {
+        "recent_filing_ratio": 40.0,
+        "primary_country": "US",
+        "key_assignee": "Institute of Technology & Natural Language Processing Research Group"
+      }
+    }
+  ],
+  "innovation_momentum": {
+    "5G / 6G Communications": {
+      "momentum_score": 40.7,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -12.5,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 17.9,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Agriculture Technology": {
+      "momentum_score": 31.1,
+      "momentum_level": "Low",
+      "patent_growth_rate": -35.9,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 8.3,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Artificial Intelligence": {
+      "momentum_score": 36.8,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -21.95,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 14.0,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Autonomous Vehicles": {
+      "momentum_score": 37.4,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -20.59,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 14.6,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Biotechnology": {
+      "momentum_score": 26.6,
+      "momentum_level": "Low",
+      "patent_growth_rate": -46.81,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 3.8,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Blockchain": {
+      "momentum_score": 25.3,
+      "momentum_level": "Low",
+      "patent_growth_rate": -50.0,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 2.5,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Cloud Computing": {
+      "momentum_score": 36.6,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -22.5,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 13.8,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Computer Vision": {
+      "momentum_score": 27.8,
+      "momentum_level": "Low",
+      "patent_growth_rate": -43.9,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 5.0,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Cyber Security": {
+      "momentum_score": 38.4,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -18.18,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 15.6,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Data Science": {
+      "momentum_score": 34.4,
+      "momentum_level": "Low",
+      "patent_growth_rate": -27.78,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 11.6,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Deep Learning": {
+      "momentum_score": 24.8,
+      "momentum_level": "Low",
+      "patent_growth_rate": -51.11,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 2.0,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "FinTech": {
+      "momentum_score": 35.6,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -25.0,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 12.8,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Healthcare": {
+      "momentum_score": 36.6,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -22.5,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 13.8,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Internet of Things": {
+      "momentum_score": 40.3,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -13.51,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 17.5,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Machine Learning": {
+      "momentum_score": 28.4,
+      "momentum_level": "Low",
+      "patent_growth_rate": -42.5,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 5.6,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Medical Devices": {
+      "momentum_score": 30.7,
+      "momentum_level": "Low",
+      "patent_growth_rate": -36.84,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 7.9,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Natural Language Processing": {
+      "momentum_score": 57.8,
+      "momentum_level": "Medium",
+      "patent_growth_rate": 29.03,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 35.0,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Quantum Computing": {
+      "momentum_score": 32.5,
+      "momentum_level": "Low",
+      "patent_growth_rate": -32.5,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 9.7,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Renewable Energy": {
+      "momentum_score": 35.8,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -24.39,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 13.0,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Robotics": {
+      "momentum_score": 34.4,
+      "momentum_level": "Low",
+      "patent_growth_rate": -27.91,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 11.6,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Semiconductor Technology": {
+      "momentum_score": 38.2,
+      "momentum_level": "Medium",
+      "patent_growth_rate": -18.75,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 15.3,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Smart Cities": {
+      "momentum_score": 45.9,
+      "momentum_level": "Medium",
+      "patent_growth_rate": 0.0,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 23.1,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Smart Manufacturing": {
+      "momentum_score": 33.6,
+      "momentum_level": "Low",
+      "patent_growth_rate": -29.73,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 10.8,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Software Engineering": {
+      "momentum_score": 45.9,
+      "momentum_level": "Medium",
+      "patent_growth_rate": 0.0,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 23.1,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    },
+    "Space Technology": {
+      "momentum_score": 22.8,
+      "momentum_level": "Low",
+      "patent_growth_rate": -56.0,
+      "inventor_activity_count": 400,
+      "assignee_count": 1,
+      "geographic_spread_count": 1,
+      "breakdown": {
+        "growth_factor": 0.0,
+        "assignee_factor": 0.8,
+        "inventor_factor": 20.0,
+        "geographic_factor": 2.0
+      }
+    }
+  },
+  "technology_convergence": [
+    {
+      "primary_domain": "Artificial Intelligence",
+      "secondary_domain": "Internet of Things",
+      "converged_technology_name": "AIoT (Artificial Intelligence of Things)",
+      "co_occurrence_score": 25.0,
+      "synergy_momentum": 38.6,
+      "shared_keywords": [
+        "Artificial Intelligence",
+        "system",
+        "automation",
+        "Internet of Things",
+        "adaptive"
+      ],
+      "synergy_description": "Integration of machine learning algorithms into connected IoT sensor networks for real-time edge intelligence.",
+      "potential_applications": [
+        "Smart Cities",
+        "Industrial Automation",
+        "Autonomous Monitoring"
+      ]
+    },
+    {
+      "primary_domain": "Artificial Intelligence",
+      "secondary_domain": "Biotechnology",
+      "converged_technology_name": "Bio-AI & Computational Genomics",
+      "co_occurrence_score": 25.0,
+      "synergy_momentum": 31.7,
+      "shared_keywords": [
+        "Artificial Intelligence",
+        "system",
+        "automation",
+        "Biotechnology",
+        "adaptive"
+      ],
+      "synergy_description": "Applying deep learning to protein folding, genomic sequencing, and automated drug discovery.",
+      "potential_applications": [
+        "Precision Medicine",
+        "Drug Discovery",
+        "Synthetic Biology"
+      ]
+    },
+    {
+      "primary_domain": "Quantum Computing",
+      "secondary_domain": "Cybersecurity",
+      "converged_technology_name": "Post-Quantum Cryptography & Quantum Security",
+      "co_occurrence_score": 25.0,
+      "synergy_momentum": 41.2,
+      "shared_keywords": [
+        "adaptive",
+        "Quantum Computing",
+        "automation",
+        "system"
+      ],
+      "synergy_description": "Development of quantum-resistant encryption algorithms and quantum key distribution systems.",
+      "potential_applications": [
+        "Financial Security",
+        "Government Communications",
+        "Cloud Encryption"
+      ]
+    },
+    {
+      "primary_domain": "Autonomous Vehicles",
+      "secondary_domain": "Robotics",
+      "converged_technology_name": "Autonomous Mobile Robotics (AMR)",
+      "co_occurrence_score": 25.0,
+      "synergy_momentum": 35.9,
+      "shared_keywords": [
+        "system",
+        "Autonomous Vehicles",
+        "automation",
+        "adaptive",
+        "Robotics"
+      ],
+      "synergy_description": "Convergence of vehicle path planning with robotic manipulation for automated logistics.",
+      "potential_applications": [
+        "Warehouse Automation",
+        "Last-Mile Delivery",
+        "Smart Mining"
+      ]
+    },
+    {
+      "primary_domain": "Blockchain",
+      "secondary_domain": "Cybersecurity",
+      "converged_technology_name": "Decentralized Zero-Trust Security",
+      "co_occurrence_score": 25.0,
+      "synergy_momentum": 37.6,
+      "shared_keywords": [
+        "adaptive",
+        "automation",
+        "system",
+        "Blockchain"
+      ],
+      "synergy_description": "Immutable ledger protocols combined with cryptographic identity verification to prevent cyber breaches.",
+      "potential_applications": [
+        "Identity Management",
+        "Supply Chain Verification",
+        "Secured FinTech"
+      ]
+    },
+    {
+      "primary_domain": "Renewable Energy",
+      "secondary_domain": "Cloud Computing",
+      "converged_technology_name": "Smart Grid Energy Analytics",
+      "co_occurrence_score": 25.0,
+      "synergy_momentum": 36.2,
+      "shared_keywords": [
+        "system",
+        "Renewable Energy",
+        "automation",
+        "adaptive",
+        "Cloud Computing"
+      ],
+      "synergy_description": "Cloud-hosted predictive analytics for dynamic grid load balancing and solar/wind yield optimization.",
+      "potential_applications": [
+        "Smart Power Grids",
+        "EV Charging Networks",
+        "Energy Storage Optimization"
+      ]
+    }
+  ],
+  "adoption_trends": {
+    "5G / 6G Communications": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & 5G / 6G Communications Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 40
+        },
+        {
+          "year": 2022,
+          "filings": 43
+        },
+        {
+          "year": 2023,
+          "filings": 42
+        },
+        {
+          "year": 2024,
+          "filings": 40
+        },
+        {
+          "year": 2025,
+          "filings": 35
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Agriculture Technology": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Agriculture Technology Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 39
+        },
+        {
+          "year": 2022,
+          "filings": 29
+        },
+        {
+          "year": 2023,
+          "filings": 46
+        },
+        {
+          "year": 2024,
+          "filings": 61
+        },
+        {
+          "year": 2025,
+          "filings": 25
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Artificial Intelligence": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Artificial Intelligence Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 41
+        },
+        {
+          "year": 2022,
+          "filings": 37
+        },
+        {
+          "year": 2023,
+          "filings": 40
+        },
+        {
+          "year": 2024,
+          "filings": 50
+        },
+        {
+          "year": 2025,
+          "filings": 32
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Autonomous Vehicles": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Autonomous Vehicles Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 34
+        },
+        {
+          "year": 2022,
+          "filings": 49
+        },
+        {
+          "year": 2023,
+          "filings": 51
+        },
+        {
+          "year": 2024,
+          "filings": 39
+        },
+        {
+          "year": 2025,
+          "filings": 27
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Biotechnology": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Biotechnology Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 47
+        },
+        {
+          "year": 2022,
+          "filings": 41
+        },
+        {
+          "year": 2023,
+          "filings": 35
+        },
+        {
+          "year": 2024,
+          "filings": 52
+        },
+        {
+          "year": 2025,
+          "filings": 25
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Blockchain": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Blockchain Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 42
+        },
+        {
+          "year": 2022,
+          "filings": 42
+        },
+        {
+          "year": 2023,
+          "filings": 50
+        },
+        {
+          "year": 2024,
+          "filings": 45
+        },
+        {
+          "year": 2025,
+          "filings": 21
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Cloud Computing": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Cloud Computing Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 40
+        },
+        {
+          "year": 2022,
+          "filings": 44
+        },
+        {
+          "year": 2023,
+          "filings": 42
+        },
+        {
+          "year": 2024,
+          "filings": 43
+        },
+        {
+          "year": 2025,
+          "filings": 31
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Computer Vision": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Computer Vision Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 41
+        },
+        {
+          "year": 2022,
+          "filings": 41
+        },
+        {
+          "year": 2023,
+          "filings": 46
+        },
+        {
+          "year": 2024,
+          "filings": 49
+        },
+        {
+          "year": 2025,
+          "filings": 23
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Cyber Security": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Cyber Security Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 33
+        },
+        {
+          "year": 2022,
+          "filings": 46
+        },
+        {
+          "year": 2023,
+          "filings": 36
+        },
+        {
+          "year": 2024,
+          "filings": 58
+        },
+        {
+          "year": 2025,
+          "filings": 27
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Data Science": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Data Science Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 36
+        },
+        {
+          "year": 2022,
+          "filings": 46
+        },
+        {
+          "year": 2023,
+          "filings": 48
+        },
+        {
+          "year": 2024,
+          "filings": 44
+        },
+        {
+          "year": 2025,
+          "filings": 26
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Deep Learning": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Deep Learning Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 45
+        },
+        {
+          "year": 2022,
+          "filings": 32
+        },
+        {
+          "year": 2023,
+          "filings": 64
+        },
+        {
+          "year": 2024,
+          "filings": 37
+        },
+        {
+          "year": 2025,
+          "filings": 22
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "FinTech": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & FinTech Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 36
+        },
+        {
+          "year": 2022,
+          "filings": 46
+        },
+        {
+          "year": 2023,
+          "filings": 45
+        },
+        {
+          "year": 2024,
+          "filings": 46
+        },
+        {
+          "year": 2025,
+          "filings": 27
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Healthcare": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Healthcare Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 40
+        },
+        {
+          "year": 2022,
+          "filings": 44
+        },
+        {
+          "year": 2023,
+          "filings": 41
+        },
+        {
+          "year": 2024,
+          "filings": 44
+        },
+        {
+          "year": 2025,
+          "filings": 31
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Internet of Things": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Internet of Things Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 37
+        },
+        {
+          "year": 2022,
+          "filings": 51
+        },
+        {
+          "year": 2023,
+          "filings": 34
+        },
+        {
+          "year": 2024,
+          "filings": 46
+        },
+        {
+          "year": 2025,
+          "filings": 32
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Machine Learning": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Machine Learning Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 40
+        },
+        {
+          "year": 2022,
+          "filings": 52
+        },
+        {
+          "year": 2023,
+          "filings": 40
+        },
+        {
+          "year": 2024,
+          "filings": 45
+        },
+        {
+          "year": 2025,
+          "filings": 23
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Medical Devices": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Medical Devices Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 38
+        },
+        {
+          "year": 2022,
+          "filings": 49
+        },
+        {
+          "year": 2023,
+          "filings": 54
+        },
+        {
+          "year": 2024,
+          "filings": 35
+        },
+        {
+          "year": 2025,
+          "filings": 24
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Natural Language Processing": {
+      "adoption_stage": "Early Adoption",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Natural Language Processing Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 31
+        },
+        {
+          "year": 2022,
+          "filings": 45
+        },
+        {
+          "year": 2023,
+          "filings": 44
+        },
+        {
+          "year": 2024,
+          "filings": 40
+        },
+        {
+          "year": 2025,
+          "filings": 40
+        }
+      ],
+      "adoption_velocity": "High"
+    },
+    "Quantum Computing": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Quantum Computing Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 40
+        },
+        {
+          "year": 2022,
+          "filings": 41
+        },
+        {
+          "year": 2023,
+          "filings": 54
+        },
+        {
+          "year": 2024,
+          "filings": 38
+        },
+        {
+          "year": 2025,
+          "filings": 27
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Renewable Energy": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Renewable Energy Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 41
+        },
+        {
+          "year": 2022,
+          "filings": 44
+        },
+        {
+          "year": 2023,
+          "filings": 42
+        },
+        {
+          "year": 2024,
+          "filings": 42
+        },
+        {
+          "year": 2025,
+          "filings": 31
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Robotics": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Robotics Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 43
+        },
+        {
+          "year": 2022,
+          "filings": 34
+        },
+        {
+          "year": 2023,
+          "filings": 42
+        },
+        {
+          "year": 2024,
+          "filings": 50
+        },
+        {
+          "year": 2025,
+          "filings": 31
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Semiconductor Technology": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Semiconductor Technology Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 32
+        },
+        {
+          "year": 2022,
+          "filings": 51
+        },
+        {
+          "year": 2023,
+          "filings": 42
+        },
+        {
+          "year": 2024,
+          "filings": 49
+        },
+        {
+          "year": 2025,
+          "filings": 26
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Smart Cities": {
+      "adoption_stage": "Late Majority",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Smart Cities Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 33
+        },
+        {
+          "year": 2022,
+          "filings": 46
+        },
+        {
+          "year": 2023,
+          "filings": 44
+        },
+        {
+          "year": 2024,
+          "filings": 44
+        },
+        {
+          "year": 2025,
+          "filings": 33
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Smart Manufacturing": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Smart Manufacturing Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 37
+        },
+        {
+          "year": 2022,
+          "filings": 46
+        },
+        {
+          "year": 2023,
+          "filings": 49
+        },
+        {
+          "year": 2024,
+          "filings": 42
+        },
+        {
+          "year": 2025,
+          "filings": 26
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Software Engineering": {
+      "adoption_stage": "Late Majority",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Software Engineering Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 28
+        },
+        {
+          "year": 2022,
+          "filings": 40
+        },
+        {
+          "year": 2023,
+          "filings": 56
+        },
+        {
+          "year": 2024,
+          "filings": 48
+        },
+        {
+          "year": 2025,
+          "filings": 28
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    },
+    "Space Technology": {
+      "adoption_stage": "Mainstream / Saturated",
+      "geographic_adoption": {
+        "US": 200
+      },
+      "industry_adoption_leaders": {
+        "Institute of Technology & Space Technology Research Group": 200
+      },
+      "filing_timeline": [
+        {
+          "year": 2021,
+          "filings": 50
+        },
+        {
+          "year": 2022,
+          "filings": 45
+        },
+        {
+          "year": 2023,
+          "filings": 43
+        },
+        {
+          "year": 2024,
+          "filings": 40
+        },
+        {
+          "year": 2025,
+          "filings": 22
+        }
+      ],
+      "adoption_velocity": "Moderate"
+    }
+  },
+  "strategic_insights": {
+    "Natural Language Processing": {
+      "status": "Emerging",
+      "recommendation": "Monitor closely \u2014 High disruptive innovation potential. Initiate pilot R&D projects and monitor key patent filings.",
+      "risk_level": "High",
+      "opportunity_score": 88.7,
+      "priority_rank": 1,
+      "strategic_summary": "Natural Language Processing is currently in the Emerging phase with Medium momentum. Recommendation: Monitor closely \u2014 High disruptive innovation potential. Initiate pilot R&D projects and monitor key patent filings."
+    },
+    "Smart Cities": {
+      "status": "Mature",
+      "recommendation": "Commercialization opportunity \u2014 Optimize operational efficiency, leverage established IP for cross-licensing, and focus on market expansion.",
+      "risk_level": "Low",
+      "opportunity_score": 69.2,
+      "priority_rank": 2,
+      "strategic_summary": "Smart Cities is currently in the Mature phase with Medium momentum. Recommendation: Commercialization opportunity \u2014 Optimize operational efficiency, leverage established IP for cross-licensing, and focus on market expansion."
+    },
+    "Software Engineering": {
+      "status": "Mature",
+      "recommendation": "Commercialization opportunity \u2014 Optimize operational efficiency, leverage established IP for cross-licensing, and focus on market expansion.",
+      "risk_level": "Low",
+      "opportunity_score": 69.2,
+      "priority_rank": 3,
+      "strategic_summary": "Software Engineering is currently in the Mature phase with Medium momentum. Recommendation: Commercialization opportunity \u2014 Optimize operational efficiency, leverage established IP for cross-licensing, and focus on market expansion."
+    },
+    "5G / 6G Communications": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 38.8,
+      "priority_rank": 4,
+      "strategic_summary": "5G / 6G Communications is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Internet of Things": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 38.2,
+      "priority_rank": 5,
+      "strategic_summary": "Internet of Things is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Cyber Security": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 35.9,
+      "priority_rank": 6,
+      "strategic_summary": "Cyber Security is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Semiconductor Technology": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 35.6,
+      "priority_rank": 7,
+      "strategic_summary": "Semiconductor Technology is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Autonomous Vehicles": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 34.7,
+      "priority_rank": 8,
+      "strategic_summary": "Autonomous Vehicles is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Artificial Intelligence": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 34.0,
+      "priority_rank": 9,
+      "strategic_summary": "Artificial Intelligence is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Cloud Computing": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 33.8,
+      "priority_rank": 10,
+      "strategic_summary": "Cloud Computing is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Healthcare": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 33.8,
+      "priority_rank": 11,
+      "strategic_summary": "Healthcare is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Renewable Energy": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 32.8,
+      "priority_rank": 12,
+      "strategic_summary": "Renewable Energy is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "FinTech": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 32.5,
+      "priority_rank": 13,
+      "strategic_summary": "FinTech is currently in the Declining phase with Medium momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Data Science": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 31.1,
+      "priority_rank": 14,
+      "strategic_summary": "Data Science is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Robotics": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 31.0,
+      "priority_rank": 15,
+      "strategic_summary": "Robotics is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Smart Manufacturing": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.1,
+      "priority_rank": 16,
+      "strategic_summary": "Smart Manufacturing is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Quantum Computing": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.0,
+      "priority_rank": 17,
+      "strategic_summary": "Quantum Computing is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Agriculture Technology": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.0,
+      "priority_rank": 18,
+      "strategic_summary": "Agriculture Technology is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Medical Devices": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.0,
+      "priority_rank": 19,
+      "strategic_summary": "Medical Devices is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Machine Learning": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.0,
+      "priority_rank": 20,
+      "strategic_summary": "Machine Learning is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Computer Vision": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.0,
+      "priority_rank": 21,
+      "strategic_summary": "Computer Vision is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Biotechnology": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.0,
+      "priority_rank": 22,
+      "strategic_summary": "Biotechnology is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Blockchain": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.0,
+      "priority_rank": 23,
+      "strategic_summary": "Blockchain is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Deep Learning": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.0,
+      "priority_rank": 24,
+      "strategic_summary": "Deep Learning is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    },
+    "Space Technology": {
+      "status": "Declining",
+      "recommendation": "Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement.",
+      "risk_level": "High",
+      "opportunity_score": 30.0,
+      "priority_rank": 25,
+      "strategic_summary": "Space Technology is currently in the Declining phase with Low momentum. Recommendation: Strategic pivot / Divestment \u2014 Reallocate R&D capital towards emerging convergence technologies and optimize legacy IP enforcement."
+    }
+  }
+}
