@@ -9,20 +9,18 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.routers import auth, profiles, recommendations
+from app.routers import analytics_router, auth, profiles, recommendations
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
-    version="0.3.0",
+    version="0.4.0",
     description="AI-powered research funding and innovation intelligence.",
 )
 
-# CORS: browsers block a page served from one origin from calling another.
-# React dev runs on :5173, this API on :8000 - different ports mean different
-# ORIGINS, so without this every fetch() from React fails. The failure is
-# confusing because the request DOES reach the server and the server DOES
-# respond; the browser then discards the response. You see 200 in your
-# terminal and an error in the console.
+# CORS: React dev runs on :5173, this API on :8000 - different ports mean
+# different ORIGINS, so without this every fetch() from React fails. The
+# failure is confusing because the request DOES reach the server and the
+# server DOES respond; the browser then discards the response.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
@@ -34,6 +32,9 @@ app.add_middleware(
 app.include_router(auth.router, prefix=settings.API_V1)
 app.include_router(profiles.router, prefix=settings.API_V1)
 app.include_router(recommendations.router, prefix=settings.API_V1)
+app.include_router(analytics_router.trends, prefix=settings.API_V1)
+app.include_router(analytics_router.patents, prefix=settings.API_V1)
+app.include_router(analytics_router.score, prefix=settings.API_V1)
 
 
 @app.get("/health", tags=["system"])
