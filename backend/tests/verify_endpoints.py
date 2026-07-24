@@ -217,6 +217,116 @@ def run_tests():
         except Exception as e:
             print_result("Fetch Grant Match Breakdown", False, str(e))
 
+    # 14. Test Publication Trend Timeline
+    try:
+        res = httpx.get(f"{BASE_URL}/intelligence/trends/publications", headers=researcher_headers)
+        if res.status_code == 200:
+            print_result("Fetch Publication Timelines", True, f"Found {len(res.json())} publication timeline entries")
+        else:
+            print_result("Fetch Publication Timelines", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("Fetch Publication Timelines", False, str(e))
+
+    # 15. Test Patent Landscape classification
+    try:
+        res = httpx.get(f"{BASE_URL}/intelligence/patents/landscape", headers=researcher_headers)
+        if res.status_code == 200:
+            print_result("Fetch Patent Landscape Distribution", True, f"Categorized into {len(res.json())} classification codes")
+        else:
+            print_result("Fetch Patent Landscape Distribution", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("Fetch Patent Landscape Distribution", False, str(e))
+
+    # 16. Test Emerging Technology Recommendations
+    try:
+        res = httpx.get(f"{BASE_URL}/intelligence/patents/emerging-tech", headers=researcher_headers)
+        if res.status_code == 200:
+            print_result("Fetch Emerging Tech Recommendations", True, f"Identified {len(res.json())} high-growth sectors")
+        else:
+            print_result("Fetch Emerging Tech Recommendations", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("Fetch Emerging Tech Recommendations", False, str(e))
+
+    # 17. Test Patent Innovation Score Diagnostics
+    try:
+        res = httpx.get(f"{BASE_URL}/intelligence/patents/{patent_num}/innovation-score", headers=researcher_headers)
+        if res.status_code == 200:
+            print_result("Fetch Patent Innovation Score Card", True, f"TRL: {res.json().get('trl')}, Score: {res.json().get('score')}")
+        else:
+            print_result("Fetch Patent Innovation Score Card", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("Fetch Patent Innovation Score Card", False, str(e))
+
+    # 18. Test Fetch Notifications
+    sample_notification_id = None
+    try:
+        res = httpx.get(f"{BASE_URL}/notifications/", headers=researcher_headers)
+        if res.status_code == 200:
+            notifs = res.json()
+            if len(notifs) > 0:
+                sample_notification_id = notifs[0].get("id")
+            print_result("Fetch User Notifications & Warnings", True, f"Loaded {len(notifs)} alerts from notification center")
+        else:
+            print_result("Fetch User Notifications & Warnings", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("Fetch User Notifications & Warnings", False, str(e))
+
+    # 19. Test Mark Notification as Read
+    if sample_notification_id:
+        try:
+            res = httpx.put(f"{BASE_URL}/notifications/{sample_notification_id}/read", headers=researcher_headers)
+            if res.status_code == 200 and res.json().get("is_read") == True:
+                print_result("Mark Notification as Read", True, f"Notification {sample_notification_id} is marked as read")
+            else:
+                print_result("Mark Notification as Read", False, f"Status {res.status_code}: {res.text}")
+        except Exception as e:
+            print_result("Mark Notification as Read", False, str(e))
+
+    # 20. Test Admin User Management List
+    try:
+        res = httpx.get(f"{BASE_URL}/admin/users", headers=admin_headers)
+        if res.status_code == 200:
+            print_result("Admin: Fetch Platform Users List", True, f"Found {len(res.json())} active users")
+        else:
+            print_result("Admin: Fetch Platform Users List", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("Admin: Fetch Platform Users List", False, str(e))
+
+    # 21. Test Admin Platform Stats
+    try:
+        res = httpx.get(f"{BASE_URL}/admin/stats", headers=admin_headers)
+        if res.status_code == 200:
+            print_result("Admin: Fetch Platform Analytics Stats", True, f"Users total: {res.json().get('user_stats').get('total_users')}")
+        else:
+            print_result("Admin: Fetch Platform Analytics Stats", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("Admin: Fetch Platform Analytics Stats", False, str(e))
+
+    # 22. Test Portfolio Project List & Seeding
+    sample_project_id = None
+    try:
+        res = httpx.get(f"{BASE_URL}/portfolio/projects", headers=researcher_headers)
+        if res.status_code == 200:
+            projs = res.json()
+            if len(projs) > 0:
+                sample_project_id = projs[0].get("id")
+            print_result("Portfolio: Fetch Pipeline Projects", True, f"Loaded {len(projs)} active pipeline projects")
+        else:
+            print_result("Portfolio: Fetch Pipeline Projects", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("Portfolio: Fetch Pipeline Projects", False, str(e))
+
+    # 23. Test Portfolio Project Update Stage
+    if sample_project_id:
+        try:
+            res = httpx.put(f"{BASE_URL}/portfolio/projects/{sample_project_id}/stage?stage=PROTOTYPE", headers=researcher_headers)
+            if res.status_code == 200:
+                print_result("Portfolio: Update Project Pipeline Stage", True, f"Project {sample_project_id} stage set to {res.json().get('pipeline_stage')}")
+            else:
+                print_result("Portfolio: Update Project Pipeline Stage", False, f"Status {res.status_code}: {res.text}")
+        except Exception as e:
+            print_result("Portfolio: Update Project Pipeline Stage", False, str(e))
+
     print("="*60)
     print("Verification Completed.")
     print("="*60)

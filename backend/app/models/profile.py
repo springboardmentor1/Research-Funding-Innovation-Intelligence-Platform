@@ -37,6 +37,7 @@ class Publication(Base):
     publication_year = Column(Integer, nullable=True)
     doi = Column(String(100), nullable=True)
     url = Column(String(500), nullable=True)
+    citations = Column(Integer, default=0, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     # Relationships
@@ -53,6 +54,9 @@ class Patent(Base):
     filing_date = Column(String(50), nullable=True)  # Format: YYYY-MM-DD or standard string
     status = Column(String(50), nullable=True)  # e.g., "Pending", "Granted"
     url = Column(String(500), nullable=True)
+    citations = Column(Integer, default=0, nullable=False)
+    tech_class = Column(String(100), nullable=True)
+    trl = Column(Integer, default=1, nullable=False)  # Technology Readiness Level (1-9)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     # Relationships

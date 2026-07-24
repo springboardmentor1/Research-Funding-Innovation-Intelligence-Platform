@@ -74,12 +74,14 @@ def add_publication(db: Session, user_id: int, pub_in: PublicationCreate) -> Pub
         journal_or_conference=pub_in.journal_or_conference,
         publication_year=pub_in.publication_year,
         doi=pub_in.doi,
-        url=pub_in.url
+        url=pub_in.url,
+        citations=pub_in.citations
     )
     db.add(new_pub)
     db.commit()
     db.refresh(new_pub)
     return new_pub
+
 
 def add_patent(db: Session, user_id: int, patent_in: PatentCreate) -> Patent:
     """Add a patent to the user's research profile after ensuring patent number is unique."""
@@ -104,7 +106,10 @@ def add_patent(db: Session, user_id: int, patent_in: PatentCreate) -> Patent:
         patent_number=patent_in.patent_number,
         filing_date=patent_in.filing_date,
         status=patent_in.status,
-        url=patent_in.url
+        url=patent_in.url,
+        citations=patent_in.citations,
+        tech_class=patent_in.tech_class,
+        trl=patent_in.trl
     )
     db.add(new_patent)
     db.commit()

@@ -9,6 +9,7 @@ class PublicationBase(BaseModel):
     publication_year: int | None = Field(None, ge=1800, le=2100, description="Year of publication")
     doi: str | None = Field(None, max_length=100, description="Digital Object Identifier (DOI)")
     url: str | None = Field(None, max_length=500, description="URL to access the publication")
+    citations: int = Field(0, description="Citation count of the publication")
 
 class PublicationCreate(PublicationBase):
     pass
@@ -29,6 +30,9 @@ class PatentBase(BaseModel):
     filing_date: str | None = Field(None, max_length=50, description="Date of filing (YYYY-MM-DD)")
     status: str | None = Field(None, max_length=50, description="Status of the patent (e.g. Granted, Pending)")
     url: str | None = Field(None, max_length=500, description="URL link to the patent record")
+    citations: int = Field(0, description="Citation count of the patent")
+    tech_class: str | None = Field(None, max_length=100, description="Technology classification code")
+    trl: int = Field(1, ge=1, le=9, description="Technology Readiness Level (1-9)")
 
 class PatentCreate(PatentBase):
     pass

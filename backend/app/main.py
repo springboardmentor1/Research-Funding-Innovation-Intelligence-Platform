@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.database import Base, engine
-from app.routers import auth, profile, recommendations
+from app.routers import auth, profile, recommendations, intelligence, notification, admin, portfolio
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -10,6 +10,8 @@ async def lifespan(app: FastAPI):
     # We import the models here so that SQLAlchemy registers them in Base.metadata.
     from app.models.user import User
     from app.models.profile import ResearchProfile, Publication, Patent
+    from app.models.notification import Notification
+    from app.models.project import Project
     
     # Create tables
     Base.metadata.create_all(bind=engine)
@@ -35,6 +37,10 @@ app.add_middleware(
 app.include_router(auth.router, prefix="/auth")
 app.include_router(profile.router, prefix="/profiles")
 app.include_router(recommendations.router, prefix="/recommendations")
+app.include_router(intelligence.router, prefix="/intelligence")
+app.include_router(notification.router, prefix="/notifications")
+app.include_router(admin.router, prefix="/admin")
+app.include_router(portfolio.router, prefix="/portfolio")
 
 @app.get("/")
 def root():
