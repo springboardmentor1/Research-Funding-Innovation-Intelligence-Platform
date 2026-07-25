@@ -1,6 +1,6 @@
 from datetime import date, datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class FundingOpportunityBase(BaseModel):
@@ -41,3 +41,24 @@ class FundingOpportunityResponse(FundingOpportunityBase):
     model_config = {
         "from_attributes": True
     }
+
+class FundingPaginationResponse(BaseModel):
+    total: int
+    page: int
+    page_size: int
+    total_pages: int
+    items: list[FundingOpportunityResponse]
+
+class FundingAgencyAnalytics(BaseModel):
+    agency: str
+    count: int
+
+    model_config = ConfigDict(from_attributes=True)
+
+class FundingResearchAreaAnalytics(BaseModel):
+    research_area: str
+    count: int
+
+class FundingStatusAnalytics(BaseModel):
+    status: str
+    count: int

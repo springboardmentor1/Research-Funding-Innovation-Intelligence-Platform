@@ -31,6 +31,7 @@ def get_matching_funding(db: Session, user_id: int):
 
         score = 0
         reasons = []
+        suggestions = set()
 
         # Rule 1 - Research Area Match
         if (
@@ -39,6 +40,8 @@ def get_matching_funding(db: Session, user_id: int):
         ):
             score += 40
             reasons.append("Research area matches")
+        else:
+            suggestions.add("Update your research area to better align with this funding opportunity")
 
         # Rule 2 - Experience Match
         required_experience = funding.min_experience or 0
@@ -49,6 +52,8 @@ def get_matching_funding(db: Session, user_id: int):
         ):
             score += 20
             reasons.append("Experience requirement satisfied")
+        else:
+            suggestions.add("Gain additional research experience")
 
         # Rule 3 - Eligibility Match
         if (
@@ -58,6 +63,8 @@ def get_matching_funding(db: Session, user_id: int):
         ):
             score += 15
             reasons.append("Eligibility criteria satisfied")
+        else:
+            suggestions.add("Review the eligibility requirements before applying")
             
         # Rule 4 - Bio Keyword Match
         if profile.bio and funding.description:
@@ -69,6 +76,8 @@ def get_matching_funding(db: Session, user_id: int):
                     score += 15
                     reasons.append("Research interests match funding description")
                     break
+                else:
+                    suggestions.add("Expand your research profile with more detailed research interests")
 
         # Rule 5 - Funding Status
         if funding.status and funding.status.lower() == "open":
@@ -79,11 +88,25 @@ def get_matching_funding(db: Session, user_id: int):
         if funding.deadline and funding.deadline >= date.today():
             score += 5
             reasons.append("Application deadline is active")
+        match_percentage = f"{score}%"
+        if score >= 90:
+            match_level = "Excellent Match"
+        elif score >= 75:
+            match_level = "Very Good Match"
+        elif score >= 60:
+            match_level = "Good Match"
+        elif score >= 40:
+            match_level = "Fair Match"
+        else:
+            match_level = "Low Match"
 
         recommendations.append({
             "funding": funding,
             "score": score,
+            "match_percentage": match_percentage,
+            "match_level": match_level,
             "reasons": reasons,
+            "suggestions": sorted(list(suggestions)),
         })
 
     return recommendations

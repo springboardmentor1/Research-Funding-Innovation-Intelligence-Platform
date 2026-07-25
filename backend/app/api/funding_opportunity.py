@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
-
+from typing import Optional
+from fastapi import Query
 from app.core.database import get_db
 from app.core.dependencies import get_current_user, require_role
 
@@ -8,6 +9,10 @@ from app.schemas.funding_opportunity import (
     FundingOpportunityCreate,
     FundingOpportunityUpdate,
     FundingOpportunityResponse,
+    FundingPaginationResponse,
+    FundingAgencyAnalytics,
+    FundingResearchAreaAnalytics,
+    FundingStatusAnalytics,
 )
 
 from app.services import funding_opportunity_service
@@ -32,13 +37,59 @@ def create_funding(
     )
 @router.get(
     "",
-    response_model=list[FundingOpportunityResponse],
+    response_model=FundingPaginationResponse,
 )
 def get_all_funding(
+    research_area: Optional[str] = Query(None),
+    agency: Optional[str] = Query(None),
+    status: Optional[str] = Query(None),
+    min_amount: Optional[float] = Query(None),
+    max_amount: Optional[float] = Query(None),
+    sort: Optional[str] = Query(None),
     db: Session = Depends(get_db),
+    page: int = Query(1, ge=1),
+    page_size: int = Query(10, ge=1, le=100),
     current_user=Depends(get_current_user),
 ):
-    return funding_opportunity_service.get_all_funding_opportunities(db)
+    return funding_opportunity_service.get_funding_opportunities(
+        db=db,
+        research_area=research_area,
+        agency=agency,
+        status=status,
+        min_amount=min_amount,
+        max_amount=max_amount,
+        sort=sort,
+        page=page,
+        page_size=page_size,
+    )
+
+@router.get(
+    "/analytics/agencies",
+    response_model=list[FundingAgencyAnalytics],
+)
+def funding_by_agency(
+    db: Session = Depends(get_db),
+):
+    return funding_opportunity_service.get_funding_by_agency(db)
+
+@router.get(
+    "/analytics/research-areas",
+    response_model=list[FundingResearchAreaAnalytics],
+)
+def funding_by_research_area(
+    db: Session = Depends(get_db),
+):
+    return funding_opportunity_service.get_funding_by_research_area(db)
+
+@router.get(
+    "/analytics/status",
+    response_model=list[FundingStatusAnalytics],
+)
+def funding_by_status(
+    db: Session = Depends(get_db),
+):
+    return funding_opportunity_service.get_funding_by_status(db)
+
 @router.get(
     "/{funding_id}",
     response_model=FundingOpportunityResponse,
