@@ -61,4 +61,4 @@ class FundingResearchAreaAnalytics(BaseModel):
 
 class FundingStatusAnalytics(BaseModel):
     status: str
-    count: int
+    count: intgit
