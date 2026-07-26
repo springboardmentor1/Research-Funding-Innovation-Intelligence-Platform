@@ -19,6 +19,13 @@ function App() {
   const [searched, setSearched] = useState(false);
   const [yearData, setYearData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
+  const [grantKeyword, setGrantKeyword] = useState("");
+  const [grants, setGrants] = useState([]);
+  const [loadingGrants, setLoadingGrants] = useState(false);
+  const [patentKeyword, setPatentKeyword] = useState("");
+  const [patents, setPatents] = useState([]);
+  const [loadingPatents, setLoadingPatents] = useState(false);
+
 
   const [stats, setStats] = useState({
   papers: 0,
@@ -81,6 +88,50 @@ function App() {
   }
 
   setLoading(false);
+
+};
+
+const searchGrants = async () => {
+
+  setLoadingGrants(true);
+
+  try {
+
+    const response = await axios.get(
+      `http://127.0.0.1:8000/grants?keyword=${grantKeyword}`
+    );
+
+    setGrants(response.data.results);
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+  setLoadingGrants(false);
+
+};
+
+const searchPatents = async () => {
+
+  setLoadingPatents(true);
+
+  try {
+
+    const response = await axios.get(
+      `http://127.0.0.1:8000/patents?keyword=${patentKeyword}`
+    );
+
+    setPatents(response.data.results);
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+  setLoadingPatents(false);
 
 };
 
@@ -192,6 +243,130 @@ function App() {
       ))}
 
     </div>
+
+    <div className="dashboard">
+
+  <h2>Research Grant Search</h2>
+
+  <div className="search-box">
+
+    <input
+      type="text"
+      placeholder="Search grants..."
+      value={grantKeyword}
+      onChange={(e) => setGrantKeyword(e.target.value)}
+    />
+
+    <button onClick={searchGrants}>
+      Search
+    </button>
+
+  </div>
+
+  <br />
+
+  {loadingGrants && <h3>Searching Grants...</h3>}
+
+  {!loadingGrants && grants.length === 0 && (
+    <p>No grants found.</p>
+  )}
+
+  {grants.map((grant, index) => (
+
+    <div key={index} className="paper-card">
+
+      <h3>{grant.opportunity_title}</h3>
+
+      <p>
+        <strong>Agency:</strong> {grant.agency_name}
+      </p>
+
+      <p>
+        <strong>Category:</strong> {grant.funding_categories}
+      </p>
+
+      <p>
+        <strong>Close Date:</strong> {grant.close_date}
+      </p>
+
+      <p className="summary">
+        {grant.summary_description?.substring(0,250)}...
+      </p>
+
+      {grant.url && (
+        <a
+          href={grant.url}
+          target="_blank"
+          rel="noreferrer"
+          className="pdf-button"
+        >
+          🔗 View Grant
+        </a>
+      )}
+
+    </div>
+
+  ))}
+
+</div>
+
+  <h2>Patent Search</h2>
+
+  <div className="search-box">
+
+    <input
+      type="text"
+      placeholder="Search patents..."
+      value={patentKeyword}
+      onChange={(e) => setPatentKeyword(e.target.value)}
+    />
+
+    <button onClick={searchPatents}>
+      Search
+    </button>
+
+  </div>
+
+  <br />
+
+  {loadingPatents && <h3>Searching Patents...</h3>}
+
+  {!loadingPatents && patents.length === 0 && (
+    <p>No patents found.</p>
+  )}
+
+  {patents.map((patent, index) => (
+
+    <div key={index} className="paper-card">
+
+      <h3>{patent.title}</h3>
+
+      <p>
+        <strong>Assignee:</strong> {patent.assignee}
+      </p>
+
+      <p>
+        <strong>Inventor:</strong> {patent["inventor/author"]}
+      </p>
+
+      <p>
+        <strong>Publication Date:</strong> {patent["publication date"]}
+      </p>
+
+      {patent["result link"] && (
+        <a
+          href={patent["result link"]}
+          target="_blank"
+          rel="noreferrer"
+          className="pdf-button"
+        >
+          🔗 View Patent
+        </a>
+      )}
+
+    </div>
+
+  ))}
     <h2>Research Analytics</h2>
 
 <div className="chart-container">
