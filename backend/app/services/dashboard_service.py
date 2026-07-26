@@ -7,6 +7,9 @@ from app.services.publication_service import (
     get_journal_trend,
 )
 
+from app.services import funding_opportunity_service
+from app.services import matching_service
+
 
 def get_dashboard(
     db: Session,
@@ -32,9 +35,37 @@ def get_dashboard(
         user_id=user_id,
     )
 
+    funding_statistics = (
+        funding_opportunity_service.get_funding_statistics(db)
+    )
+
+    funding_by_agency = (
+        funding_opportunity_service.get_funding_by_agency(db)
+    )
+
+    funding_by_research_area = (
+        funding_opportunity_service.get_funding_by_research_area(db)
+    )
+
+    funding_by_status = (
+        funding_opportunity_service.get_funding_by_status(db)
+    )
+
+    recommendation_summary = (
+        matching_service.get_recommendation_summary(
+            db=db,
+            user_id=user_id,
+    )
+)
+
     return {
         "summary": summary,
         "yearly_trend": yearly_trend,
         "research_area_trend": research_area_trend,
         "journal_trend": journal_trend,
+        "funding_statistics": funding_statistics,
+        "recommendation_summary": recommendation_summary,
+        "funding_by_agency": funding_by_agency,
+        "funding_by_research_area": funding_by_research_area,
+        "funding_by_status": funding_by_status,
     }

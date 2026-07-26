@@ -7,12 +7,22 @@ from app.schemas.publication_analytics import (
     JournalTrend,
 )
 
+from app.schemas.funding_opportunity import (
+    FundingStatistics,
+    FundingAgencyAnalytics,
+    FundingResearchAreaAnalytics,
+    FundingStatusAnalytics,
+)
+from app.schemas.recommendation import RecommendationSummary
 
 class DashboardResponse(BaseModel):
     summary: PublicationSummary
-
     yearly_trend: list[YearlyPublicationTrend]
-
     research_area_trend: list[ResearchAreaTrend]
-
     journal_trend: list[JournalTrend]
+
+    funding_statistics: FundingStatistics
+    recommendation_summary: RecommendationSummary
+    funding_by_agency: list[FundingAgencyAnalytics]
+    funding_by_research_area: list[FundingResearchAreaAnalytics]
+    funding_by_status: list[FundingStatusAnalytics]

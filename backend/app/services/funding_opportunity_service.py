@@ -7,7 +7,6 @@ from app.schemas.funding_opportunity import (
     FundingOpportunityUpdate,
 )
 
-
 def create_funding_opportunity(
     db: Session,
     funding_data: FundingOpportunityCreate,
@@ -21,7 +20,6 @@ def create_funding_opportunity(
     db.refresh(funding)
 
     return funding
-
 
 def get_funding_opportunities(
     db: Session,
@@ -116,7 +114,6 @@ def update_funding_opportunity(
 
     return funding
 
-
 def delete_funding_opportunity(
     db: Session,
     funding: FundingOpportunity,
@@ -156,3 +153,23 @@ def get_funding_by_status(db: Session):
         .order_by(func.count(FundingOpportunity.id).desc())
         .all()
     )
+
+def get_funding_statistics(db: Session):
+    result = (
+        db.query(
+            func.count(FundingOpportunity.id).label("total_opportunities"),
+            func.sum(FundingOpportunity.funding_amount).label("total_funding_amount"),
+            func.avg(FundingOpportunity.funding_amount).label("average_funding_amount"),
+            func.max(FundingOpportunity.funding_amount).label("highest_funding"),
+            func.min(FundingOpportunity.funding_amount).label("lowest_funding"),
+        )
+        .first()
+    )
+
+    return {
+        "total_opportunities": result.total_opportunities or 0,
+        "total_funding_amount": float(result.total_funding_amount or 0),
+        "average_funding_amount": float(result.average_funding_amount or 0),
+        "highest_funding": float(result.highest_funding or 0),
+        "lowest_funding": float(result.lowest_funding or 0),
+    }

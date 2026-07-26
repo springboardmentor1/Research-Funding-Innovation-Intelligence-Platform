@@ -13,6 +13,7 @@ from app.schemas.funding_opportunity import (
     FundingAgencyAnalytics,
     FundingResearchAreaAnalytics,
     FundingStatusAnalytics,
+    FundingStatistics,
 )
 
 from app.services import funding_opportunity_service
@@ -111,6 +112,16 @@ def get_funding(
         )
 
     return funding
+
+@router.get(
+    "/analytics/statistics",
+    response_model=FundingStatistics,
+)
+def funding_statistics(
+    db: Session = Depends(get_db),
+):
+    return funding_opportunity_service.get_funding_statistics(db)
+
 @router.put(
     "/{funding_id}",
     response_model=FundingOpportunityResponse,

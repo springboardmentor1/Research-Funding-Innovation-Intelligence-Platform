@@ -12,7 +12,6 @@ router = APIRouter(
     tags=["Dashboard"],
 )
 
-
 @router.get(
     "",
     response_model=DashboardResponse,

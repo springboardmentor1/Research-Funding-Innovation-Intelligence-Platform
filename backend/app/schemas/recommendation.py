@@ -10,3 +10,9 @@ class RecommendationResponse(BaseModel):
     match_level: str
     reasons: list[str]
     suggestions: list[str]
+
+class RecommendationSummary(BaseModel):
+    total_recommendations: int
+    high_match: int
+    medium_match: int
+    low_match: int

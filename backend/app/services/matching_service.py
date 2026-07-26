@@ -110,3 +110,50 @@ def get_matching_funding(db: Session, user_id: int):
         })
 
     return recommendations
+
+def get_recommendation_summary(
+    db: Session,
+    user_id: int,
+):
+    recommendations = get_matching_funding(
+        db=db,
+        user_id=user_id,
+    )
+
+    high_match = 0
+    medium_match = 0
+    low_match = 0
+
+    for recommendation in recommendations:
+        score = recommendation["score"]
+
+        if score >= 80:
+            high_match += 1
+        elif score >= 50:
+            medium_match += 1
+        else:
+            low_match += 1
+
+    return {
+        "total_recommendations": len(recommendations),
+        "high_match": high_match,
+        "medium_match": medium_match,
+        "low_match": low_match,
+    }
+
+def get_top_recommendations(
+    db: Session,
+    user_id: int,
+    limit: int = 5,
+):
+    recommendations = get_matching_funding(
+        db=db,
+        user_id=user_id,
+    )
+
+    recommendations.sort(
+        key=lambda x: x["score"],
+        reverse=True,
+    )
+
+    return recommendations[:limit]

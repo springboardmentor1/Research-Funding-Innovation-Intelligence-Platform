@@ -61,4 +61,11 @@ class FundingResearchAreaAnalytics(BaseModel):
 
 class FundingStatusAnalytics(BaseModel):
     status: str
-    count: intgit
+    count: int
+
+class FundingStatistics(BaseModel):
+    total_opportunities: int
+    total_funding_amount: float
+    average_funding_amount: float
+    highest_funding: float
+    lowest_funding: float
