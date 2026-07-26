@@ -1,11 +1,9 @@
 from fastapi import APIRouter
-import pandas as pd
+from app.services.preprocessing import load_patents
 
 router = APIRouter()
 
-patents = pd.read_excel("data/patents.xlsx")
-patents = patents.fillna("")
-
+patents = load_patents()
 
 @router.get("/patents")
 def get_patents():

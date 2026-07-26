@@ -1,10 +1,9 @@
 from fastapi import APIRouter
-import pandas as pd
+from app.services.preprocessing import load_grants
 
 router = APIRouter()
 
-grants = pd.read_csv("data/grants.csv")
-grants = grants.fillna("")
+grants = load_grants()
 
 @router.get("/grants")
 def get_grants():

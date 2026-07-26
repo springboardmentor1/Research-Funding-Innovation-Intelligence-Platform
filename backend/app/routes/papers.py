@@ -1,10 +1,9 @@
 from fastapi import APIRouter
-import pandas as pd
+from app.services.preprocessing import load_papers
 
 router = APIRouter()
 
-papers = pd.read_csv("data/arxiv_ai.csv")
-papers = papers.fillna("")
+papers = load_papers()
 
 @router.get("/papers")
 def get_papers():
