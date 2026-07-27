@@ -4,7 +4,7 @@ import DashboardHeader from "../components/DashboardHeader";
 import KPISection from "../components/KPISection";
 import ChartSection from "../components/ChartSection";
 import AnalyticsSection from "../components/AnalyticsSection";
-import RecentActivity from "../components/RecentActivity";
+import DashboardInsights from "../components/DashboardInsights";
 
 function Dashboard() {
   const today = new Date();
@@ -80,8 +80,8 @@ function Dashboard() {
       {/* Analytics */}
       <AnalyticsSection />
 
-      {/* Recent Publications */}
-      <RecentActivity />
+      {/* NEW Dashboard Insights */}
+      <DashboardInsights />
 
       {/* Footer */}
       <div className="dashboard-footer">
