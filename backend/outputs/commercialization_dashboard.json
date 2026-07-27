@@ -1,0 +1,198 @@
+{
+  "summary_kpis": {
+    "total_domains_evaluated": 25,
+    "top_commercialization_domain": "Natural Language Processing",
+    "high_investment_priority_count": 1,
+    "ready_for_transfer_count": 2,
+    "short_term_timeline_count": 2,
+    "immediate_launch_count": 0
+  },
+  "strategy_distribution": [
+    {
+      "strategy": "Startup Incubation",
+      "count": 1
+    },
+    {
+      "strategy": "Strategic Partnership",
+      "count": 2
+    },
+    {
+      "strategy": "Continue Research & Development",
+      "count": 22
+    }
+  ],
+  "investment_priority_chart": [
+    {
+      "priority": "High Investment Priority",
+      "count": 1
+    },
+    {
+      "priority": "Medium Investment Priority",
+      "count": 2
+    },
+    {
+      "priority": "Low Investment Priority",
+      "count": 22
+    }
+  ],
+  "readiness_distribution": [
+    {
+      "readiness_level": "Research Stage",
+      "count": 1
+    },
+    {
+      "readiness_level": "Ready for Technology Transfer",
+      "count": 2
+    },
+    {
+      "readiness_level": "Prototype Validation Required",
+      "count": 22
+    }
+  ],
+  "partnership_summary": [
+    {
+      "partner_type": "Incubators",
+      "count": 1
+    },
+    {
+      "partner_type": "Industry",
+      "count": 2
+    },
+    {
+      "partner_type": "Research Labs",
+      "count": 22
+    }
+  ],
+  "timeline_distribution": [
+    {
+      "timeline": "3\u20135 Years",
+      "count": 23
+    },
+    {
+      "timeline": "1\u20133 Years",
+      "count": 2
+    }
+  ],
+  "market_entry_distribution": [
+    {
+      "market_entry": "Niche Market",
+      "count": 22
+    },
+    {
+      "market_entry": "Government Adoption",
+      "count": 3
+    }
+  ],
+  "recommendations_leaderboard": [
+    {
+      "rank": 1,
+      "domain": "Natural Language Processing",
+      "overall_score": 55.4,
+      "strategy": "Startup Incubation",
+      "investment_priority": "High Investment Priority",
+      "readiness": "Research Stage",
+      "partner": "Incubators",
+      "timeline": "3\u20135 Years",
+      "executive_summary": "Natural Language Processing (Overall Score: 55.4) is recommended for Startup Incubation with High Investment Priority. The technology is currently at the Research Stage status with an estimated commercialization timeline of 3\u20135 Years. Key execution steps include engaging Incubators partners and pursuing an Niche Market strategy."
+    },
+    {
+      "rank": 2,
+      "domain": "Smart Cities",
+      "overall_score": 50.0,
+      "strategy": "Strategic Partnership",
+      "investment_priority": "Medium Investment Priority",
+      "readiness": "Ready for Technology Transfer",
+      "partner": "Industry",
+      "timeline": "1\u20133 Years",
+      "executive_summary": "Smart Cities (Overall Score: 50.0) is recommended for Strategic Partnership with Medium Investment Priority. The technology is currently at the Ready for Technology Transfer status with an estimated commercialization timeline of 1\u20133 Years. Key execution steps include engaging Industry partners and pursuing an Government Adoption strategy."
+    },
+    {
+      "rank": 3,
+      "domain": "Software Engineering",
+      "overall_score": 50.0,
+      "strategy": "Strategic Partnership",
+      "investment_priority": "Medium Investment Priority",
+      "readiness": "Ready for Technology Transfer",
+      "partner": "Industry",
+      "timeline": "1\u20133 Years",
+      "executive_summary": "Software Engineering (Overall Score: 50.0) is recommended for Strategic Partnership with Medium Investment Priority. The technology is currently at the Ready for Technology Transfer status with an estimated commercialization timeline of 1\u20133 Years. Key execution steps include engaging Industry partners and pursuing an Niche Market strategy."
+    },
+    {
+      "rank": 4,
+      "domain": "5G / 6G Communications",
+      "overall_score": 36.4,
+      "strategy": "Continue Research & Development",
+      "investment_priority": "Low Investment Priority",
+      "readiness": "Prototype Validation Required",
+      "partner": "Research Labs",
+      "timeline": "3\u20135 Years",
+      "executive_summary": "5G / 6G Communications (Overall Score: 36.4) is recommended for Continue Research & Development with Low Investment Priority. The technology is currently at the Prototype Validation Required status with an estimated commercialization timeline of 3\u20135 Years. Key execution steps include engaging Research Labs partners and pursuing an Government Adoption strategy."
+    },
+    {
+      "rank": 5,
+      "domain": "Internet of Things",
+      "overall_score": 35.1,
+      "strategy": "Continue Research & Development",
+      "investment_priority": "Low Investment Priority",
+      "readiness": "Prototype Validation Required",
+      "partner": "Research Labs",
+      "timeline": "3\u20135 Years",
+      "executive_summary": "Internet of Things (Overall Score: 35.1) is recommended for Continue Research & Development with Low Investment Priority. The technology is currently at the Prototype Validation Required status with an estimated commercialization timeline of 3\u20135 Years. Key execution steps include engaging Research Labs partners and pursuing an Niche Market strategy."
+    },
+    {
+      "rank": 6,
+      "domain": "Cyber Security",
+      "overall_score": 35.0,
+      "strategy": "Continue Research & Development",
+      "investment_priority": "Low Investment Priority",
+      "readiness": "Prototype Validation Required",
+      "partner": "Research Labs",
+      "timeline": "3\u20135 Years",
+      "executive_summary": "Cyber Security (Overall Score: 35.0) is recommended for Continue Research & Development with Low Investment Priority. The technology is currently at the Prototype Validation Required status with an estimated commercialization timeline of 3\u20135 Years. Key execution steps include engaging Research Labs partners and pursuing an Government Adoption strategy."
+    },
+    {
+      "rank": 7,
+      "domain": "Semiconductor Technology",
+      "overall_score": 34.9,
+      "strategy": "Continue Research & Development",
+      "investment_priority": "Low Investment Priority",
+      "readiness": "Prototype Validation Required",
+      "partner": "Research Labs",
+      "timeline": "3\u20135 Years",
+      "executive_summary": "Semiconductor Technology (Overall Score: 34.9) is recommended for Continue Research & Development with Low Investment Priority. The technology is currently at the Prototype Validation Required status with an estimated commercialization timeline of 3\u20135 Years. Key execution steps include engaging Research Labs partners and pursuing an Niche Market strategy."
+    },
+    {
+      "rank": 8,
+      "domain": "Healthcare",
+      "overall_score": 34.5,
+      "strategy": "Continue Research & Development",
+      "investment_priority": "Low Investment Priority",
+      "readiness": "Prototype Validation Required",
+      "partner": "Research Labs",
+      "timeline": "3\u20135 Years",
+      "executive_summary": "Healthcare (Overall Score: 34.5) is recommended for Continue Research & Development with Low Investment Priority. The technology is currently at the Prototype Validation Required status with an estimated commercialization timeline of 3\u20135 Years. Key execution steps include engaging Research Labs partners and pursuing an Niche Market strategy."
+    },
+    {
+      "rank": 9,
+      "domain": "FinTech",
+      "overall_score": 34.3,
+      "strategy": "Continue Research & Development",
+      "investment_priority": "Low Investment Priority",
+      "readiness": "Prototype Validation Required",
+      "partner": "Research Labs",
+      "timeline": "3\u20135 Years",
+      "executive_summary": "FinTech (Overall Score: 34.3) is recommended for Continue Research & Development with Low Investment Priority. The technology is currently at the Prototype Validation Required status with an estimated commercialization timeline of 3\u20135 Years. Key execution steps include engaging Research Labs partners and pursuing an Niche Market strategy."
+    },
+    {
+      "rank": 10,
+      "domain": "Data Science",
+      "overall_score": 34.1,
+      "strategy": "Continue Research & Development",
+      "investment_priority": "Low Investment Priority",
+      "readiness": "Prototype Validation Required",
+      "partner": "Research Labs",
+      "timeline": "3\u20135 Years",
+      "executive_summary": "Data Science (Overall Score: 34.1) is recommended for Continue Research & Development with Low Investment Priority. The technology is currently at the Prototype Validation Required status with an estimated commercialization timeline of 3\u20135 Years. Key execution steps include engaging Research Labs partners and pursuing an Niche Market strategy."
+    }
+  ]
+}
