@@ -1,3 +1,5 @@
+from datetime import date
+
 from pydantic import BaseModel
 
 from app.schemas.publication_analytics import (
@@ -26,3 +28,19 @@ class DashboardResponse(BaseModel):
     funding_by_agency: list[FundingAgencyAnalytics]
     funding_by_research_area: list[FundingResearchAreaAnalytics]
     funding_by_status: list[FundingStatusAnalytics]
+
+class RecentPublication(BaseModel):
+    title: str
+    journal: str
+    publication_date: date
+
+
+class RecentFunding(BaseModel):
+    title: str
+    agency: str
+    deadline: date
+
+
+class RecentActivityResponse(BaseModel):
+    recent_publications: list[RecentPublication]
+    recent_funding: list[RecentFunding]

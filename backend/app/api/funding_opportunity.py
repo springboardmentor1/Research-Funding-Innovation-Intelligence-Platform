@@ -14,6 +14,7 @@ from app.schemas.funding_opportunity import (
     FundingResearchAreaAnalytics,
     FundingStatusAnalytics,
     FundingStatistics,
+    UpcomingDeadlineResponse,
 )
 
 from app.services import funding_opportunity_service
@@ -36,6 +37,7 @@ def create_funding(
         db=db,
         funding_data=funding_data,
     )
+
 @router.get(
     "",
     response_model=FundingPaginationResponse,
@@ -114,6 +116,24 @@ def get_funding(
     return funding
 
 @router.get(
+    "/deadlines/upcoming",
+    response_model=list[UpcomingDeadlineResponse],
+    summary="Get Upcoming Funding Deadlines",
+    description=(
+        "Returns all open funding opportunities whose application "
+        "deadlines are within the specified number of days."
+    ),
+)
+def upcoming_deadlines(
+    days: int = 30,
+    db: Session = Depends(get_db),
+):
+    return funding_opportunity_service.get_upcoming_deadlines(
+        db=db,
+        days=days,
+    )
+
+@router.get(
     "/analytics/statistics",
     response_model=FundingStatistics,
 )
@@ -148,6 +168,7 @@ def update_funding(
         funding=funding,
         funding_data=funding_data,
     )
+
 @router.delete("/{funding_id}")
 def delete_funding(
     funding_id: int,

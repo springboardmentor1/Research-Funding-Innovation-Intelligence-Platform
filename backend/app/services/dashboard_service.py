@@ -10,6 +10,9 @@ from app.services.publication_service import (
 from app.services import funding_opportunity_service
 from app.services import matching_service
 
+from app.models.publication import Publication
+from app.models.funding_opportunity import FundingOpportunity
+
 
 def get_dashboard(
     db: Session,
@@ -68,4 +71,26 @@ def get_dashboard(
         "funding_by_agency": funding_by_agency,
         "funding_by_research_area": funding_by_research_area,
         "funding_by_status": funding_by_status,
+    }
+
+def get_recent_activity(
+    db: Session,
+):
+    recent_publications = (
+        db.query(Publication)
+        .order_by(Publication.publication_date.desc())
+        .limit(5)
+        .all()
+    )
+
+    recent_funding = (
+        db.query(FundingOpportunity)
+        .order_by(FundingOpportunity.created_at.desc())
+        .limit(5)
+        .all()
+    )
+
+    return {
+        "recent_publications": recent_publications,
+        "recent_funding": recent_funding,
     }

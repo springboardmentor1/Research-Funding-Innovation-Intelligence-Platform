@@ -69,3 +69,11 @@ class FundingStatistics(BaseModel):
     average_funding_amount: float
     highest_funding: float
     lowest_funding: float
+
+class UpcomingDeadlineResponse(BaseModel):
+    title: str
+    agency: str
+    deadline: date
+    days_remaining: int
+
+    model_config = ConfigDict(from_attributes=True)

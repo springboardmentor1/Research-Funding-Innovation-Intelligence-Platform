@@ -21,6 +21,12 @@ router = APIRouter(
 @router.get(
     "",
     response_model=list[RecommendationResponse],
+    summary="Get Funding Recommendations",
+    description=(
+        "Returns personalized funding recommendations for the authenticated "
+        "user based on research profile, eligibility, experience, research "
+        "interests, funding status, and application deadlines."
+    ),
 )
 def get_recommendations(
     db: Session = Depends(get_db),
@@ -34,6 +40,11 @@ def get_recommendations(
 @router.get(
     "/summary",
     response_model=RecommendationSummary,
+    summary="Get Recommendation Summary",
+    description=(
+        "Returns a summary of funding recommendations grouped into "
+        "High, Medium, and Low match categories."
+    ),
 )
 def recommendation_summary(
     db: Session = Depends(get_db),
@@ -47,6 +58,11 @@ def recommendation_summary(
 @router.get(
     "/top",
     response_model=list[RecommendationResponse],
+    summary="Get Top Funding Recommendations",
+    description=(
+        "Returns the highest-scoring funding recommendations. "
+        "The number of results can be controlled using the 'limit' query parameter."
+    ),
 )
 def get_top_recommendations(
     limit: int = 5,

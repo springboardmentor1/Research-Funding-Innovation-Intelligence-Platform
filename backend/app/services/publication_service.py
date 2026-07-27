@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import func, distinct, extract
 
@@ -7,12 +8,41 @@ from app.schemas.publication import (
     PublicationUpdate,
 )
 
-
 def create_publication(
     db: Session,
     user_id: int,
     publication: PublicationCreate,
 ):
+    # Check duplicate DOI
+    if publication.doi:
+        existing_publication = (
+            db.query(Publication)
+            .filter(Publication.doi == publication.doi)
+            .first()
+        )
+
+        if existing_publication:
+            raise HTTPException(
+                status_code=400,
+                detail="Publication with this DOI already exists.",
+            )
+    # Check duplicate publication by title, journal, and publication date
+    existing_publication = (
+        db.query(Publication)
+        .filter(
+            Publication.title == publication.title,
+            Publication.journal == publication.journal,
+            Publication.publication_date == publication.publication_date,
+        )
+        .first()
+    )
+
+    if existing_publication:
+        raise HTTPException(
+            status_code=400,
+            detail="Publication already exists.",
+        )
+
     db_publication = Publication(
         **publication.model_dump(),
         user_id=user_id,
@@ -24,7 +54,6 @@ def create_publication(
 
     return db_publication
 
-
 def get_publications(
     db: Session,
     user_id: int,
@@ -34,7 +63,6 @@ def get_publications(
         .filter(Publication.user_id == user_id)
         .all()
     )
-
 
 def get_publication(
     db: Session,
@@ -50,7 +78,6 @@ def get_publication(
         .first()
     )
 
-
 def update_publication(
     db: Session,
     publication: Publication,
@@ -64,15 +91,12 @@ def update_publication(
 
     return publication
 
-
 def delete_publication(
     db: Session,
     publication: Publication,
 ):
     db.delete(publication)
     db.commit()
-
-
 
 def get_publication_summary(
     db: Session,
@@ -109,6 +133,7 @@ def get_publication_summary(
         "total_research_areas": total_research_areas,
         "total_journals": total_journals,
     }
+
 def get_yearly_publication_trend(
     db: Session,
     user_id: int,

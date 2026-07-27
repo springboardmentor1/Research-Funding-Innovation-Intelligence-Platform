@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 from typing import Optional
+from datetime import date
 from app.models.funding_opportunity import FundingOpportunity
 from app.schemas.funding_opportunity import (
     FundingOpportunityCreate,
@@ -173,3 +174,40 @@ def get_funding_statistics(db: Session):
         "highest_funding": float(result.highest_funding or 0),
         "lowest_funding": float(result.lowest_funding or 0),
     }
+
+def get_upcoming_deadlines(
+    db: Session,
+    days: int = 30,
+):
+    today = date.today()
+
+    opportunities = (
+        db.query(FundingOpportunity)
+        .filter(
+            FundingOpportunity.deadline >= today,
+            FundingOpportunity.status == "Open",
+        )
+        .all()
+    )
+
+    upcoming = []
+
+    for opportunity in opportunities:
+        days_remaining = (
+            opportunity.deadline - today
+        ).days
+
+        if days_remaining <= days:
+            upcoming.append(
+                {
+                    "title": opportunity.title,
+                    "agency": opportunity.agency,
+                    "deadline": opportunity.deadline,
+                    "days_remaining": days_remaining,
+                }
+            )
+
+    return sorted(
+        upcoming,
+        key=lambda item: item["days_remaining"],
+    )
