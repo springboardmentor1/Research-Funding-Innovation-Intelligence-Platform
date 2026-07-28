@@ -17,35 +17,42 @@ function KPISection() {
     async function loadDashboard() {
       try {
         const data = await getDashboardCounts();
+
         setCounts(data);
+
+        setError(false);
       } catch (error) {
         console.error(error);
         setError(true);
-
-        setCounts({
-          publications: 0,
-          funding: 0,
-          patents: 0,
-          organizations: 0,
-          researchers: 0,
-        });
       } finally {
         setLoading(false);
       }
     }
 
+    // Initial Load
     loadDashboard();
+
+    // Refresh every 30 seconds
+    const interval = setInterval(() => {
+      loadDashboard();
+    }, 30000);
+
+    // Cleanup
+    return () => clearInterval(interval);
   }, []);
 
-  if (loading) return <h3>Loading Dashboard...</h3>;
+  if (loading) {
+    return <h3>Loading Dashboard...</h3>;
+  }
 
-  if (error)
+  if (error) {
     return (
       <div className="summary-card">
         <h2>Dashboard Unavailable</h2>
         <p>Unable to load dashboard statistics.</p>
       </div>
     );
+  }
 
   const cards = [
     {
@@ -88,15 +95,25 @@ function KPISection() {
   return (
     <div className="kpi-grid">
       {cards.map((card, index) => (
-        <div key={index} className={`kpi-card ${card.className}`}>
+        <div
+          key={index}
+          className={`kpi-card ${card.className}`}
+        >
           <div className="kpi-header">
             <span className="kpi-icon">{card.icon}</span>
-            <span className="kpi-title">{card.title}</span>
+
+            <span className="kpi-title">
+              {card.title}
+            </span>
           </div>
 
-          <div className="kpi-value">{card.value}</div>
+          <div className="kpi-value">
+            {Number(card.value).toLocaleString()}
+          </div>
 
-          <div className="kpi-footer">✔ {card.footer}</div>
+          <div className="kpi-footer">
+            ✔ {card.footer}
+          </div>
         </div>
       ))}
     </div>

@@ -6,20 +6,30 @@ function DashboardInsights() {
   const [insights, setInsights] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function loadInsights() {
-      try {
-        const data = await getDashboardInsights();
-        setInsights(data);
-      } catch (error) {
-        console.error("Dashboard Insights Error:", error);
-      } finally {
-        setLoading(false);
-      }
+useEffect(() => {
+  async function loadInsights() {
+    try {
+      const data = await getDashboardInsights();
+      setInsights(data);
+    } catch (error) {
+      console.error("Dashboard Insights Error:", error);
+    } finally {
+      setLoading(false);
     }
+  }
 
+  // Initial load
+  loadInsights();
+
+  // Refresh every 30 seconds
+  const interval = setInterval(() => {
     loadInsights();
-  }, []);
+  }, 30000);
+
+  // Cleanup
+  return () => clearInterval(interval);
+
+}, []);
 
   if (loading) {
     return (
