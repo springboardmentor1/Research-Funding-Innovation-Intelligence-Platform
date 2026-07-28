@@ -8,6 +8,7 @@ from app.schemas.research_profile import (
     ResearchProfileCreate,
     ResearchProfileUpdate,
     ResearchProfileResponse,
+    ProfileCompletionResponse,
 )
 
 from app.services import research_profile_service
@@ -21,7 +22,11 @@ router = APIRouter(
 @router.post(
     "",
     response_model=ResearchProfileResponse,
-    status_code=201,
+    summary="Create Research Profile",
+    description=(
+        "Creates a research profile for the authenticated user."
+    ),
+    response_description="Research profile created successfully",
 )
 def create_profile(
     profile_data: ResearchProfileCreate,
@@ -44,6 +49,11 @@ def create_profile(
 @router.get(
     "/me",
     response_model=ResearchProfileResponse,
+    summary="Get My Research Profile",
+    description=(
+        "Returns the authenticated user's research profile."
+    ),
+    response_description="Research profile retrieved successfully",
 )
 def get_my_profile(
     db: Session = Depends(get_db),
@@ -66,6 +76,11 @@ def get_my_profile(
 @router.put(
     "/me",
     response_model=ResearchProfileResponse,
+    summary="Update Research Profile",
+    description=(
+        "Updates the authenticated user's research profile."
+    ),
+    response_description="Research profile updated successfully",
 )
 def update_my_profile(
     profile_data: ResearchProfileUpdate,
@@ -89,8 +104,32 @@ def update_my_profile(
         update_data=profile_data,
     )
 
+@router.get(
+    "/completion",
+    response_model=ProfileCompletionResponse,
+    summary="Get Research Profile Completion",
+    description=(
+        "Returns the completion percentage of the authenticated user's "
+        "research profile along with completed and missing fields."
+    ),
+)
+def get_completion(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return research_profile_service.get_profile_completion(
+        db=db,
+        user_id=current_user.id,
+    )
 
-@router.delete("/me")
+@router.delete(
+    "/me",
+    summary="Delete Research Profile",
+    description=(
+        "Deletes the authenticated user's research profile."
+    ),
+    response_description="Research profile deleted successfully",
+)
 def delete_my_profile(
     db: Session = Depends(get_db),
     current_user=Depends(get_current_user),

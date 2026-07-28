@@ -26,7 +26,10 @@ router = APIRouter(
 @router.post(
     "",
     response_model=FundingOpportunityResponse,
-    status_code=status.HTTP_201_CREATED,
+    status_code=201,
+    summary="Create Funding Opportunity",
+    description="Creates a new funding opportunity.",
+    response_description="Funding opportunity created successfully",
 )
 def create_funding(
     funding_data: FundingOpportunityCreate,
@@ -41,6 +44,12 @@ def create_funding(
 @router.get(
     "",
     response_model=FundingPaginationResponse,
+    summary="Get Funding Opportunities",
+    description=(
+        "Returns funding opportunities with support for "
+        "searching, filtering, sorting, and pagination."
+    ),
+    response_description="Funding opportunities retrieved successfully",
 )
 def get_all_funding(
     research_area: Optional[str] = Query(None),
@@ -67,8 +76,14 @@ def get_all_funding(
     )
 
 @router.get(
-    "/analytics/agencies",
+    "/analytics/agency",
     response_model=list[FundingAgencyAnalytics],
+    summary="Funding Analytics by Agency",
+    description=(
+        "Returns the number of funding opportunities "
+        "grouped by funding agency."
+    ),
+    response_description="Funding agency analytics retrieved successfully",
 )
 def funding_by_agency(
     db: Session = Depends(get_db),
@@ -76,8 +91,14 @@ def funding_by_agency(
     return funding_opportunity_service.get_funding_by_agency(db)
 
 @router.get(
-    "/analytics/research-areas",
+    "/analytics/research-area",
     response_model=list[FundingResearchAreaAnalytics],
+    summary="Funding Analytics by Research Area",
+    description=(
+        "Returns funding opportunities grouped "
+        "by research area."
+    ),
+    response_description="Funding research area analytics retrieved successfully",
 )
 def funding_by_research_area(
     db: Session = Depends(get_db),
@@ -87,6 +108,12 @@ def funding_by_research_area(
 @router.get(
     "/analytics/status",
     response_model=list[FundingStatusAnalytics],
+    summary="Funding Analytics by Status",
+    description=(
+        "Returns funding opportunities grouped "
+        "by their current status."
+    ),
+    response_description="Funding status analytics retrieved successfully",
 )
 def funding_by_status(
     db: Session = Depends(get_db),
@@ -96,6 +123,12 @@ def funding_by_status(
 @router.get(
     "/{funding_id}",
     response_model=FundingOpportunityResponse,
+    summary="Get Funding Opportunity",
+    description=(
+        "Returns the details of a specific funding opportunity "
+        "using its unique identifier."
+    ),
+    response_description="Funding opportunity retrieved successfully",
 )
 def get_funding(
     funding_id: int,
@@ -134,8 +167,15 @@ def upcoming_deadlines(
     )
 
 @router.get(
-    "/analytics/statistics",
+    "/statistics",
     response_model=FundingStatistics,
+    summary="Get Funding Statistics",
+    description=(
+        "Returns overall funding statistics including total "
+        "opportunities, funding amount, average funding, "
+        "highest funding, and lowest funding."
+    ),
+    response_description="Funding statistics retrieved successfully",
 )
 def funding_statistics(
     db: Session = Depends(get_db),
@@ -145,6 +185,9 @@ def funding_statistics(
 @router.put(
     "/{funding_id}",
     response_model=FundingOpportunityResponse,
+    summary="Update Funding Opportunity",
+    description="Updates an existing funding opportunity.",
+    response_description="Funding opportunity updated successfully",
 )
 def update_funding(
     funding_id: int,
@@ -169,7 +212,12 @@ def update_funding(
         funding_data=funding_data,
     )
 
-@router.delete("/{funding_id}")
+@router.delete(
+    "/{funding_id}",
+    summary="Delete Funding Opportunity",
+    description="Deletes an existing funding opportunity.",
+    response_description="Funding opportunity deleted successfully",
+)
 def delete_funding(
     funding_id: int,
     db: Session = Depends(get_db),

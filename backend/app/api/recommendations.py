@@ -23,10 +23,13 @@ router = APIRouter(
     response_model=list[RecommendationResponse],
     summary="Get Funding Recommendations",
     description=(
-        "Returns personalized funding recommendations for the authenticated "
-        "user based on research profile, eligibility, experience, research "
-        "interests, funding status, and application deadlines."
+        "Returns personalized funding recommendations for the "
+        "authenticated user based on their research profile. "
+        "Each recommendation includes a match score, match level, "
+        "reasons for the recommendation, and suggestions for "
+        "improving eligibility."
     ),
+    response_description="Funding recommendations retrieved successfully",
 )
 def get_recommendations(
     db: Session = Depends(get_db),
@@ -42,9 +45,11 @@ def get_recommendations(
     response_model=RecommendationSummary,
     summary="Get Recommendation Summary",
     description=(
-        "Returns a summary of funding recommendations grouped into "
-        "High, Medium, and Low match categories."
+        "Returns a summary of the authenticated user's funding "
+        "recommendations, including the number of high, medium, "
+        "and low match opportunities."
     ),
+    response_description="Recommendation summary retrieved successfully",
 )
 def recommendation_summary(
     db: Session = Depends(get_db),

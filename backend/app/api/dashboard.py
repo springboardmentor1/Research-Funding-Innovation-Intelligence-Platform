@@ -23,12 +23,13 @@ router = APIRouter(
 @router.get(
     "",
     response_model=DashboardResponse,
-    summary="Get Dashboard Analytics",
+    summary="Get User Dashboard",
     description=(
-        "Returns a complete analytics dashboard including publication "
-        "statistics, publication trends, funding analytics, and "
-        "recommendation summary for the authenticated user."
+        "Returns a comprehensive dashboard for the authenticated user, "
+        "including publication analytics, funding analytics, "
+        "recommendation summary, and research trends."
     ),
+    response_description="Dashboard analytics retrieved successfully",
 )
 def dashboard(
     db: Session = Depends(get_db),

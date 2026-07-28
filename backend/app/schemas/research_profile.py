@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from pydantic import BaseModel
 
 
 class ResearchProfileBase(BaseModel):
@@ -31,3 +32,9 @@ class ResearchProfileResponse(ResearchProfileBase):
     model_config = {
         "from_attributes": True
     }
+
+class ProfileCompletionResponse(BaseModel):
+    completion_percentage: int
+    completed_fields: int
+    total_fields: int
+    missing_fields: list[str]

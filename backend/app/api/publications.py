@@ -35,7 +35,15 @@ router = APIRouter(
 )
 
 
-@router.post("/", response_model=PublicationResponse)
+@router.post(
+    "/",
+    response_model=PublicationResponse,
+    summary="Create Publication",
+    description=(
+        "Creates a new publication for the authenticated user."
+    ),
+    response_description="Publication created successfully",
+)
 def create_new_publication(
     publication: PublicationCreate,
     db: Session = Depends(get_db),
@@ -48,7 +56,15 @@ def create_new_publication(
     )
 
 
-@router.get("/", response_model=list[PublicationResponse])
+@router.get(
+    "/",
+    response_model=list[PublicationResponse],
+    summary="Get My Publications",
+    description=(
+        "Returns all publications created by the authenticated user."
+    ),
+    response_description="Publications retrieved successfully",
+)
 def get_my_publications(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
@@ -61,6 +77,12 @@ def get_my_publications(
 @router.get(
     "/analytics/summary",
     response_model=PublicationSummary,
+    summary="Publication Summary",
+    description=(
+        "Returns summary statistics including total publications, "
+        "research areas, and journals."
+    ),
+    response_description="Publication summary retrieved successfully",
 )
 def publication_summary(
     db: Session = Depends(get_db),
@@ -71,7 +93,15 @@ def publication_summary(
         user_id=current_user.id,
     )
 
-@router.get("/{publication_id}", response_model=PublicationResponse)
+@router.get(
+    "/{publication_id}",
+    response_model=PublicationResponse,
+    summary="Get Publication Details",
+    description=(
+        "Returns detailed information about a specific publication."
+    ),
+    response_description="Publication retrieved successfully",
+)
 def get_publication_by_id(
     publication_id: int,
     db: Session = Depends(get_db),
@@ -89,7 +119,15 @@ def get_publication_by_id(
     return publication
 
 
-@router.put("/{publication_id}", response_model=PublicationResponse)
+@router.put(
+    "/{publication_id}",
+    response_model=PublicationResponse,
+    summary="Update Publication",
+    description=(
+        "Updates an existing publication belonging to the authenticated user."
+    ),
+    response_description="Publication updated successfully",
+)
 def update_my_publication(
     publication_id: int,
     publication_data: PublicationUpdate,
@@ -114,6 +152,11 @@ def update_my_publication(
 @router.get(
     "/analytics/yearly",
     response_model=list[YearlyPublicationTrend],
+    summary="Yearly Publication Trend",
+    description=(
+        "Returns publication counts grouped by publication year."
+    ),
+    response_description="Yearly publication trend retrieved successfully",
 )
 def yearly_publication_trend(
     db: Session = Depends(get_db),
@@ -124,7 +167,14 @@ def yearly_publication_trend(
         user_id=current_user.id,
     )
 
-@router.delete("/{publication_id}")
+@router.delete(
+    "/{publication_id}",
+    summary="Delete Publication",
+    description=(
+        "Deletes a publication belonging to the authenticated user."
+    ),
+    response_description="Publication deleted successfully",
+)
 def delete_my_publication(
     publication_id: int,
     db: Session = Depends(get_db),
@@ -149,6 +199,11 @@ def delete_my_publication(
 @router.get(
     "/analytics/research-areas",
     response_model=list[ResearchAreaTrend],
+    summary="Research Area Trend",
+    description=(
+        "Returns publication counts grouped by research area."
+    ),
+    response_description="Research area trend retrieved successfully",
 )
 def research_area_trend(
     db: Session = Depends(get_db),
@@ -162,6 +217,11 @@ def research_area_trend(
 @router.get(
     "/analytics/journals",
     response_model=list[JournalTrend],
+    summary="Journal Trend",
+    description=(
+        "Returns publication counts grouped by journal."
+    ),
+    response_description="Journal trend retrieved successfully",
 )
 def journal_trend(
     db: Session = Depends(get_db),
