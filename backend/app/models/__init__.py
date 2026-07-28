@@ -5,3 +5,4 @@ from .research_profile import ResearchProfile
 from .funding import FundingOpportunity
 from .user_funding import UserFunding
 from .publication import Publication
+from app.models.patent import Patent
