@@ -11,6 +11,7 @@ from api.patents import patents_bp
 from api.organizations import organizations_bp
 from api.researchers import researchers_bp
 from api.notifications import notifications_bp
+from api.research_insights import research_insights_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -26,6 +27,7 @@ app.register_blueprint(patents_bp)
 app.register_blueprint(organizations_bp)
 app.register_blueprint(researchers_bp)
 app.register_blueprint(notifications_bp)
+app.register_blueprint(research_insights_bp)
 
 
 @app.route("/")

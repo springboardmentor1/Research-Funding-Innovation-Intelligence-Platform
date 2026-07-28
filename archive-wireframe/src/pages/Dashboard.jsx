@@ -1,7 +1,8 @@
-import StatisticsSummary from "../components/StatisticsSummary";
 import Layout from "../components/Layout";
 import DashboardHeader from "../components/DashboardHeader";
 import KPISection from "../components/KPISection";
+import ResearchInsights from "../components/ResearchInsights";
+import StatisticsSummary from "../components/StatisticsSummary";
 import ChartSection from "../components/ChartSection";
 import AnalyticsSection from "../components/AnalyticsSection";
 import DashboardInsights from "../components/DashboardInsights";
@@ -39,10 +40,10 @@ function Dashboard() {
           Welcome to the{" "}
           <strong>
             Research Funding & Innovation Intelligence Platform
-          </strong>
-          . Explore publications, funding opportunities, patents,
-          research organizations, and researchers from one centralized
-          dashboard.
+          </strong>.
+          Explore publications, funding opportunities, patents,
+          research organizations, and researcher profiles from one
+          centralized dashboard.
         </p>
 
         <p
@@ -58,6 +59,9 @@ function Dashboard() {
       {/* KPI Cards */}
       <KPISection />
 
+      {/* NEW Research Intelligence */}
+      <ResearchInsights />
+
       {/* Statistics Summary */}
       <StatisticsSummary />
 
@@ -70,7 +74,8 @@ function Dashboard() {
           intelligent dashboard. Users can search publications,
           discover funding opportunities, analyze patent activity,
           explore research organizations and researcher profiles,
-          visualize trends, and generate downloadable reports.
+          visualize trends, generate reports, and gain research
+          intelligence through analytics.
         </p>
       </div>
 
@@ -80,7 +85,7 @@ function Dashboard() {
       {/* Analytics */}
       <AnalyticsSection />
 
-      {/* NEW Dashboard Insights */}
+      {/* Latest Publications, Emerging Technologies & Alerts */}
       <DashboardInsights />
 
       {/* Footer */}
