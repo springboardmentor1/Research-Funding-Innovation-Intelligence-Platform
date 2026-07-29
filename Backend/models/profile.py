@@ -14,6 +14,9 @@ class ResearchProfile(Base):
     bio = Column(Text, default="", nullable=True)
     organization = Column(String(255), default="", nullable=True)
     department = Column(String(255), default="", nullable=True)
+    career_stage = Column(String(100), nullable=True)
+    institution_type = Column(String(100), nullable=True)
+    region = Column(String(100), nullable=True)
 
     # Stored as serialized JSON strings for cross-database compatibility (SQLite + PostgreSQL)
     research_domains_json = Column("research_domains", Text, default="[]", nullable=False)

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, User, Database, LogOut } from 'lucide-react';
+import { Sparkles, User, Database, LogOut, LayoutDashboard } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, user, onLogout }) {
   return (
@@ -15,7 +15,7 @@ export default function Navbar({ activeTab, setActiveTab, user, onLogout }) {
       top: 0,
       zIndex: 1000
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }} onClick={() => setActiveTab('profile')}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer' }} onClick={() => setActiveTab('dashboard')}>
         <div style={{
           width: '38px',
           height: '38px',
@@ -39,6 +39,26 @@ export default function Navbar({ activeTab, setActiveTab, user, onLogout }) {
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.04)', padding: '0.35rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' }}>
+        <button
+          onClick={() => setActiveTab('dashboard')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            padding: '0.5rem 1rem',
+            borderRadius: '8px',
+            border: 'none',
+            background: activeTab === 'dashboard' ? '#6366F1' : 'transparent',
+            color: activeTab === 'dashboard' ? '#fff' : '#9CA3AF',
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'all 0.2s'
+          }}
+        >
+          <LayoutDashboard size={16} />
+          Intelligence Dashboard
+        </button>
+
         <button
           onClick={() => setActiveTab('profile')}
           style={{

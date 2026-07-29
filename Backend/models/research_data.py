@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, Integer, String, Text, JSON
 from database.db import Base
 
 class Publication(Base):
@@ -10,6 +10,7 @@ class Publication(Base):
     authors = Column(Text, nullable=False)  # Semicolon joined author names
     domain = Column(String(255), nullable=True)  # Primary topic or concept
     year = Column(Integer, nullable=False)
+    keywords = Column(JSON, nullable=True)
     cited_by_count = Column(Integer, default=0, nullable=False)
 
 

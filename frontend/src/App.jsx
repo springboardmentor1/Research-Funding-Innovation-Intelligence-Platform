@@ -4,13 +4,14 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ProfileForm from './pages/ProfileForm';
 import ResearchDataList from './pages/ResearchDataList';
+import ResearchIntelligence from './pages/ResearchIntelligence';
 import api from './services/api';
 
 export default function App() {
   const [user, setUser] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
   const [authView, setAuthView] = useState('login'); // 'login' or 'register'
-  const [activeTab, setActiveTab] = useState('profile'); // 'profile' or 'research'
+  const [activeTab, setActiveTab] = useState('dashboard'); // 'profile' or 'research' or 'dashboard'
 
   useEffect(() => {
     checkCurrentUser();
@@ -26,7 +27,7 @@ export default function App() {
     try {
       const res = await api.get('/auth/me');
       setUser(res.data);
-      setActiveTab('profile'); // Default to profile tab upon login
+      setActiveTab('dashboard'); // Default to dashboard tab upon login
     } catch (err) {
       console.error('Invalid token or session expired', err);
       localStorage.removeItem('auth_token');
@@ -44,7 +45,7 @@ export default function App() {
 
   const handleLoginSuccess = (userData) => {
     setUser(userData);
-    setActiveTab('profile');
+    setActiveTab('dashboard');
   };
 
   if (loadingAuth) {
@@ -91,6 +92,7 @@ export default function App() {
       />
 
       <main style={{ flex: 1 }}>
+        {activeTab === 'dashboard' && <ResearchIntelligence />}
         {activeTab === 'profile' && <ProfileForm user={user} />}
         {activeTab === 'research' && <ResearchDataList />}
       </main>

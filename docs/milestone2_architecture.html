@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milestone 2 – System Architecture Diagram</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FAFBFC;
+    color: #1a1a2e;
+    min-height: 100vh;
+    padding: 30px;
+  }
+
+  /* ─── Header ─── */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .header h1 {
+    font-size: 1.7rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #0F172A;
+    text-transform: uppercase;
+  }
+  .header .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #2563EB, #7C3AED);
+    color: #fff;
+    padding: 6px 22px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  /* ─── Main Grid Layout ─── */
+  .architecture {
+    display: grid;
+    grid-template-columns: 160px 1fr 170px;
+    grid-template-rows: auto;
+    gap: 16px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* ─── Sidebar Boxes (Users & External Sources) ─── */
+  .sidebar-box {
+    border-radius: 12px;
+    padding: 16px 14px;
+    border: 2px solid;
+  }
+  .sidebar-box h3 {
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sidebar-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .sidebar-box li {
+    font-size: 0.72rem;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .sidebar-box li:last-child { border-bottom: none; }
+  .sidebar-box li .icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  .users-box {
+    border-color: #818CF8;
+    background: linear-gradient(180deg, #EEF2FF, #F5F3FF);
+    grid-row: 1 / 4;
+  }
+  .users-box h3 { color: #4338CA; }
+  .users-box .icon { background: #C7D2FE; color: #4338CA; }
+
+  .ext-box {
+    border-color: #F59E0B;
+    background: linear-gradient(180deg, #FFFBEB, #FEF3C7);
+    grid-row: 1 / 4;
+  }
+  .ext-box h3 { color: #B45309; }
+  .ext-box .icon { background: #FDE68A; color: #B45309; }
+
+  /* ─── Center Column ─── */
+  .center-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* ─── Layer Containers ─── */
+  .layer {
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 2px solid;
+    position: relative;
+  }
+  .layer-title {
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .layer-title .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+
+  /* Access Layer */
+  .access-layer {
+    border-color: #60A5FA;
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  }
+  .access-layer .layer-title { color: #1D4ED8; }
+  .access-layer .dot { background: #3B82F6; }
+  .access-items {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .access-item {
+    background: white;
+    border: 1px solid #BFDBFE;
+    border-radius: 10px;
+    padding: 10px 18px;
+    text-align: center;
+    min-width: 120px;
+    box-shadow: 0 2px 6px rgba(59,130,246,0.08);
+  }
+  .access-item .emoji { font-size: 1.4rem; margin-bottom: 4px; }
+  .access-item span { font-size: 0.72rem; font-weight: 600; display: block; color: #1E40AF; }
+
+  /* Milestone 2 Modules - The Core Services */
+  .modules-layer {
+    border-color: #34D399;
+    background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+  }
+  .modules-layer .layer-title { color: #065F46; }
+  .modules-layer .dot { background: #10B981; }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .module-card {
+    background: white;
+    border-radius: 10px;
+    border: 1.5px solid;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .module-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .module-card .module-num {
+    position: absolute;
+    top: 8px; left: 10px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: white;
+  }
+  .module-card h4 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    padding-left: 28px;
+    line-height: 1.35;
+  }
+  .module-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .module-card li {
+    font-size: 0.64rem;
+    color: #475569;
+    padding: 2px 0;
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .module-card li::before {
+    content: '•';
+    position: absolute;
+    left: 2px;
+    font-weight: bold;
+  }
+
+  /* Module Color Schemes */
+  .mod-blue { border-color: #93C5FD; }
+  .mod-blue::before { background: #3B82F6; }
+  .mod-blue .module-num { background: #3B82F6; }
+  .mod-blue h4 { color: #1D4ED8; }
+
+  .mod-purple { border-color: #C4B5FD; }
+  .mod-purple::before { background: #8B5CF6; }
+  .mod-purple .module-num { background: #8B5CF6; }
+  .mod-purple h4 { color: #6D28D9; }
+
+  .mod-emerald { border-color: #6EE7B7; }
+  .mod-emerald::before { background: #10B981; }
+  .mod-emerald .module-num { background: #10B981; }
+  .mod-emerald h4 { color: #065F46; }
+
+  .mod-amber { border-color: #FCD34D; }
+  .mod-amber::before { background: #F59E0B; }
+  .mod-amber .module-num { background: #F59E0B; }
+  .mod-amber h4 { color: #92400E; }
+
+  .mod-rose { border-color: #FDA4AF; }
+  .mod-rose::before { background: #F43F5E; }
+  .mod-rose .module-num { background: #F43F5E; }
+  .mod-rose h4 { color: #BE123C; }
+
+  .mod-teal { border-color: #5EEAD4; }
+  .mod-teal::before { background: #14B8A6; }
+  .mod-teal .module-num { background: #14B8A6; }
+  .mod-teal h4 { color: #0F766E; }
+
+  /* Backend Architecture Layer */
+  .backend-layer {
+    border-color: #A78BFA;
+    background: linear-gradient(135deg, #F5F3FF, #EDE9FE);
+  }
+  .backend-layer .layer-title { color: #5B21B6; }
+  .backend-layer .dot { background: #8B5CF6; }
+  .backend-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .backend-item {
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #DDD6FE;
+    box-shadow: 0 1px 4px rgba(139,92,246,0.06);
+  }
+  .backend-item .emoji { font-size: 1.2rem; margin-bottom: 4px; }
+  .backend-item .label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: block;
+    color: #5B21B6;
+    margin-bottom: 3px;
+  }
+  .backend-item .desc {
+    font-size: 0.6rem;
+    color: #7C7C9A;
+    line-height: 1.3;
+  }
+
+  /* Data & AI Layer (side by side) */
+  .bottom-layers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .data-layer {
+    border-color: #F59E0B;
+    background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+  }
+  .data-layer .layer-title { color: #92400E; }
+  .data-layer .dot { background: #F59E0B; }
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .data-item {
+    background: white;
+    border-radius: 8px;
+    padding: 8px 10px;
+    text-align: center;
+    border: 1px solid #FDE68A;
+  }
+  .data-item .emoji { font-size: 1rem; }
+  .data-item .label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #92400E;
+    display: block;
+  }
+  .data-item .desc {
+    font-size: 0.58rem;
+    color: #78716C;
+  }
+
+  .ai-layer {
+    border-color: #F43F5E;
+    background: linear-gradient(135deg, #FFF1F2, #FFE4E6);
+  }
+  .ai-layer .layer-title { color: #9F1239; }
+  .ai-layer .dot { background: #F43F5E; }
+
+  /* Flow Arrows between layers */
+  .flow-connector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 4px 0;
+    flex-wrap: wrap;
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: #6B7280;
+    background: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid #E5E7EB;
+  }
+  .flow-arrow .arrow-icon {
+    font-size: 0.9rem;
+    color: #3B82F6;
+  }
+
+  /* Legend */
+  .legend {
+    margin-top: 20px;
+    padding: 14px 20px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .legend-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #374151;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #6B7280;
+  }
+  .legend-line {
+    width: 28px;
+    height: 3px;
+    border-radius: 2px;
+  }
+  .legend-line.solid { background: #3B82F6; }
+  .legend-line.dashed { border-top: 2.5px dashed #10B981; background: none; }
+  .legend-line.dotted { border-top: 2.5px dotted #F59E0B; background: none; }
+  .legend-icon {
+    width: 16px; height: 16px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.55rem; font-weight: 800; color: white;
+  }
+
+  /* ── New: Milestone badge ── */
+  .milestone-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    font-size: 0.56rem;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+  }
+  .milestone-tag.m1 {
+    background: linear-gradient(135deg, #6366F1, #4F46E5);
+  }
+
+  /* Testing layer */
+  .testing-layer {
+    border-color: #06B6D4;
+    background: linear-gradient(135deg, #ECFEFF, #CFFAFE);
+  }
+  .testing-layer .layer-title { color: #0E7490; }
+  .testing-layer .dot { background: #06B6D4; }
+  .testing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .testing-item {
+    background: white;
+    border-radius: 8px;
+    padding: 8px 10px;
+    text-align: center;
+    border: 1px solid #A5F3FC;
+  }
+  .testing-item .emoji { font-size: 1rem; }
+  .testing-item .label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #0E7490;
+    display: block;
+  }
+  .testing-item .desc {
+    font-size: 0.58rem;
+    color: #6B7280;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<div class="header">
+  <h1>AI Research Funding & Innovation Intelligence Platform</h1>
+  <div class="badge">Milestone 2 — System Architecture Diagram</div>
+</div>
+
+<!-- ═══════════════════ ARCHITECTURE GRID ═══════════════════ -->
+<div class="architecture">
+
+  <!-- ─── LEFT SIDEBAR: USERS ─── -->
+  <div class="sidebar-box users-box">
+    <h3>👥 Users</h3>
+    <ul>
+      <li><span class="icon">🔬</span> Researchers</li>
+      <li><span class="icon">🚀</span> Startup Founders</li>
+      <li><span class="icon">💡</span> Innovation Managers</li>
+      <li><span class="icon">🏛️</span> Universities</li>
+      <li><span class="icon">🔧</span> Administrators</li>
+    </ul>
+    <div style="margin-top: 14px; padding-top: 10px; border-top: 1.5px solid #C7D2FE;">
+      <h3 style="font-size: 0.7rem; color: #4338CA;">🖥️ Client Apps</h3>
+      <ul>
+        <li><span class="icon">⚛️</span> React SPA (Vite)</li>
+        <li><span class="icon">📱</span> Responsive Web</li>
+        <li><span class="icon">🔑</span> JWT Auth Session</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ─── CENTER COLUMN ─── -->
+  <div class="center-col">
+
+    <!-- ACCESS LAYER -->
+    <div class="layer access-layer">
+      <div class="layer-title"><span class="dot"></span> ACCESS LAYER <span class="milestone-tag m1">M1</span></div>
+      <div class="access-items">
+        <div class="access-item">
+          <div class="emoji">🌐</div>
+          <span>Web Portal<br>(React + Vite)</span>
+        </div>
+        <div class="access-item">
+          <div class="emoji">📊</div>
+          <span>Intelligence<br>Dashboard</span>
+        </div>
+        <div class="access-item">
+          <div class="emoji">🔗</div>
+          <span>REST API<br>Clients</span>
+        </div>
+        <div class="access-item">
+          <div class="emoji">📄</div>
+          <span>Swagger / OpenAPI<br>Docs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLOW ARROW -->
+    <div class="flow-connector">
+      <div class="flow-arrow"><span class="arrow-icon">⬇⬆</span> HTTP REST / JWT Bearer Token</div>
+      <div class="flow-arrow"><span class="arrow-icon">⬇⬆</span> CORS-Enabled JSON Responses</div>
+    </div>
+
+    <!-- MILESTONE 2 CORE MODULES -->
+    <div class="layer modules-layer">
+      <div class="layer-title"><span class="dot"></span> MILESTONE 2 — INTELLIGENCE & ANALYTICS MODULES <span class="milestone-tag">NEW</span></div>
+      <div class="modules-grid">
+
+        <!-- Module 1 -->
+        <div class="module-card mod-blue">
+          <div class="module-num">1</div>
+          <h4>USER & PROFILE MANAGEMENT</h4>
+          <ul>
+            <li>User Registration & Login</li>
+            <li>RBAC Role Assignment</li>
+            <li>Profile CRUD Operations</li>
+            <li>Research Domains & Keywords</li>
+            <li>h-index & Citation Metrics</li>
+          </ul>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="module-card mod-purple">
+          <div class="module-num">2</div>
+          <h4>FUNDING DISCOVERY & MATCHING ENGINE</h4>
+          <ul>
+            <li>Semantic Profile Matching</li>
+            <li>Cosine Similarity Scoring</li>
+            <li>Eligibility Hard Filters</li>
+            <li>Domain/Source Search</li>
+            <li>Deadline-Based Filtering</li>
+          </ul>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="module-card mod-emerald">
+          <div class="module-num">3</div>
+          <h4>RESEARCH TREND INTELLIGENCE</h4>
+          <ul>
+            <li>Publication Count by Domain/Year</li>
+            <li>Year-over-Year Growth Analysis</li>
+            <li>Research Hotspot Detection</li>
+            <li>Emerging Keywords Extraction</li>
+            <li>Growth Score Calculation</li>
+          </ul>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="module-card mod-amber">
+          <div class="module-num">4</div>
+          <h4>GRANT TRACKING & APPLICATION PIPELINE</h4>
+          <ul>
+            <li>Track Funding Opportunities</li>
+            <li>Status Lifecycle Management</li>
+            <li>Personal Grant Portfolio</li>
+            <li>Notes & Annotations</li>
+            <li>Application Progress Tracking</li>
+          </ul>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="module-card mod-rose">
+          <div class="module-num">5</div>
+          <h4>DATA INGESTION & ETL PIPELINE</h4>
+          <ul>
+            <li>OpenAlex Publications Fetch</li>
+            <li>OpenAlex Grants Ingestion</li>
+            <li>USPTO Patent Retrieval</li>
+            <li>Funding Opportunity Seeder</li>
+            <li>CSV Export & Caching</li>
+          </ul>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="module-card mod-teal">
+          <div class="module-num">6</div>
+          <h4>RESEARCH INTELLIGENCE DASHBOARD</h4>
+          <ul>
+            <li>Chart.js Trend Visualization</li>
+            <li>Top Funding Recommendations</li>
+            <li>Emerging Topics Word Cloud</li>
+            <li>Domain Growth Heatmap</li>
+            <li>One-Click Grant Tracking</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FLOW ARROW -->
+    <div class="flow-connector">
+      <div class="flow-arrow"><span class="arrow-icon">⬇⬆</span> SQLAlchemy ORM Queries</div>
+      <div class="flow-arrow"><span class="arrow-icon">⬇⬆</span> Pydantic v2 Validation</div>
+      <div class="flow-arrow"><span class="arrow-icon">⬇⬆</span> Service Layer Orchestration</div>
+    </div>
+
+    <!-- BACKEND ARCHITECTURE LAYER -->
+    <div class="layer backend-layer">
+      <div class="layer-title"><span class="dot"></span> FASTAPI LAYERED BACKEND ARCHITECTURE</div>
+      <div class="backend-grid">
+        <div class="backend-item">
+          <div class="emoji">🛣️</div>
+          <span class="label">Routers Layer</span>
+          <div class="desc">auth_routes · profile_routes<br>funding_routes · research_routes<br>research_data_routes</div>
+        </div>
+        <div class="backend-item">
+          <div class="emoji">⚙️</div>
+          <span class="label">Services Layer</span>
+          <div class="desc">auth_service · profile_service<br>funding_matcher<br>trend_analyzer</div>
+        </div>
+        <div class="backend-item">
+          <div class="emoji">🗃️</div>
+          <span class="label">Models Layer</span>
+          <div class="desc">User · ResearchProfile<br>Publication · Grant · Patent<br>FundingOpportunity · GrantTracking</div>
+        </div>
+        <div class="backend-item">
+          <div class="emoji">📋</div>
+          <span class="label">Schemas Layer</span>
+          <div class="desc">user_schema · profile_schema<br>funding · research_data_schema<br>Pydantic v2 Validation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM: DATA + AI LAYERS -->
+    <div class="bottom-layers">
+      <!-- Data Layer -->
+      <div class="layer data-layer">
+        <div class="layer-title"><span class="dot"></span> DATA LAYER</div>
+        <div class="data-grid">
+          <div class="data-item">
+            <div class="emoji">🗄️</div>
+            <span class="label">SQLite / PostgreSQL</span>
+            <div class="desc">Users · Profiles · Publications<br>Grants · Patents · Funding Opps<br>Grant Tracking</div>
+          </div>
+          <div class="data-item">
+            <div class="emoji">📁</div>
+            <span class="label">File Cache Layer</span>
+            <div class="desc">data/raw/ JSON caches<br>data/processed/ CSV exports<br>Offline fallback storage</div>
+          </div>
+          <div class="data-item">
+            <div class="emoji">🔄</div>
+            <span class="label">Alembic Migrations</span>
+            <div class="desc">Schema versioning<br>Safe ALTER TABLE<br>Rollback support</div>
+          </div>
+          <div class="data-item">
+            <div class="emoji">📊</div>
+            <span class="label">EDA Notebooks</span>
+            <div class="desc">Jupyter EDA analysis<br>Domain correlations<br>Trend visualizations</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI/ML Layer -->
+      <div class="layer ai-layer">
+        <div class="layer-title"><span class="dot"></span> AI/ML & ANALYTICS LAYER <span class="milestone-tag">NEW</span></div>
+        <div class="data-grid">
+          <div class="data-item" style="border-color: #FDA4AF;">
+            <div class="emoji">🧠</div>
+            <span class="label" style="color: #9F1239;">Embedding Model</span>
+            <div class="desc">all-MiniLM-L6-v2<br>Sentence Transformers<br>Singleton lazy-load</div>
+          </div>
+          <div class="data-item" style="border-color: #FDA4AF;">
+            <div class="emoji">📐</div>
+            <span class="label" style="color: #9F1239;">Cosine Similarity</span>
+            <div class="desc">NumPy dot product<br>Normalized embeddings<br>Score-based ranking</div>
+          </div>
+          <div class="data-item" style="border-color: #FDA4AF;">
+            <div class="emoji">📈</div>
+            <span class="label" style="color: #9F1239;">Trend Analytics</span>
+            <div class="desc">Publication aggregation<br>YoY growth calculation<br>Keyword frequency deltas</div>
+          </div>
+          <div class="data-item" style="border-color: #FDA4AF;">
+            <div class="emoji">🎯</div>
+            <span class="label" style="color: #9F1239;">Eligibility Engine</span>
+            <div class="desc">Career stage matching<br>Institution type filter<br>Region & deadline check</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTING & VERIFICATION LAYER -->
+    <div class="layer testing-layer">
+      <div class="layer-title"><span class="dot"></span> TESTING & VERIFICATION <span class="milestone-tag">NEW</span></div>
+      <div class="testing-grid">
+        <div class="testing-item">
+          <div class="emoji">🧪</div>
+          <span class="label">Pytest Suite</span>
+          <div class="desc">test_funding_endpoints.py<br>In-memory SQLite · StaticPool<br>Integration tests</div>
+        </div>
+        <div class="testing-item">
+          <div class="emoji">✅</div>
+          <span class="label">Verification Scripts</span>
+          <div class="desc">verify_milestone1.py<br>verify_funding.py<br>verify_live.py</div>
+        </div>
+        <div class="testing-item">
+          <div class="emoji">🔒</div>
+          <span class="label">Security Testing</span>
+          <div class="desc">JWT Auth Guard Tests<br>RBAC Enforcement<br>Unauthorized access checks</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── RIGHT SIDEBAR: EXTERNAL DATA SOURCES ─── -->
+  <div class="sidebar-box ext-box">
+    <h3>🌍 External Data Sources</h3>
+    <ul>
+      <li><span class="icon">📖</span> <strong>OpenAlex</strong><br><span style="font-size:0.6rem;color:#78716C;">Research Papers & Works</span></li>
+      <li><span class="icon">💰</span> <strong>OpenAlex Awards</strong><br><span style="font-size:0.6rem;color:#78716C;">Research Grants & Funding</span></li>
+      <li><span class="icon">📜</span> <strong>USPTO ODP</strong><br><span style="font-size:0.6rem;color:#78716C;">US Patent Data</span></li>
+    </ul>
+    <div style="margin-top: 14px; padding-top: 10px; border-top: 1.5px solid #FDE68A;">
+      <h3 style="font-size: 0.7rem; color: #92400E;">🔌 API Integrations</h3>
+      <ul>
+        <li><span class="icon">🔑</span> HTTPX Async Client</li>
+        <li><span class="icon">💾</span> JSON Cache Fallback</li>
+        <li><span class="icon">🔄</span> Rate-Limit Resilience</li>
+        <li><span class="icon">📡</span> Live + Offline Mode</li>
+      </ul>
+    </div>
+    <div style="margin-top: 14px; padding-top: 10px; border-top: 1.5px solid #FDE68A;">
+      <h3 style="font-size: 0.7rem; color: #92400E;">🤖 ML Models</h3>
+      <ul>
+        <li><span class="icon">🧠</span> all-MiniLM-L6-v2</li>
+        <li><span class="icon">📐</span> Sentence Transformers</li>
+        <li><span class="icon">🔢</span> NumPy / SciPy</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════ LEGEND ═══════════════════ -->
+<div class="legend">
+  <span class="legend-title">Legend</span>
+  <div class="legend-item">
+    <div class="legend-line solid"></div>
+    Synchronous REST Flow (HTTP/JSON)
+  </div>
+  <div class="legend-item">
+    <div class="legend-line dashed"></div>
+    External API Data Flow
+  </div>
+  <div class="legend-item">
+    <div class="legend-line dotted"></div>
+    File Cache / Offline Fallback
+  </div>
+  <div class="legend-item">
+    <div class="legend-icon" style="background: #10B981;">M2</div>
+    Milestone 2 (New)
+  </div>
+  <div class="legend-item">
+    <div class="legend-icon" style="background: #6366F1;">M1</div>
+    Milestone 1 (Foundation)
+  </div>
+</div>
+
+</body>
+</html>

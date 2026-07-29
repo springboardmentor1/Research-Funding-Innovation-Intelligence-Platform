@@ -10,6 +10,9 @@ class ProfileUpdate(BaseModel):
     total_citations: Optional[int] = 0
     research_domains: List[str] = []
     keywords: List[str] = []
+    career_stage: Optional[str] = None
+    institution_type: Optional[str] = None
+    region: Optional[str] = None
 
 class ProfileResponse(BaseModel):
     id: int
@@ -21,6 +24,9 @@ class ProfileResponse(BaseModel):
     total_citations: int = 0
     research_domains: List[str] = []
     keywords: List[str] = []
+    career_stage: Optional[str] = None
+    institution_type: Optional[str] = None
+    region: Optional[str] = None
     updated_at: datetime
 
     class Config:

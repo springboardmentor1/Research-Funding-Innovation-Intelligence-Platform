@@ -1,10 +1,12 @@
 import logging
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from database.db import engine, Base
 from routes.auth_routes import router as auth_router
 from routes.profile_routes import router as profile_router
 from routes.research_data_routes import router as research_data_router
+from routes.funding_routes import router as funding_router
+from routes.research_routes import router as research_router
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -35,6 +37,9 @@ app.add_middleware(
 app.include_router(auth_router, prefix="/api")
 app.include_router(profile_router, prefix="/api")
 app.include_router(research_data_router, prefix="/api")
+app.include_router(funding_router, prefix="/api")
+app.include_router(research_router, prefix="/api")
+
 
 @app.get("/", tags=["Health"])
 def root():
@@ -44,3 +49,7 @@ def root():
         "status": "operational",
         "docs_url": "/docs",
     }
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    return Response(status_code=204)

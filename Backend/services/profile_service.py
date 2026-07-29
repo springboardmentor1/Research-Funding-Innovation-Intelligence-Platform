@@ -30,6 +30,13 @@ def update_profile(db: Session, user_id: int, data: ProfileUpdate):
     # Using sqlalchemy setters
     profile.research_domains = data.research_domains
     profile.keywords = data.keywords
+    
+    if data.career_stage is not None:
+        profile.career_stage = data.career_stage
+    if data.institution_type is not None:
+        profile.institution_type = data.institution_type
+    if data.region is not None:
+        profile.region = data.region
 
     db.commit()
     db.refresh(profile)
