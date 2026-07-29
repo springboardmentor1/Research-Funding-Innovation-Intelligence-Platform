@@ -1,0 +1,254 @@
+[
+  {
+    "title": "NSF National AI Research Institutes for Transformative Discovery",
+    "source": "Government Grants",
+    "description": "Major foundational funding from the National Science Foundation to support multi-disciplinary research centers advancing core artificial intelligence, trustworthy foundational architectures, and safe multi-agent reinforcement learning systems.",
+    "eligibility_criteria": "Accredited US higher education institutions and non-profit research organizations. Must demonstrate interdisciplinary collaboration.",
+    "domain_tags": ["Artificial Intelligence", "Large Language Models", "Reinforcement Learning", "Trustworthy AI"],
+    "deadline": "2026-11-15",
+    "amount": "$4,000,000 - $20,000,000"
+  },
+  {
+    "title": "DARPA Next-Gen Autonomous Explorations & Robotics Initiative",
+    "source": "Government Grants",
+    "description": "Funding exploratory research in autonomous navigation, real-time sensor fusion, and adaptive robotic control systems operating in extreme and contested environments.",
+    "eligibility_criteria": "US university labs, defense research institutes, and incorporated commercial R&D contractors.",
+    "domain_tags": ["Robotics", "Autonomous Systems", "Computer Vision", "Sensor Fusion"],
+    "deadline": "2026-10-30",
+    "amount": "$1,500,000 - $5,000,000"
+  },
+  {
+    "title": "NIH Biomedical AI & Genomic Discovery Program",
+    "source": "Government Grants",
+    "description": "Grants to accelerate computational biology, precision medicine, and deep learning models applied to multi-omics data, clinical trials forecasting, and protein structure prediction.",
+    "eligibility_criteria": "Medical schools, research hospitals, university biology labs, and health-tech organizations.",
+    "domain_tags": ["Bioinformatics", "Genomics", "Deep Learning", "Healthcare AI", "Precision Medicine"],
+    "deadline": "2026-12-01",
+    "amount": "$750,000 - $2,500,000"
+  },
+  {
+    "title": "DOE Quantum-AI Convergence & Supercomputing Challenge",
+    "source": "Government Grants",
+    "description": "Federal research funding by the Department of Energy targeting the intersection of quantum computing circuits, hybrid quantum-classical algorithms, and high-performance AI computing architectures.",
+    "eligibility_criteria": "National laboratories, academic research consortiums, and quantum hardware partners.",
+    "domain_tags": ["Quantum Computing", "High-Performance Computing", "Artificial Intelligence", "Quantum Algorithms"],
+    "deadline": "2026-10-15",
+    "amount": "$2,000,000 - $8,000,000"
+  },
+  {
+    "title": "EPA Clean Energy Grid Optimization & Climate AI Grant",
+    "source": "Government Grants",
+    "description": "Grants aimed at leveraging AI and predictive analytics to optimize renewable energy storage, smart grid load distribution, and carbon capture infrastructure monitoring.",
+    "eligibility_criteria": "Environmental research institutions, energy startups, and university sustainability departments.",
+    "domain_tags": ["Climate Tech", "Clean Energy", "Smart Grids", "Predictive Analytics"],
+    "deadline": "2026-09-30",
+    "amount": "$500,000 - $1,500,000"
+  },
+  {
+    "title": "NASA Deep Space Autonomous Operations Research Grant",
+    "source": "Government Grants",
+    "description": "Supports research in autonomous spacecraft navigation, AI-driven anomaly detection for orbital platforms, and remote planetary surface robotics.",
+    "eligibility_criteria": "University aerospace labs and NASA-affiliated industrial partners.",
+    "domain_tags": ["Aerospace", "Autonomous Systems", "Anomaly Detection", "Robotics"],
+    "deadline": "2027-01-15",
+    "amount": "$800,000 - $3,000,000"
+  },
+  {
+    "title": "USDA Agritech & AI Precision Farming Innovation Grant",
+    "source": "Government Grants",
+    "description": "Federal research awards for computer vision, drone sensing, and machine learning models designed to optimize crop yield predictions, soil health monitoring, and sustainable agriculture.",
+    "eligibility_criteria": "Agricultural universities, farming research institutes, and agritech ventures.",
+    "domain_tags": ["Agritech", "Computer Vision", "Machine Learning", "Sustainability"],
+    "deadline": "2026-11-20",
+    "amount": "$400,000 - $1,200,000"
+  },
+  {
+    "title": "ERC Advanced Grant in Trustworthy & Explainable AI",
+    "source": "Research Councils",
+    "description": "European Research Council flagship grant for principal investigators conducting breakthrough theoretical research in explainability, mathematical verification, and safety of foundational AI models.",
+    "eligibility_criteria": "Established researchers based in EU Member States or Associated Countries with significant scientific track records.",
+    "domain_tags": ["Trustworthy AI", "Explainable AI", "AI Safety", "Machine Learning"],
+    "deadline": "2026-10-25",
+    "amount": "€2,500,000 - €3,500,000"
+  },
+  {
+    "title": "UKRI AI for Net Zero & Green Technology Research Fellowship",
+    "source": "Research Councils",
+    "description": "Research fellowships funded by UK Research and Innovation to deploy advanced machine learning and data assimilation tools for carbon reduction, climate modeling, and green industrial transition.",
+    "eligibility_criteria": "Researchers affiliated with UK universities or approved independent research organizations.",
+    "domain_tags": ["Climate Modeling", "Machine Learning", "Green Tech", "Data Assimilation"],
+    "deadline": "2026-11-10",
+    "amount": "£600,000 - £1,800,000"
+  },
+  {
+    "title": "EPSRC Next-Gen Neuromorphic Computing & Chip Design Award",
+    "source": "Research Councils",
+    "description": "Engineering and Physical Sciences Research Council funding for pioneering hardware-software co-design of neuromorphic processors, spiking neural networks, and ultra-low-power edge AI chips.",
+    "eligibility_criteria": "UK academic institutions in partnership with semiconductor fabrication partners.",
+    "domain_tags": ["Neuromorphic Computing", "Hardware Design", "Edge AI", "Spiking Neural Networks"],
+    "deadline": "2026-12-15",
+    "amount": "£1,000,000 - £3,000,000"
+  },
+  {
+    "title": "CIFAR Pan-Canadian AI Chairs in Generative & Multimodal AI",
+    "source": "Research Councils",
+    "description": "Prestige research funding supporting top academic talent in Canada specializing in generative AI, multimodal vision-language models, and foundational AI alignment.",
+    "eligibility_criteria": "Faculty members at Canadian national AI institutes (Mila, Vector Institute, AMII).",
+    "domain_tags": ["Generative AI", "Multimodal AI", "Computer Vision", "Natural Language Processing"],
+    "deadline": "2026-10-01",
+    "amount": "$1,000,000 - $2,500,000 CAD"
+  },
+  {
+    "title": "DFG German Research Foundation AI & Cognitive Science Grant",
+    "source": "Research Councils",
+    "description": "Grants exploring cognitive architecture, neural representations, and biologically inspired learning algorithms bridging neuroscience and artificial neural networks.",
+    "eligibility_criteria": "Researchers and doctoral networks at German universities and research institutes.",
+    "domain_tags": ["Cognitive Science", "Neuroscience", "Neural Networks", "Deep Learning"],
+    "deadline": "2026-11-30",
+    "amount": "€500,000 - €1,500,000"
+  },
+  {
+    "title": "ARC Discovery Projects in Cyber-Physical Systems Security",
+    "source": "Research Councils",
+    "description": "Australian Research Council funding focusing on cryptographic security, adversarial robustness, and intrusion detection algorithms for critical cyber-physical infrastructure.",
+    "eligibility_criteria": "Researchers associated with Australian eligible higher education providers.",
+    "domain_tags": ["Cybersecurity", "Adversarial Robustness", "Cyber-Physical Systems", "Network Security"],
+    "deadline": "2026-12-05",
+    "amount": "$400,000 - $1,200,000 AUD"
+  },
+  {
+    "title": "JSPS Japan Society Quantum Cryptography & Photonics Grant",
+    "source": "Research Councils",
+    "description": "Supporting foundational research in quantum key distribution, topological photonics, and entanglement-based communication networks across Japanese and international research nodes.",
+    "eligibility_criteria": "Academic researchers affiliated with Japanese universities and international co-investigators.",
+    "domain_tags": ["Quantum Cryptography", "Photonics", "Quantum Communication", "Physics"],
+    "deadline": "2026-10-20",
+    "amount": "¥50,000,000 - ¥150,000,000"
+  },
+  {
+    "title": "Y Combinator AI Founders & DeepTech Track (Winter Batch)",
+    "source": "Startup Accelerators",
+    "description": "Premier startup accelerator offering seed capital, intensive mentorship, and investor network access for early-stage companies building foundational AI products, developer tools, and vertical AI solutions.",
+    "eligibility_criteria": "Pre-seed and seed stage startups with working technical prototypes or high-growth software models.",
+    "domain_tags": ["Startup Capital", "Artificial Intelligence", "Developer Tools", "SaaS", "DeepTech"],
+    "deadline": "2026-10-15",
+    "amount": "$500,000 investment"
+  },
+  {
+    "title": "Techstars Autonomous & DeepTech Accelerator Program",
+    "source": "Startup Accelerators",
+    "description": "Three-month immersive program providing seed investment, corporate pilot introductions, and expert technical guidance for startups commercializing robotics, industrial automation, and edge IoT devices.",
+    "eligibility_criteria": "Early-stage incorporated companies with scalable technology and full-time founder teams.",
+    "domain_tags": ["Robotics", "Industrial Automation", "Edge AI", "IoT", "DeepTech"],
+    "deadline": "2026-11-01",
+    "amount": "$120,000 - $250,000 investment"
+  },
+  {
+    "title": "Seedcamp European AI & Fintech Innovation Cohort",
+    "source": "Startup Accelerators",
+    "description": "Leading European seed-stage accelerator supporting ambitious founders building next-generation financial intelligence, automated risk underwriting, and enterprise AI infrastructures.",
+    "eligibility_criteria": "European pre-seed and seed startups seeking early institutional validation.",
+    "domain_tags": ["Fintech", "Enterprise AI", "Risk Analytics", "Financial Intelligence"],
+    "deadline": "2026-09-25",
+    "amount": "€200,000 - €500,000 investment"
+  },
+  {
+    "title": "500 Global DeepTech & Bio-AI Fast Track",
+    "source": "Startup Accelerators",
+    "description": "Global accelerator providing growth equity, go-to-market scaling, and clinical partner matchmaking for startups pioneering AI diagnostics, drug discovery platforms, and synthetic biology.",
+    "eligibility_criteria": "Startups with initial clinical data, patent applications, or enterprise pilot contracts.",
+    "domain_tags": ["Drug Discovery", "Bioinformatics", "Healthcare AI", "Synthetic Biology"],
+    "deadline": "2026-11-28",
+    "amount": "$300,000 - $750,000 investment"
+  },
+  {
+    "title": "Alchemist Enterprise Cloud & Cyber Accelerator",
+    "source": "Startup Accelerators",
+    "description": "Dedicated B2B enterprise accelerator geared toward founders building high-concurrency cloud orchestration platforms, zero-trust security architectures, and automated DevOps tooling.",
+    "eligibility_criteria": "Enterprise-focused startups with deep technical moats and B2B commercialization intent.",
+    "domain_tags": ["Cloud Computing", "DevOps", "Zero-Trust Security", "Enterprise Software"],
+    "deadline": "2026-12-10",
+    "amount": "$150,000 - $350,000 investment"
+  },
+  {
+    "title": "Plug and Play Supply Chain & Autonomous Logistics Accelerator",
+    "source": "Startup Accelerators",
+    "description": "Corporate innovation accelerator connecting startups with Fortune 500 logistics partners to scale computer vision tracking, warehouse robotics, and predictive supply chain optimization.",
+    "eligibility_criteria": "Seed to Series A startups ready to deploy pilot projects with large enterprise logistics networks.",
+    "domain_tags": ["Supply Chain", "Logistics", "Robotics", "Computer Vision", "Predictive Analytics"],
+    "deadline": "2026-10-10",
+    "amount": "$250,000 investment"
+  },
+  {
+    "title": "Entrepreneur First AI Co-Founder & Incubation Track",
+    "source": "Startup Accelerators",
+    "description": "Talent-first incubation program providing pre-team stipends, co-founder matching, and pre-seed investment for exceptional researchers and technologists spinning out academic AI discoveries.",
+    "eligibility_criteria": "Individual researchers, PhD graduates, and experienced software engineers seeking co-founders.",
+    "domain_tags": ["Spinout", "DeepTech", "Artificial Intelligence", "Commercialization"],
+    "deadline": "2026-11-15",
+    "amount": "£100,000 - £250,000 pre-seed"
+  },
+  {
+    "title": "NVIDIA Inception AI Startup Innovation Fund & GPU Grant",
+    "source": "Innovation Funds",
+    "description": "Corporate funding and technical enablement initiative offering non-dilutive equity grants, subsidized cloud GPU compute credits, and hardware architecture co-design for high-impact AI ventures.",
+    "eligibility_criteria": "Startups actively building on NVIDIA CUDA, TensorRT, or LLM infrastructure across any sector.",
+    "domain_tags": ["GPU Computing", "Large Language Models", "Deep Learning", "Hardware Optimization"],
+    "deadline": "2026-12-31",
+    "amount": "$100,000 - $500,000 compute credits & equity grants"
+  },
+  {
+    "title": "Google for Startups AI & Cloud Infrastructure Fund",
+    "source": "Innovation Funds",
+    "description": "Direct equity investment and Google Cloud TPUs/GPUs access for promising AI startups creating novel enterprise agents, scalable vector search engines, and generative media models.",
+    "eligibility_criteria": "Seed to Series A startups utilizing cloud infrastructure with demonstrated technical traction.",
+    "domain_tags": ["Cloud Infrastructure", "Generative AI", "Vector Search", "AI Agents"],
+    "deadline": "2026-11-30",
+    "amount": "$250,000 - $1,000,000 capital & cloud credits"
+  },
+  {
+    "title": "OpenAI Converge Fund for Frontier Model Applications",
+    "source": "Innovation Funds",
+    "description": "Venture fund investing in extraordinary founders building transformative vertical applications, developer frameworks, and safety tooling leveraging frontier foundation models.",
+    "eligibility_criteria": "Early-stage companies building novel, highly differentiated systems utilizing foundational AI capabilities.",
+    "domain_tags": ["Foundation Models", "AI Alignment", "Developer Tools", "Generative AI"],
+    "deadline": "2026-10-31",
+    "amount": "$1,000,000 investment"
+  },
+  {
+    "title": "Amazon AWS Clean Energy & AI Sustainability Fund",
+    "source": "Innovation Funds",
+    "description": "Corporate venture grants targeting solutions that reduce data center energy consumption, optimize AI model inference efficiency, and track corporate ESG compliance via automated parsing.",
+    "eligibility_criteria": "Startups and academic spinouts developing software or hardware for green computing and sustainability.",
+    "domain_tags": ["Green Computing", "Model Compression", "Sustainability", "Cloud Efficiency"],
+    "deadline": "2026-12-15",
+    "amount": "$500,000 - $1,500,000"
+  },
+  {
+    "title": "Microsoft M12 DeepTech & Cybersecurity Innovation Fund",
+    "source": "Innovation Funds",
+    "description": "Strategic venture funding focusing on AI-enhanced cybersecurity defense mechanisms, autonomous threat mitigation, and secure multiparty computation for enterprise ecosystems.",
+    "eligibility_criteria": "Incorporated technology companies demonstrating enterprise readiness and robust security protocols.",
+    "domain_tags": ["Cybersecurity", "Threat Intelligence", "Enterprise Security", "Artificial Intelligence"],
+    "deadline": "2026-11-20",
+    "amount": "$1,000,000 - $3,000,000"
+  },
+  {
+    "title": "Intel Capital Neuromorphic & Edge AI Hardware Fund",
+    "source": "Innovation Funds",
+    "description": "Direct investment targeting semiconductor innovations, ultra-fast edge processing units, and real-time computer vision accelerators for automotive and robotics applications.",
+    "eligibility_criteria": "Hardware and edge-AI software startups with working silicon prototypes or FPGA designs.",
+    "domain_tags": ["Semiconductors", "Edge AI", "Computer Vision", "Automotive AI"],
+    "deadline": "2026-10-25",
+    "amount": "$2,000,000 - $5,000,000"
+  },
+  {
+    "title": "Qualcomm Ventures 5G/6G & Connected Intelligence Fund",
+    "source": "Innovation Funds",
+    "description": "Venture capital fund dedicated to startups combining wireless 5G/6G connectivity, decentralized edge computing, and real-time AI inference for smart cities and autonomous vehicles.",
+    "eligibility_criteria": "Startups innovating in wireless communications, IoT connectivity, and edge machine learning.",
+    "domain_tags": ["5G/6G", "Edge Computing", "Smart Cities", "Autonomous Vehicles", "IoT"],
+    "deadline": "2026-12-01",
+    "amount": "$1,500,000 - $4,000,000"
+  }
+]

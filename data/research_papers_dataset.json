@@ -1,0 +1,32 @@
+[
+    {
+        "paperId": "a904e57849e7b41525b689a744231b4657156942",
+        "title": "Attention Is All You Need",
+        "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Łukasz Kaiser",
+            "Illia Polosukhin"
+        ],
+        "year": "2017",
+        "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks...",
+        "url": "https://www.semanticscholar.org/paper/a904e57849e7b41525b689a744231b4657156942"
+    },
+    {
+        "paperId": "c4d32f5d949b38cfdf682cb349fbde27a6c9cf1c",
+        "title": "Deep Residual Learning for Image Recognition",
+        "authors": [
+            "Kaiming He",
+            "Xiangyu Zhang",
+            "Shaoqing Ren",
+            "Jian Sun"
+        ],
+        "year": "2016",
+        "abstract": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks...",
+        "url": "https://www.semanticscholar.org/paper/c4d32f5d949b38cfdf682cb349fbde27a6c9cf1c"
+    }
+]
