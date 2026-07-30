@@ -3,16 +3,17 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../pages/auth/Login';
 import Register from '../pages/auth/Register';
 import Dashboard from '../pages/Dashboard';
-import ResearcherDashboard from '../pages/researcher/ResearcherDashboard';
-import ResearchProfile from '../pages/researcher/ResearchProfile';
-import StartupDashboard from '../pages/startup/StartupDashboard';
-import PatentAnalysis from '../pages/startup/PatentAnalysis';
-import InnovationManagerDashboard from '../pages/innovation_manager/InnovationManagerDashboard';
-import Reports from '../pages/innovation_manager/Reports';
-import AdminDashboard from '../pages/admin/AdminDashboard';
+// Placeholders for new pages
 import FundingDiscovery from '../pages/shared/FundingDiscovery';
 import PublicationSearch from '../pages/shared/PublicationSearch';
 import NotFound from '../pages/shared/NotFound';
+import DashboardLayout from '../components/layout/DashboardLayout';
+import PatentsPage from '../pages/shared/PatentsPage';
+import TechnologyPage from '../pages/shared/TechnologyPage';
+import InnovationPage from '../pages/shared/InnovationPage';
+import ReportsPage from '../pages/shared/ReportsPage';
+import NotificationsPage from '../pages/shared/NotificationsPage';
+import SettingsPage from '../pages/shared/SettingsPage';
 
 export default function AppRoutes() {
   return (
@@ -24,27 +25,20 @@ export default function AppRoutes() {
       {/* Default Path */}
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-      {/* Unified Dashboard */}
-      <Route path="/dashboard" element={<Dashboard />} />
-
-      {/* Researcher Routes */}
-      <Route path="/researcher/dashboard" element={<ResearcherDashboard />} />
-      <Route path="/researcher/profile" element={<ResearchProfile />} />
-
-      {/* Startup Routes */}
-      <Route path="/startup/dashboard" element={<StartupDashboard />} />
-      <Route path="/startup/patents" element={<PatentAnalysis />} />
-
-      {/* Innovation Manager Routes */}
-      <Route path="/manager/dashboard" element={<InnovationManagerDashboard />} />
-      <Route path="/manager/reports" element={<Reports />} />
-
-      {/* Admin Routes */}
-      <Route path="/admin/dashboard" element={<AdminDashboard />} />
-
-      {/* Shared/Discovery Routes */}
-      <Route path="/funding" element={<FundingDiscovery />} />
-      <Route path="/publications" element={<PublicationSearch />} />
+      {/* Unified Dashboard Layout wrapped routes */}
+      <Route element={<DashboardLayout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        
+        {/* Placeholder paths matching the sidebar */}
+        <Route path="/funding" element={<FundingDiscovery />} />
+        <Route path="/research" element={<PublicationSearch />} />
+        <Route path="/patents" element={<PatentsPage />} />
+        <Route path="/technology" element={<TechnologyPage />} />
+        <Route path="/innovation" element={<InnovationPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
+        <Route path="/notifications" element={<NotificationsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+      </Route>
 
       {/* Fallback */}
       <Route path="*" element={<NotFound />} />

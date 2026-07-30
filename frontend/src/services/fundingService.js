@@ -23,11 +23,11 @@ api.interceptors.request.use(
   }
 );
 
-export const getDashboardAnalytics = async () => {
-  const response = await api.get('/dashboard/analytics');
+export const getFundingRecommendations = async (params = {}) => {
+  const response = await api.get('/funding/recommendations', { params });
   return response.data;
 };
 
 export default {
-  getDashboardAnalytics,
+  getFundingRecommendations,
 };
