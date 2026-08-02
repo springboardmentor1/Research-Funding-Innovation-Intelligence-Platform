@@ -28,3 +28,8 @@ class User(Base):
         back_populates="user",
         cascade="all, delete-orphan"
     )
+    patents = relationship(
+    "Patent",
+    back_populates="user",
+    cascade="all, delete-orphan",
+    )

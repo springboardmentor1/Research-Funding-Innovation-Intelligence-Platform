@@ -9,6 +9,7 @@ from app.api import recommendations
 from app.api import funding_opportunity
 from app.api import research_profile
 from app.api import publications
+from app.api import patent
 from app.core.database import Base, engine
 from app.api.dashboard import router as dashboard_router
 
@@ -27,6 +28,7 @@ app.include_router(funding_opportunity.router)
 app.include_router(recommendations.router)
 app.include_router(publications.router)
 app.include_router(dashboard_router)
+app.include_router(patent.router)
 
 @app.get("/")
 def root():
