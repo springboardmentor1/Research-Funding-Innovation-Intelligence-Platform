@@ -1,6 +1,6 @@
 from datetime import date, datetime
 from typing import Optional
-
+from typing import List
 from pydantic import BaseModel, ConfigDict
 
 
@@ -41,3 +41,17 @@ class PatentResponse(PatentBase):
     updated_at: Optional[datetime] = None
 
     model_config = ConfigDict(from_attributes=True)
+
+class PatentListResponse(BaseModel):
+    items: List[PatentResponse]
+    page: int
+    page_size: int
+    total: int
+    total_pages: int
+
+class PatentStatisticsResponse(BaseModel):
+    total_patents: int
+    granted_patents: int
+    published_patents: int
+    filed_patents: int
+    expired_patents: int

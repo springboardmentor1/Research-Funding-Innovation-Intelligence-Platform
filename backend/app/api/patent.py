@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from typing import List
-
+from datetime import date
+from app.schemas.patent import PatentListResponse
 from app.core.database import get_db
 from app.core.dependencies import get_current_user
 from app.models.user import User
@@ -9,6 +9,8 @@ from app.schemas.patent import (
     PatentCreate,
     PatentUpdate,
     PatentResponse,
+    PatentListResponse,
+    PatentStatisticsResponse,
 )
 from app.services import patent_service
 
@@ -43,25 +45,17 @@ def create_patent(
             detail=str(e),
         )
 
-
 @router.get(
-    "",
-    response_model=List[PatentResponse],
-    summary="Get All Patents",
-    description="Retrieve all patents.",
-    response_description="List of patents.",
+    "/analytics/statistics",
+    response_model=PatentStatisticsResponse,
+    summary="Patent Statistics",
+    description="Returns overall patent statistics.",
+    response_description="Patent statistics.",
 )
-def get_patents(
-    skip: int = 0,
-    limit: int = 100,
+def patent_statistics(
     db: Session = Depends(get_db),
 ):
-    return patent_service.get_patents(
-        db=db,
-        skip=skip,
-        limit=limit,
-    )
-
+    return patent_service.get_patent_statistics(db)
 
 @router.get(
     "/{patent_id}",
@@ -146,3 +140,41 @@ def delete_patent(
     return {
         "message": "Patent deleted successfully."
     }
+
+@router.get(
+    "",
+    response_model=PatentListResponse,
+    summary="Search Patents",
+    description="Search, filter, sort and paginate patents.",
+    response_description="Paginated list of patents.",
+)
+def get_patents(
+    search: str | None = None,
+    inventor: str | None = None,
+    assignee: str | None = None,
+    technology_area: str |None = None,
+    status: str | None = None,
+    country: str | None = None,
+    filing_date_from: date | None = None,
+    filing_date_to: date | None = None,
+    sort_by: str = "filing_date",
+    order: str = "desc",
+    page: int = 1,
+    page_size: int = 10,
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_patents(
+        db=db,
+        search=search,
+        inventor=inventor,
+        assignee=assignee,
+        technology_area=technology_area,
+        status=status,
+        country=country,
+        filing_date_from=filing_date_from,
+        filing_date_to=filing_date_to,
+        sort_by=sort_by,
+        order=order,
+        page=page,
+        page_size=page_size,
+    )
