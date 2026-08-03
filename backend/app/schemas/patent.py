@@ -3,7 +3,6 @@ from typing import Optional
 from typing import List
 from pydantic import BaseModel, ConfigDict
 
-
 class PatentBase(BaseModel):
     title: str
     patent_number: str
@@ -16,10 +15,8 @@ class PatentBase(BaseModel):
     country: str
     abstract: Optional[str] = None
 
-
 class PatentCreate(PatentBase):
     pass
-
 
 class PatentUpdate(BaseModel):
     title: Optional[str] = None
@@ -32,7 +29,6 @@ class PatentUpdate(BaseModel):
     status: Optional[str] = None
     country: Optional[str] = None
     abstract: Optional[str] = None
-
 
 class PatentResponse(PatentBase):
     id: int
@@ -55,3 +51,37 @@ class PatentStatisticsResponse(BaseModel):
     published_patents: int
     filed_patents: int
     expired_patents: int
+
+class TechnologyAnalyticsResponse(BaseModel):
+    technology_area: str
+    count: int
+
+class PatentStatusAnalyticsResponse(BaseModel):
+    status: str
+    count: int
+
+class PatentCountryAnalyticsResponse(BaseModel):
+    country: str
+    count: int
+
+class PatentFilingTrendResponse(BaseModel):
+    year: int
+    count: int
+
+class TopInventorResponse(BaseModel):
+    inventor: str
+    count: int
+
+class TopAssigneeResponse(BaseModel):
+    assignee: str
+    count: int
+
+class RecentPatentResponse(BaseModel):
+    id: int
+    title: str
+    patent_number: str
+    technology_area: str
+    filing_date: date
+    status: str
+
+    model_config = ConfigDict(from_attributes=True)

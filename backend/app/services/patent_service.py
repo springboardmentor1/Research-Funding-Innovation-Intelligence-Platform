@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import asc, desc, or_
 from math import ceil
-from sqlalchemy import func
+from sqlalchemy import func, extract
 from app.models.patent import Patent
 from app.schemas.patent import PatentCreate, PatentUpdate
 
@@ -229,3 +229,127 @@ def get_patent_statistics(db: Session):
         "filed_patents": filed,
         "expired_patents": expired,
     }
+
+def get_patents_by_technology(db: Session):
+    results = (
+        db.query(
+            Patent.technology_area,
+            func.count(Patent.id).label("count"),
+        )
+        .group_by(Patent.technology_area)
+        .order_by(func.count(Patent.id).desc())
+        .all()
+    )
+
+    return [
+        {
+            "technology_area": technology_area,
+            "count": count,
+        }
+        for technology_area, count in results
+    ]
+
+def get_patents_by_status(db: Session):
+    results = (
+        db.query(
+            Patent.status,
+            func.count(Patent.id).label("count"),
+        )
+        .group_by(Patent.status)
+        .order_by(func.count(Patent.id).desc())
+        .all()
+    )
+
+    return [
+        {
+            "status": status,
+            "count": count,
+        }
+        for status, count in results
+    ]
+
+def get_patents_by_country(db: Session):
+    results = (
+        db.query(
+            Patent.country,
+            func.count(Patent.id).label("count"),
+        )
+        .group_by(Patent.country)
+        .order_by(func.count(Patent.id).desc())
+        .all()
+    )
+
+    return [
+        {
+            "country": country,
+            "count": count,
+        }
+        for country, count in results
+    ]
+
+def get_patent_filing_trend(db: Session):
+    results = (
+        db.query(
+            extract("year", Patent.filing_date).label("year"),
+            func.count(Patent.id).label("count"),
+        )
+        .group_by(extract("year", Patent.filing_date))
+        .order_by(extract("year", Patent.filing_date))
+        .all()
+    )
+
+    return [
+        {
+            "year": int(year),
+            "count": count,
+        }
+        for year, count in results
+    ]
+
+def get_top_inventors(db: Session, limit: int = 10):
+    results = (
+        db.query(
+            Patent.inventors,
+            func.count(Patent.id).label("count"),
+        )
+        .group_by(Patent.inventors)
+        .order_by(func.count(Patent.id).desc())
+        .limit(limit)
+        .all()
+    )
+
+    return [
+        {
+            "inventor": inventor,
+            "count": count,
+        }
+        for inventor, count in results
+    ]
+
+def get_top_assignees(db: Session, limit: int = 10):
+    results = (
+        db.query(
+            Patent.assignee,
+            func.count(Patent.id).label("count"),
+        )
+        .group_by(Patent.assignee)
+        .order_by(func.count(Patent.id).desc())
+        .limit(limit)
+        .all()
+    )
+
+    return [
+        {
+            "assignee": assignee,
+            "count": count,
+        }
+        for assignee, count in results
+    ]
+
+def get_recent_patents(db: Session, limit: int = 5):
+    return (
+        db.query(Patent)
+        .order_by(Patent.filing_date.desc())
+        .limit(limit)
+        .all()
+    )

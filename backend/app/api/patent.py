@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from datetime import date
+from typing import List
 from app.schemas.patent import PatentListResponse
 from app.core.database import get_db
 from app.core.dependencies import get_current_user
@@ -11,6 +12,13 @@ from app.schemas.patent import (
     PatentResponse,
     PatentListResponse,
     PatentStatisticsResponse,
+    TechnologyAnalyticsResponse,
+    PatentStatusAnalyticsResponse,
+    PatentCountryAnalyticsResponse,
+    PatentFilingTrendResponse,
+    TopInventorResponse,
+    TopAssigneeResponse,
+    RecentPatentResponse,
 )
 from app.services import patent_service
 
@@ -18,7 +26,6 @@ router = APIRouter(
     prefix="/patents",
     tags=["Patents"],
 )
-
 
 @router.post(
     "",
@@ -56,6 +63,102 @@ def patent_statistics(
     db: Session = Depends(get_db),
 ):
     return patent_service.get_patent_statistics(db)
+
+@router.get(
+    "/analytics/technology",
+    response_model=List[TechnologyAnalyticsResponse],
+    summary="Patents by Technology Area",
+    description="Returns the number of patents grouped by technology area.",
+    response_description="Technology-wise patent analytics.",
+)
+def patents_by_technology(
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_patents_by_technology(db)
+
+@router.get(
+    "/analytics/status",
+    response_model=List[PatentStatusAnalyticsResponse],
+    summary="Patents by Status",
+    description="Returns the number of patents grouped by status.",
+    response_description="Status-wise patent analytics.",
+)
+def patents_by_status(
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_patents_by_status(db)
+
+@router.get(
+    "/analytics/country",
+    response_model=List[PatentCountryAnalyticsResponse],
+    summary="Patents by Country",
+    description="Returns the number of patents grouped by country.",
+    response_description="Country-wise patent analytics.",
+)
+def patents_by_country(
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_patents_by_country(db)
+
+@router.get(
+    "/analytics/filing-trend",
+    response_model=List[PatentFilingTrendResponse],
+    summary="Patent Filing Trend",
+    description="Returns the number of patents filed each year.",
+    response_description="Year-wise patent filing trend.",
+)
+def patent_filing_trend(
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_patent_filing_trend(db)
+
+@router.get(
+    "/analytics/top-inventors",
+    response_model=List[TopInventorResponse],
+    summary="Top Inventors",
+    description="Returns inventors ranked by the number of patents.",
+    response_description="Top inventors.",
+)
+def top_inventors(
+    limit: int = 10,
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_top_inventors(
+        db=db,
+        limit=limit,
+    )
+
+@router.get(
+    "/analytics/top-assignees",
+    response_model=List[TopAssigneeResponse],
+    summary="Top Assignees",
+    description="Returns assignees ranked by the number of patents.",
+    response_description="Top assignees.",
+)
+def top_assignees(
+    limit: int = 10,
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_top_assignees(
+        db=db,
+        limit=limit,
+    )
+
+@router.get(
+    "/analytics/recent",
+    response_model=list[RecentPatentResponse],
+    summary="Recent Patents",
+    description="Returns the most recently filed patents.",
+    response_description="Recent patent activity.",
+)
+def recent_patents(
+    limit: int = 5,
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_recent_patents(
+        db=db,
+        limit=limit,
+    )
 
 @router.get(
     "/{patent_id}",
