@@ -1,0 +1,35 @@
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.stat-card p {
+  margin: 5px 0 0;
+  color: gray;
+}
