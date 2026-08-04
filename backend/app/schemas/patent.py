@@ -85,3 +85,17 @@ class RecentPatentResponse(BaseModel):
     status: str
 
     model_config = ConfigDict(from_attributes=True)
+
+class EmergingTechnologyResponse(BaseModel):
+    technology_area: str
+    patent_count: int
+    growth_score: float
+    trend: str
+    recommendation: str
+
+class InnovationScoreResponse(BaseModel):
+    patent_id: int
+    title: str
+    innovation_score: float
+    innovation_level: str
+    reasons: list[str]

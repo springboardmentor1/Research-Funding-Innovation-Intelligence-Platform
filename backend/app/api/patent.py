@@ -19,6 +19,8 @@ from app.schemas.patent import (
     TopInventorResponse,
     TopAssigneeResponse,
     RecentPatentResponse,
+    EmergingTechnologyResponse,
+    InnovationScoreResponse,
 )
 from app.services import patent_service
 
@@ -159,6 +161,54 @@ def recent_patents(
         db=db,
         limit=limit,
     )
+
+@router.get(
+    "/intelligence/emerging-technologies",
+    response_model=list[EmergingTechnologyResponse],
+    summary="Emerging Technology Detection",
+    description="Detects emerging technology areas using patent intelligence scoring.",
+    response_description="Emerging technologies ranked by growth score.",
+)
+def emerging_technologies(
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_emerging_technologies(db)
+
+@router.get(
+    "/intelligence/innovation-score/{patent_id}",
+    response_model=InnovationScoreResponse,
+    summary="Innovation Score",
+    description="Calculates the innovation score for a patent.",
+    response_description="Patent innovation score.",
+)
+def innovation_score(
+    patent_id: int,
+    db: Session = Depends(get_db),
+):
+    result = patent_service.calculate_innovation_score(
+        db=db,
+        patent_id=patent_id,
+    )
+
+    if not result:
+        raise HTTPException(
+            status_code=404,
+            detail="Patent not found.",
+        )
+
+    return result
+
+@router.get(
+    "/intelligence/innovation-scores",
+    response_model=list[InnovationScoreResponse],
+    summary="Innovation Scores",
+    description="Returns innovation scores for all patents ranked by score.",
+    response_description="Ranked patent innovation scores.",
+)
+def innovation_scores(
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_all_innovation_scores(db)
 
 @router.get(
     "/{patent_id}",

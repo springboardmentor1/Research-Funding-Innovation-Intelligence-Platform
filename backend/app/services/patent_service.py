@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import asc, desc, or_
+from datetime import date
 from math import ceil
-from sqlalchemy import func, extract
+from sqlalchemy import func, extract, case
 from app.models.patent import Patent
 from app.schemas.patent import PatentCreate, PatentUpdate
 
@@ -353,3 +354,258 @@ def get_recent_patents(db: Session, limit: int = 5):
         .limit(limit)
         .all()
     )
+
+def get_emerging_technologies(db: Session):
+    current_year = date.today().year
+
+    technologies = (
+        db.query(
+            Patent.technology_area,
+            func.count(Patent.id).label("patent_count"),
+            func.sum(
+                case(
+                    (Patent.status == "Granted", 1),
+                    else_=0,
+                )
+            ).label("granted_count"),
+            func.sum(
+                case(
+                    (
+                        func.extract("year", Patent.filing_date)
+                        >= current_year - 2,
+                        1,
+                    ),
+                    else_=0,
+                )
+            ).label("recent_count"),
+        )
+        .group_by(Patent.technology_area)
+        .all()
+    )
+
+    if not technologies:
+        return []
+
+    max_patents = max(t.patent_count for t in technologies)
+
+    results = []
+
+    for tech in technologies:
+
+        volume_score = (
+            tech.patent_count / max_patents
+        ) * 40
+
+        granted_ratio = (
+            tech.granted_count / tech.patent_count
+            if tech.patent_count
+            else 0
+        )
+
+        granted_score = granted_ratio * 20
+
+        recent_ratio = (
+            tech.recent_count / tech.patent_count
+            if tech.patent_count
+            else 0
+        )
+
+        recent_score = recent_ratio * 30
+
+        publication_score = 10
+
+        growth_score = round(
+            volume_score
+            + granted_score
+            + recent_score
+            + publication_score,
+            2,
+        )
+
+        if growth_score >= 80:
+            trend = "Emerging"
+            recommendation = "High Research Priority"
+
+        elif growth_score >= 60:
+            trend = "Growing"
+            recommendation = "Monitor Closely"
+
+        elif growth_score >= 40:
+            trend = "Stable"
+            recommendation = "Maintain Investment"
+
+        else:
+            trend = "Declining"
+            recommendation = "Low Priority"
+
+        results.append(
+            {
+                "technology_area": tech.technology_area,
+                "patent_count": tech.patent_count,
+                "growth_score": growth_score,
+                "trend": trend,
+                "recommendation": recommendation,
+            }
+        )
+
+def calculate_innovation_score(
+    db: Session,
+    patent_id: int,
+):
+    patent = (
+        db.query(Patent)
+        .filter(Patent.id == patent_id)
+        .first()
+    )
+
+    if not patent:
+        return None
+
+    score = 0
+    reasons = []
+
+    current_year = date.today().year
+
+    # -----------------------------
+    # Patent Status (30)
+    # -----------------------------
+    status_scores = {
+        "Granted": 30,
+        "Published": 20,
+        "Filed": 15,
+        "Expired": 5,
+    }
+
+    status_score = status_scores.get(patent.status, 0)
+    score += status_score
+
+    if status_score:
+        reasons.append(f"Patent is {patent.status.lower()}")
+
+    # -----------------------------
+    # Recent Filing (20)
+    # -----------------------------
+    age = current_year - patent.filing_date.year
+
+    if age <= 1:
+        score += 20
+        reasons.append("Recently filed")
+
+    elif age <= 2:
+        score += 15
+        reasons.append("Filed within last 2 years")
+
+    elif age <= 3:
+        score += 10
+
+    else:
+        score += 5
+
+    # -----------------------------
+    # Technology Popularity (25)
+    # -----------------------------
+    tech_count = (
+        db.query(func.count(Patent.id))
+        .filter(
+            Patent.technology_area == patent.technology_area
+        )
+        .scalar()
+    )
+
+    max_count = (
+        db.query(func.count(Patent.id))
+        .group_by(Patent.technology_area)
+        .order_by(func.count(Patent.id).desc())
+        .first()
+    )
+
+    max_patents = max_count[0] if max_count else 1
+
+    popularity_score = (
+        tech_count / max_patents
+    ) * 25
+
+    score += popularity_score
+
+    if popularity_score >= 20:
+        reasons.append("Popular technology area")
+
+    # -----------------------------
+    # International Patent (15)
+    # -----------------------------
+    international = {
+        "USA",
+        "Germany",
+        "Japan",
+        "United Kingdom",
+        "France",
+    }
+
+    if patent.country in international:
+        score += 15
+        reasons.append("International patent")
+
+    else:
+        score += 8
+
+    # -----------------------------
+    # Patent Age Bonus (10)
+    # -----------------------------
+    if age <= 2:
+        score += 10
+
+    elif age <= 5:
+        score += 5
+
+    else:
+        score += 2
+
+    score = round(min(score, 100), 2)
+
+    if score >= 85:
+        level = "Excellent"
+
+    elif score >= 70:
+        level = "High"
+
+    elif score >= 50:
+        level = "Medium"
+
+    else:
+        level = "Low"
+
+    return {
+        "patent_id": patent.id,
+        "title": patent.title,
+        "innovation_score": score,
+        "innovation_level": level,
+        "reasons": reasons,
+    }
+
+    results.sort(
+        key=lambda x: x["growth_score"],
+        reverse=True,
+    )
+
+    return results
+
+def get_all_innovation_scores(db: Session):
+    patents = db.query(Patent).all()
+
+    results = []
+
+    for patent in patents:
+        score = calculate_innovation_score(
+            db=db,
+            patent_id=patent.id,
+        )
+
+        if score:
+            results.append(score)
+
+    results.sort(
+        key=lambda x: x["innovation_score"],
+        reverse=True,
+    )
+
+    return results
