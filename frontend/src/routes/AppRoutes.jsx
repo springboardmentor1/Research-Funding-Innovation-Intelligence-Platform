@@ -12,6 +12,7 @@ import Reports from '../pages/innovation_manager/Reports';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import FundingDiscovery from '../pages/shared/FundingDiscovery';
 import PublicationSearch from '../pages/shared/PublicationSearch';
+import InnovationDashboard from '../pages/InnovationDashboard';
 import NotFound from '../pages/shared/NotFound';
 
 export default function AppRoutes() {
@@ -26,6 +27,7 @@ export default function AppRoutes() {
 
       {/* Unified Dashboard */}
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/innovation/dashboard" element={<InnovationDashboard />} />
 
       {/* Researcher Routes */}
       <Route path="/researcher/dashboard" element={<ResearcherDashboard />} />
