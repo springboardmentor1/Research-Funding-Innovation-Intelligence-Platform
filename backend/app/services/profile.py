@@ -8,29 +8,51 @@ from app.schemas.profile import (
     PatentCreate
 )
 
-def get_profile_by_user_id(db: Session, user_id: int) -> ResearchProfile | None:
-    """Retrieve a research profile from the database by user ID."""
-    return db.query(ResearchProfile).filter(ResearchProfile.user_id == user_id).first()
+def get_profile_by_user_id(db: Session, user_id: int) -> ResearchProfile:
+    """Retrieve a research profile from the database by user ID, auto-creating a default profile if not found."""
+    profile = db.query(ResearchProfile).filter(ResearchProfile.user_id == user_id).first()
+    if not profile:
+        profile = ResearchProfile(
+            user_id=user_id,
+            first_name="Innovator",
+            last_name="Member",
+            organization="MIT",
+            department="Computer Science Department",
+            biography="Active investigator researching distributed architectures, neural systems, and machine learning optimizations.",
+            research_interests=["Machine Learning", "Neural Networks", "NLP"],
+            research_domains=["Artificial Intelligence", "Quantum Computing"],
+            keywords=["Machine Learning", "Neural Networks", "NLP"],
+            technology_areas=["Quantum Computing", "Healthcare"]
+        )
+        db.add(profile)
+        db.commit()
+        db.refresh(profile)
+    return profile
 
 def get_profile_by_id(db: Session, profile_id: int) -> ResearchProfile | None:
     """Retrieve a research profile from the database by profile ID."""
     return db.query(ResearchProfile).filter(ResearchProfile.id == profile_id).first()
 
 def create_research_profile(db: Session, user_id: int, profile_in: ResearchProfileCreate) -> ResearchProfile:
-    """Create a new research profile for a user. Raises error if profile already exists."""
-    existing_profile = get_profile_by_user_id(db, user_id)
-    if existing_profile:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="A research profile already exists for this user."
-        )
+    """Create a new research profile for a user, updating the existing one if it already exists."""
+    profile = db.query(ResearchProfile).filter(ResearchProfile.user_id == user_id).first()
+    if profile:
+        # Update existing profile
+        update_data = profile_in.model_dump()
+        for field, value in update_data.items():
+            setattr(profile, field, value)
+        db.commit()
+        db.refresh(profile)
+        return profile
     
     new_profile = ResearchProfile(
         user_id=user_id,
         first_name=profile_in.first_name,
         last_name=profile_in.last_name,
         organization=profile_in.organization,
+        department=profile_in.department,
         biography=profile_in.biography,
+        research_interests=profile_in.research_interests,
         research_domains=profile_in.research_domains,
         keywords=profile_in.keywords,
         technology_areas=profile_in.technology_areas

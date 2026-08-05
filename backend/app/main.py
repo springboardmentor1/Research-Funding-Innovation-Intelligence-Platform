@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.database import Base, engine
-from app.routers import auth, profile, recommendations, intelligence, notification, admin, portfolio
+from app.routers import auth, profile, recommendations, intelligence, notification, admin, portfolio, ai
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -41,6 +41,18 @@ app.include_router(intelligence.router, prefix="/intelligence")
 app.include_router(notification.router, prefix="/notifications")
 app.include_router(admin.router, prefix="/admin")
 app.include_router(portfolio.router, prefix="/portfolio")
+app.include_router(ai.router, prefix="/ai")
+
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    print("VALIDATION ERROR DETAIL:", exc.errors())
+    return JSONResponse(
+        status_code=422,
+        content={"detail": exc.errors()}
+    )
 
 @app.get("/")
 def root():

@@ -10,9 +10,11 @@ class ResearchProfile(Base):
     first_name = Column(String(100), nullable=False)
     last_name = Column(String(100), nullable=False)
     organization = Column(String(255), nullable=True)
+    department = Column(String(255), nullable=True)
     biography = Column(Text, nullable=True)
     
-    # Store domains, keywords, and tech areas as JSON lists (e.g., ["Machine Learning", "Quantum Computing"])
+    # Store domains, keywords, and tech areas as JSON lists
+    research_interests = Column(JSON, default=list, nullable=False)
     research_domains = Column(JSON, default=list, nullable=False)
     keywords = Column(JSON, default=list, nullable=False)
     technology_areas = Column(JSON, default=list, nullable=False)

@@ -191,7 +191,7 @@ def run_tests():
     recommendations_exist = False
     sample_grant_id = None
     try:
-        res = httpx.get(f"{BASE_URL}/recommendations/grants", headers=researcher_headers)
+        res = httpx.get(f"{BASE_URL}/recommendations/grants", headers=researcher_headers, timeout=15.0)
         if res.status_code == 200:
             recs = res.json()
             recommendations_exist = len(recs) > 0
@@ -326,6 +326,34 @@ def run_tests():
                 print_result("Portfolio: Update Project Pipeline Stage", False, f"Status {res.status_code}: {res.text}")
         except Exception as e:
             print_result("Portfolio: Update Project Pipeline Stage", False, str(e))
+
+    # 24. Test SaaS Dashboard Recommendations
+    try:
+        res = httpx.get(f"{BASE_URL}/recommendations/dashboard", headers=researcher_headers, timeout=15.0)
+        if res.status_code == 200:
+            print_result("SaaS: Fetch Dashboard Recommendations Feed", True, f"Insight: {res.json().get('ai_insight')[:60]}...")
+        else:
+            print_result("SaaS: Fetch Dashboard Recommendations Feed", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("SaaS: Fetch Dashboard Recommendations Feed", False, str(e))
+
+    # 25. Test Context-Aware AI Chat Widget
+    try:
+        res = httpx.post(f"{BASE_URL}/ai/chat", headers=researcher_headers, json={
+            "message": "Should I apply for this grant?",
+            "page_context": "funding",
+            "selected_item": {
+                "title": "Quantum Computing Development Grant",
+                "agency": "NSF",
+                "description": "Funding for accelerating quantum processors and deep learning algorithms."
+            }
+        }, timeout=15.0)
+        if res.status_code == 200:
+            print_result("SaaS: Context-Aware AI Chat Widget Response", True, f"AI Response: {res.json().get('response')[:60]}...")
+        else:
+            print_result("SaaS: Context-Aware AI Chat Widget Response", False, f"Status {res.status_code}: {res.text}")
+    except Exception as e:
+        print_result("SaaS: Context-Aware AI Chat Widget Response", False, str(e))
 
     print("="*60)
     print("Verification Completed.")

@@ -13,6 +13,7 @@ export default defineConfig({
       '/recommendations': 'http://127.0.0.1:8000',
       '/intelligence': 'http://127.0.0.1:8000',
       '/notifications': 'http://127.0.0.1:8000',
+      '/ai': 'http://127.0.0.1:8000',
     }
   }
 })

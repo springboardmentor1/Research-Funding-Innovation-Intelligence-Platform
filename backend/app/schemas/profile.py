@@ -51,7 +51,9 @@ class ResearchProfileBase(BaseModel):
     first_name: str = Field(..., max_length=100, description="First name of the researcher")
     last_name: str = Field(..., max_length=100, description="Last name of the researcher")
     organization: str | None = Field(None, max_length=255, description="Associated university or enterprise")
+    department: str | None = Field(None, max_length=255, description="Associated department")
     biography: str | None = Field(None, description="Short bio description")
+    research_interests: list[str] = Field(default_factory=list, description="Core research interests")
     research_domains: list[str] = Field(default_factory=list, description="Core scientific domains (e.g., AI, Nanotechnology)")
     keywords: list[str] = Field(default_factory=list, description="Keywords defining research focus")
     technology_areas: list[str] = Field(default_factory=list, description="Related technical application areas")
@@ -63,7 +65,9 @@ class ResearchProfileUpdate(BaseModel):
     first_name: str | None = Field(None, max_length=100)
     last_name: str | None = Field(None, max_length=100)
     organization: str | None = Field(None, max_length=255)
+    department: str | None = Field(None, max_length=255)
     biography: str | None = Field(None)
+    research_interests: list[str] | None = None
     research_domains: list[str] | None = None
     keywords: list[str] | None = None
     technology_areas: list[str] | None = None
