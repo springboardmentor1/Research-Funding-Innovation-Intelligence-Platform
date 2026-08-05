@@ -21,6 +21,7 @@ from app.schemas.patent import (
     RecentPatentResponse,
     EmergingTechnologyResponse,
     InnovationScoreResponse,
+    CommercializationResponse,
 )
 from app.services import patent_service
 
@@ -211,6 +212,42 @@ def innovation_scores(
     return patent_service.get_all_innovation_scores(db)
 
 @router.get(
+    "/intelligence/commercialization/{patent_id}",
+    response_model=CommercializationResponse,
+    summary="Commercialization Recommendation",
+    description="Evaluates the commercialization potential of a patent.",
+    response_description="Patent commercialization analysis.",
+)
+def commercialization_recommendation(
+    patent_id: int,
+    db: Session = Depends(get_db),
+):
+    result = patent_service.calculate_commercialization_score(
+        db=db,
+        patent_id=patent_id,
+    )
+
+    if not result:
+        raise HTTPException(
+            status_code=404,
+            detail="Patent not found.",
+        )
+
+    return result
+
+@router.get(
+    "/intelligence/commercialization",
+    response_model=list[CommercializationResponse],
+    summary="Commercialization Recommendations",
+    description="Returns commercialization scores for all patents ranked by commercialization potential.",
+    response_description="Ranked commercialization recommendations.",
+)
+def commercialization_recommendations(
+    db: Session = Depends(get_db),
+):
+    return patent_service.get_all_commercialization_scores(db)
+
+@router.get(
     "/{patent_id}",
     response_model=PatentResponse,
     summary="Get Patent by ID",
@@ -233,7 +270,6 @@ def get_patent(
         )
 
     return patent
-
 
 @router.put(
     "/{patent_id}",
@@ -267,7 +303,6 @@ def update_patent(
             status_code=400,
             detail=str(e),
         )
-
 
 @router.delete(
     "/{patent_id}",

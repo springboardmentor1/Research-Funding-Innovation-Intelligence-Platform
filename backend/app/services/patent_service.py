@@ -447,6 +447,7 @@ def get_emerging_technologies(db: Session):
                 "recommendation": recommendation,
             }
         )
+    return results    
 
 def calculate_innovation_score(
     db: Session,
@@ -605,6 +606,166 @@ def get_all_innovation_scores(db: Session):
 
     results.sort(
         key=lambda x: x["innovation_score"],
+        reverse=True,
+    )
+
+    return results
+
+def calculate_commercialization_score(
+    db: Session,
+    patent_id: int,
+):
+    patent = (
+        db.query(Patent)
+        .filter(Patent.id == patent_id)
+        .first()
+    )
+
+    if not patent:
+        return None
+
+    innovation = calculate_innovation_score(
+        db=db,
+        patent_id=patent_id,
+    )
+
+    score = 0
+    reasons = []
+
+    # --------------------------------
+    # 1. Innovation Score (50)
+    # --------------------------------
+    innovation_points = (
+        innovation["innovation_score"] / 100
+    ) * 50
+
+    score += innovation_points
+
+    if innovation["innovation_score"] >= 85:
+        reasons.append("High innovation score")
+
+    # --------------------------------
+    # 2. Patent Status (20)
+    # --------------------------------
+    if patent.status == "Granted":
+        score += 20
+        reasons.append("Granted patent")
+
+    elif patent.status == "Published":
+        score += 15
+
+    elif patent.status == "Filed":
+        score += 10
+
+    else:
+        score += 5
+
+    # --------------------------------
+    # 3. Technology Demand (15)
+    # --------------------------------
+    tech_count = (
+        db.query(func.count(Patent.id))
+        .filter(
+            Patent.technology_area == patent.technology_area
+        )
+        .scalar()
+    )
+
+    max_count = (
+        db.query(func.count(Patent.id))
+        .group_by(Patent.technology_area)
+        .order_by(func.count(Patent.id).desc())
+        .first()
+    )
+
+    max_patents = max_count[0] if max_count else 1
+
+    tech_score = (
+        tech_count / max_patents
+    ) * 15
+
+    score += tech_score
+
+    if tech_score >= 12:
+        reasons.append("High technology demand")
+
+    # --------------------------------
+    # 4. Patent Recency (10)
+    # --------------------------------
+    age = date.today().year - patent.filing_date.year
+
+    if age <= 2:
+        score += 10
+        reasons.append("Recently filed")
+
+    elif age <= 5:
+        score += 5
+
+    else:
+        score += 2
+
+    # --------------------------------
+    # 5. International Filing (5)
+    # --------------------------------
+    international = {
+        "USA",
+        "Germany",
+        "Japan",
+        "United Kingdom",
+        "France",
+    }
+
+    if patent.country in international:
+        score += 5
+        reasons.append("International market potential")
+
+    score = round(min(score, 100), 2)
+
+    if score >= 85:
+        level = "High Commercial Potential"
+        action = "Seek Industry Partnership"
+
+    elif score >= 70:
+        level = "Good Commercial Potential"
+        action = "Explore Licensing Opportunities"
+
+    elif score >= 50:
+        level = "Moderate Commercial Potential"
+        action = "Continue Research & Validation"
+
+    else:
+        level = "Low Commercial Potential"
+        action = "Needs Further Development"
+
+    return {
+        "patent_id": patent.id,
+        "title": patent.title,
+        "commercialization_score": score,
+        "commercialization_level": level,
+        "recommended_action": action,
+        "reasons": reasons,
+    }
+
+def get_all_commercialization_scores(db: Session):
+    """
+    Returns commercialization scores for all patents,
+    ranked from highest to lowest.
+    """
+    patents = db.query(Patent).all()
+
+    results = []
+
+    for patent in patents:
+        commercialization = calculate_commercialization_score(
+            db=db,
+            patent_id=patent.id,
+        )
+
+        if commercialization:
+            results.append(commercialization)
+
+    results.sort(
+        key=lambda x: x["commercialization_score"],
         reverse=True,
     )
 

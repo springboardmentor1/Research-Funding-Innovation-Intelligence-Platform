@@ -12,7 +12,7 @@ from app.services import matching_service
 
 from app.models.publication import Publication
 from app.models.funding_opportunity import FundingOpportunity
-
+from app.services import patent_service
 
 def get_dashboard(
     db: Session,
@@ -60,6 +60,19 @@ def get_dashboard(
             user_id=user_id,
     )
 )
+    recommendation_summary = matching_service.get_recommendation_summary(
+        db=db,
+        user_id=user_id,
+    )
+
+    patent_statistics = patent_service.get_patent_statistics(db)
+    patent_technology = patent_service.get_patents_by_technology(db)
+    patent_status = patent_service.get_patents_by_status(db)
+    emerging_technologies = patent_service.get_emerging_technologies(db)
+    innovation_scores = patent_service.get_all_innovation_scores(db)[:5]
+    commercialization_recommendations = (
+        patent_service.get_all_commercialization_scores(db)[:5]
+    )
 
     return {
         "summary": summary,
@@ -71,6 +84,12 @@ def get_dashboard(
         "funding_by_agency": funding_by_agency,
         "funding_by_research_area": funding_by_research_area,
         "funding_by_status": funding_by_status,
+        "patent_statistics": patent_statistics,
+        "patent_technology": patent_technology,
+        "patent_status": patent_status,
+        "emerging_technologies": emerging_technologies,
+        "innovation_scores": innovation_scores,
+        "commercialization_recommendations": commercialization_recommendations,
     }
 
 def get_recent_activity(

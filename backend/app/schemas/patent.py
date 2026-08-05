@@ -99,3 +99,11 @@ class InnovationScoreResponse(BaseModel):
     innovation_score: float
     innovation_level: str
     reasons: list[str]
+
+class CommercializationResponse(BaseModel):
+    patent_id: int
+    title: str
+    commercialization_score: float
+    commercialization_level: str
+    recommended_action: str
+    reasons: list[str]
