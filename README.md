@@ -93,5 +93,6 @@ Full interactive docs at `/docs` on any running instance.
 See `DEPLOYMENT.md` for the full Render + Vercel runbook.
 
 ## Live Demo
-   - Frontend: https://rfip-drab.vercel.app/
-   - Backend: https://rfip-backend.onrender.com
+- Frontend: https://rfip-drab.vercel.app/
+- Backend API: https://rfip-backend.onrender.com
+- API Docs (Swagger): https://rfip-backend.onrender.com/docs
