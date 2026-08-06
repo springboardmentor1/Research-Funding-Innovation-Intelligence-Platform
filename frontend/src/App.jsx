@@ -563,10 +563,10 @@ export default function App() {
   }
 
   return (
-    <div className={`min-h-screen flex font-sans relative ${theme === 'dark' ? 'bg-[#212121] text-[#ececec]' : 'bg-[#f4f4f4] text-[#212121]'}`}>
+    <div className={`h-screen overflow-hidden flex flex-row font-sans relative ${theme === 'dark' ? 'bg-[#212121] text-[#ececec]' : 'bg-[#f4f4f4] text-[#212121]'}`}>
       
       {/* 1. SIDEBAR PANEL */}
-      <aside className={`w-64 border-r flex flex-col ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+      <aside className={`w-64 h-screen overflow-y-hidden border-r flex flex-col sticky top-0 ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
         <div className="p-6 border-b border-[#2d2d2d] flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-[#10a37f]/15 flex items-center justify-center">
             <Brain className="w-5 h-5 text-[#10a37f]" />
