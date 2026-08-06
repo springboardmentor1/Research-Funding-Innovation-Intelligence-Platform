@@ -1,18 +1,16 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 function MainLayout() {
   return (
     <div>
 
-      <h2>Navbar</h2>
-
-      <hr />
+      <Navbar />
 
       <div style={{ display: "flex" }}>
 
-        <div style={{ width: "200px" }}>
-          Sidebar
-        </div>
+        <Sidebar />
 
         <div style={{ flex: 1 }}>
           <Outlet />
