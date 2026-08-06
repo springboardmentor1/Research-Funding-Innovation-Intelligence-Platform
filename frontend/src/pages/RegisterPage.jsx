@@ -1,122 +1,80 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../context/useAuth";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import Panel from '../components/Panel';
 
-const ROLE_OPTIONS = [
-  { value: "RESEARCHER", label: "Researcher" },
-  { value: "STARTUP_FOUNDER", label: "Startup Founder" },
-  { value: "INNOVATION_MANAGER", label: "Innovation Manager" },
-  { value: "ADMINISTRATOR", label: "Administrator" },
+const ROLES = [
+  { value: 'researcher', label: 'Researcher' },
+  { value: 'startup_founder', label: 'Startup Founder' },
+  { value: 'innovation_manager', label: 'Innovation Manager' },
+  { value: 'administrator', label: 'Administrator' },
 ];
 
 export default function RegisterPage() {
   const { register } = useAuth();
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-    fullName: "",
-    role: "RESEARCHER",
-  });
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ full_name: '', email: '', password: '', role: 'researcher' });
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
 
-  function handleChange(e) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  function update(field, value) {
+    setForm((f) => ({ ...f, [field]: value }));
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError(null);
-    setLoading(true);
+    setError('');
+    setBusy(true);
     try {
-      await register(form.email, form.password, form.fullName, form.role);
-      navigate("/profile");  // send new users straight to onboarding
+      await register(form);
+      navigate('/');
     } catch (err) {
-      setError(err.response?.data?.detail ?? "Registration failed");
+      setError(err.response?.data?.detail || 'Registration failed.');
     } finally {
-      setLoading(false);
+      setBusy(false);
     }
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
-      <div className="w-full max-w-md bg-slate-900 rounded-2xl p-8 shadow-xl border border-slate-800">
-        <h1 className="text-2xl font-bold text-white mb-1">Create account</h1>
-        <p className="text-slate-400 text-sm mb-6">Research Funding & Innovation Platform</p>
+    <div className="auth-shell">
+      <div className="auth-card">
+        <div className="page-eyebrow">Research & Innovation Intelligence</div>
+        <h1 className="page-title" style={{ marginBottom: 24 }}>Create account</h1>
 
-        {error && (
-          <div className="bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg px-4 py-2 text-sm mb-4">
-            {error}
-          </div>
-        )}
+        <Panel>
+          {error && <div className="error-banner">{error}</div>}
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="full_name">Full name</label>
+            <input id="full_name" value={form.full_name} onChange={(e) => update('full_name', e.target.value)} required />
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm text-slate-300 mb-1">Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              required
-              value={form.fullName}
-              onChange={handleChange}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" value={form.email} onChange={(e) => update('email', e.target.value)} required />
 
-          <div>
-            <label className="block text-sm text-slate-300 mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              required
-              value={form.email}
-              onChange={handleChange}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
+            <label htmlFor="password">Password</label>
+            <input id="password" type="password" value={form.password} onChange={(e) => update('password', e.target.value)} required minLength={6} />
 
-          <div>
-            <label className="block text-sm text-slate-300 mb-1">Password</label>
-            <input
-              type="password"
-              name="password"
-              required
-              minLength={8}
-              value={form.password}
-              onChange={handleChange}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm text-slate-300 mb-1">Role</label>
-            <select
-              name="role"
-              value={form.role}
-              onChange={handleChange}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
-              {ROLE_OPTIONS.map((r) => (
-                <option key={r.value} value={r.value}>{r.label}</option>
+            <label>Role</label>
+            <div className="chip-select">
+              {ROLES.map((r) => (
+                <button
+                  type="button"
+                  key={r.value}
+                  className={form.role === r.value ? 'selected' : ''}
+                  onClick={() => update('role', r.value)}
+                >
+                  {r.label}
+                </button>
               ))}
-            </select>
-          </div>
+            </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-medium rounded-lg py-2.5 text-sm transition-colors"
-          >
-            {loading ? "Creating account…" : "Create account"}
-          </button>
-        </form>
+            <button className="btn" type="submit" disabled={busy} style={{ marginTop: 20, width: '100%', justifyContent: 'center' }}>
+              {busy ? 'Creating…' : 'Create account'}
+            </button>
+          </form>
+        </Panel>
 
-        <p className="mt-4 text-center text-sm text-slate-400">
-          Already have an account?{" "}
-          <Link to="/login" className="text-indigo-400 hover:underline">
-            Sign in
-          </Link>
+        <p style={{ color: 'var(--text-dim)', fontSize: 13, marginTop: 18, textAlign: 'center' }}>
+          Already have an account? <Link to="/login" style={{ color: 'var(--gold)' }}>Sign in</Link>
         </p>
       </div>
     </div>

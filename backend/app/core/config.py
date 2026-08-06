@@ -1,44 +1,27 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from functools import lru_cache
-
+from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    # PostgreSQL
-    postgres_user: str
-    postgres_password: str
-    postgres_db: str
-    postgres_host: str = "postgres"
-    postgres_port: int = 5432
-
-    # MongoDB
-    mongo_user: str
-    mongo_password: str
-    mongo_host: str = "mongodb"
-    mongo_port: int = 27017
-    mongo_db: str = "research_metadata"
-
-    # JWT
-    jwt_secret_key: str
-    jwt_algorithm: str = "HS256"
+    database_url: str = "sqlite:///./rfip_dev.db"
+    secret_key: str = "dev-secret-change-me"
+    algorithm: str = "HS256"
     access_token_expire_minutes: int = 60
 
-    @property
-    def postgres_url(self) -> str:
-        return (
-            f"postgresql://{self.postgres_user}:{self.postgres_password}"
-            f"@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
-        )
+    # comma-separated list of allowed frontend origins in production, e.g.
+    # "https://rfip.vercel.app,https://rfip-staging.vercel.app"
+    allowed_origins: str = "*"
+
+    # Secondary database (MongoDB): used to cache OpenAlex research trend responses.
+    mongo_url: str = "mongodb://localhost:27017"
+    mongo_db_name: str = "rfip_cache"
+    trend_cache_ttl_seconds: int = 21600  # 6 hours
 
     @property
-    def mongo_url(self) -> str:
-        return (
-            f"mongodb://{self.mongo_user}:{self.mongo_password}"
-            f"@{self.mongo_host}:{self.mongo_port}"
-        )
+    def cors_origins(self) -> list[str]:
+        if self.allowed_origins.strip() == "*":
+            return ["*"]
+        return [o.strip() for o in self.allowed_origins.split(",") if o.strip()]
 
-    model_config = SettingsConfigDict(env_file=".env", case_sensitive=False)
+    class Config:
+        env_file = ".env"
 
-
-@lru_cache
-def get_settings() -> Settings:
-    return Settings()
+settings = Settings()

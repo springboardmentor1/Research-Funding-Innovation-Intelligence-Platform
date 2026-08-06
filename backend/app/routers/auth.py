@@ -1,29 +1,18 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-from pydantic import BaseModel, EmailStr
-from app.core.database import get_db
+
+from app.database import get_db
+from app.models.user import User
+from app.models.profile import ResearchProfile
+from app.schemas.user import UserCreate, UserOut, Token
 from app.core.security import hash_password, verify_password, create_access_token
-from app.models.schemas import User, UserRole
+from app.core.deps import get_current_user
 
-router = APIRouter(prefix="/api/v1/auth", tags=["auth"])
+router = APIRouter(prefix="/api/auth", tags=["auth"])
 
-
-class RegisterRequest(BaseModel):
-    email: EmailStr
-    password: str
-    full_name: str
-    role: UserRole = UserRole.RESEARCHER
-
-
-class TokenResponse(BaseModel):
-    access_token: str
-    token_type: str = "bearer"
-    role: str
-
-
-@router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
-def register(payload: RegisterRequest, db: Session = Depends(get_db)):
+@router.post("/register", response_model=UserOut, status_code=status.HTTP_201_CREATED)
+def register(payload: UserCreate, db: Session = Depends(get_db)):
     if db.query(User).filter(User.email == payload.email).first():
         raise HTTPException(status_code=400, detail="Email already registered")
 
@@ -34,18 +23,31 @@ def register(payload: RegisterRequest, db: Session = Depends(get_db)):
         role=payload.role,
     )
     db.add(user)
+    db.flush()
+
+    db.add(ResearchProfile(user_id=user.id))
     db.commit()
     db.refresh(user)
+    return user
 
-    token = create_access_token(subject=user.email, role=user.role.value)
-    return TokenResponse(access_token=token, role=user.role.value)
+@router.post("/login", response_model=Token)
+def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.email == form_data.username).first()
+    if not user or not verify_password(form_data.password, user.hashed_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    if not user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="This account has been deactivated",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    token = create_access_token({"sub": user.email, "role": user.role.value})
+    return Token(access_token=token)
 
-
-@router.post("/login", response_model=TokenResponse)
-def login(form: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.email == form.username).first()
-    if not user or not verify_password(form.password, user.hashed_password):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
-
-    token = create_access_token(subject=user.email, role=user.role.value)
-    return TokenResponse(access_token=token, role=user.role.value)
+@router.get("/me", response_model=UserOut)
+def me(current_user: User = Depends(get_current_user)):
+    return current_user
