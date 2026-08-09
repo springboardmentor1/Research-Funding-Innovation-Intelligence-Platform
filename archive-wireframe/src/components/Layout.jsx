@@ -7,13 +7,11 @@ function Layout({ children }) {
     <>
       <TopNavbar />
 
-      <div style={{ display: "flex" }}>
-        <SideNavbar />
+      <SideNavbar />
 
-        <main className="main-content" style={{ flex: 1 }}>
-          {children}
-        </main>
-      </div>
+      <main className="main-content">
+        {children}
+      </main>
 
       <Footer />
     </>

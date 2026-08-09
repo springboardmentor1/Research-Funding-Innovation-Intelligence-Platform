@@ -1,91 +1,113 @@
 import Layout from "../components/Layout";
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import { SearchContext } from "../context/SearchContext";
 import LoadingSpinner from "../components/LoadingSpinner";
+
 import { getPublications } from "../api/publicationApi";
 
 function Publications() {
 
-const [publications, setPublications] = useState([]);
+  const { search } = useContext(SearchContext);
 
-const [currentPage, setCurrentPage] = useState(1);
-const [totalPages, setTotalPages] = useState(1);
-const [totalRecords, setTotalRecords] = useState(0);
+  const [publications, setPublications] = useState([]);
 
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
-const perPage = 20;
+  const [error, setError] = useState("");
 
-const [selectedYear, setSelectedYear] = useState("");
-const [selectedType, setSelectedType] = useState("");
-const [sortBy, setSortBy] = useState("newest");
+  const [currentPage, setCurrentPage] = useState(1);
 
-const { search } = useContext(SearchContext);
+  const [totalPages, setTotalPages] = useState(1);
 
-useEffect(() => {
+  const [totalRecords, setTotalRecords] = useState(0);
 
-  async function loadPublications() {
+  const perPage = 20;
 
-    setLoading(true);
-    setError("");
+  const [selectedYear, setSelectedYear] = useState("");
 
-    try {
+  const [selectedType, setSelectedType] = useState("");
 
-      const response = await getPublications(
-        currentPage,
-        perPage,
-        search,
-        sortBy
-      );
+  const [sortBy, setSortBy] = useState("newest");
 
-      setPublications(response.data);
-      setTotalPages(response.total_pages);
-      setTotalRecords(response.total_records);
+  useEffect(() => {
 
-    } catch (err) {
+    async function loadPublications() {
 
-      console.error(err);
-      setError("Failed to load publications.");
+      setLoading(true);
 
-    } finally {
+      setError("");
 
-      setLoading(false);
+      try {
+
+        const response = await getPublications(
+          currentPage,
+          perPage,
+          search,
+          sortBy
+        );
+
+        setPublications(response.data);
+
+        setTotalPages(response.total_pages);
+
+        setTotalRecords(response.total_records);
+
+      } catch (err) {
+
+        console.error(err);
+
+        setError("Failed to load publications.");
+
+      } finally {
+
+        setLoading(false);
+
+      }
 
     }
 
-  }
+    loadPublications();
 
-  loadPublications();
-
-}, [currentPage, search, sortBy]);
+  }, [currentPage, search, sortBy]);
 
   if (loading) {
-  return (
-    <Layout>
-      <LoadingSpinner />
-    </Layout>
-  );
-}
 
-if (error) {
-  return (
-    <Layout>
-      <div
-        style={{
-          padding: "40px",
-          textAlign: "center",
-          color: "#dc2626",
-          fontWeight: "bold",
-        }}
-      >
-        {error}
-      </div>
-    </Layout>
-  );
-}
+    return (
 
-  // Local Filters
+      <Layout>
+
+        <LoadingSpinner />
+
+      </Layout>
+
+    );
+
+  }
+
+  if (error) {
+
+    return (
+
+      <Layout>
+
+        <div
+          style={{
+            padding: "40px",
+            textAlign: "center",
+            color: "#dc2626",
+            fontWeight: "bold",
+          }}
+        >
+          {error}
+        </div>
+
+      </Layout>
+
+    );
+
+  }
 
   const filteredPublications = publications.filter((pub) => {
 
@@ -112,8 +134,7 @@ if (error) {
       >
 
         <h1>📚 Publications</h1>
-
-        {/* Filters */}
+                {/* Filters */}
 
         <div
           style={{
@@ -140,10 +161,7 @@ if (error) {
             {[...new Set(publications.map((p) => p.publication_year))]
               .sort((a, b) => b - a)
               .map((year) => (
-                <option
-                  key={year}
-                  value={year}
-                >
+                <option key={year} value={year}>
                   {year}
                 </option>
               ))}
@@ -165,57 +183,42 @@ if (error) {
             {[...new Set(publications.map((p) => p.type))]
               .filter(Boolean)
               .map((type) => (
-                <option
-                  key={type}
-                  value={type}
-                >
+                <option key={type} value={type}>
                   {type}
                 </option>
               ))}
           </select>
+
           {/* Sort */}
 
-<select
-  value={sortBy}
-  onChange={(e) => {
-    setSortBy(e.target.value);
-    setCurrentPage(1);
-  }}
-  style={{
-    padding: "10px",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
-  }}
->
-  <option value="newest">Newest First</option>
-
-  <option value="oldest">Oldest First</option>
-
-  <option value="citations_desc">
-    Most Cited
-  </option>
-
-  <option value="citations_asc">
-    Least Cited
-  </option>
-
-  <option value="title_asc">
-    Title A-Z
-  </option>
-
-  <option value="title_desc">
-    Title Z-A
-  </option>
-</select>
+          <select
+            value={sortBy}
+            onChange={(e) => {
+              setSortBy(e.target.value);
+              setCurrentPage(1);
+            }}
+            style={{
+              padding: "10px",
+              borderRadius: "8px",
+              border: "1px solid #ccc",
+            }}
+          >
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="citations_desc">Most Cited</option>
+            <option value="citations_asc">Least Cited</option>
+            <option value="title_asc">Title A-Z</option>
+            <option value="title_desc">Title Z-A</option>
+          </select>
 
           {/* Reset */}
 
           <button
             onClick={() => {
-             setSelectedYear("");
-             setSelectedType("");
-             setSortBy("newest");
-             setCurrentPage(1);
+              setSelectedYear("");
+              setSelectedType("");
+              setSortBy("newest");
+              setCurrentPage(1);
             }}
             style={{
               padding: "10px 18px",
@@ -241,32 +244,14 @@ if (error) {
             fontWeight: "500",
           }}
         >
-            Showing
-
-<strong>
-{" "}
-{filteredPublications.length}
-</strong>
-
-of
-
-<strong>
-{" "}
-{totalRecords}
-</strong>
-
-publication(s)
-
-
+          Showing <strong>{filteredPublications.length}</strong> of{" "}
+          <strong>{totalRecords}</strong> publication(s)
         </p>
 
         {filteredPublications.length === 0 ? (
-
           <h3>No publications found.</h3>
-
         ) : (
-
-          filteredPublications.map((pub, index) => (
+                    filteredPublications.map((pub, index) => (
 
             <div
               key={index}
@@ -280,7 +265,32 @@ publication(s)
               }}
             >
 
-              <h3>{pub.title}</h3>
+              {/* Clickable Title */}
+
+              <h3
+                style={{
+                  marginBottom: "12px",
+                }}
+              >
+                {pub.doi && pub.doi !== "Not Available" ? (
+
+                  <Link
+                    to={`/publication/${encodeURIComponent(pub.doi)}`}
+                    style={{
+                      color: "#2563eb",
+                      textDecoration: "none",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {pub.title}
+                  </Link>
+
+                ) : (
+
+                  pub.title
+
+                )}
+              </h3>
 
               <p>
                 <strong>📅 Publication Year:</strong>{" "}
@@ -299,7 +309,9 @@ publication(s)
 
               <p>
                 <strong>🔗 DOI:</strong>{" "}
+
                 {pub.doi && pub.doi !== "Not Available" ? (
+
                   <a
                     href={pub.doi}
                     target="_blank"
@@ -307,17 +319,21 @@ publication(s)
                   >
                     {pub.doi}
                   </a>
+
                 ) : (
+
                   "Not Available"
+
                 )}
+
               </p>
 
             </div>
 
           ))
-                  )}
 
-        {/* Pagination */}
+        )}
+                {/* Pagination */}
 
         <div
           style={{

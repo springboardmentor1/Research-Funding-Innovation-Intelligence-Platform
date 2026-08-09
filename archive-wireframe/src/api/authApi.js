@@ -1,9 +1,18 @@
-export async function checkBackend() {
-  const response = await fetch("http://127.0.0.1:5000/health");
+const API_URL = "http://127.0.0.1:5000";
 
-  if (!response.ok) {
-    throw new Error("Backend not reachable");
-  }
+export async function loginUser(email, password) {
+  const response = await fetch(`${API_URL}/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
 
-  return await response.json();
+  const data = await response.json();
+
+  return data;
 }

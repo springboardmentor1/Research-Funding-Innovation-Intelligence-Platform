@@ -1,17 +1,17 @@
 import "../styles/dashboard.css";
 import { useContext, useState, useEffect } from "react";
 import { SearchContext } from "../context/SearchContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getNotifications } from "../api/notificationApi";
 
 function TopNavbar() {
   const { search, setSearch } = useContext(SearchContext);
-
   const navigate = useNavigate();
 
   const [showNotifications, setShowNotifications] = useState(false);
-
   const [notifications, setNotifications] = useState([]);
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     async function loadNotifications() {
@@ -28,29 +28,41 @@ function TopNavbar() {
 
   const handleSearch = () => {
     if (!search.trim()) return;
-
     navigate("/search");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
   };
 
   return (
     <>
-      <header
-        className="top-navbar"
-        style={{
-          position: "relative",
-        }}
-      >
-        <div className="logo">
-          📚 ARCHIVE
-        </div>
+      <header className="top-navbar">
 
-        <div
-          style={{
-            display: "flex",
-            gap: "10px",
-            alignItems: "center",
-          }}
-        >
+        {/* ---------------- Logo ---------------- */}
+
+        <Link
+  to="/"
+  className="logo"
+  aria-label="ResearchHub AI Home"
+>
+  <img
+    src="/logo.png"
+    alt="ResearchHub AI logo"
+    className="logo-image"
+  />
+
+  <div className="logo-text">
+    <h2>ResearchHub AI</h2>
+    <span>Research Intelligence Platform</span>
+  </div>
+</Link>
+
+        {/* ---------------- Search ---------------- */}
+
+        <div className="navbar-right">
+
           <input
             className="search-box"
             type="text"
@@ -58,129 +70,90 @@ function TopNavbar() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
+              if (e.key === "Enter") handleSearch();
             }}
           />
 
           <button
+            className="search-btn"
             onClick={handleSearch}
-            style={{
-              background: "#2563eb",
-              color: "#fff",
-              border: "none",
-              padding: "10px 18px",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
           >
             Search
           </button>
 
-          {/* Notification Bell */}
+        </div>
 
-          <div
-            style={{
-              position: "relative",
-            }}
-          >
+        {/* ---------------- Right ---------------- */}
+
+        <div className="navbar-right">
+
+          {/* Notification */}
+
+          <div className="notification-wrapper">
+
             <button
+              className="notification-btn"
               onClick={() =>
                 setShowNotifications(!showNotifications)
               }
-              style={{
-                width: "45px",
-                height: "45px",
-                borderRadius: "50%",
-                border: "1px solid #ddd",
-                background: "#fff",
-                cursor: "pointer",
-                fontSize: "20px",
-              }}
             >
               🔔
             </button>
 
-            <span
-              style={{
-                position: "absolute",
-                top: "-5px",
-                right: "-5px",
-                background: "#ef4444",
-                color: "#fff",
-                width: "20px",
-                height: "20px",
-                borderRadius: "50%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "11px",
-                fontWeight: "bold",
-              }}
-            >
+            <span className="notification-count">
               {notifications.length}
             </span>
+
           </div>
+
+          {/* User */}
+
+          <div className="user-name">
+            👋 {user?.name}
+          </div>
+
+          {/* Logout */}
+
+          <button
+            className="logout-btn"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+
         </div>
 
-        {/* Notification Panel */}
+        {/* Notification Dropdown */}
 
         {showNotifications && (
-          <div
-            style={{
-              position: "absolute",
-              top: "70px",
-              right: "20px",
-              width: "360px",
-              background: "#fff",
-              borderRadius: "12px",
-              boxShadow: "0 8px 25px rgba(0,0,0,.18)",
-              padding: "20px",
-              zIndex: 9999,
-            }}
-          >
-            <h3
-              style={{
-                marginBottom: "15px",
-              }}
-            >
-              🔔 Research Updates
-            </h3>
+
+          <div className="notification-panel">
+
+            <h3>🔔 Research Updates</h3>
 
             {notifications.map((item, index) => (
+
               <div
                 key={index}
-                style={{
-                  padding: "10px 0",
-                  borderBottom:
-                    index === notifications.length - 1
-                      ? "none"
-                      : "1px solid #eee",
-                }}
+                className="notification-item"
               >
-                <div
-                  style={{
-                    fontWeight: "600",
-                  }}
-                >
+
+                <div className="notification-message">
                   {item.icon} {item.message}
                 </div>
 
-                <div
-                  style={{
-                    fontSize: "12px",
-                    color: "#6b7280",
-                    marginTop: "4px",
-                  }}
-                >
+                <div className="notification-time">
                   {item.time}
                 </div>
+
               </div>
+
             ))}
+
           </div>
+
         )}
+
       </header>
     </>
   );
