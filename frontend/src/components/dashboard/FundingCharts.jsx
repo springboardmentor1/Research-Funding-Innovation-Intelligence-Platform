@@ -12,18 +12,19 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import { FaMoneyBillWave, FaChartLine, FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import { FaMoneyBillWave, FaChartLine, FaArrowUp, FaArrowDown, FaInfoCircle } from 'react-icons/fa';
 
 const COLORS = ['#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ec4899', '#06b6d4', '#64748b'];
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-slate-900/90 backdrop-blur-md border border-slate-700 p-3 rounded-lg shadow-xl">
-        <p className="text-xs font-semibold text-slate-400 mb-1">{label}</p>
+      <div className="bg-slate-900 border border-slate-700 p-3 rounded-xl shadow-2xl z-50">
+        <p className="text-xs font-bold text-slate-300 mb-1 border-b border-slate-800 pb-1">{label}</p>
         {payload.map((item, idx) => (
-          <p key={idx} className="text-sm font-bold" style={{ color: item.color || item.payload.fill }}>
-            {item.name}: {item.value?.toLocaleString()}
+          <p key={idx} className="text-xs font-extrabold flex items-center justify-between gap-4 mt-1" style={{ color: item.color || item.payload.fill || '#8b5cf6' }}>
+            <span>{item.name}:</span>
+            <span>{item.value?.toLocaleString()}</span>
           </p>
         ))}
       </div>
@@ -56,59 +57,71 @@ export default function FundingCharts({ data }) {
 
   const formattedStats = [
     {
-      label: 'Total Funding Volume',
+      label: 'Total Capital Pool',
       value: `$${(stats.total_funding_amount / 1e9).toFixed(2)}B`,
-      subtext: `$${stats.total_funding_amount?.toLocaleString()}`,
+      subtext: `$${stats.total_funding_amount?.toLocaleString()} Total Available`,
       icon: FaMoneyBillWave,
-      color: 'text-emerald-400 bg-emerald-500/10',
+      color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
     },
     {
-      label: 'Average Opportunity Size',
+      label: 'Average Grant Size',
       value: `$${(stats.average_funding_amount / 1e3).toFixed(1)}K`,
-      subtext: `$${stats.average_funding_amount?.toLocaleString()}`,
+      subtext: `$${stats.average_funding_amount?.toLocaleString()} Per Award`,
       icon: FaChartLine,
-      color: 'text-blue-400 bg-blue-500/10',
+      color: 'text-blue-400 bg-blue-500/10 border-blue-500/20',
     },
     {
-      label: 'Max Grant Value',
+      label: 'Max Grant Ceiling',
       value: `$${(stats.max_funding_amount / 1e6).toFixed(1)}M`,
-      subtext: `$${stats.max_funding_amount?.toLocaleString()}`,
+      subtext: `$${stats.max_funding_amount?.toLocaleString()} Top Award`,
       icon: FaArrowUp,
-      color: 'text-purple-400 bg-purple-500/10',
+      color: 'text-purple-400 bg-purple-500/10 border-purple-500/20',
     },
     {
-      label: 'Min Grant Value',
+      label: 'Min Grant Entry',
       value: `$${(stats.min_funding_amount / 1e3).toFixed(0)}K`,
-      subtext: `$${stats.min_funding_amount?.toLocaleString()}`,
+      subtext: `$${stats.min_funding_amount?.toLocaleString()} Base Award`,
       icon: FaArrowDown,
-      color: 'text-amber-400 bg-amber-500/10',
+      color: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
     },
   ];
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      {/* Funding Amount Statistics Cards */}
-      <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex flex-col h-[400px]">
-        <h3 className="text-lg font-bold text-slate-100 mb-6">Funding Opportunity Valuation Metrics</h3>
-        <div className="grid grid-cols-2 gap-4 flex-1">
+      
+      {/* 1. Valuation Cards */}
+      <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col justify-between h-[420px] shadow-xl">
+        <div>
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-extrabold text-slate-100">Grant Valuation & Financial Capital</h3>
+            <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full font-bold border border-emerald-500/20">
+              Capital Valuation
+            </span>
+          </div>
+          <p className="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <FaInfoCircle size={11} className="text-slate-500 shrink-0" />
+            <span>Financial metrics across current active grant opportunities.</span>
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 flex-1 mt-4">
           {formattedStats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
               <div 
                 key={idx} 
-                className="bg-slate-900/50 border border-slate-800/60 rounded-xl p-4 flex flex-col justify-between hover:border-slate-700/80 transition-colors"
+                className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-slate-700 transition-colors"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                    {stat.label}
-                  </span>
-                  <div className={`p-2 rounded-lg ${stat.color}`}>
-                    <Icon size={16} />
+                  <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">{stat.label}</span>
+                  <div className={`p-2 rounded-lg border ${stat.color}`}>
+                    <Icon size={14} />
                   </div>
                 </div>
-                <div className="mt-4">
+
+                <div className="mt-2">
                   <p className="text-2xl font-black text-white tracking-tight">{stat.value}</p>
-                  <p className="text-xs text-slate-500 mt-1 truncate">{stat.subtext}</p>
+                  <p className="text-[10px] text-slate-400 font-medium mt-0.5">{stat.subtext}</p>
                 </div>
               </div>
             );
@@ -116,25 +129,38 @@ export default function FundingCharts({ data }) {
         </div>
       </div>
 
-      {/* Top Agencies */}
-      <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex flex-col h-[400px]">
-        <h3 className="text-lg font-bold text-slate-100 mb-6">Top Funding Agencies</h3>
-        <div className="flex-1 w-full min-h-[250px]">
+      {/* 2. Top Sponsoring Funding Agencies */}
+      <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col justify-between h-[420px] shadow-xl">
+        <div>
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-extrabold text-slate-100">Top Grant Sponsoring Agencies</h3>
+            <span className="text-[10px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-full font-bold border border-purple-500/20">
+              Grant Providers
+            </span>
+          </div>
+          <p className="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <FaInfoCircle size={11} className="text-slate-500 shrink-0" />
+            <span>Major national & international funding organizations.</span>
+          </p>
+        </div>
+
+        <div className="flex-1 w-full min-h-[250px] mt-4">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={agencyData} layout="vertical" margin={{ top: 0, right: 10, left: 40, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" horizontal={false} />
-              <XAxis type="number" stroke="#64748b" fontSize={12} tickLine={false} />
+            <BarChart data={agencyData} layout="vertical" margin={{ top: 0, right: 15, left: 10, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#334155" horizontal={false} />
+              <XAxis type="number" stroke="#cbd5e1" fontSize={11} fontWeight={600} tickLine={false} />
               <YAxis 
                 type="category" 
                 dataKey="agency" 
-                stroke="#64748b" 
-                fontSize={10} 
+                stroke="#e2e8f0" 
+                fontSize={11} 
+                fontWeight={600} 
                 tickLine={false} 
-                width={120} 
-                tickFormatter={(val) => val.length > 25 ? `${val.substring(0, 25)}...` : val}
+                width={190} 
+                tickFormatter={(val) => (val && val.length > 25 ? `${val.substring(0, 25)}...` : val)}
               />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="count" name="Opportunities" radius={[0, 4, 4, 0]}>
+              <Bar dataKey="count" name="Active Calls" radius={[0, 6, 6, 0]}>
                 {agencyData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
@@ -144,63 +170,79 @@ export default function FundingCharts({ data }) {
         </div>
       </div>
 
-      {/* Funding Opportunities Per Year */}
-      <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex flex-col h-[400px]">
-        <h3 className="text-lg font-bold text-slate-100 mb-6">Opportunities By Expiration Year</h3>
-        <div className="flex-1 w-full min-h-[250px]">
+      {/* 3. Opportunities By Expiration Year */}
+      <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col justify-between h-[380px] shadow-xl">
+        <div>
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-extrabold text-slate-100">Grant Expiration Timeline</h3>
+            <span className="text-[10px] text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-full font-bold border border-blue-500/20">
+              Call Deadlines
+            </span>
+          </div>
+          <p className="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <FaInfoCircle size={11} className="text-slate-500 shrink-0" />
+            <span>Count of grant opportunities expiring in upcoming submission windows.</span>
+          </p>
+        </div>
+
+        <div className="flex-1 w-full min-h-[220px] mt-4">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={timelineData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
-              <XAxis dataKey="year" stroke="#64748b" fontSize={12} tickLine={false} />
-              <YAxis stroke="#64748b" fontSize={12} tickLine={false} />
+            <BarChart data={timelineData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
+              <XAxis dataKey="year" stroke="#cbd5e1" fontSize={11} fontWeight={600} tickLine={false} />
+              <YAxis stroke="#cbd5e1" fontSize={11} fontWeight={600} tickLine={false} />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="opportunities" name="Opportunities" fill="#3b82f6" radius={[4, 4, 0, 0]} maxBarSize={60} />
+              <Bar dataKey="count" name="Expiring Grants" radius={[6, 6, 0, 0]} fill="#3b82f6" />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </div>
 
-      {/* Funding Type Distribution */}
-      <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex flex-col h-[400px]">
-        <h3 className="text-lg font-bold text-slate-100 mb-6">Funding Type Distribution</h3>
-        <div className="flex-1 w-full min-h-[250px] flex flex-col justify-center">
-          <div className="h-[220px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={typeData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={80}
-                  paddingAngle={5}
-                  dataKey="count"
-                  nameKey="funding_type"
-                >
-                  {typeData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip content={<CustomTooltip />} />
-              </PieChart>
-            </ResponsiveContainer>
+      {/* 4. Funding Type Distribution */}
+      <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col justify-between h-[380px] shadow-xl">
+        <div>
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-extrabold text-slate-100">Funding Mechanism Types</h3>
+            <span className="text-[10px] text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-full font-bold border border-rose-500/20">
+              Funding Instrument
+            </span>
           </div>
-          {/* Legend */}
-          <div className="grid grid-cols-3 gap-2 mt-4 text-center">
-            {typeData.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-1.5 justify-center">
-                <span 
-                  className="w-2.5 h-2.5 rounded-full flex-shrink-0" 
-                  style={{ backgroundColor: COLORS[idx % COLORS.length] }}
-                />
-                <span className="text-[10px] font-medium text-slate-400 truncate max-w-[80px]" title={item.funding_type}>
-                  {item.funding_type}
-                </span>
-              </div>
-            ))}
-          </div>
+          <p className="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <FaInfoCircle size={11} className="text-slate-500 shrink-0" />
+            <span>Distribution by grant type (Grants, Contracts, Fellowships, Awards).</span>
+          </p>
+        </div>
+
+        <div className="flex-1 w-full min-h-[220px] mt-2 flex items-center justify-center">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={typeData}
+                cx="50%"
+                cy="45%"
+                innerRadius={55}
+                outerRadius={85}
+                paddingAngle={4}
+                dataKey="count"
+                nameKey="type"
+              >
+                {typeData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip content={<CustomTooltip />} />
+              <Legend 
+                verticalAlign="bottom" 
+                align="center" 
+                iconType="circle"
+                wrapperStyle={{ color: '#e2e8f0', fontSize: '12px', fontWeight: '600', paddingTop: '10px' }}
+                formatter={(value) => <span className="text-slate-200 font-bold text-xs">{value}</span>}
+              />
+            </PieChart>
+          </ResponsiveContainer>
         </div>
       </div>
+
     </div>
   );
 }

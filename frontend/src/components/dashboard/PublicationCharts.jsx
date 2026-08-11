@@ -14,18 +14,20 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import { FaInfoCircle } from 'react-icons/fa';
 
 const COLORS = ['#3b82f6', '#10b981', '#8b5cf6', '#06b6d4', '#f59e0b', '#ec4899', '#f43f5e', '#64748b'];
 
-// Custom Tooltip component for styling
+// Custom Tooltip component with high contrast
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-slate-900/90 backdrop-blur-md border border-slate-700 p-3 rounded-lg shadow-xl">
-        <p className="text-xs font-semibold text-slate-400 mb-1">{label}</p>
+      <div className="bg-slate-900 border border-slate-700 p-3 rounded-xl shadow-2xl z-50">
+        <p className="text-xs font-bold text-slate-300 mb-1 border-b border-slate-800 pb-1">{label}</p>
         {payload.map((item, idx) => (
-          <p key={idx} className="text-sm font-bold" style={{ color: item.color || item.payload.fill }}>
-            {item.name}: {item.value?.toLocaleString()}
+          <p key={idx} className="text-xs font-extrabold flex items-center justify-between gap-4 mt-1" style={{ color: item.color || item.payload.fill || '#3b82f6' }}>
+            <span>{item.name}:</span>
+            <span>{item.value?.toLocaleString()}</span>
           </p>
         ))}
       </div>
@@ -37,7 +39,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 export default function PublicationCharts({ data }) {
   if (!data) return null;
 
-  // 1. Publications per Year (Filter from 2000 onwards for display readability)
+  // 1. Publications per Year (Filter from 2000 onwards)
   const yearlyData = (data.publications_per_year || [])
     .filter((item) => item.year >= 2000)
     .sort((a, b) => a.year - b.year);
@@ -52,28 +54,41 @@ export default function PublicationCharts({ data }) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      {/* Publications Per Year */}
-      <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex flex-col h-[400px]">
-        <h3 className="text-lg font-bold text-slate-100 mb-6">Publications Per Year (Since 2000)</h3>
-        <div className="flex-1 w-full min-h-[250px]">
+      
+      {/* 1. Publications Per Year */}
+      <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col justify-between h-[420px] shadow-xl">
+        <div>
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-extrabold text-slate-100">Annual Publication Velocity</h3>
+            <span className="text-[10px] text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-full font-bold border border-blue-500/20">
+              OpenAlex Index
+            </span>
+          </div>
+          <p className="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <FaInfoCircle size={11} className="text-slate-500 shrink-0" />
+            <span>Volume of peer-reviewed papers published per year.</span>
+          </p>
+        </div>
+
+        <div className="flex-1 w-full min-h-[250px] mt-4">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={yearlyData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="pubAreaColor" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
+                  <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.4} />
                   <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
-              <XAxis dataKey="year" stroke="#64748b" fontSize={12} tickLine={false} />
-              <YAxis stroke="#64748b" fontSize={12} tickLine={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
+              <XAxis dataKey="year" stroke="#cbd5e1" fontSize={11} fontWeight={600} tickLine={false} />
+              <YAxis stroke="#cbd5e1" fontSize={11} fontWeight={600} tickLine={false} />
               <Tooltip content={<CustomTooltip />} />
               <Area 
                 type="monotone" 
                 dataKey="count" 
                 name="Publications" 
-                stroke="#3b82f6" 
-                strokeWidth={2}
+                stroke="#60a5fa" 
+                strokeWidth={3}
                 fillOpacity={1} 
                 fill="url(#pubAreaColor)" 
               />
@@ -82,17 +97,38 @@ export default function PublicationCharts({ data }) {
         </div>
       </div>
 
-      {/* Research Domain Distribution */}
-      <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex flex-col h-[400px]">
-        <h3 className="text-lg font-bold text-slate-100 mb-6">Top Research Domains</h3>
-        <div className="flex-1 w-full min-h-[250px]">
+      {/* 2. Research Domain Distribution */}
+      <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col justify-between h-[420px] shadow-xl">
+        <div>
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-extrabold text-slate-100">Top Research Domains</h3>
+            <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full font-bold border border-emerald-500/20">
+              Field Density
+            </span>
+          </div>
+          <p className="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <FaInfoCircle size={11} className="text-slate-500 shrink-0" />
+            <span>Distribution of papers across key scientific disciplines.</span>
+          </p>
+        </div>
+
+        <div className="flex-1 w-full min-h-[250px] mt-4">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={domainData} layout="vertical" margin={{ top: 0, right: 10, left: 30, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" horizontal={false} />
-              <XAxis type="number" stroke="#64748b" fontSize={12} tickLine={false} />
-              <YAxis type="category" dataKey="domain" stroke="#64748b" fontSize={11} tickLine={false} width={100} />
+            <BarChart data={domainData} layout="vertical" margin={{ top: 0, right: 15, left: 10, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#334155" horizontal={false} />
+              <XAxis type="number" stroke="#cbd5e1" fontSize={11} fontWeight={600} tickLine={false} />
+              <YAxis 
+                type="category" 
+                dataKey="domain" 
+                stroke="#e2e8f0" 
+                fontSize={11} 
+                fontWeight={600} 
+                tickLine={false} 
+                width={170}
+                tickFormatter={(val) => (val && val.length > 22 ? `${val.substring(0, 22)}...` : val)}
+              />
               <Tooltip content={<CustomTooltip />} />
-              <Bar dataKey="count" name="Publications" radius={[0, 4, 4, 0]}>
+              <Bar dataKey="count" name="Papers" radius={[0, 6, 6, 0]}>
                 {domainData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
@@ -102,47 +138,51 @@ export default function PublicationCharts({ data }) {
         </div>
       </div>
 
-      {/* Open Access Distribution */}
-      <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 flex flex-col h-[400px]">
-        <h3 className="text-lg font-bold text-slate-100 mb-6">Open Access Distribution</h3>
-        <div className="flex-1 w-full min-h-[250px] flex flex-col justify-center">
-          <div className="h-[220px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={oaData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={80}
-                  paddingAngle={5}
-                  dataKey="count"
-                  nameKey="status"
-                >
-                  {oaData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={index === 0 ? '#10b981' : '#f43f5e'} />
-                  ))}
-                </Pie>
-                <Tooltip content={<CustomTooltip />} />
-              </PieChart>
-            </ResponsiveContainer>
+      {/* 3. Open Access Distribution */}
+      <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 flex flex-col justify-between h-[420px] shadow-xl">
+        <div>
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-extrabold text-slate-100">Open Access Availability</h3>
+            <span className="text-[10px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-full font-bold border border-purple-500/20">
+              License Breakdown
+            </span>
           </div>
-          {/* Legend */}
-          <div className="flex justify-center gap-6 mt-4">
-            {oaData.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2">
-                <span 
-                  className="w-3.5 h-3.5 rounded-full" 
-                  style={{ backgroundColor: idx === 0 ? '#10b981' : '#f43f5e' }}
-                />
-                <span className="text-xs font-semibold text-slate-300">
-                  {item.status}: {item.percentage}%
-                </span>
-              </div>
-            ))}
-          </div>
+          <p className="text-xs text-slate-400 mt-1 flex items-center gap-1">
+            <FaInfoCircle size={11} className="text-slate-500 shrink-0" />
+            <span>Ratio of freely accessible papers vs subscription journals.</span>
+          </p>
+        </div>
+
+        <div className="flex-1 w-full min-h-[250px] mt-2 flex items-center justify-center">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={oaData}
+                cx="50%"
+                cy="45%"
+                innerRadius={60}
+                outerRadius={90}
+                paddingAngle={4}
+                dataKey="count"
+                nameKey="status"
+              >
+                {oaData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.status?.includes('Open') ? '#10b981' : '#f43f5e'} />
+                ))}
+              </Pie>
+              <Tooltip content={<CustomTooltip />} />
+              <Legend 
+                verticalAlign="bottom" 
+                align="center" 
+                iconType="circle"
+                wrapperStyle={{ color: '#e2e8f0', fontSize: '12px', fontWeight: '600', paddingTop: '10px' }}
+                formatter={(value) => <span className="text-slate-200 font-bold text-xs">{value}</span>}
+              />
+            </PieChart>
+          </ResponsiveContainer>
         </div>
       </div>
+
     </div>
   );
 }
