@@ -8,7 +8,6 @@ from app.schemas.dashboard import (
     DashboardResponse,
     RecentActivityResponse,
 )
-from app.services.dashboard_service import get_dashboard
 
 from app.services.dashboard_service import (
     get_dashboard,

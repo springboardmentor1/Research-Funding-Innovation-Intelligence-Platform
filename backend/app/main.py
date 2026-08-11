@@ -5,6 +5,7 @@ import app.models
 from app.api.auth import router as auth_router
 from app.api.admin import router as admin_router
 from app.api.users import router as user_router
+from app.api.reports import router as reports_router
 from app.api import recommendations
 from app.api import funding_opportunity
 from app.api import research_profile
@@ -29,6 +30,7 @@ app.include_router(recommendations.router)
 app.include_router(publications.router)
 app.include_router(dashboard_router)
 app.include_router(patent.router)
+app.include_router(reports_router)
 
 @app.get("/")
 def root():
