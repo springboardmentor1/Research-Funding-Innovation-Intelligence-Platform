@@ -125,15 +125,56 @@ p strong {
     min-height:100vh;
 }
 
-.navbar{
-    background:#1f4ed8;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 50px;
+/* ================= NAVBAR ================= */
+
+.navbar {
+    height: 70px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
+.nav-left h2 {
+    margin: 0;
+    color: #2563eb;
+    font-size: 22px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+.logout-btn {
+    background: #ef4444;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+}
 .logout-btn{
     color:white;
     text-decoration:none;

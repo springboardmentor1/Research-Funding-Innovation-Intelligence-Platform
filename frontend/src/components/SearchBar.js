@@ -1,4 +1,13 @@
-function SearchBar() {
+import { useState } from "react";
+
+function SearchBar({ onSearch }) {
+
+    const [keyword, setKeyword] = useState("");
+
+    const handleSearch = () => {
+        onSearch(keyword);
+    };
+
     return (
 
         <div className="search-section">
@@ -6,23 +15,41 @@ function SearchBar() {
             <input
                 type="text"
                 placeholder="Search Research Domain..."
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
             />
 
-            <select>
+            <select
+                onChange={(e) => setKeyword(e.target.value)}
+            >
 
-                <option>Artificial Intelligence</option>
+                <option value="">Select Domain</option>
 
-                <option>Machine Learning</option>
+                <option value="Artificial Intelligence">
+                    Artificial Intelligence
+                </option>
 
-                <option>Healthcare</option>
+                <option value="Machine Learning">
+                    Machine Learning
+                </option>
 
-                <option>Cyber Security</option>
+                <option value="Healthcare">
+                    Healthcare
+                </option>
 
-                <option>Robotics</option>
+                <option value="Cyber Security">
+                    Cyber Security
+                </option>
+
+                <option value="Robotics">
+                    Robotics
+                </option>
 
             </select>
 
-            <button>Search</button>
+            <button onClick={handleSearch}>
+                Search
+            </button>
 
         </div>
 

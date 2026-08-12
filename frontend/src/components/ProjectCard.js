@@ -1,23 +1,51 @@
-function ProjectCard() {
-
+function ProjectCard({
+    title,
+    acronym,
+    domain,
+    programme,
+    startDate,
+    endDate,
+    teaser,
+    url
+}) {
     return (
-
         <div className="card">
 
-            <h3>AI in Healthcare</h3>
+            <h3>{title}</h3>
 
-            <p><strong>Funding Agency:</strong> Horizon Europe</p>
+            <p>
+                <strong>Project Acronym:</strong> {acronym}
+            </p>
 
-            <p><strong>Research Domain:</strong> Artificial Intelligence</p>
+            <p>
+                <strong>Research Field:</strong> {domain}
+            </p>
 
-            <p><strong>Budget:</strong> $500,000</p>
+            <p>
+                <strong>Programme:</strong> {programme}
+            </p>
 
-            <p><strong>Deadline:</strong> 31 Dec 2026</p>
+            <p>
+                <strong>Start Date:</strong> {startDate}
+            </p>
 
-            <button>View Details</button>
+            <p>
+                <strong>End Date:</strong> {endDate}
+            </p>
+
+            {teaser && (
+                <p>
+                    <strong>Description:</strong> {teaser}
+                </p>
+            )}
+
+            <button
+                onClick={() => window.open(url, "_blank")}
+            >
+                View Details
+            </button>
 
         </div>
-
     );
 }
 
