@@ -19,22 +19,32 @@ export default function FundingDiscovery() {
         // Map backend format to component state
         if (response && response.recommendations) {
           const mappedData = response.recommendations.map((item) => ({
-            title: item.title,
-            description: item.description || 'No description available.',
-            agency: item.agency,
-            amount: item.amount_estimate ? `$${item.amount_estimate.toLocaleString()}` : 'Varies',
-            deadline: item.deadline_date || 'Ongoing',
-            eligibility: item.eligibility_criteria || 'See guidelines',
-            matchScore: item.match_score ? Math.round(item.match_score * 100) : 0,
-            url: item.url || '#'
+            title: item.title || 'Untitled Opportunity',
+            description: item.recommendation_reason || `${item.research_domain || ''} — ${item.funding_type || 'Grant'}`.trim(),
+            agency: item.funding_agency || 'Unknown Agency',
+            amount: item.funding_amount != null ? `$${Number(item.funding_amount).toLocaleString()}` : 'Varies',
+            deadline: item.deadline || item.application_deadline || 'Ongoing',
+            eligibility: item.country ? `${item.country} eligible` : 'See guidelines',
+            matchScore: item.match_score != null ? Math.round(item.match_score) : 0,
+            url: item.url || item.source_url || '#'
           }));
           setFundingData(mappedData);
         }
       } catch (err) {
         console.error('Failed to fetch funding data:', err);
-        setError('Failed to load funding recommendations from the server. Using mock data instead.');
-        
-        // Fallback mock data
+        const status = err?.response?.status;
+        const detail = err?.response?.data?.detail;
+        let errorMsg = 'Failed to load funding recommendations from the server.';
+        if (status === 401) {
+          errorMsg = 'You must be logged in to view funding recommendations. Please log in and try again.';
+        } else if (status === 404 && detail) {
+          errorMsg = `${detail} — Please complete your Research Profile first.`;
+        } else if (status >= 500) {
+          errorMsg = `Server error (${status}). Please try again later or contact support.`;
+        }
+        setError(errorMsg);
+
+        // Graceful fallback mock data
         setFundingData([
           {
             title: 'Quantum Computing Research Initiative',

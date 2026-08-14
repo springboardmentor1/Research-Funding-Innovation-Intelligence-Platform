@@ -1,9 +1,13 @@
 import asyncio
+import os
+from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
+
+load_dotenv()
 
 # For Milestone 1, we create some mock data representing USPTO patents
 # In a real scenario, this would hit the USPTO PatentsView API
-MONGO_URL = "mongodb://mongo_admin:mongo_password@localhost:27017/"
+MONGO_URL = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
 
 MOCK_PATENTS = [
     {

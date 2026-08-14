@@ -1,10 +1,16 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, Navigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import { FaSearch, FaBell } from 'react-icons/fa';
 
 export default function DashboardLayout() {
   const location = useLocation();
+  
+  // Check if user is authenticated
+  const token = localStorage.getItem('access_token') || localStorage.getItem('token');
+  if (!token) {
+    return <Navigate to="/login" replace state={{ from: location }} />;
+  }
 
   // Simple title mapping based on path
   const getPageTitle = (pathname) => {

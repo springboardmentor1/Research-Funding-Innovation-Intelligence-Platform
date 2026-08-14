@@ -2,9 +2,14 @@ import asyncio
 import httpx
 from motor.motor_asyncio import AsyncIOMotorClient
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # For Milestone 1, we pull a small sample of publications related to "Machine Learning"
 OPENALEX_API_URL = "https://api.openalex.org/works?search=machine%20learning&per-page=50"
-MONGO_URL = "mongodb://mongo_admin:mongo_password@localhost:27017/"
+MONGO_URL = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
 
 async def ingest_openalex():
     print("Connecting to MongoDB...")

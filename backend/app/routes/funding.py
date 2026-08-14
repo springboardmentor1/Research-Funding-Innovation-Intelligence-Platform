@@ -1,10 +1,13 @@
 from typing import List, Optional
+import logging
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 from app.database.connection import get_db
 from app.services import funding_service
 from app.services.auth_service import get_current_user
 from app.models.user import User
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/funding", tags=["Funding Opportunity Recommendations"])
 
@@ -21,6 +24,10 @@ def get_recommendations(
     Retrieve ranked, explainable funding opportunity recommendations for the currently logged-in user.
     Requires JWT authentication.
     """
+    logger.info(
+        "Funding recommendations requested: user_id=%s limit=%d country=%s funding_type=%s",
+        current_user.id, limit, country, funding_type
+    )
     try:
         recommendations = funding_service.get_personalized_recommendations(
             db=db,
@@ -30,13 +37,16 @@ def get_recommendations(
             minimum_match_score=minimum_match_score,
             limit=limit
         )
+        logger.info("Returning %d recommendations for user_id=%s", len(recommendations), current_user.id)
         return {"recommendations": recommendations}
     except ValueError as e:
+        logger.warning("Funding recommendations ValueError for user_id=%s: %s", current_user.id, str(e))
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=str(e)
+            detail="Research profile not found for current user. Please complete your Research Profile first."
         )
     except Exception as e:
+        logger.exception("Unexpected error in funding recommendations for user_id=%s", current_user.id)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"An error occurred while generating recommendations: {str(e)}"
