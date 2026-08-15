@@ -524,7 +524,7 @@ class PDFGenerator:
         buffer.seek(0)
 
         return buffer
-        # ------------------------------------------------------------------
+    # ------------------------------------------------------------------
     # Publications Report
     # ------------------------------------------------------------------
 
@@ -929,6 +929,1037 @@ class PDFGenerator:
         # --------------------------------------------------------------
         # Build PDF
         # --------------------------------------------------------------
+
+        document.build(
+            story,
+            onFirstPage=self._add_page_number,
+            onLaterPages=self._add_page_number,
+        )
+
+        buffer.seek(0)
+
+        return buffer
+
+        # ------------------------------------------------------------------
+    # Funding Report
+    # ------------------------------------------------------------------
+
+    def generate_funding_report(
+        self,
+        funding_data: dict[str, Any],
+        user_name: str | None = None,
+    ) -> BytesIO:
+        """
+        Generates a PDF report containing funding opportunities,
+        funding analytics, and upcoming deadlines.
+        """
+
+        buffer = BytesIO()
+
+        document = SimpleDocTemplate(
+            buffer,
+            pagesize=A4,
+            rightMargin=20 * mm,
+            leftMargin=20 * mm,
+            topMargin=20 * mm,
+            bottomMargin=20 * mm,
+            title="Funding Opportunities Report",
+            author=(
+                "Research Funding & Innovation "
+                "Intelligence Platform"
+            ),
+        )
+
+        story = []
+
+        # --------------------------------------------------------------
+        # Title
+        # --------------------------------------------------------------
+
+        story.append(
+            Paragraph(
+                "Research Funding & Innovation Intelligence Platform",
+                self.title_style,
+            )
+        )
+
+        story.append(
+            Paragraph(
+                "Funding Opportunities Report",
+                self.subtitle_style,
+            )
+        )
+
+        generated_date = datetime.now().strftime(
+            "%d-%m-%Y %H:%M"
+        )
+
+        metadata_rows = [
+            ["Generated On", generated_date],
+            ["User", user_name or "N/A"],
+        ]
+
+        story.append(
+            self._create_table(
+                ["Report Information", "Value"],
+                metadata_rows,
+                column_widths=[
+                    60 * mm,
+                    100 * mm,
+                ],
+            )
+        )
+
+        story.append(Spacer(1, 10))
+
+        # --------------------------------------------------------------
+        # Funding Statistics
+        # --------------------------------------------------------------
+
+        story.append(
+            Paragraph(
+                "1. Funding Statistics",
+                self.heading_style,
+            )
+        )
+
+        statistics = funding_data.get(
+            "funding_statistics",
+            {},
+        )
+
+        if hasattr(statistics, "model_dump"):
+            statistics = statistics.model_dump()
+        elif hasattr(statistics, "dict"):
+            statistics = statistics.dict()
+
+        statistics_rows = [
+            [
+                str(key).replace("_", " ").title(),
+                value,
+            ]
+            for key, value in statistics.items()
+        ]
+
+        if statistics_rows:
+
+            story.append(
+                self._create_table(
+                    ["Metric", "Value"],
+                    statistics_rows,
+                    column_widths=[
+                        100 * mm,
+                        60 * mm,
+                    ],
+                )
+            )
+
+        else:
+
+            story.append(
+                Paragraph(
+                    "No funding statistics available.",
+                    self.body_style,
+                )
+            )
+
+        # --------------------------------------------------------------
+        # Funding by Agency
+        # --------------------------------------------------------------
+
+        story.append(
+            Paragraph(
+                "2. Funding by Agency",
+                self.heading_style,
+            )
+        )
+
+        agency_data = funding_data.get(
+            "funding_by_agency",
+            [],
+        )
+
+        agency_rows = []
+
+        for item in agency_data:
+
+            agency = getattr(
+                item,
+                "agency",
+                None,
+            )
+
+            count = getattr(
+                item,
+                "count",
+                0,
+            )
+
+            agency_rows.append(
+                [
+                    str(agency or "-"),
+                    str(count),
+                ]
+            )
+
+        if agency_rows:
+
+            story.append(
+                self._create_table(
+                    ["Agency", "Opportunity Count"],
+                    agency_rows,
+                    column_widths=[
+                        100 * mm,
+                        60 * mm,
+                    ],
+                )
+            )
+
+        else:
+
+            story.append(
+                Paragraph(
+                    "No agency analytics available.",
+                    self.body_style,
+                )
+            )
+
+        # --------------------------------------------------------------
+        # Funding by Research Area
+        # --------------------------------------------------------------
+
+        story.append(
+            Paragraph(
+                "3. Funding by Research Area",
+                self.heading_style,
+            )
+        )
+
+        research_area_data = funding_data.get(
+            "funding_by_research_area",
+            [],
+        )
+
+        research_area_rows = []
+
+        for item in research_area_data:
+
+            research_area = getattr(
+                item,
+                "research_area",
+                None,
+            )
+
+            count = getattr(
+                item,
+                "count",
+                0,
+            )
+
+            research_area_rows.append(
+                [
+                    str(research_area or "-"),
+                    str(count),
+                ]
+            )
+
+        if research_area_rows:
+
+            story.append(
+                self._create_table(
+                    [
+                        "Research Area",
+                        "Opportunity Count",
+                    ],
+                    research_area_rows,
+                    column_widths=[
+                        100 * mm,
+                        60 * mm,
+                    ],
+                )
+            )
+
+        else:
+
+            story.append(
+                Paragraph(
+                    "No research area funding data available.",
+                    self.body_style,
+                )
+            )
+
+        # --------------------------------------------------------------
+        # Funding by Status
+        # --------------------------------------------------------------
+
+        story.append(
+            Paragraph(
+                "4. Funding by Status",
+                self.heading_style,
+            )
+        )
+
+        status_data = funding_data.get(
+            "funding_by_status",
+            [],
+        )
+
+        status_rows = []
+
+        for item in status_data:
+
+            status = getattr(
+                item,
+                "status",
+                None,
+            )
+
+            count = getattr(
+                item,
+                "count",
+                0,
+            )
+
+            status_rows.append(
+                [
+                    str(status or "-"),
+                    str(count),
+                ]
+            )
+
+        if status_rows:
+
+            story.append(
+                self._create_table(
+                    ["Status", "Opportunity Count"],
+                    status_rows,
+                    column_widths=[
+                        100 * mm,
+                        60 * mm,
+                    ],
+                )
+            )
+
+        else:
+
+            story.append(
+                Paragraph(
+                    "No funding status data available.",
+                    self.body_style,
+                )
+            )
+
+        # --------------------------------------------------------------
+        # Upcoming Deadlines
+        # --------------------------------------------------------------
+
+        story.append(
+            Paragraph(
+                "5. Upcoming Funding Deadlines",
+                self.heading_style,
+            )
+        )
+
+        upcoming_deadlines = funding_data.get(
+            "upcoming_deadlines",
+            [],
+        )
+
+        deadline_rows = []
+
+        for item in upcoming_deadlines:
+
+            title = item.get(
+                "title",
+                "-",
+            )
+
+            agency = item.get(
+                "agency",
+                "-",
+            )
+
+            deadline = item.get(
+                "deadline",
+                None,
+            )
+
+            days_remaining = item.get(
+                "days_remaining",
+                "-",
+            )
+
+            if deadline is not None:
+
+                if hasattr(deadline, "strftime"):
+                    deadline = deadline.strftime(
+                        "%d-%m-%Y"
+                    )
+                else:
+                    deadline = str(deadline)
+
+            else:
+                deadline = "-"
+
+            deadline_rows.append(
+                [
+                    str(title),
+                    str(agency),
+                    str(deadline),
+                    str(days_remaining),
+                ]
+            )
+
+        if deadline_rows:
+
+            story.append(
+                self._create_table(
+                    [
+                        "Title",
+                        "Agency",
+                        "Deadline",
+                        "Days Remaining",
+                    ],
+                    deadline_rows,
+                    column_widths=[
+                        55 * mm,
+                        35 * mm,
+                        35 * mm,
+                        35 * mm,
+                    ],
+                )
+            )
+
+        else:
+
+            story.append(
+                Paragraph(
+                    "No upcoming funding deadlines "
+                    "within the next 30 days.",
+                    self.body_style,
+                )
+            )
+
+        # --------------------------------------------------------------
+        # Funding Opportunities
+        # --------------------------------------------------------------
+
+        story.append(
+            Paragraph(
+                "6. Funding Opportunities",
+                self.heading_style,
+            )
+        )
+
+        opportunities = funding_data.get(
+            "funding_opportunities",
+            [],
+        )
+
+        opportunity_rows = []
+
+        for opportunity in opportunities:
+
+            title = getattr(
+                opportunity,
+                "title",
+                "-",
+            )
+
+            agency = getattr(
+                opportunity,
+                "agency",
+                "-",
+            )
+
+            research_area = getattr(
+                opportunity,
+                "research_area",
+                "-",
+            )
+
+            funding_amount = getattr(
+                opportunity,
+                "funding_amount",
+                0,
+            )
+
+            deadline = getattr(
+                opportunity,
+                "deadline",
+                None,
+            )
+
+            status = getattr(
+                opportunity,
+                "status",
+                "-",
+            )
+
+            if deadline is not None:
+
+                if hasattr(deadline, "strftime"):
+                    deadline = deadline.strftime(
+                        "%d-%m-%Y"
+                    )
+                else:
+                    deadline = str(deadline)
+
+            else:
+                deadline = "-"
+
+            if funding_amount is None:
+                funding_amount = 0
+
+            opportunity_rows.append(
+                [
+                    str(title),
+                    str(agency),
+                    str(research_area),
+                    f"{float(funding_amount):,.2f}",
+                    str(deadline),
+                    str(status),
+                ]
+            )
+
+        if opportunity_rows:
+
+            story.append(
+                self._create_table(
+                    [
+                        "Title",
+                        "Agency",
+                        "Research Area",
+                        "Funding Amount",
+                        "Deadline",
+                        "Status",
+                    ],
+                    opportunity_rows,
+                    column_widths=[
+                        35 * mm,
+                        25 * mm,
+                        30 * mm,
+                        30 * mm,
+                        25 * mm,
+                        20 * mm,
+                    ],
+                )
+            )
+
+        else:
+
+            story.append(
+                Paragraph(
+                    "No funding opportunities available.",
+                    self.body_style,
+                )
+            )
+
+        # --------------------------------------------------------------
+        # Report Summary
+        # --------------------------------------------------------------
+
+        story.append(Spacer(1, 15))
+
+        story.append(
+            Paragraph(
+                "Report Summary",
+                self.heading_style,
+            )
+        )
+
+        story.append(
+            Paragraph(
+                "This report provides an overview of funding "
+                "opportunities, funding statistics, agencies, "
+                "research areas, statuses, upcoming deadlines, "
+                "and available funding records.",
+                self.body_style,
+            )
+        )
+
+        # --------------------------------------------------------------
+        # Build PDF
+        # --------------------------------------------------------------
+
+        document.build(
+            story,
+            onFirstPage=self._add_page_number,
+            onLaterPages=self._add_page_number,
+        )
+
+        buffer.seek(0)
+
+        return buffer
+
+    def generate_patent_report(
+        self,
+        patent_data: dict,
+        user_name: str | None = None,
+    ) -> BytesIO:
+        """
+        Generates a PDF report for patent intelligence.
+        """
+
+        buffer = BytesIO()
+
+        document = SimpleDocTemplate(
+            buffer,
+            pagesize=A4,
+            rightMargin=20 * mm,
+            leftMargin=20 * mm,
+            topMargin=20 * mm,
+            bottomMargin=20 * mm,
+            title="Patent Intelligence Report",
+            author="Research Funding & Innovation Intelligence Platform",
+        )
+
+        story = []
+
+        story.append(
+            Paragraph(
+                "Research Funding & Innovation Intelligence Platform",
+                self.title_style,
+            )
+        )
+
+        story.append(
+            Paragraph(
+                "Patent Intelligence Report",
+                self.subtitle_style,
+            )
+        )
+
+        story.append(Spacer(1, 10))
+
+        generated_date = datetime.now().strftime("%d-%m-%Y %H:%M")
+
+        metadata_rows = [
+            ["Generated On", generated_date],
+            ["User", user_name or "N/A"],
+        ]
+
+        story.append(
+            self._create_table(
+                ["Report Information", "Value"],
+                metadata_rows,
+                column_widths=[60 * mm, 100 * mm],
+            )
+        )
+
+        story.append(Spacer(1, 15))
+
+        # Patent Statistics
+        story.append(
+            Paragraph(
+                "1. Patent Statistics",
+                self.heading_style,
+            )
+        )
+
+        statistics = patent_data.get(
+            "patent_statistics",
+            {},
+        )
+
+        if hasattr(statistics, "model_dump"):
+            statistics = statistics.model_dump()
+        elif hasattr(statistics, "dict"):
+            statistics = statistics.dict()
+
+        statistics_rows = [
+            [
+                str(key).replace("_", " ").title(),
+                str(value),
+            ]
+            for key, value in statistics.items()
+        ]
+
+        if statistics_rows:
+            story.append(
+                self._create_table(
+                    ["Metric", "Value"],
+                    statistics_rows,
+                    column_widths=[100 * mm, 60 * mm],
+                )
+            )
+        else:
+            story.append(
+                Paragraph(
+                    "No patent statistics available.",
+                    self.body_style,
+                )
+            )
+
+        story.append(Spacer(1, 10))
+
+        # Patents by Technology
+        story.append(
+            Paragraph(
+                "2. Patents by Technology",
+                self.heading_style,
+            )
+        )
+
+        technology_data = patent_data.get(
+            "patent_technology",
+            [],
+        )
+
+        technology_rows = []
+
+        for item in technology_data:
+
+            if isinstance(item, dict):
+                technology = item.get(
+                    "technology_area",
+                    "-",
+                )
+                count = item.get(
+                    "count",
+                    0,
+                )
+            else:
+                technology = getattr(
+                    item,
+                    "technology_area",
+                    "-",
+                )
+                count = getattr(
+                    item,
+                    "count",
+                    0,
+                )
+
+            technology_rows.append(
+                [
+                    str(technology),
+                    str(count),
+                ]
+            )
+
+        if technology_rows:
+            story.append(
+                self._create_table(
+                    [
+                        "Technology Area",
+                        "Patent Count",
+                    ],
+                    technology_rows,
+                    column_widths=[100 * mm, 60 * mm],
+                )
+            )
+        else:
+            story.append(
+                Paragraph(
+                    "No technology analytics available.",
+                    self.body_style,
+                )
+            )
+
+        story.append(Spacer(1, 10))
+
+        # Patent Status
+        story.append(
+            Paragraph(
+                "3. Patents by Status",
+                self.heading_style,
+            )
+        )
+
+        status_data = patent_data.get(
+            "patent_status",
+            [],
+        )
+
+        status_rows = []
+
+        for item in status_data:
+
+            if isinstance(item, dict):
+                status = item.get("status", "-")
+                count = item.get("count", 0)
+            else:
+                status = getattr(item, "status", "-")
+                count = getattr(item, "count", 0)
+
+            status_rows.append(
+                [
+                    str(status),
+                    str(count),
+                ]
+            )
+
+        if status_rows:
+            story.append(
+                self._create_table(
+                    [
+                        "Status",
+                        "Patent Count",
+                    ],
+                    status_rows,
+                    column_widths=[100 * mm, 60 * mm],
+                )
+            )
+        else:
+            story.append(
+                Paragraph(
+                    "No patent status data available.",
+                    self.body_style,
+                )
+            )
+
+        story.append(Spacer(1, 10))
+
+        # Emerging Technologies
+        story.append(
+            Paragraph(
+                "4. Emerging Technologies",
+                self.heading_style,
+            )
+        )
+
+        emerging_data = patent_data.get(
+            "emerging_technologies",
+            [],
+        )
+
+        emerging_rows = []
+
+        for item in emerging_data:
+
+            if isinstance(item, dict):
+                technology = item.get(
+                    "technology_area",
+                    "-",
+                )
+                patent_count = item.get(
+                    "patent_count",
+                    0,
+                )
+                growth_score = item.get(
+                    "growth_score",
+                    0,
+                )
+                trend = item.get(
+                    "trend",
+                    "-",
+                )
+                recommendation = item.get(
+                    "recommendation",
+                    "-",
+                )
+            else:
+                technology = getattr(
+                    item,
+                    "technology_area",
+                    "-",
+                )
+                patent_count = getattr(
+                    item,
+                    "patent_count",
+                    0,
+                )
+                growth_score = getattr(
+                    item,
+                    "growth_score",
+                    0,
+                )
+                trend = getattr(
+                    item,
+                    "trend",
+                    "-",
+                )
+                recommendation = getattr(
+                    item,
+                    "recommendation",
+                    "-",
+                )
+
+            emerging_rows.append(
+                [
+                    str(technology),
+                    str(patent_count),
+                    str(growth_score),
+                    str(trend),
+                    str(recommendation),
+                ]
+            )
+
+        if emerging_rows:
+            story.append(
+                self._create_table(
+                    [
+                        "Technology",
+                        "Patents",
+                        "Growth Score",
+                        "Trend",
+                        "Recommendation",
+                    ],
+                    emerging_rows,
+                    column_widths=[
+                        35 * mm,
+                        20 * mm,
+                        25 * mm,
+                        25 * mm,
+                        55 * mm,
+                    ],
+                )
+            )
+        else:
+            story.append(
+                Paragraph(
+                    "No emerging technology data available.",
+                    self.body_style,
+                )
+            )
+
+        story.append(Spacer(1, 10))
+
+        # Innovation Scores
+        story.append(
+            Paragraph(
+                "5. Innovation Scores",
+                self.heading_style,
+            )
+        )
+
+        innovation_data = patent_data.get(
+            "innovation_scores",
+            [],
+        )
+
+        innovation_rows = []
+
+        for item in innovation_data:
+
+            title = item.get("title", "-")
+            score = item.get("innovation_score", 0)
+            level = item.get("innovation_level", "-")
+            reasons = item.get("reasons", [])
+
+            innovation_rows.append(
+                [
+                    str(title),
+                    str(score),
+                    str(level),
+                    ", ".join(
+                        str(reason)
+                        for reason in reasons
+                    ),
+                ]
+            )
+
+        if innovation_rows:
+            story.append(
+                self._create_table(
+                    [
+                        "Patent",
+                        "Score",
+                        "Level",
+                        "Reasons",
+                    ],
+                    innovation_rows,
+                    column_widths=[
+                        45 * mm,
+                        20 * mm,
+                        30 * mm,
+                        65 * mm,
+                    ],
+                )
+            )
+        else:
+            story.append(
+                Paragraph(
+                    "No innovation score data available.",
+                    self.body_style,
+                )
+            )
+
+        story.append(Spacer(1, 10))
+
+        # Commercialization
+        story.append(
+            Paragraph(
+                "6. Commercialization Recommendations",
+                self.heading_style,
+            )
+        )
+
+        commercialization_data = patent_data.get(
+            "commercialization_recommendations",
+            [],
+        )
+
+        commercialization_rows = []
+
+        for item in commercialization_data:
+
+            title = item.get("title", "-")
+            score = item.get("commercialization_score", 0)
+            level = item.get(
+                "commercialization_level",
+                "-",
+            )
+            action = item.get(
+                "recommended_action",
+                "-",
+            )
+
+            commercialization_rows.append(
+                [
+                    str(title),
+                    str(score),
+                    str(level),
+                    str(action),
+                ]
+            )
+
+        if commercialization_rows:
+            story.append(
+                self._create_table(
+                    [
+                        "Patent",
+                        "Score",
+                        "Commercial Potential",
+                        "Recommended Action",
+                    ],
+                    commercialization_rows,
+                    column_widths=[
+                        45 * mm,
+                        20 * mm,
+                        45 * mm,
+                        50 * mm,
+                    ],
+                )
+            )
+        else:
+            story.append(
+                Paragraph(
+                    "No commercialization recommendations available.",
+                    self.body_style,
+                )
+            )
+
+        story.append(Spacer(1, 15))
+
+        # Summary
+        story.append(
+            Paragraph(
+                "Report Summary",
+                self.heading_style,
+            )
+        )
+
+        story.append(
+            Paragraph(
+                "This report provides an overview of patent "
+                "statistics, technology distribution, patent "
+                "statuses, emerging technologies, innovation "
+                "scores, and commercialization recommendations.",
+                self.body_style,
+            )
+        )
 
         document.build(
             story,
