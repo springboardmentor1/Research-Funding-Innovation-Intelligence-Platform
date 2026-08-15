@@ -14,10 +14,16 @@ from api.notifications import notifications_bp
 from api.research_insights import research_insights_bp
 from api.auth import auth_bp
 from api.publication_details import publication_details_bp
+from flask_jwt_extended import JWTManager
 
 app = Flask(__name__)
+
 CORS(app)
 
+# JWT configuration
+app.config["JWT_SECRET_KEY"] = "change-this-secret-key"
+
+JWTManager(app)
 # Register Blueprints
 app.register_blueprint(reports_bp)
 app.register_blueprint(search_bp)

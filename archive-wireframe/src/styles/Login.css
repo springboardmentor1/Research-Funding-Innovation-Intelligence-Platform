@@ -1,0 +1,584 @@
+/* =====================================================
+   RESEARCHHUB AI - BLACK & YELLOW LOGIN THEME
+   Functionality is unchanged
+   ===================================================== */
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(223, 255, 0, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(223, 255, 0, 0.12),
+      transparent 30%
+    ),
+    #f7f7f2;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   BACKGROUND DECORATION
+   ===================================================== */
+
+.login-background-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.circle-one {
+  width: 300px;
+  height: 300px;
+
+  background: rgba(223, 255, 0, 0.13);
+
+  top: -120px;
+  left: -100px;
+}
+
+.circle-two {
+  width: 380px;
+  height: 380px;
+
+  background: rgba(223, 255, 0, 0.10);
+
+  right: -150px;
+  bottom: -170px;
+}
+
+
+/* =====================================================
+   LOGIN CARD
+   ===================================================== */
+
+.login-card {
+  width: 100%;
+  max-width: 460px;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  padding: 42px 42px 30px;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.06);
+
+  border: 1px solid #e7e7e0;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =====================================================
+   BRANDING
+   ===================================================== */
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  margin-bottom: 32px;
+}
+
+
+/* Logo background */
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 14px;
+
+  background: #DFFF00;
+
+  box-shadow:
+    0 6px 18px rgba(223, 255, 0, 0.35);
+}
+
+
+/*
+   Override the existing blue/white SVG colors
+   without changing Login.jsx
+*/
+
+.logo-icon svg circle:first-child {
+  fill: #111111 !important;
+}
+
+.logo-icon svg circle:last-child {
+  stroke: #DFFF00 !important;
+}
+
+.logo-icon svg path {
+  stroke: #DFFF00 !important;
+}
+
+
+/* ResearchHub AI title */
+
+.login-logo h1 {
+  margin: 0;
+
+  font-size: 24px;
+
+  font-weight: 750;
+
+  color: #111111;
+
+  letter-spacing: -0.5px;
+}
+
+.login-logo p {
+  margin: 4px 0 0;
+
+  font-size: 12px;
+
+  color: #666666;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* =====================================================
+   HEADING
+   ===================================================== */
+
+.login-heading {
+  text-align: center;
+
+  margin-bottom: 28px;
+}
+
+.login-heading h2 {
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 27px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.6px;
+}
+
+.login-heading p {
+  margin: 9px 0 0;
+
+  color: #666666;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #222222;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   INPUT
+   ===================================================== */
+
+.input-wrapper {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 100%;
+
+  height: 50px;
+
+  box-sizing: border-box;
+
+  padding: 0 48px 0 44px;
+
+  border: 1px solid #d8d8d0;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.input-wrapper input::placeholder {
+  color: #999999;
+}
+
+.input-wrapper input:hover {
+  border-color: #999999;
+}
+
+.input-wrapper input:focus {
+  border-color: #111111;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(223, 255, 0, 0.35);
+}
+
+.input-wrapper input:disabled {
+  background: #f3f3ef;
+
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   INPUT ICON
+   ===================================================== */
+
+.input-icon {
+  position: absolute;
+
+  left: 14px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #555555;
+
+  display: flex;
+
+  align-items: center;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   PASSWORD TOGGLE
+   ===================================================== */
+
+.password-toggle {
+  position: absolute;
+
+  right: 10px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  background: transparent;
+
+  color: #555555;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.password-toggle:hover {
+  background: #f0f0e8;
+
+  color: #111111;
+}
+
+.password-toggle:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.5;
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+   ===================================================== */
+
+.login-error {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 11px 13px;
+
+  margin-bottom: 18px;
+
+  border-radius: 9px;
+
+  background: #fff4f4;
+
+  border: 1px solid #f0b8b8;
+
+  color: #a40000;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+}
+
+.login-error span:first-child {
+  font-size: 15px;
+}
+
+
+/* =====================================================
+   LOGIN BUTTON
+   ===================================================== */
+
+.login-button {
+  width: 100%;
+
+  height: 50px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #111111;
+
+  color: #DFFF00;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* Hover turns the button yellow */
+
+.login-button:hover:not(:disabled) {
+  background: #DFFF00;
+
+  color: #111111;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 11px 24px rgba(0, 0, 0, 0.20);
+}
+
+.login-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.65;
+
+  box-shadow: none;
+}
+
+
+/* Arrow */
+
+.arrow {
+  font-size: 18px;
+
+  line-height: 1;
+}
+
+
+/* =====================================================
+   LOADING SPINNER
+   ===================================================== */
+
+.spinner {
+  width: 17px;
+  height: 17px;
+
+  border:
+    2px solid rgba(223, 255, 0, 0.35);
+
+  border-top-color: #DFFF00;
+
+  border-radius: 50%;
+
+  animation:
+    login-spin 0.7s linear infinite;
+}
+
+@keyframes login-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.login-footer {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 24px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid #eeeeea;
+
+  color: #666666;
+
+  font-size: 11px;
+}
+
+.login-footer span {
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   COPYRIGHT
+   ===================================================== */
+
+.login-copyright {
+  position: absolute;
+
+  bottom: 15px;
+
+  left: 0;
+
+  width: 100%;
+
+  text-align: center;
+
+  color: #888888;
+
+  font-size: 10px;
+
+  z-index: 1;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .login-page {
+    padding: 25px 16px;
+  }
+
+  .login-card {
+    max-width: 100%;
+
+    padding: 32px 24px 25px;
+
+    border-radius: 16px;
+  }
+
+  .login-logo h1 {
+    font-size: 21px;
+  }
+
+  .login-heading h2 {
+    font-size: 24px;
+  }
+
+  .login-copyright {
+    display: none;
+  }
+}
