@@ -8,6 +8,8 @@ from app.models.user import User
 from app.models.profile import ResearchProfile
 from app.models.publication import Publication
 from app.models.patent import Patent
+from app.models.notification import Notification
+from app.models.report import Report
 
 # Import routes
 from app.routes.auth import router as auth_router
@@ -16,6 +18,10 @@ from app.routes.publication import router as publication_router
 from app.routes.patent import router as patent_router
 from app.routes.dashboard import router as dashboard_router
 from app.routes.funding import router as funding_router
+from app.routes.notifications import router as notifications_router
+from app.routes.reports import router as reports_router
+from app.routes.technology import router as technology_router
+from app.routes.innovation import router as innovation_router
 
 
 # ---------------------------------------------------------
@@ -74,6 +80,10 @@ app.include_router(publication_router)
 app.include_router(patent_router)
 app.include_router(dashboard_router)
 app.include_router(funding_router)
+app.include_router(notifications_router)
+app.include_router(reports_router)
+app.include_router(technology_router)
+app.include_router(innovation_router)
 
 
 # ---------------------------------------------------------

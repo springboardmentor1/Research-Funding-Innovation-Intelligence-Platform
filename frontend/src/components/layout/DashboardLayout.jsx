@@ -1,21 +1,68 @@
-import React from 'react';
-import { Outlet, useLocation, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useLocation, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import { FaSearch, FaBell } from 'react-icons/fa';
+import notificationService from '../../services/notificationService';
+import profileService from '../../services/profileService';
 
 export default function DashboardLayout() {
   const location = useLocation();
-  
+  const navigate = useNavigate();
+  const [unreadCount, setUnreadCount] = useState(0);
+  const [userInitials, setUserInitials] = useState('');
+  const [userRole, setUserRole] = useState('');
+
   // Check if user is authenticated
   const token = localStorage.getItem('access_token') || localStorage.getItem('token');
   if (!token) {
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
 
+  // Load user info for avatar
+  useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const user = await profileService.getCurrentUser();
+        if (user?.full_name) {
+          const initials = user.full_name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+          setUserInitials(initials);
+          setUserRole(user.role || '');
+        }
+      } catch (e) { /* ignore */ }
+    };
+    loadUser();
+  }, []);
+
+  // Load unread notification count
+  useEffect(() => {
+    const fetchUnread = async () => {
+      try {
+        const count = await notificationService.getUnreadCount();
+        setUnreadCount(count);
+      } catch (e) { /* ignore */ }
+    };
+    fetchUnread();
+    const interval = setInterval(fetchUnread, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Simple title mapping based on path
   const getPageTitle = (pathname) => {
-    const path = pathname.split('/')[1] || 'dashboard';
-    return path.charAt(0).toUpperCase() + path.slice(1);
+    const segments = pathname.split('/').filter(Boolean);
+    const path = segments[0] || 'dashboard';
+    const map = {
+      dashboard: 'Dashboard',
+      funding: 'Funding',
+      research: 'Research',
+      patents: 'Patents',
+      technology: 'Technology',
+      innovation: 'Innovation',
+      reports: 'Reports',
+      notifications: 'Notifications',
+      settings: 'Settings',
+      profile: 'Profile',
+    };
+    return map[path] || path.charAt(0).toUpperCase() + path.slice(1);
   };
 
   return (
@@ -28,6 +75,7 @@ export default function DashboardLayout() {
             {getPageTitle(location.pathname)}
           </h1>
           <div className="flex-1 flex justify-end items-center gap-6">
+            {/* Search */}
             <div className="relative max-w-md w-full hidden md:block">
               <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={14} />
               <input 
@@ -36,11 +84,28 @@ export default function DashboardLayout() {
                 className="w-full bg-[#1c2438] text-sm text-slate-200 rounded-full pl-10 pr-4 py-2 border border-slate-700 focus:outline-none focus:border-blue-500 transition-colors"
               />
             </div>
-            <button className="text-slate-400 hover:text-white transition-colors relative">
+
+            {/* Notification Bell */}
+            <button
+              onClick={() => navigate('/notifications')}
+              className="text-slate-400 hover:text-white transition-colors relative group"
+            >
               <FaBell size={18} />
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+              {unreadCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] bg-blue-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1 shadow-[0_0_8px_rgba(59,130,246,0.6)]">
+                  {unreadCount > 99 ? '99+' : unreadCount}
+                </span>
+              )}
             </button>
-            <div className="w-8 h-8 rounded-full bg-blue-500 border-2 border-slate-800 shadow-sm cursor-pointer"></div>
+
+            {/* Profile Avatar */}
+            <button
+              onClick={() => navigate('/profile')}
+              className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 border-2 border-slate-700 hover:border-blue-400 shadow-sm cursor-pointer flex items-center justify-center font-bold text-white text-xs transition-all hover:shadow-[0_0_12px_rgba(99,102,241,0.5)]"
+              title={`Go to Profile ${userRole ? `(${userRole})` : ''}`}
+            >
+              {userInitials || '?'}
+            </button>
           </div>
         </header>
 
