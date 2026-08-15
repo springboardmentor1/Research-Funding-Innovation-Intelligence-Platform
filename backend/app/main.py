@@ -43,7 +43,8 @@ app = FastAPI(
         "AI-powered platform backend helping discover grants, "
         "analyze technology trends, and evaluate innovation standing."
     ),
-    version="1.0.0"
+    version="1.0.0",
+    debug=True
 )
 
 

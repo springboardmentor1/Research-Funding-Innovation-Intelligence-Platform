@@ -13,11 +13,13 @@ export default function Sidebar() {
 
   useEffect(() => {
     const fetchUnread = async () => {
+      const token = localStorage.getItem('access_token');
+      if (!token) return;  // skip if not logged in
       try {
         const count = await notificationService.getUnreadCount();
         setUnreadCount(count);
       } catch (e) {
-        // silently fail if not authenticated yet
+        // silently fail on auth errors
       }
     };
     fetchUnread();

@@ -21,6 +21,8 @@ export default function DashboardLayout() {
   // Load user info for avatar
   useEffect(() => {
     const loadUser = async () => {
+      const token = localStorage.getItem('access_token') || localStorage.getItem('token');
+      if (!token) return;
       try {
         const user = await profileService.getCurrentUser();
         if (user?.full_name) {
@@ -36,6 +38,8 @@ export default function DashboardLayout() {
   // Load unread notification count
   useEffect(() => {
     const fetchUnread = async () => {
+      const token = localStorage.getItem('access_token') || localStorage.getItem('token');
+      if (!token) return;
       try {
         const count = await notificationService.getUnreadCount();
         setUnreadCount(count);
