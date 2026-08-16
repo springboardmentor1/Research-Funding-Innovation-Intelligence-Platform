@@ -1,0 +1,32 @@
+{
+  "summary": {
+    "report_title": "Capital Grants & Funding Opportunity Alignment Report",
+    "report_type": "funding_matrix",
+    "format": "json",
+    "target_domain": "Robotics & AI",
+    "generated_at": "2026-08-16 12:15:54",
+    "date_range": "2024-01-01 to 2026-08-16",
+    "report_id": "REP-20260816-73B5136C",
+    "filename": "REP-20260816-73B5136C.json"
+  },
+  "rows": [
+    {
+      "grant_name": "NSF AI Institute for Autonomous Systems",
+      "sponsor": "NSF",
+      "budget_usd": 1500000,
+      "match_percentage": 94.5
+    },
+    {
+      "grant_name": "Horizon Europe NextGen Robotics",
+      "sponsor": "EU Commission",
+      "budget_usd": 2200000,
+      "match_percentage": 91.0
+    },
+    {
+      "grant_name": "DARPA Autonomous Control Grant",
+      "sponsor": "DARPA",
+      "budget_usd": 850000,
+      "match_percentage": 88.2
+    }
+  ]
+}

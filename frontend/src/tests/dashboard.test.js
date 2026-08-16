@@ -4,10 +4,11 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import Dashboard from '../pages/Dashboard';
 import dashboardService from '../services/dashboardService';
 
-// Mock react-router-dom navigate
+// Mock react-router-dom navigate and Link
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', () => ({
   useNavigate: () => mockNavigate,
+  Link: ({ children, to }) => React.createElement('a', { href: to }, children),
 }));
 
 // Mock recharts to prevent JSDOM layout sizing errors without using JSX
@@ -119,7 +120,7 @@ describe('Research Intelligence Dashboard Tests', () => {
     render(React.createElement(Dashboard));
 
     await waitFor(() => {
-      expect(screen.getByText('Innovation & Funding Intelligence')).toBeInTheDocument();
+      expect(screen.getByText('Platform Intelligence Overview')).toBeInTheDocument();
     });
 
     expect(screen.getByText('Updated: 2026-07-20 20:00:00')).toBeInTheDocument();
@@ -133,9 +134,9 @@ describe('Research Intelligence Dashboard Tests', () => {
     expect(screen.getByText('Funding Opportunities')).toBeInTheDocument();
     expect(screen.getByText('1,500')).toBeInTheDocument();
 
-    expect(screen.getByText('Publications Portfolio Analytics')).toBeInTheDocument();
-    expect(screen.getByText('Intellectual Property & Patents')).toBeInTheDocument();
-    expect(screen.getByText('Capital Grants & Funding Landscapes')).toBeInTheDocument();
+    expect(screen.getByText(/Publications Portfolio Analytics/i)).toBeInTheDocument();
+    expect(screen.getByText(/Intellectual Property & Patent Landscape/i)).toBeInTheDocument();
+    expect(screen.getByText(/Capital Grants & Funding Pool Landscapes/i)).toBeInTheDocument();
 
     expect(screen.getAllByTestId('AreaChart').length).toBeGreaterThan(0);
     expect(screen.getAllByTestId('BarChart').length).toBeGreaterThan(0);

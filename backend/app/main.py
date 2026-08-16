@@ -12,6 +12,8 @@ from app.routes.patent import router as patent_router
 from app.routes.dashboard import router as dashboard_router
 from app.routes.funding import router as funding_router
 from app.routes.innovation_dashboard import router as innovation_dashboard_router
+from app.routes.executive_dashboard import router as executive_dashboard_router
+from app.routes.reports import router as reports_router
 
 # Attempt to create database tables on startup.
 # Note: In production development, Alembic migrations are preferred.
@@ -48,6 +50,8 @@ app.include_router(patent_router)
 app.include_router(dashboard_router)
 app.include_router(funding_router)
 app.include_router(innovation_dashboard_router)
+app.include_router(executive_dashboard_router)
+app.include_router(reports_router)
 
 
 

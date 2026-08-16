@@ -1,0 +1,35 @@
+{
+  "summary": {
+    "report_title": "Patent Landscape & Intellectual Property Analysis Report",
+    "report_type": "patent_landscape",
+    "format": "json",
+    "target_domain": "Robotics & AI",
+    "generated_at": "2026-08-16 12:17:08",
+    "date_range": "2024-01-01 to 2026-08-16",
+    "report_id": "REP-20260816-1AC55E55",
+    "filename": "REP-20260816-1AC55E55.json"
+  },
+  "rows": [
+    {
+      "ipc_code": "G06N 3/08",
+      "domain": "Neural Network Training",
+      "patent_count": 142,
+      "status": "Active",
+      "top_assignee": "Cyberdyne Systems"
+    },
+    {
+      "ipc_code": "B25J 9/16",
+      "domain": "Robotic Control Systems",
+      "patent_count": 98,
+      "status": "Granted",
+      "top_assignee": "MIT Tech"
+    },
+    {
+      "ipc_code": "G06F 18/24",
+      "domain": "Pattern Recognition",
+      "patent_count": 76,
+      "status": "Pending",
+      "top_assignee": "Stanford Labs"
+    }
+  ]
+}

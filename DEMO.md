@@ -1,157 +1,103 @@
-# Demo Execution Guide - Milestone 1
+# Demo Execution Guide — Milestones 1 to 4
 
-This document provides a step-by-step guide to run the backend, frontend, database systems, and execute user registration, logins, profile setups, and publication/patent sync operations.
+This document provides a step-by-step guide to run the platform, verify role-based executive dashboards, generate and download multi-format reports, run automated test suites, and launch via Docker Compose.
 
 ---
 
-## 1. Clone Repository
-Clone the project repository to your local system:
+## 1. Quick Start via Docker Compose (Recommended)
+
+To run the entire platform microservice stack with a single command:
+
 ```bash
+# 1. Clone Repository
 git clone https://github.com/springboardmentor1/Research-Funding-Innovation-Intelligence-Platform.git
 cd Research-Funding-Innovation-Intelligence-Platform
+
+# 2. Build & Launch Containers
+docker-compose up --build -d
+
+# 3. Verify Running Services
+docker-compose ps
 ```
+
+- **Frontend Client**: `http://localhost:5173`
+- **FastAPI Interactive Swagger Docs**: `http://localhost:8000/docs`
 
 ---
 
-## 2. Backend Setup
-1. Navigate to the backend directory:
+## 2. Local Manual Startup
+
+### Backend Setup
+1. Navigate to the `backend/` directory:
    ```bash
    cd backend
    ```
-2. Create and activate a Python virtual environment:
-   - **Windows**:
-     ```powershell
-     python -m venv venv
-     .\venv\Scripts\Activate.ps1
-     ```
-   - **macOS/Linux**:
-     ```bash
-     python3 -m venv venv
-     source venv/bin/activate
-     ```
-3. Install required libraries:
+2. Activate Python virtual environment and install dependencies:
    ```bash
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1  # Windows
    pip install -r requirements.txt
    ```
-
----
-
-## 3. Frontend Setup
-1. Navigate to the frontend directory:
+3. Launch backend API server:
    ```bash
-   cd ../frontend
+   uvicorn app.main:app --reload
    ```
-2. Install Node modules:
+
+### Frontend Setup
+1. Open a new terminal and navigate to `frontend/`:
    ```bash
+   cd frontend
    npm install
    ```
-
----
-
-## 4. Configure `.env`
-1. Navigate to the backend directory:
+2. Launch Vite development server:
    ```bash
-   cd ../backend
+   npm run dev
    ```
-2. Create a `.env` file copying the keys from `.env.example`:
-   ```bash
-   cp .env.example .env
-   ```
-3. Configure the database credentials:
-   ```env
-   DATABASE_URL=postgresql://postgres:postgres@localhost:5432/research_platform
-   SECRET_KEY=generate_a_random_key_string
-   ```
+   Open `http://localhost:5173` in your browser.
 
 ---
 
-## 5. Start PostgreSQL
-Ensure a local PostgreSQL instance is running, and create the platform database:
-```sql
-CREATE DATABASE research_platform;
-```
-*Note: The FastAPI backend automatically builds the database tables on startup.*
+## 3. Step-by-Step Feature Demo Flow
+
+### Step A: User Registration & Role Selection
+1. Open `http://localhost:5173/register` (or Swagger UI `POST /auth/register`).
+2. Register accounts with different roles:
+   - **Administrator**: `admin@platform.org` (Role: `Administrator`)
+   - **Innovation Manager**: `manager@tto.edu` (Role: `Innovation Manager`)
+   - **Researcher**: `sarah.connor@cyberdyne.org` (Role: `Researcher`)
+   - **Startup Founder**: `founder@cyberdyne.tech` (Role: `Startup Founder`)
+
+### Step B: Explore Role-Based Executive Dashboards
+Log in as each user to experience specialized role-tailored views:
+1. **Admin Console** (`/admin/dashboard`): Operational health status, DB connection status, latency ms, active accounts chart, DB reindex tools.
+2. **Innovation Manager Dashboard** (`/manager/dashboard`): Active licenses (24), total royalties ($1.45M), disclosure queue (9), TTO pipeline stages, departmental TRL breakdown.
+3. **Researcher Dashboard** (`/researcher/dashboard`): Personal h-index (h-18), citation velocity, AI-matched grant opportunity calls with match % scores.
+4. **Startup Founder Console** (`/startup/dashboard`): Technology Readiness Level (TRL 7/9), commercialization radar chart, competitor patent watch timeline.
+
+### Step C: Generate & Download Executive Reports
+1. Log in as Innovation Manager or Administrator and navigate to `/manager/reports`.
+2. Select a Report Category (e.g., *Patent Landscape Analysis*).
+3. Select an Output Format (*PDF*, *CSV*, or *JSON*).
+4. Click **Generate & Download Report**.
+5. Confirm that the browser triggers file download and that the file is persisted in `backend/reports/generated/`.
 
 ---
 
-## 6. Start MongoDB
-Launch your local MongoDB server to support document audits:
+## 4. Run Automated Test Suites
+
+### Backend Pytest Suite
 ```bash
-mongod --dbpath /data/db
+cd backend
+pytest
 ```
 
----
-
-## 7. Run Backend
-Start the backend development server:
+### Backend Full-Flow E2E Master Script
 ```bash
-uvicorn app.main:app --reload
+python backend/verify_milestone4_full_flow.py
 ```
-Open `http://127.0.0.1:8000/docs` in your browser to view the Interactive API documentation (Swagger UI).
 
----
-
-## 8. Run Frontend
-In a new terminal window, navigate to the frontend directory and start the Vite development server:
+### Frontend Vitest Suite
 ```bash
 cd frontend
-npm run dev
+npm test
 ```
-Open `http://localhost:5173` to access the frontend client.
-
----
-
-## 9. Register User
-On the Swagger UI (`http://127.0.0.1:8000/docs`), locate the `/auth/register` endpoint:
-1. Click **Try it out**.
-2. Pass the user register payload:
-   ```json
-   {
-     "full_name": "Dr. Sarah Connor",
-     "email": "sarah.connor@cyberdyne.org",
-     "password": "securepassword123",
-     "role": "Researcher"
-   }
-   ```
-3. Click **Execute** and confirm a `201 Created` response.
-
----
-
-## 10. Login
-Locate the `/auth/login` endpoint (or click **Authorize** in the top right of the Swagger UI):
-1. Input your registered email in `username`: `sarah.connor@cyberdyne.org`.
-2. Input your `password`: `securepassword123`.
-3. Click **Execute** and retrieve the JWT `access_token`.
-
----
-
-## 11. Create Research Profile
-Locate the `POST /profile` endpoint:
-1. Input the Bearer Token in authorization headers.
-2. Send the profile payload to establish the search context:
-   ```json
-   {
-     "research_domain": "Robotics & AI",
-     "research_subdomain": "Neural Network Control Systems",
-     "keywords": "neural networks, robotics, autonomous hardware",
-     "organization": "Cyberdyne Research Labs",
-     "designation": "Principal Investigator"
-   }
-   ```
-3. Click **Execute** and confirm a `201 Created` response.
-
----
-
-## 12. Search Publications
-Locate the `GET /publications/search` endpoint:
-1. Provide the JWT token in authorization headers.
-2. Click **Execute**. The backend will connect to OpenAlex API, search works matching the user's research profile domain and keywords, reconstruct the inverted abstracts, and save them.
-3. Verify that the synced publications return in the response list.
-
----
-
-## 13. Search Patents
-Locate the `GET /patents/search` endpoint:
-1. Provide the JWT token in authorization headers.
-2. Click **Execute**. The backend will search and sync patents from The Lens API (or mock generator fallback if the API key is not configured) and save them to the database.
-3. Confirm that the synced patents return in the response.
