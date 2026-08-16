@@ -93,6 +93,8 @@ def fetch_and_sync_publications(db: Session, user_id: str, limit: int = 10, page
     works = data.get("results", [])
 
     for work in works:
+        if not work or not isinstance(work, dict):
+            continue
         openalex_id = work.get("id")
         if not openalex_id:
             continue
@@ -111,23 +113,26 @@ def fetch_and_sync_publications(db: Session, user_id: str, limit: int = 10, page
         abstract = reconstruct_abstract(work.get("abstract_inverted_index"))
 
         # Parse authors
-        authorships = work.get("authorships", [])
-        author_names = [auth.get("author", {}).get("display_name") for auth in authorships if auth.get("author")]
+        authorships = work.get("authorships") or []
+        author_names = [(auth.get("author") or {}).get("display_name") for auth in authorships if isinstance(auth, dict) and auth.get("author")]
         authors_str = ", ".join([name for name in author_names if name])
 
         # Parse keywords / concepts
-        concepts = work.get("concepts", [])
-        concept_names = [c.get("display_name") for c in concepts if c.get("display_name")]
+        concepts = work.get("concepts") or []
+        concept_names = [c.get("display_name") for c in concepts if isinstance(c, dict) and c.get("display_name")]
         keywords_str = ", ".join(concept_names[:10])
 
         # Journal / Source
-        journal_name = work.get("primary_location", {}).get("source", {}).get("display_name")
+        primary_location = work.get("primary_location") or {}
+        source_obj = primary_location.get("source") or {}
+        journal_name = source_obj.get("display_name")
 
         # Open Access Status
-        open_access = work.get("open_access", {}).get("is_oa", False)
+        open_access_obj = work.get("open_access") or {}
+        open_access = open_access_obj.get("is_oa", False)
 
         # Source URL
-        source_url = work.get("primary_location", {}).get("landing_page_url") or work.get("doi")
+        source_url = primary_location.get("landing_page_url") or work.get("doi")
 
         new_pub = Publication(
             openalex_id=openalex_id,
