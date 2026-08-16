@@ -1,4 +1,4 @@
-"""
+﻿"""
 Innovation Scoring Engine (corpus-relative calibration).
 
 Implements the weighted model from section 7 of the project document:
@@ -62,7 +62,7 @@ CURRENT_YEAR = 2024      # last complete year - publication lag makes 2025+ part
 
 # Legal-status values that indicate a granted / in-force patent rather than a
 # pending application. Lens uses a small controlled vocabulary here.
-GRANTED_STATUSES = ("ACTIVE", "GRANTED", "PATENTED")
+GRANTED_STATUSES = ("ACTIVE", "PATENTED")
 
 
 def _terms(profile: ResearchProfile) -> list[str]:
