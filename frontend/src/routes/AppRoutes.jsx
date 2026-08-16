@@ -11,7 +11,6 @@ import PatentsPage from '../pages/shared/PatentsPage';
 import TechnologyPage from '../pages/shared/TechnologyPage';
 import InnovationPage from '../pages/shared/InnovationPage';
 import ReportsPage from '../pages/shared/ReportsPage';
-import NotificationsPage from '../pages/shared/NotificationsPage';
 import SettingsPage from '../pages/shared/SettingsPage';
 import ProfilePage from '../pages/shared/ProfilePage';
 
@@ -34,7 +33,6 @@ export default function AppRoutes() {
         <Route path="/technology" element={<TechnologyPage />} />
         <Route path="/innovation" element={<InnovationPage />} />
         <Route path="/reports" element={<ReportsPage />} />
-        <Route path="/notifications" element={<NotificationsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Route>

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useLocation, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import { FaSearch, FaBell } from 'react-icons/fa';
-import notificationService from '../../services/notificationService';
+import { FaSearch } from 'react-icons/fa';
 import profileService from '../../services/profileService';
 
 export default function DashboardLayout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [unreadCount, setUnreadCount] = useState(0);
   const [userInitials, setUserInitials] = useState('');
   const [userRole, setUserRole] = useState('');
 
@@ -35,20 +33,6 @@ export default function DashboardLayout() {
     loadUser();
   }, []);
 
-  // Load unread notification count
-  useEffect(() => {
-    const fetchUnread = async () => {
-      const token = localStorage.getItem('access_token') || localStorage.getItem('token');
-      if (!token) return;
-      try {
-        const count = await notificationService.getUnreadCount();
-        setUnreadCount(count);
-      } catch (e) { /* ignore */ }
-    };
-    fetchUnread();
-    const interval = setInterval(fetchUnread, 60000);
-    return () => clearInterval(interval);
-  }, []);
 
   // Simple title mapping based on path
   const getPageTitle = (pathname) => {
@@ -89,18 +73,6 @@ export default function DashboardLayout() {
               />
             </div>
 
-            {/* Notification Bell */}
-            <button
-              onClick={() => navigate('/notifications')}
-              className="text-slate-400 hover:text-white transition-colors relative group"
-            >
-              <FaBell size={18} />
-              {unreadCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] bg-blue-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1 shadow-[0_0_8px_rgba(59,130,246,0.6)]">
-                  {unreadCount > 99 ? '99+' : unreadCount}
-                </span>
-              )}
-            </button>
 
             {/* Profile Avatar */}
             <button

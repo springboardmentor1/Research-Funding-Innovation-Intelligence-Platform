@@ -1,33 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { 
   FaHome, FaBolt, FaSearch, FaMicroscope, 
-  FaBrain, FaLightbulb, FaFileAlt, FaBell, 
+  FaBrain, FaLightbulb, FaFileAlt,
   FaCog, FaSignOutAlt, FaUserCircle
 } from 'react-icons/fa';
-import notificationService from '../../services/notificationService';
 
 export default function Sidebar() {
   const navigate = useNavigate();
-  const [unreadCount, setUnreadCount] = useState(0);
-
-  useEffect(() => {
-    const fetchUnread = async () => {
-      const token = localStorage.getItem('access_token');
-      if (!token) return;  // skip if not logged in
-      try {
-        const count = await notificationService.getUnreadCount();
-        setUnreadCount(count);
-      } catch (e) {
-        // silently fail on auth errors
-      }
-    };
-    fetchUnread();
-    // Refresh every 60 seconds
-    const interval = setInterval(fetchUnread, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
   const handleLogout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('token');
@@ -42,7 +22,6 @@ export default function Sidebar() {
     { name: 'Technology', path: '/technology', icon: FaBrain },
     { name: 'Innovation', path: '/innovation', icon: FaLightbulb },
     { name: 'Reports', path: '/reports', icon: FaFileAlt },
-    { name: 'Notifications', path: '/notifications', icon: FaBell, badge: unreadCount },
     { name: 'Settings', path: '/settings', icon: FaCog },
   ];
 
