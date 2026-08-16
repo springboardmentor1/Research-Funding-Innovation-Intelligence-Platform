@@ -1,122 +1,87 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+// The app shell: routing, navbar, and the layout every page sits inside.
 
-function App() {
-  const [count, setCount] = useState(0)
+import { BrowserRouter, Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import { ProtectedRoute } from "./components/common";
+
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Recommendations from "./pages/Recommendations";
+import Patents from "./pages/Patents";
+import Profile from "./pages/Profile";
+import Commercialization from "./pages/Commercialization";
+
+function Navbar() {
+  const { user, logout } = useAuth();
+  const location = useLocation();
+  if (!user) return null;   // no navbar on the login page
+
+  const link = (to, label) => (
+    <Link className={location.pathname === to ? "nav-link active" : "nav-link"} to={to}>
+      {label}
+    </Link>
+  );
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    <nav className="navbar">
+      <div className="nav-brand">RFIIP</div>
+      <div className="nav-links">
+        {link("/", "Dashboard")}
+        {link("/recommendations", "Funding")}
+        {link("/patents", "Patents")}
+        {link("/commercialization", "Commercialization")}
+        {link("/profile", "Profile")}
+      </div>
+      <div className="nav-user">
+        <span>{user.full_name || user.email}</span>
+        <span className="role-badge">{user.role}</span>
+        <button className="btn btn-sm" onClick={logout}>Log out</button>
+      </div>
+    </nav>
+  );
 }
 
-export default App
+function Layout({ children }) {
+  return (
+    <>
+      <Navbar />
+      <main className="main-content">{children}</main>
+    </>
+  );
+}
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+
+      <Route path="/" element={
+        <ProtectedRoute><Layout><Dashboard /></Layout></ProtectedRoute>
+      } />
+      <Route path="/recommendations" element={
+        <ProtectedRoute><Layout><Recommendations /></Layout></ProtectedRoute>
+      } />
+      <Route path="/patents" element={
+        <ProtectedRoute><Layout><Patents /></Layout></ProtectedRoute>
+      } />
+      <Route path="/commercialization" element={
+        <ProtectedRoute><Layout><Commercialization /></Layout></ProtectedRoute>
+      } />
+      <Route path="/profile" element={
+        <ProtectedRoute><Layout><Profile /></Layout></ProtectedRoute>
+      } />
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </AuthProvider>
+  );
+}
