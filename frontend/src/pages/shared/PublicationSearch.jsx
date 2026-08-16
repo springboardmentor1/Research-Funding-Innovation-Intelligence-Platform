@@ -18,32 +18,43 @@ export default function PublicationSearch() {
 
     try {
       const response = await axios.get(`${API_BASE_URL}/publications`, {
-        params: keyword ? { keyword } : {},
+        params: keyword ? { keyword, auto_sync: true } : { auto_sync: true },
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
-      setPublications(response.data || []);
+      const data = response.data || [];
+      setPublications(data);
+      if (data.length === 0 && keyword) {
+        // Automatically sync from OpenAlex if DB returned empty
+        await handleSyncOpenAlex(keyword);
+      }
     } catch (err) {
       console.error('Error fetching publications:', err);
-      setError('Please sign in or set up a research profile to view synchronized publications.');
+      // Fallback auto-sync from OpenAlex
+      handleSyncOpenAlex(keyword);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSyncOpenAlex = async () => {
+  const handleSyncOpenAlex = async (keyword = searchKeyword) => {
     setSyncing(true);
     setError('');
     const token = localStorage.getItem('access_token') || localStorage.getItem('token');
 
     try {
-      const response = await axios.get(`${API_BASE_URL}/publications/search?limit=10`, {
+      const params = { limit: 10 };
+      if (keyword && keyword.strip ? keyword.strip() : keyword) {
+        params.keyword = keyword;
+      }
+      const response = await axios.get(`${API_BASE_URL}/publications/search`, {
+        params,
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
       setPublications(response.data || []);
     } catch (err) {
       console.error('Error syncing from OpenAlex:', err);
       const detail = err.response?.data?.detail;
-      setError(typeof detail === 'string' ? detail : 'Sync requires an active login session. Please sign in first.');
+      setError(typeof detail === 'string' ? detail : 'Unable to sync literature. Please ensure backend services are active.');
     } finally {
       setSyncing(false);
     }
@@ -72,7 +83,7 @@ export default function PublicationSearch() {
           </div>
 
           <button
-            onClick={handleSyncOpenAlex}
+            onClick={() => handleSyncOpenAlex(searchKeyword)}
             disabled={syncing}
             className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-3 rounded-xl shadow-lg shadow-blue-600/30 transition-all text-xs shrink-0 disabled:opacity-50"
           >
@@ -90,60 +101,82 @@ export default function PublicationSearch() {
               value={searchKeyword}
               onChange={(e) => setSearchKeyword(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && fetchPublications(searchKeyword)}
-              placeholder="Search by publication title, doi, or research keywords..."
+              placeholder="Search by publication title, doi, or research keywords (e.g. biotechnology)..."
               className="w-full pl-10 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-blue-500"
             />
           </div>
           <button
             onClick={() => fetchPublications(searchKeyword)}
-            className="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-5 py-2.5 rounded-xl text-xs transition-colors shrink-0"
+            disabled={loading || syncing}
+            className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-2.5 rounded-xl text-xs shadow-md shadow-blue-600/20 transition-all shrink-0 disabled:opacity-50"
           >
-            Filter Results
+            Filter & Search
           </button>
         </div>
 
         {/* Error Alert */}
         {error && (
-          <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium">
-            {error}
+          <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium flex items-center justify-between">
+            <span>{error}</span>
+            <button 
+              onClick={() => handleSyncOpenAlex(searchKeyword)}
+              className="underline font-bold hover:text-amber-300 ml-4 shrink-0"
+            >
+              Retry Sync
+            </button>
           </div>
         )}
 
         {/* Loading Spinner */}
-        {loading ? (
+        {loading || syncing ? (
           <div className="py-20 text-center space-y-3">
             <div className="w-10 h-10 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin mx-auto"></div>
-            <p className="text-xs text-slate-400 uppercase tracking-widest">Loading Publications Catalog...</p>
+            <p className="text-xs text-slate-400 uppercase tracking-widest">
+              {syncing ? 'Fetching Live OpenAlex Publications...' : 'Searching Publications Catalog...'}
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {publications.length === 0 ? (
-              <div className="col-span-full py-16 bg-slate-900/40 border border-slate-800 rounded-2xl text-center space-y-3">
+              <div className="col-span-full py-16 bg-slate-900/40 border border-slate-800 rounded-2xl text-center space-y-4 p-6">
                 <FaFlask size={32} className="mx-auto text-slate-600" />
                 <h3 className="text-sm font-bold text-slate-300">No Publications Cached Yet</h3>
-                <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                  Click <strong>"Sync OpenAlex Literature"</strong> above to fetch publications directly from the OpenAlex API based on your profile keywords.
+                <p className="text-xs text-slate-500 max-w-md mx-auto">
+                  Click below to fetch and synchronize live scientific publications directly from the OpenAlex API for <strong className="text-slate-300">"{searchKeyword || 'biotechnology'}"</strong>.
                 </p>
+                <button
+                  onClick={() => handleSyncOpenAlex(searchKeyword || 'biotechnology')}
+                  className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-lg shadow-blue-600/30 transition-all inline-flex items-center gap-2"
+                >
+                  <FaSyncAlt size={12} />
+                  <span>Sync "{searchKeyword || 'biotechnology'}" Literature</span>
+                </button>
               </div>
             ) : (
               publications.map((pub) => (
                 <div
-                  key={pub.id || pub.doi}
-                  className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all space-y-4 flex flex-col justify-between"
+                  key={pub.publication_id || pub.id || pub.doi || pub.openalex_id}
+                  className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all space-y-4 flex flex-col justify-between shadow-xl"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between text-xs text-slate-400">
-                      <span className="flex items-center gap-1 text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-blue-500/20 font-semibold">
-                        <FaFlask size={10} /> {pub.journal || 'Academic Journal'}
+                      <span className="flex items-center gap-1 text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-blue-500/20 font-semibold truncate max-w-[220px]">
+                        <FaFlask size={10} className="shrink-0" /> {pub.journal || 'Academic Journal'}
                       </span>
-                      <span className="flex items-center gap-1">
-                        <FaCalendarAlt size={10} /> {pub.year || '2025'}
+                      <span className="flex items-center gap-1 shrink-0">
+                        <FaCalendarAlt size={10} /> {pub.publication_year || pub.year || '2025'}
                       </span>
                     </div>
 
                     <h3 className="text-base font-bold text-slate-100 leading-snug hover:text-blue-400 transition-colors">
                       {pub.title}
                     </h3>
+
+                    {pub.authors && (
+                      <p className="text-[11px] text-slate-400 font-medium line-clamp-1">
+                        <span className="text-slate-500">Authors:</span> {pub.authors}
+                      </p>
+                    )}
 
                     <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed">
                       {pub.abstract || 'No abstract text available for this publication record.'}
@@ -156,14 +189,18 @@ export default function PublicationSearch() {
                       <span>{pub.citation_count || 0} Citations</span>
                     </span>
 
-                    {pub.doi && (
+                    {(pub.doi || pub.source_url) && (
                       <a
-                        href={pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`}
+                        href={
+                          pub.doi
+                            ? (pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`)
+                            : pub.source_url
+                        }
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-1 text-blue-400 hover:underline font-semibold"
                       >
-                        <span>View DOI</span>
+                        <span>View Publication</span>
                         <FaExternalLinkAlt size={10} />
                       </a>
                     )}

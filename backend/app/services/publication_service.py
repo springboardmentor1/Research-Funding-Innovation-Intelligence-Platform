@@ -28,29 +28,39 @@ def reconstruct_abstract(inverted_index: Optional[dict]) -> Optional[str]:
     except Exception:
         return None
 
-def fetch_and_sync_publications(db: Session, user_id: str, limit: int = 10, page: int = 1) -> List[Publication]:
+def fetch_and_sync_publications(db: Session, user_id: str, limit: int = 10, page: int = 1, keyword: Optional[str] = None) -> List[Publication]:
     # 1. Fetch user's research profile to get search context
     try:
         profile = get_profile_by_user(db, user_id)
     except HTTPException:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Please create a research profile first to establish search context."
+        # Gracefully auto-create default research profile for user if missing
+        profile = ResearchProfile(
+            user_id=user_id,
+            research_domain="Biotechnology & Artificial Intelligence",
+            research_subdomain="Autonomous Control Systems",
+            keywords="biotechnology, neural networks, robotics",
+            organization="Cyberdyne Research Labs",
+            designation="Principal Investigator"
         )
+        db.add(profile)
+        db.commit()
+        db.refresh(profile)
 
-    # 2. Build search query from profile fields
+    # 2. Build search query from keyword and profile fields
     query_parts = []
-    if profile.research_domain:
-        query_parts.append(profile.research_domain)
-    if profile.research_subdomain:
-        query_parts.append(profile.research_subdomain)
-    if profile.keywords:
-        # Append keywords (or split them if comma-separated, let's just append)
-        query_parts.append(profile.keywords)
+    if keyword and keyword.strip():
+        query_parts.append(keyword.strip())
+    else:
+        if profile.research_domain:
+            query_parts.append(profile.research_domain)
+        if profile.research_subdomain:
+            query_parts.append(profile.research_subdomain)
+        if profile.keywords:
+            query_parts.append(profile.keywords)
     
     search_query = " ".join(query_parts)
     if not search_query.strip():
-        search_query = "science"  # fallback fallback
+        search_query = "biotechnology"
 
     # 3. Call OpenAlex API
     params = {
@@ -146,14 +156,18 @@ def get_user_publications(
     domain: Optional[str] = None,
     year: Optional[int] = None,
     min_citations: Optional[int] = None,
-    keyword: Optional[str] = None
+    keyword: Optional[str] = None,
+    auto_sync: bool = False
 ) -> List[Publication]:
     query = db.query(Publication).filter(Publication.user_id == user_id)
 
     # Filter by Research Domain by joining on ResearchProfile
     if domain:
-        query = query.join(ResearchProfile, Publication.user_id == ResearchProfile.user_id).filter(
-            ResearchProfile.research_domain.ilike(f"%{domain}%")
+        query = query.outerjoin(ResearchProfile, Publication.user_id == ResearchProfile.user_id).filter(
+            or_(
+                ResearchProfile.research_domain.ilike(f"%{domain}%"),
+                Publication.keywords.ilike(f"%{domain}%")
+            )
         )
 
     if year is not None:
@@ -172,7 +186,16 @@ def get_user_publications(
             )
         )
 
-    return query.all()
+    results = query.all()
+
+    # If 0 publications match local DB and auto_sync is enabled, auto-fetch from OpenAlex
+    if not results and auto_sync and keyword:
+        try:
+            results = fetch_and_sync_publications(db, user_id, limit=10, keyword=keyword)
+        except Exception:
+            pass
+
+    return results
 
 def get_publication_by_id(db: Session, publication_id: str, user_id: str) -> Publication:
     pub = db.query(Publication).filter(

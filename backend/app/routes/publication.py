@@ -13,14 +13,15 @@ router = APIRouter(prefix="/publications", tags=["Publication Management"])
 def search_and_sync_openalex(
     limit: int = Query(10, ge=1, le=100),
     page: int = Query(1, ge=1),
+    keyword: Optional[str] = Query(None, description="Optional keyword to search OpenAlex"),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
     """
     Search and synchronize academic publications from the OpenAlex API 
-    using the authenticated user's Research Profile search context.
+    using the authenticated user's Research Profile search context or explicit search keyword.
     """
-    return publication_service.fetch_and_sync_publications(db, str(current_user.id), limit, page)
+    return publication_service.fetch_and_sync_publications(db, str(current_user.id), limit, page, keyword)
 
 @router.get("", response_model=List[PublicationResponse])
 def get_my_publications(
@@ -28,6 +29,7 @@ def get_my_publications(
     year: Optional[int] = Query(None, description="Filter by publication year"),
     min_citations: Optional[int] = Query(None, description="Filter by minimum citation count"),
     keyword: Optional[str] = Query(None, description="Search in title, abstract, or keywords"),
+    auto_sync: bool = Query(False, description="Auto-sync from OpenAlex if 0 stored publications match"),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
@@ -36,7 +38,7 @@ def get_my_publications(
     Supports filtering by research domain, year, citation count, and title/keyword.
     """
     return publication_service.get_user_publications(
-        db, str(current_user.id), domain, year, min_citations, keyword
+        db, str(current_user.id), domain, year, min_citations, keyword, auto_sync
     )
 
 @router.get("/{publication_id}", response_model=PublicationResponse)
