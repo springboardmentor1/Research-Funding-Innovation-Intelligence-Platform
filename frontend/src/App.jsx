@@ -242,11 +242,22 @@ function App() {
         <h2>RFIIP</h2>
 
         <ul>
-          <li>🏠 Home</li>
-          <li>📄 Papers</li>
-          <li>💰 Grants</li>
-          <li>💡 Patents</li>
-        </ul>
+  <li>
+    <a href="#home">🏠 Home</a>
+  </li>
+
+  <li>
+    <a href="#papers">📄 Papers</a>
+  </li>
+
+  <li>
+    <a href="#grants">💰 Grants</a>
+  </li>
+
+  <li>
+    <a href="#patents">💡 Patents</a>
+  </li>
+</ul>
 
         <div className="user-section">
   👤 {username}
@@ -266,9 +277,9 @@ function App() {
 
       {/* TITLE */}
 
-      <h1>
-        Research Funding & Innovation Intelligence Platform
-      </h1>
+      <h1 id="home">
+  Research Funding & Innovation Intelligence Platform
+</h1>
 
 
       {/* STATISTICS */}
@@ -308,10 +319,9 @@ function App() {
           PAPER SEARCH
       ========================= */}
 
-      <div className="dashboard">
+      <div className="dashboard" id="papers">
 
-        <h2>Research Paper Search</h2>
-
+  <h2>Research Paper Search</h2>
 
         <div className="search-box">
 
@@ -393,9 +403,9 @@ function App() {
           GRANT SEARCH
       ========================= */}
 
-      <div className="dashboard">
+      <div className="dashboard" id="grants">
 
-        <h2>Research Grant Search</h2>
+  <h2>Research Grant Search</h2>
 
 
         <div className="search-box">
@@ -495,9 +505,9 @@ function App() {
           PATENT SEARCH
       ========================= */}
 
-      <div className="dashboard">
+      <div className="dashboard" id="patents">
 
-        <h2>Patent Search</h2>
+  <h2>Patent Search</h2>
 
 
         <div className="search-box">
