@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-body text-ink-900;
+  }
+  body {
+    @apply bg-surface-50 antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-signal-amberSoft text-ink-950;
+  }
+  *:focus-visible {
+    outline: 2px solid #0E8F6B;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-signal-emerald px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-signal-emeraldDark focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-ink-900/10 bg-white px-4 py-2.5 text-sm font-semibold text-ink-900 transition hover:bg-surface-100;
+  }
+  .field-label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink-900/60;
+  }
+  .field-input {
+    @apply w-full rounded-lg border border-ink-900/15 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-900/35 focus:border-signal-emerald focus:outline-none focus:ring-2 focus:ring-signal-emerald/20;
+  }
+  .card-panel {
+    @apply rounded-xl2 border border-ink-900/5 bg-white p-6 shadow-panel;
+  }
+  .tag-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-surface-100 px-3 py-1 text-xs font-medium text-ink-900/80;
+  }
+}
