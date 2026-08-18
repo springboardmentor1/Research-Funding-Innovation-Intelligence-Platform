@@ -1,0 +1,72 @@
+[
+  {
+    "funding_id": "GNT-NSF-2024-8841",
+    "title": "NSF Translational AI for Medical Imaging & Diagnostic Intelligence",
+    "organization": "National Science Foundation (NSF)",
+    "description": "Funding research projects integrating advanced computer vision, deep neural networks, and clinical workflow validation for early disease diagnosis and radiology automation.",
+    "research_area": "Artificial Intelligence, Healthcare, Computer Vision",
+    "funding_amount": 1250000.0,
+    "currency": "USD",
+    "deadline": "2026-11-15",
+    "eligibility": "Academic Institutions, Small Businesses (SBIR Phase I/II), US Research Labs",
+    "country": "United States",
+    "application_url": "https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=505884",
+    "source": "NSF Grants Directory"
+  },
+  {
+    "funding_id": "GNT-HORIZON-2025-Q1",
+    "title": "Horizon Europe Quantum Security & Next-Gen Network Infrastructure",
+    "organization": "European Innovation Council (EIC)",
+    "description": "Accelerating European sovereignty in quantum communications, post-quantum cryptography, and satellite QKD networks.",
+    "research_area": "Quantum Cryptography, 6G, Cybersecurity",
+    "funding_amount": 2500000.0,
+    "currency": "EUR",
+    "deadline": "2026-10-30",
+    "eligibility": "EU Consortia, University Research Groups, High-tech Startups",
+    "country": "European Union",
+    "application_url": "https://eic.ec.europa.eu/funding-opportunities_en",
+    "source": "Horizon Europe Portal"
+  },
+  {
+    "funding_id": "GNT-DOE-BATTERY-2024",
+    "title": "DOE Breakthrough Energy Storage Solutions & Sodium-Ion Commercialization",
+    "organization": "US Department of Energy (ARPA-E)",
+    "description": "High-risk, high-reward research grants aimed at replacing rare critical earth metals in grid energy storage with abundant sodium and solid-state chemistries.",
+    "research_area": "Energy Storage, Solid-State Batteries, Clean Tech",
+    "funding_amount": 3500000.0,
+    "currency": "USD",
+    "deadline": "2026-12-01",
+    "eligibility": "Startups, National Laboratories, University Spin-offs",
+    "country": "United States",
+    "application_url": "https://arpa-e.energy.gov/funding-opportunities",
+    "source": "ARPA-E Funding Exchange"
+  },
+  {
+    "funding_id": "GNT-NIH-GENE-2024",
+    "title": "NIH Novel Gene Therapy & Precise RNA Editing Initiatives",
+    "organization": "National Institutes of Health (NIH)",
+    "description": "Supporting translational research on CRISPR-Cas technologies and RNA therapeutic delivery systems for rare neurodegenerative diseases.",
+    "research_area": "Biotechnology, Gene Therapy, CRISPR, Neuroscience",
+    "funding_amount": 1800000.0,
+    "currency": "USD",
+    "deadline": "2026-09-25",
+    "eligibility": "Principal Investigators, BioTech Ventures, Medical Centers",
+    "country": "United States",
+    "application_url": "https://grants.nih.gov/grants/guide/index.html",
+    "source": "NIH Grants Guide"
+  },
+  {
+    "funding_id": "GNT-UKRI-SOLAR-2025",
+    "title": "UKRI Next-Gen Clean Energy & Perovskite Commercialization Fund",
+    "organization": "UK Research and Innovation (UKRI)",
+    "description": "Grant scheme for scalable manufacturing of perovskite solar cells and integration with existing silicon infrastructure.",
+    "research_area": "Clean Tech, Renewable Energy, Solar Cells",
+    "funding_amount": 850000.0,
+    "currency": "GBP",
+    "deadline": "2026-10-15",
+    "eligibility": "UK Universities, UK Registered Businesses, Cleantech Accelerators",
+    "country": "United Kingdom",
+    "application_url": "https://www.ukri.org/opportunity/",
+    "source": "UKRI Funding Finder"
+  }
+]

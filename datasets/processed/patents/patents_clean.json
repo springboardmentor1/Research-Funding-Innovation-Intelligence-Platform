@@ -1,0 +1,58 @@
+[
+  {
+    "patent_id": "US11894201B2",
+    "title": "Method and System for Neural Network Image Processing in Automated Medical Screening",
+    "abstract": "A machine learning pipeline configured to receive multi-sequence MRI datasets, apply attention-based 3D convolutional operations, and output probability distributions for tissue abnormalities.",
+    "inventors": "Elena Rostova, David K. Miller",
+    "assignee": "MedTech AI Solutions Inc.",
+    "filing_date": "2022-04-12",
+    "publication_date": "2024-02-06",
+    "classification": "G06T 7/00, G16H 30/40, A61B 5/055",
+    "technology_domain": "Medical Imaging, Computer Vision, Artificial Intelligence",
+    "citation_count": 14,
+    "source": "USPTO",
+    "url": "https://patents.google.com/patent/US11894201B2"
+  },
+  {
+    "patent_id": "US11902888B1",
+    "title": "Quantum Random Number Generator Integrated with Optical Transceivers for Network Security",
+    "abstract": "An integrated photonic device comprising a single-photon source and balanced homodyne detection circuit for high-throughput quantum entropy generation.",
+    "inventors": "Marcus Vance",
+    "assignee": "QuantumShield Optics Ltd.",
+    "filing_date": "2022-09-18",
+    "publication_date": "2024-02-13",
+    "classification": "H04L 9/08, G06F 7/58, H04B 10/70",
+    "technology_domain": "Quantum Cryptography, Cybersecurity, Optics",
+    "citation_count": 8,
+    "source": "USPTO",
+    "url": "https://patents.google.com/patent/US11902888B1"
+  },
+  {
+    "patent_id": "US11855210B2",
+    "title": "Composite Polymer-Ceramic Electrolyte for All-Solid-State Sodium Batteries",
+    "abstract": "A flexible solid electrolyte layer with high ionic conductivity at room temperature, comprising a polyether matrix impregnated with sodium super-ionic conductor particles.",
+    "inventors": "Amara Chen, Jean-Pierre Dubois",
+    "assignee": "NextGen Energy Storage Corp.",
+    "filing_date": "2021-11-05",
+    "publication_date": "2023-12-26",
+    "classification": "H01M 10/056, H01M 10/054, H01M 4/134",
+    "technology_domain": "Energy Storage, Solid-State Batteries",
+    "citation_count": 27,
+    "source": "USPTO",
+    "url": "https://patents.google.com/patent/US11855210B2"
+  },
+  {
+    "patent_id": "US11932845B2",
+    "title": "Engineered Cas13 Nucleases for High-Specificity RNA Targeting in Eukaryotic Cells",
+    "abstract": "Modified RNA-guided endoribonucleases featuring engineered HEPN domains exhibiting reduced off-target RNA cleavage while preserving target transcript degradation efficacy.",
+    "inventors": "Sophia Thorne, Michael Chang",
+    "assignee": "BioGene Editing Technologies LLC",
+    "filing_date": "2023-01-20",
+    "publication_date": "2024-03-19",
+    "classification": "C12N 15/113, C12N 9/22, A61K 31/7105",
+    "technology_domain": "Biotechnology, CRISPR, Gene Therapy",
+    "citation_count": 19,
+    "source": "USPTO",
+    "url": "https://patents.google.com/patent/US11932845B2"
+  }
+]
