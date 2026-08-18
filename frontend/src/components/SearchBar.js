@@ -37,10 +37,6 @@ function SearchBar({ onSearch }) {
                     Healthcare
                 </option>
 
-                <option value="Cyber Security">
-                    Cyber Security
-                </option>
-
                 <option value="Robotics">
                     Robotics
                 </option>

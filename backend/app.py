@@ -6,7 +6,6 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# In-memory user store
 users = []
 
 
@@ -16,8 +15,6 @@ def home():
         "message": "Research Funding and Innovation Intelligence Platform Backend Running"
     })
 
-
-# ---------------- REGISTER ---------------- #
 
 @app.route("/register", methods=["POST"])
 def register():
@@ -40,10 +37,10 @@ def register():
         "password": password
     })
 
-    return jsonify({"message": "Registration successful"}), 201
+    return jsonify({
+        "message": "Registration successful"
+    }), 201
 
-
-# ---------------- LOGIN ---------------- #
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -59,109 +56,403 @@ def login():
                 "name": user["name"]
             }), 200
 
-    return jsonify({"message": "Invalid email or password"}), 401
+    return jsonify({
+        "message": "Invalid email or password"
+    }), 401
 
-
-# ---------------- PROJECTS ---------------- #
 
 @app.route("/projects", methods=["GET"])
 def projects():
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    cordis_path = os.path.join(base_path, "datasets", "cordis_cleaned.xlsx")
-    grants_path = os.path.join(base_path, "datasets", "grants_cleaned.xlsx")
+    cordis_path = os.path.join(
+        base_path,
+        "datasets",
+        "cordis_cleaned.xlsx"
+    )
+
+    grants_path = os.path.join(
+        base_path,
+        "datasets",
+        "grants_cleaned.xlsx"
+    )
 
     all_projects = []
 
-    if os.path.exists(cordis_path):
-        cordis_df = pd.read_excel(cordis_path).fillna("").astype(str)
-        all_projects.extend(cordis_df.to_dict(orient="records"))
+    for file_path in [cordis_path, grants_path]:
 
-    if os.path.exists(grants_path):
-        grants_df = pd.read_excel(grants_path).fillna("").astype(str)
-        all_projects.extend(grants_df.to_dict(orient="records"))
+        if os.path.exists(file_path):
 
-    return jsonify({"projects": all_projects}), 200
+            df = pd.read_excel(file_path)
 
+            df = df.fillna("").astype(str)
 
-# ---------------- SEARCH ---------------- #
+            all_projects.extend(
+                df.to_dict(orient="records")
+            )
+
+    return jsonify({
+        "projects": all_projects
+    }), 200
+
 
 @app.route("/search", methods=["GET"])
 def search():
-    keyword = request.args.get("keyword", "").strip().lower()
+
+    keyword = request.args.get(
+        "keyword",
+        ""
+    ).strip().lower()
 
     if not keyword:
-        return jsonify({"projects": []})
+        return jsonify({
+            "projects": []
+        }), 200
 
-    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    cordis_path = os.path.join(base_path, "datasets", "cordis_cleaned.xlsx")
+    base_path = os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
 
-    if not os.path.exists(cordis_path):
-        return jsonify({"projects": []})
+    cordis_path = os.path.join(
+        base_path,
+        "datasets",
+        "cordis_cleaned.xlsx"
+    )
 
-    df = pd.read_excel(cordis_path).fillna("").astype(str)
-    field_column = "Fields of science" if "Fields of science" in df.columns else "Research Field"
+    grants_path = os.path.join(
+        base_path,
+        "datasets",
+        "grants_cleaned.xlsx"
+    )
 
-    if field_column in df.columns:
-        results = df[df[field_column].str.lower().str.contains(keyword, na=False)]
-    else:
-        results = df[df["Title"].str.lower().str.contains(keyword, na=False)]
+    domain_mapping = {
 
-    return jsonify({"projects": results.to_dict(orient="records")})
+        "healthcare": [
+            "healthcare",
+            "health",
+            "medical",
+            "medicine",
+            "clinical",
+            "biomedical",
+            "hospital",
+            "public health",
+            "health technology"
+        ],
 
+        "cyber security": [
+            "cyber security",
+            "cybersecurity",
+            "information security",
+            "network security",
+            "computer security",
+            "data security",
+            "digital security",
+            "privacy",
+            "data protection",
+            "encryption",
+            "cryptography",
+            "secure communication",
+            "software security",
+            "internet security"
+        ],
 
-# ---------------- FUNDING OPPORTUNITIES ---------------- #
+        "artificial intelligence": [
+            "artificial intelligence",
+            "artificial-intelligence",
+            "ai",
+            "machine intelligence"
+        ],
+
+        "machine learning": [
+            "machine learning",
+            "deep learning",
+            "neural network",
+            "neural networks"
+        ],
+
+        "robotics": [
+            "robotics",
+            "robot",
+            "robots",
+            "autonomous systems"
+        ]
+    }
+
+    search_terms = domain_mapping.get(
+        keyword,
+        [keyword]
+    )
+
+    all_results = []
+
+    for file_path in [
+        cordis_path,
+        grants_path
+    ]:
+
+        if not os.path.exists(file_path):
+            continue
+
+        df = pd.read_excel(file_path)
+
+        df = df.fillna("").astype(str)
+
+        searchable_columns = []
+
+        for column in [
+            "Title",
+            "Fields of science",
+            "Research Field",
+            "Programme",
+            "Programmes",
+            "Teaser",
+            "Description",
+            "Project acronym"
+        ]:
+
+            if column in df.columns:
+                searchable_columns.append(column)
+
+        if not searchable_columns:
+            continue
+
+        mask = pd.Series(
+            False,
+            index=df.index
+        )
+
+        for column in searchable_columns:
+
+            column_data = df[column].str.lower()
+
+            for term in search_terms:
+
+                mask = mask | column_data.str.contains(
+                    term,
+                    na=False,
+                    regex=False
+                )
+
+        results = df[mask]
+
+        all_results.extend(
+            results.to_dict(
+                orient="records"
+            )
+        )
+
+    return jsonify({
+        "projects": all_results
+    }), 200
+
 
 @app.route("/funding", methods=["GET"])
 def get_funding():
-    keyword = request.args.get("keyword", "").strip().lower()
 
-    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    grants_path = os.path.join(base_path, "datasets", "grants_cleaned.xlsx")
+    keyword = request.args.get(
+        "keyword",
+        ""
+    ).strip().lower()
+
+    base_path = os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
+
+    grants_path = os.path.join(
+        base_path,
+        "datasets",
+        "grants_cleaned.xlsx"
+    )
 
     if not os.path.exists(grants_path):
-        return jsonify({"grants": []})
 
-    df = pd.read_excel(grants_path).fillna("").astype(str)
+        return jsonify({
+            "grants": []
+        }), 200
 
-    if keyword:
-        field_col = "Fields of science" if "Fields of science" in df.columns else "Research Field"
-        if field_col in df.columns:
-            results = df[df[field_col].str.lower().str.contains(keyword, na=False)]
-        else:
-            results = df[df["Title"].str.lower().str.contains(keyword, na=False)]
-    else:
-        results = df
+    df = pd.read_excel(grants_path)
 
-    return jsonify({"grants": results.to_dict(orient="records")})
+    df = df.fillna("").astype(str)
 
+    if not keyword:
 
-# ---------------- PATENTS & IP ---------------- #
+        return jsonify({
+            "grants": df.to_dict(
+                orient="records"
+            )
+        }), 200
+
+    domain_mapping = {
+
+        "healthcare": [
+            "healthcare",
+            "health",
+            "medical",
+            "medicine",
+            "clinical",
+            "biomedical"
+        ],
+
+        "cyber security": [
+            "cyber security",
+            "cybersecurity",
+            "information security",
+            "network security",
+            "computer security",
+            "data security",
+            "digital security",
+            "privacy",
+            "data protection",
+            "encryption",
+            "cryptography",
+            "secure communication",
+            "software security",
+            "internet security"
+        ],
+
+        "artificial intelligence": [
+            "artificial intelligence",
+            "artificial-intelligence",
+            "ai",
+            "machine intelligence"
+        ],
+
+        "machine learning": [
+            "machine learning",
+            "deep learning",
+            "neural network"
+        ],
+
+        "robotics": [
+            "robotics",
+            "robot",
+            "robots",
+            "autonomous systems"
+        ]
+    }
+
+    search_terms = domain_mapping.get(
+        keyword,
+        [keyword]
+    )
+
+    searchable_columns = []
+
+    for column in [
+        "Title",
+        "Fields of science",
+        "Research Field",
+        "Programme",
+        "Programmes",
+        "Description",
+        "Teaser"
+    ]:
+
+        if column in df.columns:
+            searchable_columns.append(column)
+
+    mask = pd.Series(
+        False,
+        index=df.index
+    )
+
+    for column in searchable_columns:
+
+        column_data = df[column].str.lower()
+
+        for term in search_terms:
+
+            mask = mask | column_data.str.contains(
+                term,
+                na=False,
+                regex=False
+            )
+
+    results = df[mask]
+
+    return jsonify({
+        "grants": results.to_dict(
+            orient="records"
+        )
+    }), 200
+
 
 @app.route("/patents", methods=["GET"])
 def get_patents():
-    keyword = request.args.get("keyword", "").strip().lower()
 
-    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    patents_path = os.path.join(base_path, "datasets", "patents_cleaned.xlsx")
+    keyword = request.args.get(
+        "keyword",
+        ""
+    ).strip().lower()
+
+    base_path = os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
+
+    patents_path = os.path.join(
+        base_path,
+        "datasets",
+        "patents_cleaned.xlsx"
+    )
 
     if not os.path.exists(patents_path):
-        return jsonify({"patents": []})
 
-    df = pd.read_excel(patents_path).fillna("").astype(str)
+        return jsonify({
+            "patents": []
+        }), 200
 
-    if keyword:
-        field_col = "Fields of science" if "Fields of science" in df.columns else "Research Field"
-        if field_col in df.columns:
-            results = df[df[field_col].str.lower().str.contains(keyword, na=False)]
-        else:
-            results = df[df["Title"].str.lower().str.contains(keyword, na=False)]
-    else:
-        results = df
+    df = pd.read_excel(patents_path)
 
-    return jsonify({"patents": results.to_dict(orient="records")})
+    df = df.fillna("").astype(str)
+
+    if not keyword:
+
+        return jsonify({
+            "patents": df.to_dict(
+                orient="records"
+            )
+        }), 200
+
+    searchable_columns = []
+
+    for column in [
+        "Title",
+        "Fields of science",
+        "Research Field",
+        "Description",
+        "Teaser"
+    ]:
+
+        if column in df.columns:
+            searchable_columns.append(column)
+
+    mask = pd.Series(
+        False,
+        index=df.index
+    )
+
+    for column in searchable_columns:
+
+        mask = mask | df[column].str.lower().str.contains(
+            keyword,
+            na=False,
+            regex=False
+        )
+
+    results = df[mask]
+
+    return jsonify({
+        "patents": results.to_dict(
+            orient="records"
+        )
+    }), 200
 
 
-# Always keep app.run() at the bottom
 if __name__ == "__main__":
     app.run(debug=True)
