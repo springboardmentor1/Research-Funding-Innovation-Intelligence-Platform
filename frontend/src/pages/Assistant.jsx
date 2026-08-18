@@ -8,8 +8,8 @@ function Assistant() {
   const [messages, setMessages] = useState([
     {
       sender: "ai",
-      text: "Hello! I'm your AI Research Assistant. Ask me anything about research, funding, patents, or innovation."
-    }
+      text: "Hello! I'm your AI Research Assistant. Ask me anything about research, funding, patents, or innovation.",
+    },
   ]);
 
   const getAIResponse = (query) => {
@@ -57,43 +57,81 @@ function Assistant() {
     <>
       <Navbar />
 
-      <div
+      <main
         style={{
-          background: "#f8fafc",
           minHeight: "100vh",
-          padding: "40px",
+          background:
+            "linear-gradient(180deg, #050b12 0%, #07111a 100%)",
+          padding: "50px 30px 70px",
+          color: "#e2e8f0",
         }}
       >
         <div
           style={{
-            maxWidth: "900px",
+            maxWidth: "950px",
             margin: "0 auto",
           }}
         >
-          <h1
-            style={{
-              color: "#2563eb",
-              marginBottom: "25px",
-            }}
-          >
-            <FaRobot /> AI Research Assistant
-          </h1>
+          {/* HEADER */}
+          <div style={{ marginBottom: "28px" }}>
+            <div
+              style={{
+                color: "#22d3ee",
+                fontSize: "13px",
+                fontWeight: "800",
+                letterSpacing: "1.5px",
+                marginBottom: "10px",
+              }}
+            >
+              AI RESEARCH SUPPORT
+            </div>
 
+            <h1
+              style={{
+                color: "#f8fafc",
+                margin: 0,
+                fontSize: "40px",
+                fontWeight: "800",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
+              <FaRobot color="#22d3ee" />
+              AI Research Assistant
+            </h1>
+
+            <p
+              style={{
+                color: "#94a3b8",
+                marginTop: "10px",
+                fontSize: "16px",
+              }}
+            >
+              Get quick guidance about research, funding, patents, and
+              innovation.
+            </p>
+          </div>
+
+          {/* CHAT BOX */}
           <div
             style={{
-              background: "#fff",
-              borderRadius: "15px",
-              padding: "20px",
+              background:
+                "linear-gradient(145deg, #101b26, #0b151f)",
+              border: "1px solid #263746",
+              borderRadius: "18px",
+              padding: "22px",
               height: "500px",
               overflowY: "auto",
-              boxShadow: "0 5px 15px rgba(0,0,0,.08)",
+              boxShadow: "0 15px 40px rgba(0,0,0,0.30)",
             }}
           >
             {messages.map((msg, index) => (
               <div
                 key={index}
                 style={{
-                  textAlign: msg.sender === "user" ? "right" : "left",
+                  textAlign:
+                    msg.sender === "user" ? "right" : "left",
                   marginBottom: "20px",
                 }}
               >
@@ -101,11 +139,25 @@ function Assistant() {
                   style={{
                     display: "inline-block",
                     background:
-                      msg.sender === "user" ? "#2563eb" : "#e2e8f0",
-                    color: msg.sender === "user" ? "#fff" : "#000",
-                    padding: "12px 16px",
-                    borderRadius: "12px",
+                      msg.sender === "user"
+                        ? "linear-gradient(135deg, #0ea5e9, #14b8a6)"
+                        : "#172431",
+                    border:
+                      msg.sender === "user"
+                        ? "none"
+                        : "1px solid #2b3d4c",
+                    color:
+                      msg.sender === "user"
+                        ? "#ffffff"
+                        : "#dbe4ec",
+                    padding: "14px 17px",
+                    borderRadius: "14px",
                     maxWidth: "75%",
+                    lineHeight: "1.6",
+                    fontSize: "15px",
+                    textAlign: "left",
+                    boxShadow:
+                      "0 6px 18px rgba(0,0,0,0.18)",
                   }}
                 >
                   {msg.text}
@@ -114,16 +166,16 @@ function Assistant() {
             ))}
           </div>
 
+          {/* INPUT */}
           <div
             style={{
               display: "flex",
-              marginTop: "20px",
+              marginTop: "18px",
               gap: "10px",
             }}
           >
             <input
               type="text"
-              className="form-control"
               placeholder="Ask about research, funding, patents..."
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
@@ -132,17 +184,38 @@ function Assistant() {
                   sendMessage();
                 }
               }}
+              style={{
+                flex: 1,
+                background: "#0b151f",
+                border: "1px solid #294050",
+                borderRadius: "12px",
+                outline: "none",
+                padding: "15px 17px",
+                color: "#f8fafc",
+                fontSize: "15px",
+              }}
             />
 
             <button
-              className="btn btn-primary"
               onClick={sendMessage}
+              style={{
+                width: "58px",
+                border: "none",
+                borderRadius: "12px",
+                background:
+                  "linear-gradient(135deg, #06b6d4, #14b8a6)",
+                color: "#ffffff",
+                fontSize: "18px",
+                cursor: "pointer",
+                boxShadow:
+                  "0 8px 20px rgba(20,184,166,0.20)",
+              }}
             >
               <FaPaperPlane />
             </button>
           </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
     </>

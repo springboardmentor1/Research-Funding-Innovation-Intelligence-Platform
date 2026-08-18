@@ -1,35 +1,136 @@
 .stat-card {
+  position: relative;
+
+  min-height: 205px;
+
+  padding: 22px;
+
   display: flex;
-  align-items: center;
-  gap: 18px;
-  background: white;
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      155deg,
+      #101c2b,
+      #0a141f
+    ) !important;
+
+  border: 1px solid #20384d !important;
+
+  border-radius: 15px !important;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.22) !important;
+
+  transition: all 0.25s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
+
+  border-color: #31536e !important;
+
+  box-shadow:
+    0 23px 45px rgba(0, 0, 0, 0.3) !important;
 }
 
-.stat-icon {
-  width: 60px;
-  height: 60px;
+.stat-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 120px;
+  height: 120px;
+
+  right: -60px;
+  top: -60px;
+
   border-radius: 50%;
+
+  background: rgba(34, 211, 238, 0.07);
+}
+
+.stat-card:nth-child(2)::before {
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.stat-card:nth-child(3)::before {
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.stat-card:nth-child(4)::before {
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.stat-card-top {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-card-icon {
+  width: 46px;
+  height: 46px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 28px;
+
+  color: #22d3ee;
+
+  background: rgba(34, 211, 238, 0.09) !important;
+
+  border: 1px solid rgba(34, 211, 238, 0.18);
+
+  border-radius: 12px;
+
+  font-size: 18px;
 }
 
-.stat-card h3 {
-  margin: 0;
-  font-size: 28px;
+.stat-card-arrow {
+  color: #49657d;
+
+  font-size: 18px;
 }
 
-.stat-card p {
-  margin: 5px 0 0;
-  color: gray;
+.stat-card-content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.stat-card-label {
+  color: #91a6b9 !important;
+
+  font-size: 12px !important;
+
+  font-weight: 650 !important;
+}
+
+.stat-card-value {
+  color: #f8fafc !important;
+
+  font-size: 38px !important;
+
+  line-height: 1 !important;
+
+  font-weight: 850 !important;
+
+  letter-spacing: -1.5px;
+}
+
+.stat-card-subtitle {
+  color: #587087 !important;
+
+  font-size: 10px !important;
 }

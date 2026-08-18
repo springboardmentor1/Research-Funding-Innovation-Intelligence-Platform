@@ -1,75 +1,39 @@
 import React from "react";
+import "./StatCard.css";
 
 function StatCard({ title, value, subtitle, icon }) {
   return (
-    <div
-      style={{
-        background: "#fff",
-        borderRadius: "18px",
-        padding: "25px",
-        boxShadow: "0 8px 20px rgba(0,0,0,.08)",
-        transition: "0.3s",
-        cursor: "pointer",
-        position: "relative",
-        overflow: "hidden",
-      }}
-      onMouseEnter={(e) =>
-        (e.currentTarget.style.transform = "translateY(-6px)")
-      }
-      onMouseLeave={(e) =>
-        (e.currentTarget.style.transform = "translateY(0px)")
-      }
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: "-20px",
-          right: "-20px",
-          width: "80px",
-          height: "80px",
-          borderRadius: "50%",
-          background: "#2563eb15",
-        }}
-      />
+    <article className="stat-card">
 
-      <div
-        style={{
-          fontSize: "32px",
-          color: "#2563eb",
-          marginBottom: "15px",
-        }}
-      >
-        {icon}
+      <div className="stat-card-top">
+
+        <div className="stat-card-icon">
+          {icon}
+        </div>
+
+        <span className="stat-card-arrow">
+          ↗
+        </span>
+
       </div>
 
-      <h4
-        style={{
-          color: "#64748b",
-          marginBottom: "10px",
-        }}
-      >
-        {title}
-      </h4>
+      <div className="stat-card-content">
 
-      <h2
-        style={{
-          margin: 0,
-          color: "#0f172a",
-          fontSize: "2rem",
-        }}
-      >
-        {value}
-      </h2>
+        <span className="stat-card-label">
+          {title}
+        </span>
 
-      <p
-        style={{
-          marginTop: "10px",
-          color: "#94a3b8",
-        }}
-      >
-        {subtitle}
-      </p>
-    </div>
+        <strong className="stat-card-value">
+          {value}
+        </strong>
+
+        <span className="stat-card-subtitle">
+          {subtitle}
+        </span>
+
+      </div>
+
+    </article>
   );
 }
 

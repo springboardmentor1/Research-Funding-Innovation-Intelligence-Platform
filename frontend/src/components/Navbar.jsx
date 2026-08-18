@@ -1,152 +1,261 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 import {
   FaBrain,
+  FaHome,
+  FaChartLine,
+  FaBookOpen,
+  FaMoneyBillWave,
+  FaLightbulb,
   FaRobot,
   FaBookmark,
+  FaSignInAlt,
+  FaUserPlus,
+  FaSignOutAlt,
+  FaUserCircle,
 } from "react-icons/fa";
 
+import "../styles/Navbar.css";
+
 function Navbar() {
-  const location = useLocation();
+  const navigate = useNavigate();
 
-  const username = localStorage.getItem("username");
+  const [user, setUser] = useState(null);
 
-  const logout = () => {
+  /* =====================================================
+     LOAD LOGGED-IN USER
+  ====================================================== */
+
+  useEffect(() => {
+    const loadUser = () => {
+      try {
+        const storedUser = localStorage.getItem("researchUser");
+
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
+        } else {
+          setUser(null);
+        }
+      } catch (error) {
+        console.error("Error loading user:", error);
+        setUser(null);
+      }
+    };
+
+    loadUser();
+
+    window.addEventListener("storage", loadUser);
+
+    return () => {
+      window.removeEventListener("storage", loadUser);
+    };
+  }, []);
+
+  /* =====================================================
+     LOGOUT
+  ====================================================== */
+
+  const handleLogout = () => {
+    localStorage.removeItem("researchUser");
     localStorage.removeItem("token");
-    localStorage.removeItem("username");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
 
-    alert("Logged out successfully!");
+    setUser(null);
 
-    window.location.href = "/login";
+    navigate("/");
   };
 
-  const navStyle = (path) => ({
-    color: location.pathname === path ? "#2563eb" : "#334155",
-    textDecoration: "none",
-    fontWeight: "600",
-    padding: "8px 14px",
-    borderRadius: "8px",
-    transition: "0.3s",
-  });
+  /* =====================================================
+     GET USERNAME
+  ====================================================== */
+
+  const getUsername = () => {
+    if (!user) return "";
+
+    return (
+      user.username ||
+      user.name ||
+      user.full_name ||
+      user.email?.split("@")[0] ||
+      "Researcher"
+    );
+  };
+
+  const username = getUsername();
 
   return (
-    <nav
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 1000,
-        background: "#ffffff",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1300px",
-          margin: "0 auto",
-          padding: "15px 20px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "15px",
-        }}
-      >
-        <Link
-          to="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            textDecoration: "none",
-            color: "#1e293b",
-            fontWeight: "700",
-            fontSize: "1.3rem",
-          }}
-        >
-          <FaBrain color="#2563eb" size={28} />
-          AI Research Platform
-        </Link>
+    <header className="navbar">
 
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "10px",
-          }}
-        >
-          <Link to="/" style={navStyle("/")}>
-            Home
-          </Link>
+      {/* =================================================
+          LEFT — BRAND
+      ================================================== */}
 
-          <Link to="/dashboard" style={navStyle("/dashboard")}>
-            Dashboard
-          </Link>
+      <Link to="/" className="navbar-brand">
 
-          <Link to="/research" style={navStyle("/research")}>
-            Research
-          </Link>
-
-          <Link to="/funding" style={navStyle("/funding")}>
-            Funding
-          </Link>
-
-          <Link to="/patents" style={navStyle("/patents")}>
-            Patents
-          </Link>
-
-          <Link to="/assistant" style={navStyle("/assistant")}>
-            <FaRobot style={{ marginRight: "5px" }} />
-            AI Assistant
-          </Link>
-
-          <Link to="/bookmarks" style={navStyle("/bookmarks")}>
-            <FaBookmark style={{ marginRight: "5px" }} />
-            Bookmarks
-          </Link>
-
-          {username ? (
-            <>
-              <span
-                style={{
-                  color: "#2563eb",
-                  fontWeight: "700",
-                  marginLeft: "10px",
-                }}
-              >
-                Welcome, {username}
-              </span>
-
-              <button
-                onClick={logout}
-                style={{
-                  background: "#ef4444",
-                  color: "#fff",
-                  border: "none",
-                  padding: "8px 15px",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  fontWeight: "600",
-                }}
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link to="/login" style={navStyle("/login")}>
-                Login
-              </Link>
-
-              <Link to="/signup" style={navStyle("/signup")}>
-                Signup
-              </Link>
-            </>
-          )}
+        <div className="navbar-brand-icon">
+          <FaBrain />
         </div>
+
+        <div className="navbar-brand-text">
+          <span>AI Research</span>
+          <strong>Platform</strong>
+        </div>
+
+      </Link>
+
+
+      {/* =================================================
+          CENTER — NAVIGATION
+      ================================================== */}
+
+      <nav className="navbar-links">
+
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `navbar-link ${isActive ? "active" : ""}`
+          }
+        >
+          <FaHome />
+          <span>Home</span>
+        </NavLink>
+
+
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            `navbar-link ${isActive ? "active" : ""}`
+          }
+        >
+          <FaChartLine />
+          <span>Dashboard</span>
+        </NavLink>
+
+
+        <NavLink
+          to="/research"
+          className={({ isActive }) =>
+            `navbar-link ${isActive ? "active" : ""}`
+          }
+        >
+          <FaBookOpen />
+          <span>Research</span>
+        </NavLink>
+
+
+        <NavLink
+          to="/funding"
+          className={({ isActive }) =>
+            `navbar-link ${isActive ? "active" : ""}`
+          }
+        >
+          <FaMoneyBillWave />
+          <span>Funding</span>
+        </NavLink>
+
+
+        <NavLink
+          to="/patents"
+          className={({ isActive }) =>
+            `navbar-link ${isActive ? "active" : ""}`
+          }
+        >
+          <FaLightbulb />
+          <span>Patents</span>
+        </NavLink>
+
+
+        <NavLink
+          to="/assistant"
+          className={({ isActive }) =>
+            `navbar-link ${isActive ? "active" : ""}`
+          }
+        >
+          <FaRobot />
+          <span>AI Assistant</span>
+        </NavLink>
+
+
+        <NavLink
+          to="/bookmarks"
+          className={({ isActive }) =>
+            `navbar-link ${isActive ? "active" : ""}`
+          }
+        >
+          <FaBookmark />
+          <span>Bookmarks</span>
+        </NavLink>
+
+      </nav>
+
+
+      {/* =================================================
+          RIGHT — AUTH
+      ================================================== */}
+
+      <div className="navbar-auth">
+
+        {user ? (
+          <>
+            {/* USER PROFILE */}
+
+            <div className="navbar-user">
+
+              <div className="navbar-user-avatar">
+                <FaUserCircle />
+              </div>
+
+              <div className="navbar-user-details">
+
+                <span className="navbar-user-label">
+                  RESEARCHER
+                </span>
+
+                <span className="navbar-username">
+                  {username}
+                </span>
+
+              </div>
+
+            </div>
+
+
+            {/* LOGOUT */}
+
+            <button
+              type="button"
+              className="navbar-logout"
+              onClick={handleLogout}
+            >
+              <FaSignOutAlt />
+              <span>Logout</span>
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              to="/login"
+              className="navbar-login"
+            >
+              <FaSignInAlt />
+              <span>Login</span>
+            </Link>
+
+            <Link
+              to="/signup"
+              className="navbar-signup"
+            >
+              <FaUserPlus />
+              <span>Sign Up</span>
+            </Link>
+          </>
+        )}
+
       </div>
-    </nav>
+
+    </header>
   );
 }
 

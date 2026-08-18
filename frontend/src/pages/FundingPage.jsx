@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import RecommendationCard from "../components/RecommendationCard";
 import { getFundingRecommendations } from "../services/api";
 import { FaSearchDollar } from "react-icons/fa";
+import "./FundingPage.css";
 
 function FundingPage() {
   const [topic, setTopic] = useState("");
@@ -39,100 +40,171 @@ function FundingPage() {
     <>
       <Navbar />
 
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "#f8fafc",
-          padding: "40px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-          }}
-        >
-          <h1
-            style={{
-              color: "#1e293b",
-              marginBottom: "10px",
-            }}
-          >
-            AI Funding Recommendation Engine
-          </h1>
+      <main className="funding-page">
 
-          <p
-            style={{
-              color: "#64748b",
-              marginBottom: "30px",
-            }}
-          >
-            Search funding opportunities using AI.
-          </p>
+        <div className="funding-container">
 
-          <div
-            style={{
-              display: "flex",
-              gap: "15px",
-              marginBottom: "30px",
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Example: Artificial Intelligence"
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-              style={{
-                flex: 1,
-                padding: "14px",
-                borderRadius: "10px",
-                border: "1px solid #ccc",
-                fontSize: "16px",
-              }}
-            />
+          {/* HEADER */}
+          <section className="funding-header">
+
+            <div className="funding-eyebrow">
+              FUNDING INTELLIGENCE
+            </div>
+
+            <h1>
+              AI Funding Recommendation Engine
+            </h1>
+
+            <p>
+              Discover funding opportunities that match your
+              research interests and receive relevance-based
+              recommendations.
+            </p>
+
+          </section>
+
+
+          {/* SEARCH */}
+          <section className="funding-search-card">
+
+            <div className="funding-search-wrapper">
+
+              <FaSearchDollar className="funding-search-icon" />
+
+              <input
+                type="text"
+                placeholder="Enter your research topic..."
+                value={topic}
+                onChange={(e) =>
+                  setTopic(e.target.value)
+                }
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
+              />
+
+              {topic && (
+                <button
+                  className="clear-topic"
+                  onClick={() => setTopic("")}
+                  type="button"
+                >
+                  ×
+                </button>
+              )}
+
+            </div>
 
             <button
+              className="funding-search-button"
               onClick={handleSearch}
-              className="btn btn-primary"
+              disabled={loading}
             >
               <FaSearchDollar />
-              {" "}Search
+
+              {loading
+                ? "Searching..."
+                : "Find Funding"}
             </button>
-          </div>
 
-          {loading && (
-            <h3>Loading recommendations...</h3>
-          )}
+          </section>
 
-          {!loading && recommendations.length === 0 && (
-            <div
-              style={{
-                background: "#fff",
-                padding: "30px",
-                borderRadius: "12px",
-              }}
-            >
-              No recommendations found.
-            </div>
-          )}
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(350px,1fr))",
-              gap: "25px",
-            }}
-          >
-            {recommendations.map((item, index) => (
-              <RecommendationCard
-                key={index}
-                recommendation={item}
-              />
-            ))}
-          </div>
+          {/* TIP */}
+          <p className="funding-tip">
+            💡 Tip: Use a specific research area for more
+            relevant funding matches.
+          </p>
+
+
+          {/* RESULTS */}
+          <section className="funding-results">
+
+            {loading && (
+              <div className="funding-status">
+                <div className="loading-spinner"></div>
+
+                <h3>
+                  Finding funding opportunities...
+                </h3>
+
+                <p>
+                  Analyzing your research topic and matching
+                  relevant programs.
+                </p>
+              </div>
+            )}
+
+
+            {!loading &&
+              recommendations.length === 0 && (
+                <div className="funding-empty">
+
+                  <div className="empty-icon">
+                    💰
+                  </div>
+
+                  <h2>
+                    Find Funding for Your Research
+                  </h2>
+
+                  <p>
+                    Enter a research topic above to discover
+                    suitable funding opportunities.
+                  </p>
+
+                </div>
+              )}
+
+
+            {!loading &&
+              recommendations.length > 0 && (
+                <>
+                  <div className="results-header">
+
+                    <div>
+                      <span className="results-label">
+                        FUNDING DISCOVERY
+                      </span>
+
+                      <h2>
+                        Recommended Opportunities
+                      </h2>
+                    </div>
+
+                    <span className="results-count">
+                      {recommendations.length} matches
+                    </span>
+
+                  </div>
+
+
+                  <div className="funding-grid">
+
+                    {recommendations.map(
+                      (item, index) => (
+                        <div
+                          className="funding-card-wrapper"
+                          key={index}
+                        >
+                          <RecommendationCard
+                            recommendation={item}
+                          />
+                        </div>
+                      )
+                    )}
+
+                  </div>
+                </>
+              )}
+
+          </section>
+
         </div>
-      </div>
+
+      </main>
 
       <Footer />
     </>

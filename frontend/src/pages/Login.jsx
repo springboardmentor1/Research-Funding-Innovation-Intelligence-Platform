@@ -1,150 +1,328 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/api";
+import "../styles/Auth.css";
 
 function Login() {
   const navigate = useNavigate();
 
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
+
+    setError("");
   };
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.email || !formData.password) {
+      setError("Please enter your email and password.");
+      return;
+    }
 
     try {
       setLoading(true);
+      setError("");
 
-      const response = await loginUser(form);
+      const response = await loginUser(formData);
 
-      localStorage.setItem(
-        "token",
-        response.data.access_token
-      );
+      /*
+       * Save logged-in user information
+       */
+      if (response?.data) {
+        localStorage.setItem(
+          "researchUser",
+          JSON.stringify(response.data)
+        );
+      }
 
-      localStorage.setItem(
-        "username",
-        response.data.username
-      );
+      /*
+       * IMPORTANT:
+       * After login, go to the HOME PAGE.
+       *
+       * Previously this was:
+       * navigate("/dashboard");
+       *
+       * That is why you were going directly
+       * to the dashboard.
+       */
+      navigate("/");
 
-      alert("Login Successful!");
+    } catch (err) {
+      console.error(err);
 
-      window.location.href = "/";
-    } catch (error) {
-      alert(
-        error.response?.data?.detail ||
-          "Invalid email or password."
-      );
+      const message =
+        err?.response?.data?.detail ||
+        err?.response?.data?.message ||
+        "Login failed. Please check your credentials.";
+
+      setError(message);
+
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "#f1f5f9",
-      }}
-    >
-      <div
-        style={{
-          width: "420px",
-          background: "#fff",
-          padding: "35px",
-          borderRadius: "12px",
-          boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
-        }}
-      >
-        <h2
-          style={{
-            textAlign: "center",
-            color: "#2563eb",
-            marginBottom: "25px",
-          }}
-        >
-          Login
-        </h2>
+    <div className="auth-page">
 
-        <form onSubmit={handleLogin}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            style={inputStyle}
-          />
+      {/* Background decoration */}
+      <div className="auth-glow auth-glow-one"></div>
+      <div className="auth-glow auth-glow-two"></div>
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            required
-            style={inputStyle}
-          />
 
-          <button
-            type="submit"
-            disabled={loading}
-            style={buttonStyle}
+      <div className="auth-container">
+
+        {/* =====================================================
+            LEFT BRAND PANEL
+        ====================================================== */}
+
+        <div className="auth-brand-panel">
+
+          <div className="auth-brand">
+
+            <div className="brand-icon">
+              🧠
+            </div>
+
+            <div>
+              <span>AI RESEARCH</span>
+              <strong>INTELLIGENCE</strong>
+            </div>
+
+          </div>
+
+
+          <div className="auth-brand-content">
+
+            <span className="auth-overline">
+              RESEARCH INTELLIGENCE PLATFORM
+            </span>
+
+            <h1>
+              Welcome back to your
+              <span> research workspace.</span>
+            </h1>
+
+            <p>
+              Access research analytics, discover emerging topics,
+              explore funding opportunities, and continue your
+              research journey from one intelligent platform.
+            </p>
+
+          </div>
+
+
+          <div className="auth-trust">
+
+            <div>
+              <span className="trust-icon">📊</span>
+              <span>Research Analytics</span>
+            </div>
+
+            <div>
+              <span className="trust-icon">💰</span>
+              <span>Funding Discovery</span>
+            </div>
+
+            <div>
+              <span className="trust-icon">🤖</span>
+              <span>AI Assistance</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* =====================================================
+            LOGIN CARD
+        ====================================================== */}
+
+        <div className="auth-card">
+
+          <div className="auth-card-header">
+
+            <div className="auth-card-icon">
+              🔐
+            </div>
+
+            <div>
+
+              <span className="auth-card-label">
+                ACCOUNT ACCESS
+              </span>
+
+              <h2>
+                Sign in
+              </h2>
+
+              <p>
+                Continue to your research workspace.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          {/* ERROR */}
+
+          {error && (
+            <div className="auth-error">
+
+              <span>
+                ⚠️
+              </span>
+
+              {error}
+
+            </div>
+          )}
+
+
+          {/* FORM */}
+
+          <form onSubmit={handleSubmit}>
+
+            {/* EMAIL */}
+
+            <div className="auth-field">
+
+              <label htmlFor="email">
+                Email address
+              </label>
+
+              <div className="auth-input-wrapper">
+
+                <span>
+                  ✉️
+                </span>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="researcher@example.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  autoComplete="email"
+                />
+
+              </div>
+
+            </div>
+
+
+            {/* PASSWORD */}
+
+            <div className="auth-field">
+
+              <label htmlFor="password">
+                Password
+              </label>
+
+              <div className="auth-input-wrapper">
+
+                <span>
+                  🔑
+                </span>
+
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  autoComplete="current-password"
+                />
+
+              </div>
+
+            </div>
+
+
+            {/* LOGIN BUTTON */}
+
+            <button
+              type="submit"
+              className="auth-submit"
+              disabled={loading}
+            >
+
+              {loading ? (
+                <>
+                  <span className="auth-spinner"></span>
+                  Signing in...
+                </>
+              ) : (
+                <>
+                  Sign In
+                  <span>→</span>
+                </>
+              )}
+
+            </button>
+
+          </form>
+
+
+          {/* DIVIDER */}
+
+          <div className="auth-divider">
+
+            <span></span>
+
+            <p>
+              New to the platform?
+            </p>
+
+            <span></span>
+
+          </div>
+
+
+          {/* SIGNUP */}
+
+          <Link
+            to="/signup"
+            className="auth-secondary-button"
           >
-            {loading ? "Logging in..." : "Login"}
-          </button>
-        </form>
-
-        <p
-          style={{
-            marginTop: "20px",
-            textAlign: "center",
-          }}
-        >
-          Don't have an account?{" "}
-          <Link to="/signup">
-            Register
+            Create a Research Account
+            <span>→</span>
           </Link>
-        </p>
+
+
+          {/* FOOTER */}
+
+          <div className="auth-footer">
+
+            <span>
+              🛡️
+            </span>
+
+            Secure research workspace
+
+          </div>
+
+        </div>
+
       </div>
+
     </div>
   );
 }
-
-const inputStyle = {
-  width: "100%",
-  padding: "12px",
-  marginBottom: "18px",
-  borderRadius: "8px",
-  border: "1px solid #ccc",
-  fontSize: "15px",
-  boxSizing: "border-box",
-};
-
-const buttonStyle = {
-  width: "100%",
-  padding: "12px",
-  background: "#2563eb",
-  color: "#fff",
-  border: "none",
-  borderRadius: "8px",
-  cursor: "pointer",
-  fontSize: "16px",
-  fontWeight: "600",
-};
 
 export default Login;

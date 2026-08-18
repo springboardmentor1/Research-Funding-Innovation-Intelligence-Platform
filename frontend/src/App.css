@@ -1,19 +1,154 @@
-body{
-    background:#f5f7fa;
+/* =========================================================
+   APP GLOBAL STYLES
+   ========================================================= */
+
+.app {
+  min-height: 100vh;
+
+  width: 100%;
+
+  background: #070b12;
+
+  color: #e5e7eb;
 }
 
-.navbar{
-    padding:15px;
+
+/* =========================================================
+   GLOBAL PAGE WRAPPER
+   ========================================================= */
+
+.page {
+  min-height: 100vh;
+
+  width: 100%;
+
+  background: #070b12;
+
+  color: #e5e7eb;
 }
 
-h1{
-    color:#1f3b73;
+
+/* =========================================================
+   PROFESSIONAL PAGE CONTAINER
+   ========================================================= */
+
+.page-container {
+  width: 100%;
+
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  padding: 40px 48px 70px;
+
+  background: #070b12;
+
+  color: #e5e7eb;
 }
 
-input{
-    border-radius:10px !important;
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-header {
+  margin-bottom: 30px;
+
+  padding: 30px;
+
+  background: #0d131d;
+
+  border: 1px solid #1f2937;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
-button{
-    padding:10px 25px !important;
+.page-header h1 {
+  margin: 0 0 10px;
+
+  color: #f8fafc;
+
+  font-size: 32px;
+}
+
+.page-header p {
+  margin: 0;
+
+  color: #8b98aa;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   COMMON SECTION
+   ========================================================= */
+
+.section {
+  margin-bottom: 24px;
+
+  padding: 28px;
+
+  background: #0d131d;
+
+  border: 1px solid #1f2937;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.16);
+}
+
+.section h2 {
+  margin-bottom: 18px;
+
+  color: #f8fafc;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .page-container {
+    padding: 30px 25px 60px;
+  }
+
+  .grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .page-container {
+    padding: 22px 16px 50px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

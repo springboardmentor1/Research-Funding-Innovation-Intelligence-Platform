@@ -9,69 +9,125 @@ import {
 function RecommendationCard({ recommendation }) {
   if (!recommendation) return null;
 
+  const score = Number(recommendation.match_score) || 0;
+
   return (
     <div
       style={{
-        background: "#ffffff",
-        borderRadius: "18px",
-        padding: "25px",
-        boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-        transition: "0.3s",
+        background: "linear-gradient(145deg, #111923, #0c141d)",
+        border: "1px solid #263744",
+        borderRadius: "14px",
+        padding: "26px",
+        boxShadow: "0 12px 35px rgba(0,0,0,0.25)",
+        transition: "0.25s ease",
         height: "100%",
+        color: "#dbe4ec",
       }}
     >
+      {/* TITLE */}
       <h2
         style={{
-          color: "#2563eb",
+          color: "#f1f5f9",
           marginBottom: "15px",
           fontSize: "22px",
+          lineHeight: "1.35",
+          fontWeight: "700",
         }}
       >
         {recommendation.title}
       </h2>
 
+      {/* DESCRIPTION */}
       <p
         style={{
-          color: "#475569",
+          color: "#a7b4c3",
           lineHeight: "1.7",
           minHeight: "80px",
+          margin: 0,
         }}
       >
         {recommendation.description}
       </p>
 
-      <hr style={{ margin: "20px 0" }} />
+      <hr
+        style={{
+          margin: "22px 0",
+          border: "none",
+          borderTop: "1px solid #263440",
+        }}
+      />
 
-      <p>
-        <FaUniversity color="#2563eb" />{" "}
-        <strong>Agency:</strong> {recommendation.agency}
+      {/* AGENCY */}
+      <p
+        style={{
+          color: "#cbd5e1",
+          marginBottom: "15px",
+        }}
+      >
+        <FaUniversity
+          color="#38bdf8"
+          style={{ marginRight: "8px" }}
+        />
+
+        <strong style={{ color: "#e2e8f0" }}>
+          Agency:
+        </strong>{" "}
+
+        {recommendation.agency || "Not specified"}
       </p>
 
-      <p>
-        <FaDollarSign color="#16a34a" />{" "}
-        <strong>Funding:</strong> {recommendation.amount}
+      {/* FUNDING */}
+      <p
+        style={{
+          color: "#cbd5e1",
+          marginBottom: "15px",
+        }}
+      >
+        <FaDollarSign
+          color="#22c55e"
+          style={{ marginRight: "8px" }}
+        />
+
+        <strong style={{ color: "#e2e8f0" }}>
+          Funding:
+        </strong>{" "}
+
+        {recommendation.amount || "Not specified"}
       </p>
 
-      <div style={{ marginTop: "20px" }}>
-        <strong>
-          <FaBullseye color="#dc2626" /> Match Score
+      {/* MATCH SCORE */}
+      <div style={{ marginTop: "25px" }}>
+        <strong
+          style={{
+            color: "#e2e8f0",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
+          <FaBullseye color="#f87171" />
+
+          Match Score
         </strong>
 
         <div
           style={{
             width: "100%",
-            background: "#e5e7eb",
-            height: "14px",
+            background: "#26313d",
+            height: "12px",
             borderRadius: "30px",
-            marginTop: "10px",
+            marginTop: "12px",
+            overflow: "hidden",
           }}
         >
           <div
             style={{
-              width: `${recommendation.match_score}%`,
-              background: "linear-gradient(90deg,#2563eb,#4f46e5)",
-              height: "14px",
+              width: `${Math.min(score, 100)}%`,
+              background:
+                "linear-gradient(90deg, #14b8a6, #2dd4bf)",
+              height: "12px",
               borderRadius: "30px",
+              transition: "width 0.5s ease",
             }}
           />
         </div>
@@ -80,17 +136,28 @@ function RecommendationCard({ recommendation }) {
           style={{
             textAlign: "right",
             marginTop: "8px",
-            color: "#2563eb",
-            fontWeight: "700",
+            color: "#2dd4bf",
+            fontWeight: "800",
+            fontSize: "16px",
           }}
         >
-          {recommendation.match_score}%
+          {score}%
         </div>
       </div>
 
-      <div style={{ marginTop: "20px" }}>
-        <strong>
-          <FaTags color="#f59e0b" /> Matched Keywords
+      {/* MATCHED KEYWORDS */}
+      <div style={{ marginTop: "24px" }}>
+        <strong
+          style={{
+            color: "#e2e8f0",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
+          <FaTags color="#f59e0b" />
+
+          Matched Keywords
         </strong>
 
         <div
@@ -98,30 +165,34 @@ function RecommendationCard({ recommendation }) {
             display: "flex",
             flexWrap: "wrap",
             gap: "10px",
-            marginTop: "12px",
+            marginTop: "13px",
           }}
         >
           {recommendation.matched_keywords &&
           recommendation.matched_keywords.length > 0 ? (
-            recommendation.matched_keywords.map((keyword, index) => (
-              <span
-                key={index}
-                style={{
-                  background: "#dbeafe",
-                  color: "#1d4ed8",
-                  padding: "6px 14px",
-                  borderRadius: "20px",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                }}
-              >
-                {keyword}
-              </span>
-            ))
+            recommendation.matched_keywords.map(
+              (keyword, index) => (
+                <span
+                  key={index}
+                  style={{
+                    background: "rgba(45, 212, 191, 0.10)",
+                    border:
+                      "1px solid rgba(45, 212, 191, 0.22)",
+                    color: "#5eead4",
+                    padding: "6px 13px",
+                    borderRadius: "20px",
+                    fontSize: "13px",
+                    fontWeight: "600",
+                  }}
+                >
+                  {keyword}
+                </span>
+              )
+            )
           ) : (
             <span
               style={{
-                color: "#64748b",
+                color: "#8995a5",
               }}
             >
               No matching keywords

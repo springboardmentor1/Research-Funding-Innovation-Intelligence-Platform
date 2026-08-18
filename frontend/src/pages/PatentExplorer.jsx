@@ -15,27 +15,33 @@ function PatentExplorer() {
   const fetchPatents = async () => {
     try {
       const response = await getPatents();
-      setPatents(response.data);
+      setPatents(response.data || []);
     } catch (error) {
-      console.error(error);
+      console.error("Failed to fetch patents:", error);
     }
   };
 
-  const filteredPatents = patents.filter(
-    (patent) =>
-      patent.title.toLowerCase().includes(search.toLowerCase()) ||
-      patent.domain.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredPatents = patents.filter((patent) => {
+    const title = patent.title || "";
+    const domain = patent.domain || "";
+
+    return (
+      title.toLowerCase().includes(search.toLowerCase()) ||
+      domain.toLowerCase().includes(search.toLowerCase())
+    );
+  });
 
   return (
     <>
       <Navbar />
 
-      <div
+      <main
         style={{
           minHeight: "100vh",
-          background: "#f8fafc",
-          padding: "40px",
+          background:
+            "linear-gradient(180deg, #050b12 0%, #07111a 100%)",
+          padding: "55px 40px 70px",
+          color: "#e2e8f0",
         }}
       >
         <div
@@ -44,36 +50,60 @@ function PatentExplorer() {
             margin: "0 auto",
           }}
         >
-          <h1
-            style={{
-              color: "#1e293b",
-              marginBottom: "10px",
-            }}
-          >
-            Patent Explorer
-          </h1>
+          {/* HEADER */}
+          <div style={{ marginBottom: "32px" }}>
+            <div
+              style={{
+                color: "#22d3ee",
+                fontSize: "13px",
+                fontWeight: "800",
+                letterSpacing: "1.5px",
+                textTransform: "uppercase",
+                marginBottom: "10px",
+              }}
+            >
+              INNOVATION DISCOVERY
+            </div>
 
-          <p
-            style={{
-              color: "#64748b",
-              marginBottom: "30px",
-            }}
-          >
-            Explore innovation patents from the backend.
-          </p>
+            <h1
+              style={{
+                color: "#f8fafc",
+                fontSize: "42px",
+                fontWeight: "800",
+                margin: "0 0 10px",
+              }}
+            >
+              Patent Explorer
+            </h1>
 
+            <p
+              style={{
+                color: "#94a3b8",
+                fontSize: "16px",
+                margin: 0,
+              }}
+            >
+              Explore innovation patents from the backend.
+            </p>
+          </div>
+
+          {/* SEARCH */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              background: "#fff",
+              background: "#0b151f",
+              border: "1px solid #263746",
+              borderRadius: "14px",
               padding: "14px 18px",
-              borderRadius: "10px",
-              boxShadow: "0 5px 15px rgba(0,0,0,.08)",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
               marginBottom: "35px",
             }}
           >
-            <FaSearch color="#2563eb" />
+            <FaSearch
+              color="#22d3ee"
+              size={18}
+            />
 
             <input
               type="text"
@@ -81,15 +111,18 @@ function PatentExplorer() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               style={{
+                background: "transparent",
+                color: "#f8fafc",
                 border: "none",
                 outline: "none",
-                marginLeft: "10px",
+                marginLeft: "12px",
                 width: "100%",
                 fontSize: "16px",
               }}
             />
           </div>
 
+          {/* PATENTS */}
           <div
             style={{
               display: "grid",
@@ -100,47 +133,114 @@ function PatentExplorer() {
               <div
                 key={patent.id}
                 style={{
-                  background: "#fff",
-                  borderRadius: "15px",
-                  padding: "25px",
-                  boxShadow: "0 8px 20px rgba(0,0,0,.08)",
+                  background:
+                    "linear-gradient(145deg, #101b26, #0b151f)",
+                  border: "1px solid #263746",
+                  borderRadius: "16px",
+                  padding: "26px",
+                  boxShadow:
+                    "0 12px 35px rgba(0,0,0,0.25)",
                 }}
               >
+                {/* TITLE */}
                 <h3
                   style={{
-                    color: "#2563eb",
-                    marginBottom: "10px",
+                    color: "#f8fafc",
+                    margin: "0 0 18px",
+                    fontSize: "23px",
+                    fontWeight: "700",
+                    lineHeight: "1.4",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
                   }}
                 >
-                  <FaLightbulb /> {patent.title}
+                  <FaLightbulb color="#22d3ee" />
+                  {patent.title || "Untitled Patent"}
                 </h3>
 
-                <p>
-                  <strong>Inventor:</strong> {patent.inventor}
-                </p>
-
-                <p>
-                  <strong>Domain:</strong> {patent.domain}
-                </p>
-
-                <p>
-                  <strong>Year:</strong> {patent.year}
-                </p>
-
+                {/* INVENTOR */}
                 <p
                   style={{
-                    color: "#64748b",
-                    marginTop: "15px",
-                    lineHeight: "1.7",
+                    color: "#cbd5e1",
+                    margin: "0 0 13px",
+                    fontSize: "15px",
                   }}
                 >
-                  {patent.description}
+                  <strong style={{ color: "#f1f5f9" }}>
+                    Inventor:
+                  </strong>{" "}
+                  {patent.inventor || "Not available"}
                 </p>
+
+                {/* DOMAIN */}
+                <p
+                  style={{
+                    color: "#cbd5e1",
+                    margin: "0 0 13px",
+                    fontSize: "15px",
+                  }}
+                >
+                  <strong style={{ color: "#f1f5f9" }}>
+                    Domain:
+                  </strong>{" "}
+                  {patent.domain || "Not available"}
+                </p>
+
+                {/* YEAR */}
+                <p
+                  style={{
+                    color: "#cbd5e1",
+                    margin: "0 0 18px",
+                    fontSize: "15px",
+                  }}
+                >
+                  <strong style={{ color: "#f1f5f9" }}>
+                    Year:
+                  </strong>{" "}
+                  {patent.year || "Not available"}
+                </p>
+
+                <div
+                  style={{
+                    borderTop: "1px solid #263746",
+                    paddingTop: "18px",
+                  }}
+                >
+                  {/* DESCRIPTION */}
+                  <p
+                    style={{
+                      color: "#aebdca",
+                      margin: 0,
+                      lineHeight: "1.8",
+                      fontSize: "15px",
+                    }}
+                  >
+                    {patent.description ||
+                      "No description available."}
+                  </p>
+                </div>
               </div>
             ))}
+
+            {/* NO RESULTS */}
+            {filteredPatents.length === 0 && (
+              <div
+                style={{
+                  background: "#0f1a24",
+                  border: "1px solid #263746",
+                  borderRadius: "15px",
+                  padding: "40px",
+                  textAlign: "center",
+                  color: "#94a3b8",
+                }}
+              >
+                No patents found.
+              </div>
+            )}
           </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
     </>

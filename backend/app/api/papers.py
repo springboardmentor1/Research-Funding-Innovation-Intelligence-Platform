@@ -1,44 +1,272 @@
 from fastapi import APIRouter
-import requests
+from pathlib import Path
+import csv
+import ast
+import re
 
 router = APIRouter()
 
 
+# ============================================================
+# DATASET
+# ============================================================
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+
+CSV_FILE = PROJECT_ROOT / "data" / "cleaned_research_papers.csv"
+
+
+# ============================================================
+# LOAD PAPERS
+# ============================================================
+
+def load_papers():
+
+    if not CSV_FILE.exists():
+        print(f"CSV NOT FOUND: {CSV_FILE}")
+        return []
+
+    try:
+
+        with open(
+            CSV_FILE,
+            "r",
+            encoding="utf-8-sig",
+            newline=""
+        ) as file:
+
+            reader = csv.DictReader(file)
+
+            papers = list(reader)
+
+            print(
+                f"Loaded {len(papers)} papers from CSV"
+            )
+
+            return papers
+
+    except Exception as error:
+
+        print(f"CSV ERROR: {error}")
+
+        return []
+
+
+# ============================================================
+# AUTHORS
+# ============================================================
+
+def parse_authors(value):
+
+    if not value:
+        return "Authors not available"
+
+    try:
+
+        parsed = ast.literal_eval(value)
+
+        if isinstance(parsed, list):
+
+            names = []
+
+            for item in parsed:
+
+                if not isinstance(item, dict):
+                    continue
+
+                author = item.get("author")
+
+                if isinstance(author, dict):
+
+                    name = author.get("display_name")
+
+                    if name:
+                        names.append(name)
+
+                elif isinstance(author, str):
+
+                    names.append(author)
+
+            if names:
+                return ", ".join(names)
+
+    except Exception:
+        pass
+
+    # Fallback: extract display_name values
+    names = re.findall(
+        r"'display_name':\s*'([^']+)'",
+        str(value)
+    )
+
+    if names:
+        return ", ".join(names)
+
+    return str(value)
+
+
+# ============================================================
+# SEARCH
+# ============================================================
+
 @router.get("/papers")
-def get_papers(topic: str = "artificial intelligence"):
+def get_papers(
+    topic: str = "artificial intelligence"
+):
 
-    url = "https://api.openalex.org/works"
+    papers = load_papers()
 
-    params = {
-        "search": topic,
-        "per-page": 10
-    }
+    topic = topic.strip()
 
-    response = requests.get(url, params=params)
-    data = response.json()
+    if not topic:
+        topic = "artificial intelligence"
 
-    papers = []
+    keywords = [
+        word.lower()
+        for word in re.findall(
+            r"[A-Za-z0-9]+",
+            topic
+        )
+        if len(word) >= 2
+    ]
 
-    for item in data.get("results", []):
+    results = []
 
-        authors = []
+    for paper in papers:
 
-        for author in item.get("authorships", []):
-            if author.get("author"):
-                authors.append(author["author"]["display_name"])
-
-        paper_url = (
-            item.get("primary_location", {}).get("landing_page_url")
-            or item.get("primary_location", {}).get("pdf_url")
-            or item.get("id")
+        title = str(
+            paper.get("Paper_Title", "")
         )
 
-        papers.append({
-            "title": item.get("display_name"),
-            "authors": ", ".join(authors),
-            "year": item.get("publication_year"),
-            "abstract": "Abstract not available",
-            "url": paper_url
+        authors = str(
+            paper.get("Authors", "")
+        )
+
+        journal = str(
+            paper.get("Journal", "")
+        )
+
+        publication_type = str(
+            paper.get("Publication_Type", "")
+        )
+
+        searchable_text = " ".join([
+            title,
+            authors,
+            journal,
+            publication_type
+        ]).lower()
+
+        # ----------------------------------------------------
+        # Match search keywords
+        # ----------------------------------------------------
+
+        matched_keywords = [
+            keyword
+            for keyword in keywords
+            if keyword in searchable_text
+        ]
+
+        if not matched_keywords:
+            continue
+
+        # ----------------------------------------------------
+        # Ranking
+        # ----------------------------------------------------
+
+        title_lower = title.lower()
+
+        title_matches = sum(
+            1
+            for keyword in keywords
+            if keyword in title_lower
+        )
+
+        score = (
+            title_matches * 10
+            + len(matched_keywords)
+        )
+
+        # ----------------------------------------------------
+        # URL
+        # ----------------------------------------------------
+
+        doi = paper.get("DOI", "")
+
+        url = doi if doi else "#"
+
+        # ----------------------------------------------------
+        # Result
+        # ----------------------------------------------------
+
+        results.append({
+            "title": title or "Untitled research paper",
+
+            "authors": parse_authors(
+                paper.get("Authors", "")
+            ),
+
+            "year": paper.get(
+                "Publication_Year"
+            ),
+
+            "publication_year": paper.get(
+                "Publication_Year"
+            ),
+
+            "abstract": (
+                "Abstract information is not available "
+                "in the current research dataset."
+            ),
+
+            "doi": doi,
+
+            "url": url,
+
+            "journal": journal,
+
+            "publication_type": publication_type,
+
+            "matched_keywords": matched_keywords,
+
+            "match_score": score
         })
 
-    return papers
+    # --------------------------------------------------------
+    # Sort best matches first
+    # --------------------------------------------------------
+
+    results.sort(
+        key=lambda item: item["match_score"],
+        reverse=True
+    )
+
+    # --------------------------------------------------------
+    # Return top 20
+    # --------------------------------------------------------
+
+    results = results[:20]
+
+    return {
+        "papers": results,
+        "results": results,
+        "total": len(results),
+        "topic": topic
+    }
+
+
+# ============================================================
+# SEARCH HEALTH
+# ============================================================
+
+@router.get("/papers/health")
+def papers_health():
+
+    papers = load_papers()
+
+    return {
+        "status": "ok",
+        "dataset_exists": CSV_FILE.exists(),
+        "dataset": str(CSV_FILE),
+        "total_papers": len(papers)
+    }

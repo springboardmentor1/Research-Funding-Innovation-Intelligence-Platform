@@ -1,0 +1,535 @@
+/* =========================================================
+   FUNDING PAGE
+   ========================================================= */
+
+.funding-page {
+  min-height: calc(100vh - 70px);
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(20, 184, 166, 0.07),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(59, 130, 246, 0.04),
+      transparent 28%
+    ),
+    #070b12;
+
+  color: #e5e7eb;
+  padding: 65px 45px 90px;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.funding-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.funding-header {
+  margin-bottom: 35px;
+}
+
+.funding-eyebrow {
+  color: #2dd4bf;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin-bottom: 12px;
+}
+
+.funding-header h1 {
+  margin: 0 0 12px;
+  color: #f8fafc !important;
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.funding-header p {
+  margin: 0;
+  max-width: 720px;
+  color: #8d9aaa !important;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   SEARCH CARD
+   ========================================================= */
+
+.funding-search-card {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+
+  padding: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #101a23,
+      #0c141d
+    );
+
+  border: 1px solid #223442;
+  border-radius: 14px;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.28);
+
+  margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   SEARCH INPUT
+   ========================================================= */
+
+.funding-search-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  flex: 1;
+
+  min-height: 58px;
+
+  background: #080e15;
+
+  border: 1px solid #263947;
+  border-radius: 10px;
+
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.funding-search-wrapper:focus-within {
+  border-color: #2dd4bf;
+
+  box-shadow:
+    0 0 0 3px rgba(45, 212, 191, 0.08);
+}
+
+.funding-search-icon {
+  margin-left: 18px;
+  color: #2dd4bf;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.funding-search-wrapper input {
+  flex: 1;
+
+  width: 100%;
+
+  padding: 0 45px 0 14px;
+
+  background: transparent !important;
+
+  border: none !important;
+  outline: none !important;
+
+  color: #f1f5f9 !important;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.funding-search-wrapper input::placeholder {
+  color: #64748b !important;
+}
+
+
+/* =========================================================
+   CLEAR BUTTON
+   ========================================================= */
+
+.clear-topic {
+  position: absolute;
+  right: 14px;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent !important;
+
+  border: none !important;
+
+  color: #64748b !important;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  box-shadow: none !important;
+}
+
+.clear-topic:hover {
+  color: #f1f5f9 !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+}
+
+
+/* =========================================================
+   SEARCH BUTTON
+   ========================================================= */
+
+.funding-search-button {
+  min-width: 175px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 10px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #14b8a6,
+      #0d9488
+    ) !important;
+
+  border: 1px solid #2dd4bf !important;
+
+  color: #ffffff !important;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba(20, 184, 166, 0.12) !important;
+}
+
+.funding-search-button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #2dd4bf,
+      #0f766e
+    ) !important;
+
+  transform: translateY(-1px);
+}
+
+.funding-search-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+
+/* =========================================================
+   TIP
+   ========================================================= */
+
+.funding-tip {
+  margin: 0 0 50px;
+
+  color: #718096 !important;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   RESULTS
+   ========================================================= */
+
+.funding-results {
+  width: 100%;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.funding-empty {
+  padding: 55px 30px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0f1821,
+      #0b1219
+    );
+
+  border: 1px solid #202f3b;
+  border-radius: 14px;
+}
+
+.empty-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.funding-empty h2 {
+  margin: 0 0 10px;
+
+  color: #e5e7eb !important;
+
+  font-size: 22px;
+}
+
+.funding-empty p {
+  margin: 0;
+
+  color: #718096 !important;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.funding-status {
+  padding: 60px 30px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0f1821,
+      #0b1219
+    );
+
+  border: 1px solid #202f3b;
+  border-radius: 14px;
+}
+
+.funding-status h3 {
+  color: #e5e7eb !important;
+  margin: 18px 0 8px;
+}
+
+.funding-status p {
+  color: #718096 !important;
+  margin: 0;
+}
+
+.loading-spinner {
+  width: 38px;
+  height: 38px;
+
+  margin: 0 auto;
+
+  border: 3px solid #263440;
+  border-top-color: #2dd4bf;
+
+  border-radius: 50%;
+
+  animation: funding-spin 0.8s linear infinite;
+}
+
+@keyframes funding-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   RESULTS HEADER
+   ========================================================= */
+
+.results-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.results-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #2dd4bf;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.results-header h2 {
+  margin: 0;
+
+  color: #f8fafc !important;
+
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.results-count {
+  padding: 8px 13px;
+
+  background: rgba(20, 184, 166, 0.07);
+
+  border: 1px solid rgba(45, 212, 191, 0.2);
+
+  border-radius: 7px;
+
+  color: #2dd4bf;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FUNDING GRID
+   ========================================================= */
+
+.funding-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+
+/* =========================================================
+   RECOMMENDATION CARD WRAPPER
+   ========================================================= */
+
+.funding-card-wrapper {
+  min-width: 0;
+
+  background:
+    linear-gradient(
+      145deg,
+      #101922,
+      #0c131b
+    );
+
+  border: 1px solid #202f3b;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.funding-card-wrapper:hover {
+  transform: translateY(-3px);
+
+  border-color: #315052;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   FORCE RECOMMENDATION CARD TEXT VISIBILITY
+   ========================================================= */
+
+.funding-card-wrapper,
+.funding-card-wrapper * {
+  color: #dbe4ec;
+}
+
+.funding-card-wrapper h1,
+.funding-card-wrapper h2,
+.funding-card-wrapper h3,
+.funding-card-wrapper h4 {
+  color: #f1f5f9 !important;
+}
+
+.funding-card-wrapper p {
+  color: #8d9aaa !important;
+}
+
+.funding-card-wrapper strong {
+  color: #dbe4ec !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .funding-page {
+    padding: 45px 25px 70px;
+  }
+
+  .funding-search-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .funding-search-button {
+    width: 100%;
+  }
+
+  .funding-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-header {
+    align-items: flex-start;
+    gap: 15px;
+    flex-direction: column;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .funding-page {
+    padding: 35px 16px 60px;
+  }
+
+  .funding-header h1 {
+    font-size: 34px;
+  }
+
+  .funding-search-card {
+    padding: 12px;
+  }
+
+  .results-header h2 {
+    font-size: 28px;
+  }
+}

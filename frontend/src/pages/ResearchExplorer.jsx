@@ -5,6 +5,7 @@ import {
   getResearchPapers,
   saveBookmark,
 } from "../services/api";
+
 import {
   FaSearch,
   FaBookOpen,
@@ -12,224 +13,504 @@ import {
   FaBookmark,
 } from "react-icons/fa";
 
+import "./ResearchExplorer.css";
+
+
 function ResearchExplorer() {
+
   const [papers, setPapers] = useState([]);
-  const [search, setSearch] = useState("artificial intelligence");
+
+  const [search, setSearch] = useState(
+    "artificial intelligence"
+  );
+
   const [loading, setLoading] = useState(false);
+
+  const [error, setError] = useState("");
+
 
   useEffect(() => {
     fetchPapers();
   }, []);
 
+
   const fetchPapers = async () => {
+
+    if (!search.trim()) {
+      return;
+    }
+
     try {
+
       setLoading(true);
-      const res = await getResearchPapers(search);
-      setPapers(res.data);
+      setError("");
+
+      const res = await getResearchPapers(
+        search.trim()
+      );
+
+      /*
+       * Backend returns:
+       *
+       * {
+       *   papers: [...]
+       * }
+       */
+
+      const results =
+        res.data?.papers ||
+        res.data?.results ||
+        [];
+
+      setPapers(results);
+
     } catch (err) {
-      console.error(err);
-      alert("Unable to fetch papers.");
+
+      console.error(
+        "Research API error:",
+        err
+      );
+
+      setPapers([]);
+
+      setError(
+        "Unable to fetch research papers. Please make sure the backend is running."
+      );
+
     } finally {
+
       setLoading(false);
+
     }
   };
+
 
   const handleBookmark = async (paper) => {
+
     try {
-      const response = await saveBookmark(paper);
-      alert(response.data.message);
+
+      const response =
+        await saveBookmark(paper);
+
+      alert(
+        response.data?.message ||
+        "Paper saved successfully."
+      );
+
     } catch (error) {
+
       console.error(error);
-      alert("Failed to save bookmark.");
+
+      alert(
+        "Failed to save bookmark."
+      );
+
     }
   };
 
+
   return (
-    <>
+    <div className="research-explorer">
+
       <Navbar />
 
-      <div
-        style={{
-          background: "#f8fafc",
-          minHeight: "100vh",
-          padding: "40px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-          }}
-        >
-          <h1
-            style={{
-              color: "#1e293b",
-              marginBottom: "10px",
-            }}
-          >
+
+      {/* =====================================================
+          MAIN
+      ===================================================== */}
+
+      <main className="research-main">
+
+        {/* HERO */}
+
+        <section className="research-hero">
+
+          <div className="research-eyebrow">
+            🔬 RESEARCH DISCOVERY
+          </div>
+
+          <h1>
             Research Explorer
           </h1>
 
-          <p
-            style={{
-              color: "#64748b",
-              marginBottom: "30px",
-            }}
-          >
-            Search real research papers from OpenAlex.
+          <p>
+            Discover relevant research papers,
+            explore scientific literature, and
+            find publications related to your
+            research interests.
           </p>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "10px",
-              marginBottom: "30px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                background: "#fff",
-                borderRadius: "10px",
-                padding: "12px 20px",
-                flex: 1,
-                boxShadow: "0 4px 12px rgba(0,0,0,.08)",
+        </section>
+
+
+        {/* =================================================
+            SEARCH
+        ================================================= */}
+
+        <section className="research-search-wrapper">
+
+          <div className="research-search">
+
+            <FaSearch
+              className="research-search-icon"
+            />
+
+            <input
+              type="text"
+              value={search}
+              placeholder="Search research topics..."
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setError("");
               }}
-            >
-              <FaSearch color="#2563eb" />
+              onKeyDown={(e) => {
 
-              <input
-                type="text"
-                value={search}
-                placeholder="Search Topic..."
-                onChange={(e) => setSearch(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    fetchPapers();
-                  }
-                }}
-                style={{
-                  border: "none",
-                  outline: "none",
-                  width: "100%",
-                  marginLeft: "12px",
-                  fontSize: "16px",
-                }}
-              />
-            </div>
+                if (e.key === "Enter") {
+                  fetchPapers();
+                }
 
-            <button
-              className="btn btn-primary"
-              onClick={fetchPapers}
-            >
-              Search
-            </button>
+              }}
+            />
+
+            {search && (
+              <button
+                className="research-clear"
+                onClick={() => {
+                  setSearch("");
+                  setPapers([]);
+                }}
+              >
+                ×
+              </button>
+            )}
+
           </div>
 
-          {loading ? (
-            <h3>Loading papers...</h3>
-          ) : (
-            <div
-              style={{
-                display: "grid",
-                gap: "20px",
-              }}
-            >
-              {papers.map((paper, index) => (
-                <div
-                  key={index}
-                  style={{
-                    background: "#fff",
-                    borderRadius: "15px",
-                    padding: "25px",
-                    boxShadow: "0 8px 20px rgba(0,0,0,.08)",
-                  }}
-                >
-                  <h3
-                    style={{
-                      color: "#2563eb",
-                    }}
-                  >
-                    <FaBookOpen /> {paper.title}
-                  </h3>
 
-                  <p>
-                    <strong>Authors:</strong>{" "}
-                    {paper.authors || "N/A"}
-                  </p>
+          <button
+            className="research-search-button"
+            onClick={fetchPapers}
+            disabled={loading}
+          >
 
-                  <p>
-                    <strong>Year:</strong>{" "}
-                    {paper.year || "N/A"}
-                  </p>
+            <FaSearch />
 
-                  <p>
-                    <strong>Abstract:</strong>
-                  </p>
+            {loading
+              ? "Searching..."
+              : "Search Research"}
 
-                  <p
-                    style={{
-                      color: "#64748b",
-                      lineHeight: "1.7",
-                    }}
-                  >
-                    {paper.abstract ||
-                      "No abstract available."}
-                  </p>
+          </button>
 
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "12px",
-                      marginTop: "20px",
-                    }}
-                  >
-                    {paper.url && (
-                      <a
-                        href={paper.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-primary"
-                      >
-                        <FaExternalLinkAlt className="me-2" />
-                        Read Paper
-                      </a>
-                    )}
+        </section>
 
-                    <button
-                      className="btn btn-success"
-                      onClick={() =>
-                        handleBookmark(paper)
-                      }
-                    >
-                      <FaBookmark className="me-2" />
-                      Save Paper
-                    </button>
-                  </div>
-                </div>
-              ))}
 
-              {papers.length === 0 && (
-                <div
-                  style={{
-                    background: "#fff",
-                    padding: "30px",
-                    borderRadius: "15px",
-                    textAlign: "center",
-                  }}
-                >
-                  No research papers found.
-                </div>
-              )}
+        {/* ERROR */}
+
+        {error && (
+
+          <div className="research-error">
+
+            ⚠️ {error}
+
+          </div>
+
+        )}
+
+
+        {/* =================================================
+            LOADING
+        ================================================= */}
+
+        {loading && (
+
+          <div className="research-loading">
+
+            <div className="research-spinner"></div>
+
+            <h3>
+              Finding research papers...
+            </h3>
+
+            <p>
+              Searching your research database.
+            </p>
+
+          </div>
+
+        )}
+
+
+        {/* =================================================
+            RESULTS HEADER
+        ================================================= */}
+
+        {!loading &&
+          papers.length > 0 && (
+
+            <div className="research-results-header">
+
+              <div>
+
+                <span>
+                  SEARCH RESULTS
+                </span>
+
+                <h2>
+                  Research Papers
+                </h2>
+
+                <p>
+                  Results for "{search}"
+                </p>
+
+              </div>
+
+              <div className="research-count">
+
+                {papers.length} Papers
+
+              </div>
+
             </div>
+
           )}
-        </div>
-      </div>
+
+
+        {/* =================================================
+            PAPERS
+        ================================================= */}
+
+        {!loading &&
+          papers.length > 0 && (
+
+            <section className="research-paper-list">
+
+              {papers.map(
+                (paper, index) => (
+
+                  <article
+                    className="research-paper-card"
+                    key={
+                      paper.doi ||
+                      paper.url ||
+                      index
+                    }
+                  >
+
+                    {/* NUMBER */}
+
+                    <div className="paper-index">
+
+                      {String(
+                        index + 1
+                      ).padStart(2, "0")}
+
+                    </div>
+
+
+                    {/* CONTENT */}
+
+                    <div className="paper-body">
+
+                      <div className="paper-label">
+
+                        <FaBookOpen />
+
+                        RESEARCH PAPER
+
+                      </div>
+
+
+                      <h2>
+
+                        {paper.title ||
+                          "Untitled Research Paper"}
+
+                      </h2>
+
+
+                      <div className="paper-info">
+
+                        <div>
+
+                          <strong>
+                            👤 Authors
+                          </strong>
+
+                          <span>
+                            {paper.authors ||
+                              "Authors unavailable"}
+                          </span>
+
+                        </div>
+
+
+                        <div>
+
+                          <strong>
+                            📅 Publication Year
+                          </strong>
+
+                          <span>
+                            {paper.publication_year ||
+                              paper.year ||
+                              "Year unavailable"}
+                          </span>
+
+                        </div>
+
+                      </div>
+
+
+                      <div className="paper-abstract">
+
+                        <h3>
+                          Abstract
+                        </h3>
+
+                        <p>
+
+                          {paper.abstract ||
+                            "Abstract information is not available in the current dataset."}
+
+                        </p>
+
+                      </div>
+
+
+                      <div className="paper-actions">
+
+                        {paper.url &&
+                          paper.url !== "#" && (
+
+                            <a
+                              href={paper.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="read-paper"
+                            >
+
+                              <FaExternalLinkAlt />
+
+                              Read Paper
+
+                            </a>
+
+                          )}
+
+
+                        <button
+                          className="bookmark-paper"
+                          onClick={() =>
+                            handleBookmark(
+                              paper
+                            )
+                          }
+                        >
+
+                          <FaBookmark />
+
+                          Save Paper
+
+                        </button>
+
+                      </div>
+
+                    </div>
+
+                  </article>
+
+                )
+              )}
+
+            </section>
+
+          )}
+
+
+        {/* =================================================
+            EMPTY
+        ================================================= */}
+
+        {!loading &&
+          papers.length === 0 &&
+          !error && (
+
+            <div className="research-empty">
+
+              <div className="empty-icon">
+                🔬
+              </div>
+
+              <h2>
+                Start Your Research
+              </h2>
+
+              <p>
+                Search for a research topic
+                to discover relevant papers.
+              </p>
+
+
+              <div className="research-suggestions">
+
+                <button
+                  onClick={() =>
+                    setSearch(
+                      "artificial intelligence"
+                    )
+                  }
+                >
+                  🤖 Artificial Intelligence
+                </button>
+
+
+                <button
+                  onClick={() =>
+                    setSearch(
+                      "machine learning"
+                    )
+                  }
+                >
+                  🧠 Machine Learning
+                </button>
+
+
+                <button
+                  onClick={() =>
+                    setSearch(
+                      "climate change"
+                    )
+                  }
+                >
+                  🌍 Climate Change
+                </button>
+
+
+                <button
+                  onClick={() =>
+                    setSearch(
+                      "healthcare"
+                    )
+                  }
+                >
+                  🏥 Healthcare
+                </button>
+
+              </div>
+
+            </div>
+
+          )}
+
+      </main>
+
 
       <Footer />
-    </>
+
+    </div>
   );
 }
+
 
 export default ResearchExplorer;

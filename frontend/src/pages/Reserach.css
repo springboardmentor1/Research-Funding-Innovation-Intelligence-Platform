@@ -1,0 +1,145 @@
+.research-page {
+  min-height: 100vh;
+  padding: 50px 7%;
+  background: #070b12;
+  color: white;
+}
+
+.research-hero h1 {
+  color: white;
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+.research-hero p {
+  color: #aab8c5;
+  font-size: 17px;
+}
+
+.research-kicker {
+  color: #38bdf8;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.research-search-section {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  padding: 14px;
+  background: #0d1824;
+  border: 1px solid #234052;
+  border-radius: 14px;
+}
+
+.research-search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  background: #050c14;
+  border: 2px solid #38bdf8;
+  border-radius: 10px;
+}
+
+.research-search-box input {
+  flex: 1;
+  height: 55px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+}
+
+.research-search-box input::placeholder {
+  color: #718096;
+}
+
+.research-search-button {
+  padding: 0 28px;
+  border: none;
+  border-radius: 10px;
+  background: #38bdf8;
+  color: #061019;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.research-results {
+  margin-top: 40px;
+}
+
+.research-results h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.research-paper-card {
+  margin-bottom: 18px;
+  padding: 28px;
+  background: #0d1824;
+  border: 1px solid #243b4d;
+  border-radius: 14px;
+}
+
+.paper-type {
+  color: #38bdf8;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.paper-content h3 {
+  color: white;
+  font-size: 22px;
+}
+
+.paper-author,
+.paper-year {
+  color: #b7c5d2;
+}
+
+.paper-abstract {
+  color: #9fb0bf;
+  line-height: 1.7;
+}
+
+.read-paper-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 16px;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.research-empty {
+  margin-top: 35px;
+  padding: 60px;
+  text-align: center;
+  background: #0d1824;
+  border: 1px solid #243b4d;
+  border-radius: 14px;
+}
+
+.research-empty div {
+  font-size: 45px;
+}
+
+.research-empty h2 {
+  color: white;
+}
+
+.research-empty p {
+  color: #9fb0bf;
+}
+
+.research-error {
+  margin-top: 20px;
+  padding: 15px;
+  background: #30171b;
+  color: #ffb4b8;
+  border-radius: 10px;
+}
