@@ -1,0 +1,80 @@
+researcher_id,name,primary_domain,paper_count,total_citations
+R001,Abhimanyu Das,Time Series AI,1,2900
+R002,Aixin Sun,Recommender Systems,1,15000
+R003,Alejandro del Ser,Climate AI,1,4200
+R004,Aleksandara Piktus,Natural Language Processing,1,22000
+R005,Alex Nichol,Generative AI,1,18000
+R006,Alexander Kolesnikov,Computer Vision,1,52000
+R007,Alexey Dosovitskiy,Computer Vision,1,52000
+R008,Ali Farhadi,Computer Vision,1,42000
+R009,Andrew Ng,Data Science,1,4100
+R010,Ashish Vaswani,Natural Language Processing,1,125000
+R011,Benjamin Mann,Artificial Intelligence,1,78000
+R012,Bo Li,Autonomous Systems,1,12500
+R013,Cheng Lian,Data Science,1,30000
+R014,Daniel Ramage,Federated Learning,1,35000
+R015,David Sculley,MLOps,1,21000
+R016,Dennis A. Ananny,Explainable AI,1,9000
+R017,Diederik Kingma,Machine Learning,1,110000
+R018,Edward Hu,Generative AI,1,25000
+R019,Eider Moore,Federated Learning,1,35000
+R020,Eric Topol,Healthcare AI,1,30000
+R021,Ethan Perez,Natural Language Processing,1,22000
+R022,Fengwen Chen,Graph Machine Learning,1,12000
+R023,H Brendan McMahan,Federated Learning,1,35000
+R024,Haotian Liu,Multimodal AI,1,3600
+R025,Heiko Paulheim,Knowledge Graphs,1,13000
+R026,Ian Goodfellow,AI Security,2,106000
+R027,Jacob Devlin,Natural Language Processing,1,90000
+R028,Jakob Uszkoreit,Natural Language Processing,1,125000
+R029,Jean Pouget-Abadie,Generative AI,1,70000
+R030,Jeffrey Dean,Data Science,1,42000
+R031,Jeremy Irvin,Healthcare AI,1,17000
+R032,Jesse Bettencourt,Deep Learning,1,19000
+R033,Jian Sun,Computer Vision,1,145000
+R034,Jimmy Ba,Machine Learning,1,110000
+R035,Joseph Redmon,Computer Vision,1,42000
+R036,Jun Chen,Multimodal AI,1,3200
+R037,Kaiming He,Computer Vision,1,145000
+R038,Kate Crawford,Explainable AI,1,9000
+R039,Kaylie Zhu,Healthcare AI,1,17000
+R040,Kenton Lee,Natural Language Processing,1,90000
+R041,Kristina Toutanova,Natural Language Processing,1,90000
+R042,Leo Breiman,Machine Learning,1,150000
+R043,Lina Yao,Recommender Systems,1,15000
+R044,Lucas Beyer,Computer Vision,1,52000
+R045,Mehdi Mirza,Generative AI,1,70000
+R046,Melanie Subbiah,Artificial Intelligence,1,78000
+R047,Michael Armbrust,Data Science,1,30000
+R048,Ming-Wei Chang,Natural Language Processing,1,90000
+R049,Nick Ryder,Artificial Intelligence,1,78000
+R050,Niki Parmar,Natural Language Processing,1,125000
+R051,Ning Ding,Generative AI,1,6800
+R052,Noam Shazeer,Natural Language Processing,1,125000
+R053,Patrick Lewis,Natural Language Processing,1,22000
+R054,Petar Veličković,Graph Machine Learning,1,2300
+R055,Phillip Wallis,Generative AI,1,25000
+R056,Prafulla Dhariwal,Generative AI,1,18000
+R057,Pranav Rajpurkar,Healthcare AI,1,17000
+R058,Reynold Xin,Data Science,1,30000
+R059,Reza Shokri,Privacy AI,1,5600
+R060,Ricky T. Q. Chen,Deep Learning,1,19000
+R061,Sanjay Ghemawat,Data Science,1,42000
+R062,Sercan O. Arik,Explainable AI,1,6500
+R063,Shaoqing Ren,Computer Vision,1,145000
+R064,Shirui Pan,Graph Machine Learning,1,12000
+R065,Shuai Zhang,Recommender Systems,1,15000
+R066,Shunyu Yao,Generative AI,2,7900
+R067,Sinong Wang,Deep Learning,1,7400
+R068,Tom Brown,Artificial Intelligence,1,78000
+R069,Tomas Pfister,Explainable AI,1,6500
+R070,Virginia Dignum,Responsible AI,1,8800
+R071,Wei Shi,Edge AI,1,19000
+R072,William Stallings,Cybersecurity AI,1,7300
+R073,Xiangyu Zhang,Computer Vision,1,145000
+R074,Yelong Shen,Generative AI,1,25000
+R075,Yi Tay,Recommender Systems,1,15000
+R076,Yoshua Bengio,Generative AI,1,70000
+R077,Yulia Rubanova,Deep Learning,1,19000
+R078,Zonghan Wu,Graph Machine Learning,1,12000
+R079,et al.,AI Security,16,143800

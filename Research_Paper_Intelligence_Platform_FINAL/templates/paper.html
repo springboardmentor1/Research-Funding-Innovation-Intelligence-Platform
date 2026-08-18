@@ -1,0 +1,348 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ p.title }} — ResearchIQ{% endblock %}
+
+{% block content %}
+
+<section class="paper-detail">
+
+    <a class="back" href="{{ url_for('papers') }}">
+        <i class="bi bi-arrow-left"></i>
+        Back to explorer
+    </a>
+
+    <div class="detail-layout">
+
+        <main>
+
+            <!-- PAPER HEADER -->
+            <div class="paper-meta">
+
+                <span>{{ p.domain }}</span>
+
+                <b>{{ p.year or 'Year unavailable' }}</b>
+
+                <span class="cite">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    {{ '{:,}'.format(p.citations or 0) }} citations
+                </span>
+
+            </div>
+
+
+            <h1>{{ p.title }}</h1>
+
+
+            <p class="authors large">
+                {{ p.authors or 'Author information unavailable' }}
+            </p>
+
+
+            <!-- ACTION BUTTONS -->
+            <div class="detail-actions">
+
+                {% if p.pdf_url %}
+
+                    <a
+                        class="btn"
+                        href="{{ p.pdf_url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="bi bi-file-earmark-pdf"></i>
+                        Read Full Paper
+                        <i class="bi bi-box-arrow-up-right"></i>
+                    </a>
+
+                {% elif p.url %}
+
+                    <a
+                        class="btn"
+                        href="{{ p.url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="bi bi-journal-text"></i>
+                        Open Paper Source
+                        <i class="bi bi-box-arrow-up-right"></i>
+                    </a>
+
+                {% endif %}
+
+
+                {% if p.doi %}
+
+                    <a
+                        class="btn btn-outline"
+                        href="https://doi.org/{{ p.doi }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="bi bi-link-45deg"></i>
+                        Open DOI
+                    </a>
+
+                {% endif %}
+
+
+                {% if session.get('user_id') %}
+
+                    <form
+                        method="post"
+                        action="{{ url_for('bookmarks') }}"
+                    >
+
+                        <input
+                            type="hidden"
+                            name="paper_id"
+                            value="{{ p.id }}"
+                        >
+
+                        <button
+                            class="btn btn-outline"
+                            type="submit"
+                        >
+                            <i class="bi bi-bookmark"></i>
+                            Save Paper
+                        </button>
+
+                    </form>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- PAPER SOURCE NOTICE -->
+            {% if p.url and not p.pdf_url %}
+
+            <div class="source-note">
+
+                <i class="bi bi-info-circle"></i>
+
+                <strong>Paper source:</strong>
+
+                The available link opens the publisher, conference,
+                repository, or indexed paper record. From there you can
+                access the full publication when available.
+
+            </div>
+
+            {% endif %}
+
+
+            <!-- ABSTRACT -->
+            <div class="content-card">
+
+                <h2>Abstract</h2>
+
+                {% if p.abstract %}
+
+                    <p>{{ p.abstract }}</p>
+
+                {% else %}
+
+                    <p class="muted">
+                        Abstract information is not available for this record.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- BIBLIOGRAPHIC INFORMATION -->
+            <div class="content-card">
+
+                <h2>Bibliographic Record</h2>
+
+                <div class="bio-grid">
+
+                    <div>
+                        <small>VENUE</small>
+                        <b>
+                            {{ p.venue or 'Not available' }}
+                        </b>
+                    </div>
+
+
+                    <div>
+                        <small>YEAR</small>
+                        <b>
+                            {{ p.year or 'Not available' }}
+                        </b>
+                    </div>
+
+
+                    <div>
+                        <small>DOI</small>
+                        <b>
+                            {{ p.doi or 'Not available' }}
+                        </b>
+                    </div>
+
+
+                    <div>
+                        <small>PAPER ID</small>
+                        <b>
+                            {{ p.external_id or 'Not available' }}
+                        </b>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AUTHORS -->
+            <div class="content-card">
+
+                <h2>Authors</h2>
+
+                {% if p.authors %}
+
+                    <p>{{ p.authors }}</p>
+
+                {% else %}
+
+                    <p class="muted">
+                        Author information is not available.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- WHY THIS MATTERS -->
+            <div class="content-card">
+
+                <h2>Why This Matters</h2>
+
+                <p>
+                    This paper is indexed for research discovery and
+                    comparison. Publication year, citation impact and
+                    research domain provide useful signals for prioritizing
+                    literature. Researchers should still evaluate the
+                    original paper, methodology, evidence and conclusions
+                    before drawing conclusions.
+                </p>
+
+            </div>
+
+        </main>
+
+
+        <!-- RIGHT SIDEBAR -->
+        <aside>
+
+            <!-- IMPACT -->
+            <div class="impact-card">
+
+                <span>RESEARCH IMPACT</span>
+
+                <strong>
+                    {{ '{:,}'.format(p.citations or 0) }}
+                </strong>
+
+                <small>citations</small>
+
+                <div class="impact-bar">
+
+                    <i
+                        style="width:{{ [100, ((p.citations or 0) / 1250 * 100)]|min }}%"
+                    ></i>
+
+                </div>
+
+                <p>
+                    Citation impact signal within the indexed corpus.
+                </p>
+
+            </div>
+
+
+            <!-- SOURCE INFORMATION -->
+            <div class="content-card">
+
+                <h3>Available Sources</h3>
+
+
+                {% if p.pdf_url %}
+
+                <p>
+                    <i class="bi bi-file-earmark-pdf"></i>
+
+                    <strong>Full Paper PDF:</strong>
+                    Available
+                </p>
+
+                {% endif %}
+
+
+                {% if p.url %}
+
+                <p>
+                    <i class="bi bi-journal-text"></i>
+
+                    <strong>Paper Source:</strong>
+                    Available
+                </p>
+
+                {% endif %}
+
+
+                {% if p.doi %}
+
+                <p>
+                    <i class="bi bi-link-45deg"></i>
+
+                    <strong>DOI:</strong>
+                    Available
+                </p>
+
+                {% endif %}
+
+
+                {% if not p.url and not p.pdf_url and not p.doi %}
+
+                <p class="muted">
+                    No external paper source is available for this record.
+                </p>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- RELATED PAPERS -->
+            <div class="content-card">
+
+                <h3>Related Papers</h3>
+
+                <div id="related">
+
+                    <span class="muted">
+                        Finding similar work…
+                    </span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+    loadRelated({{ p.id }});
+</script>
+
+{% endblock %}

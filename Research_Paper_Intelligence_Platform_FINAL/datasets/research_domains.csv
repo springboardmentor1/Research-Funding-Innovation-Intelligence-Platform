@@ -1,0 +1,25 @@
+domain,paper_count,total_citations,average_citations
+AI Agents,1,5100,5100.0
+AI Security,1,36000,36000.0
+Artificial Intelligence,57,78000,1368.4
+Autonomous Systems,1,12500,12500.0
+Climate AI,1,4200,4200.0
+Computer Vision,73,239000,3274.0
+Cybersecurity AI,1,7300,7300.0
+Data Science,3,76100,25366.7
+Deep Learning,2,26400,13200.0
+Edge AI,1,19000,19000.0
+Explainable AI,2,15500,7750.0
+Federated Learning,1,35000,35000.0
+Generative AI,5,122600,24520.0
+Graph Machine Learning,2,14300,7150.0
+Healthcare AI,2,47000,23500.0
+Knowledge Graphs,1,13000,13000.0
+MLOps,1,21000,21000.0
+Machine Learning,65,260000,4000.0
+Multimodal AI,2,6800,3400.0
+Natural Language Processing,74,237000,3202.7
+Privacy AI,1,5600,5600.0
+Recommender Systems,1,15000,15000.0
+Responsible AI,1,8800,8800.0
+Time Series AI,1,2900,2900.0

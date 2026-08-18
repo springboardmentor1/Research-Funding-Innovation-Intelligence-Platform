@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block title %}Explore Papers — ResearchIQ{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="eyebrow">LITERATURE EXPLORER</div>
+  <h1>Explore research papers</h1>
+  <p>Search a 300-paper research corpus, then refine by domain, year and impact.</p>
+</section>
+
+<section class="explorer">
+  <form class="filters" method="get">
+    <div class="filter search">
+      <i class="bi bi-search"></i>
+      <input name="q" value="{{q}}" placeholder="Topic, keyword, author…">
+    </div>
+
+    <select name="domain">
+      <option value="">All domains</option>
+      {% for d in domains %}
+      <option value="{{d}}" {% if d==domain %}selected{% endif %}>{{d}}</option>
+      {% endfor %}
+    </select>
+
+    <input type="number" name="start" value="{{start}}" placeholder="From year" min="1900" max="2100">
+    <input type="number" name="end" value="{{end}}" placeholder="To year" min="1900" max="2100">
+
+    <select name="sort">
+      <option value="relevance" {% if sort=='relevance' %}selected{% endif %}>Relevance / Impact</option>
+      <option value="year" {% if sort=='year' %}selected{% endif %}>Newest first</option>
+      <option value="citations" {% if sort=='citations' %}selected{% endif %}>Most cited</option>
+    </select>
+
+    <button class="btn">Search</button>
+  </form>
+
+  <div class="corpus-note">
+    <strong>{{total}}</strong> papers indexed in this corpus.
+    The expanded collection includes <strong>264 papers from 2024</strong>, including AAAI 2024 conference-index records.
+  </div>
+
+  <div class="result-top">
+    <b>Showing {{papers|length}} of {{total}} results</b>
+    <span>Search → Filter → Rank → Read → Save</span>
+  </div>
+
+  <div class="results">
+    {% for p in papers %}
+    <article class="result card">
+      <div class="rank">{{'%02d' % ((page-1)*20 + loop.index)}}</div>
+      <div class="result-body">
+        <div class="paper-meta">
+          <span>{{p.domain}}</span>
+          <b>{{p.year}}</b>
+          <span class="cite"><i class="bi bi-quote"></i> {{'{:,}'.format(p.citations)}} citations</span>
+        </div>
+
+        <h2><a href="{{url_for('paper',paper_id=p.id)}}">{{p.title}}</a></h2>
+        <p class="authors">{{p.authors}}</p>
+        <p>{{p.abstract}}</p>
+
+        <div class="actions">
+          <a class="btn btn-outline" href="{{url_for('paper',paper_id=p.id)}}">View research <i class="bi bi-arrow-right"></i></a>
+          {% if p.pdf_url %}
+          <a class="ghost" target="_blank" rel="noopener" href="{{p.pdf_url}}"><i class="bi bi-file-earmark-pdf"></i> PDF</a>
+          {% endif %}
+          {% if session.get('user_id') %}
+          <form method="post" action="{{url_for('bookmarks')}}">
+            <input type="hidden" name="paper_id" value="{{p.id}}">
+            <button class="ghost"><i class="bi bi-bookmark"></i> Save</button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+    {% else %}
+    <div class="empty card">
+      <i class="bi bi-search"></i>
+      <h2>No matching papers</h2>
+      <p>Try a broader keyword, domain or year range.</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if pages > 1 %}
+  <nav class="pagination" aria-label="Paper pages">
+    {% if page > 1 %}
+    <a href="{{url_for('papers',q=q,domain=domain,start=start,end=end,sort=sort,page=page-1)}}"><i class="bi bi-chevron-left"></i></a>
+    {% else %}
+    <span class="disabled"><i class="bi bi-chevron-left"></i></span>
+    {% endif %}
+
+    {% set start_page = [1, page-2]|max %}
+    {% set end_page = [pages, page+2]|min %}
+    {% for n in range(start_page, end_page+1) %}
+      {% if n == page %}
+      <span class="current">{{n}}</span>
+      {% else %}
+      <a href="{{url_for('papers',q=q,domain=domain,start=start,end=end,sort=sort,page=n)}}">{{n}}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page < pages %}
+    <a href="{{url_for('papers',q=q,domain=domain,start=start,end=end,sort=sort,page=page+1)}}"><i class="bi bi-chevron-right"></i></a>
+    {% else %}
+    <span class="disabled"><i class="bi bi-chevron-right"></i></span>
+    {% endif %}
+  </nav>
+  {% endif %}
+</section>
+{% endblock %}

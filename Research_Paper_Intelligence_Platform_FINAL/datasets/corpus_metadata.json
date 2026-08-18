@@ -1,0 +1,16 @@
+{
+  "project": "ResearchIQ \u2014 Research Paper Intelligence Platform",
+  "corpus_size": 300,
+  "unique_papers": 300,
+  "latest_year": 2024,
+  "papers_2024": 264,
+  "core_records": 40,
+  "expanded_records": 260,
+  "expanded_source": "AAAI 2024 public conference index",
+  "source_indexes": [
+    "https://github.com/DmitryRyumin/AAAI-2024-Papers/blob/main/sections/2024/main/1_200.md",
+    "https://github.com/DmitryRyumin/AAAI-2024-Papers/blob/main/sections/2024/main/201_400.md",
+    "https://github.com/DmitryRyumin/AAAI-2024-Papers/blob/main/sections/2024/main/401_600.md"
+  ],
+  "note": "Expanded records preserve conference-indexed titles and provenance. The source index does not expose full author/abstract metadata for every listed paper."
+}

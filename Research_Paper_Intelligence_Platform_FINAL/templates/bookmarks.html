@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Saved Papers — ResearchIQ{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="eyebrow">YOUR LIBRARY</div>
+  <h1>Saved papers.</h1>
+  <p>Keep important literature close while you build your research direction.</p>
+</section>
+
+<section class="paper-grid section">
+  {% for p in papers %}
+  <article class="paper-card">
+    <a href="{{url_for('paper',paper_id=p.id)}}" style="text-decoration:none;color:inherit">
+      <div class="paper-meta"><span>{{p.domain}}</span><b>{{p.year}}</b></div>
+      <h3>{{p.title}}</h3>
+      <p>{{p.abstract[:160]}}…</p>
+      <div class="paper-bottom">
+        <span>{{p.authors.split(';')[0]}}</span>
+        <strong>{{'{:,}'.format(p.citations)}} citations</strong>
+      </div>
+    </a>
+    <form method="post" action="{{url_for('remove_bookmark',paper_id=p.id)}}" style="margin-top:12px">
+      <button class="ghost" type="submit"><i class="bi bi-trash3"></i> Remove from library</button>
+    </form>
+  </article>
+  {% else %}
+  <div class="empty card">
+    <i class="bi bi-bookmark"></i>
+    <h2>Your library is empty</h2>
+    <p>Save papers from Explore Papers.</p>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}
