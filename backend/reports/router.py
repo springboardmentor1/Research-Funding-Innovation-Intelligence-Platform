@@ -36,7 +36,15 @@ from innovation.patent_analytics import get_patent_landscape, get_patent_trends
 from innovation.scoring import get_score_distribution, get_ranked_patents
 from innovation.commercialization import get_commercialization_recommendations
 
-router = APIRouter(prefix="/reports", tags=["Reports & Export"])
+from fastapi import Depends
+from auth.deps import require_role
+from database.models import RoleEnum
+
+router = APIRouter(
+    prefix="/reports", 
+    tags=["Reports & Export"],
+    dependencies=[Depends(require_role([RoleEnum.INNOVATION_MANAGER, RoleEnum.ADMIN]))]
+)
 
 
 # ── PDF Reports ───────────────────────────────────────────────────────────────

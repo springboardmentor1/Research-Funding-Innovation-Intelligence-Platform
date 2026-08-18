@@ -1,7 +1,20 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime, Float, ForeignKey
+from sqlalchemy import Column, Integer, String, Text, DateTime, Float, ForeignKey, Enum
 from sqlalchemy.orm import relationship
 from datetime import datetime
+import enum
 from database.db import Base
+
+
+class RoleEnum(str, enum.Enum):
+    RESEARCHER = "RESEARCHER"
+    STARTUP_FOUNDER = "STARTUP_FOUNDER"
+    INNOVATION_MANAGER = "INNOVATION_MANAGER"
+    ADMIN = "ADMIN"
+
+class AlertTypeEnum(str, enum.Enum):
+    FUNDING = "FUNDING"
+    PATENT = "PATENT"
+    SYSTEM = "SYSTEM"
 
 
 class User(Base):
@@ -11,6 +24,7 @@ class User(Base):
     username = Column(String(50), unique=True, index=True, nullable=False)
     email = Column(String(100), unique=True, index=True, nullable=False)
     hashed_password = Column(String(255), nullable=False)
+    role = Column(Enum(RoleEnum), default=RoleEnum.RESEARCHER, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     profile = relationship("Profile", back_populates="user", uselist=False)
@@ -41,10 +55,28 @@ class Profile(Base):
     keywords = Column(Text)
     research_area = Column(String(100))
     country = Column(String(50), default="India")
+    
+    # Priority 4 Data Enrichment
+    academic_history = Column(Text, default="[]")
+    publications_json = Column(Text, default="[]")
+    patents_json = Column(Text, default="[]")
+
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     user = relationship("User", back_populates="profile")
+
+
+class Alert(Base):
+    __tablename__ = "alerts"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), index=True)
+    type = Column(Enum(AlertTypeEnum), default=AlertTypeEnum.SYSTEM, nullable=False)
+    title = Column(String(200), nullable=False)
+    message = Column(Text)
+    is_read = Column(Integer, default=0) # SQLite doesn't natively support Boolean robustly, use Integer 0/1
+    created_at = Column(DateTime, default=datetime.utcnow)
 
 
 class ResearchPaper(Base):

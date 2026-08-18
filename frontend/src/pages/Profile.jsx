@@ -15,7 +15,8 @@ export default function Profile() {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
   const [form, setForm]       = useState({
     name: '', university: '', department: '',
-    research_interests: '', keywords: '', research_area: ''
+    research_interests: '', keywords: '', research_area: '',
+    academic_history: '', publications_json: '', patents_json: ''
   });
   const [loading, setLoading]   = useState(false);
   const [fetching, setFetching] = useState(true);
@@ -33,7 +34,10 @@ export default function Profile() {
           department:         p.department || '',
           research_interests: p.research_interests || '',
           keywords:           p.keywords || '',
-          research_area:      p.research_area || ''
+          research_area:      p.research_area || '',
+          academic_history:   p.academic_history || '',
+          publications_json:  p.publications_json || '',
+          patents_json:       p.patents_json || ''
         });
       })
       .catch(() => {})

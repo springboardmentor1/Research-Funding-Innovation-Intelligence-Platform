@@ -4,8 +4,10 @@ import logging
 import os
 from sqlalchemy.orm import Session
 from database.db import get_db
-from database.models import User, LoginHistory
-from auth.schemas import UserRegister, UserLogin, TokenResponse, UserResponse
+from database.models import User, LoginHistory, RoleEnum
+from auth.schemas import UserRegister, UserLogin, TokenResponse, UserResponse, GoogleAuthRequest
+from google.oauth2 import id_token
+from google.auth.transport import requests as google_requests
 from auth.utils import hash_password, verify_password, create_access_token
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
@@ -41,7 +43,8 @@ def register(user_data: UserRegister, db: Session = Depends(get_db)):
         # Store username normalized to lowercase to avoid case-sensitive mismatches
         username=clean_username.lower(),
         email=clean_email,
-        hashed_password=hash_password(user_data.password)
+        hashed_password=hash_password(user_data.password),
+        role=user_data.role
     )
     db.add(new_user)
     db.commit()
@@ -86,7 +89,7 @@ def login(credentials: UserLogin, request: Request, db: Session = Depends(get_db
     db.add(login_record)
     db.commit()
 
-    token = create_access_token(data={"sub": str(user.id), "username": user.username})
+    token = create_access_token(data={"sub": str(user.id), "username": user.username, "role": user.role})
     return {
         "access_token": token,
         "token_type": "bearer",
@@ -98,4 +101,59 @@ def login(credentials: UserLogin, request: Request, db: Session = Depends(get_db
 def logout():
     """Logout — client should discard the token."""
     return {"message": "Logged out successfully. Please discard your token."}
+
+
+@router.post("/google", response_model=TokenResponse)
+def google_auth(auth_request: GoogleAuthRequest, request: Request, db: Session = Depends(get_db)):
+    """Authenticate via Google OAuth."""
+    try:
+        # We don't enforce audience here so it works with any client ID for dev purposes,
+        # but in production you should pass `audience=GOOGLE_CLIENT_ID`
+        idinfo = id_token.verify_oauth2_token(auth_request.token, google_requests.Request())
+        
+        email = idinfo.get("email")
+        if not email:
+            raise HTTPException(status_code=400, detail="Invalid Google token (no email)")
+            
+        # Check if user exists
+        user = db.query(User).filter(func.lower(User.email) == email.lower()).first()
+        
+        if not user:
+            # Create user automatically
+            username = idinfo.get("name", email.split("@")[0]).replace(" ", "").lower()
+            # Ensure uniqueness
+            base_username = username
+            counter = 1
+            while db.query(User).filter(func.lower(User.username) == username).first():
+                username = f"{base_username}{counter}"
+                counter += 1
+                
+            user = User(
+                username=username,
+                email=email.lower(),
+                hashed_password=hash_password("google_oauth_placeholder_password"),
+                role=RoleEnum.RESEARCHER
+            )
+            db.add(user)
+            db.commit()
+            db.refresh(user)
+
+        # Store login history
+        login_record = LoginHistory(
+            user_id=user.id,
+            ip_address=request.client.host if request.client else None,
+            user_agent=request.headers.get("user-agent", ""),
+        )
+        db.add(login_record)
+        db.commit()
+
+        token = create_access_token(data={"sub": str(user.id), "username": user.username, "role": user.role})
+        return {
+            "access_token": token,
+            "token_type": "bearer",
+            "user": user
+        }
+    except Exception as e:
+        logger.error(f"Google auth error: {e}")
+        raise HTTPException(status_code=401, detail=f"Google authentication failed: {str(e)}")
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserPlus, Eye, EyeOff, Zap, Sparkles, ArrowRight, CheckCircle, Sun, Moon } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { GoogleLogin } from '@react-oauth/google';
 import client from '../api/client';
 import { useTheme } from '../context/ThemeContext';
 
@@ -14,7 +15,7 @@ const FEATURES = [
 export default function Register() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
-  const [form, setForm]       = useState({ username: '', email: '', password: '', confirmPassword: '' });
+  const [form, setForm]       = useState({ username: '', email: '', password: '', confirmPassword: '', role: 'RESEARCHER' });
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState('');
   const [showPwd, setShowPwd] = useState(false);
@@ -47,6 +48,7 @@ export default function Register() {
         username: form.username,
         email:    form.email,
         password: form.password,
+        role:     form.role,
       });
       toast.success('Account created! Please sign in.');
       navigate('/login');
@@ -60,6 +62,20 @@ export default function Register() {
       }
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const res = await client.post('/auth/google', {
+        token: credentialResponse.credential
+      });
+      localStorage.setItem('token', res.data.access_token);
+      localStorage.setItem('user', JSON.stringify(res.data.user));
+      toast.success('Successfully logged in with Google!');
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Google authentication failed.');
     }
   };
 
@@ -113,6 +129,22 @@ export default function Register() {
               value={form.username}
               onChange={handleChange}
             />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="reg-role">Role</label>
+            <select
+              id="reg-role"
+              name="role"
+              value={form.role}
+              onChange={handleChange}
+              style={{ padding: '0.75rem', borderRadius: '10px', border: '1px solid var(--border-color)', background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
+            >
+              <option value="RESEARCHER">Researcher</option>
+              <option value="STARTUP_FOUNDER">Startup Founder</option>
+              <option value="INNOVATION_MANAGER">Innovation Manager</option>
+              <option value="ADMIN">Administrator</option>
+            </select>
           </div>
 
           <div className="form-group">
@@ -200,6 +232,18 @@ export default function Register() {
         <Link to="/login" className="btn btn-secondary btn-full" style={{ gap: '0.5rem' }}>
           Sign In <ArrowRight size={15} />
         </Link>
+        
+        <div className="auth-divider" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
+          <span>OR</span>
+        </div>
+        
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => setError('Google sign in failed')}
+            useOneTap
+          />
+        </div>
       </div>
     </div>
   );

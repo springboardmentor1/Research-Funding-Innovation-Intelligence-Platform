@@ -12,6 +12,29 @@ from recommendation.engine import get_funding_data
 
 router = APIRouter(prefix="/analytics", tags=["Research Analytics"])
 
+@router.get("/citation-network")
+def citation_network():
+    """
+    Mock citation graph generation for Priority 4.2.
+    In a real implementation, this would fetch deep citation links from OpenAlex.
+    """
+    nodes = [
+        {"id": "Paper A (Core)", "group": 1},
+        {"id": "Paper B (Citation)", "group": 2},
+        {"id": "Paper C (Citation)", "group": 2},
+        {"id": "Paper D (Reference)", "group": 3},
+        {"id": "Paper E (Reference)", "group": 3},
+        {"id": "Paper F (Reference)", "group": 3},
+    ]
+    links = [
+        {"source": "Paper B (Citation)", "target": "Paper A (Core)", "value": 1},
+        {"source": "Paper C (Citation)", "target": "Paper A (Core)", "value": 1},
+        {"source": "Paper A (Core)", "target": "Paper D (Reference)", "value": 1},
+        {"source": "Paper A (Core)", "target": "Paper E (Reference)", "value": 1},
+        {"source": "Paper E (Reference)", "target": "Paper F (Reference)", "value": 1},
+    ]
+    return {"nodes": nodes, "links": links}
+
 
 # ── Publication Trends ────────────────────────────────────────────────────────
 

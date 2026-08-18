@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Brain, TrendingUp, Hash, Users, Sparkles } from 'lucide-react';
+import { useEffect, useState, useRef } from 'react';
+import { Brain, TrendingUp, Hash, Users, Sparkles, Network } from 'lucide-react';
 import {
   BarChart, Bar, Cell, LineChart, Line,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
@@ -29,6 +29,7 @@ export default function ResearchIntelligence() {
   const [keywordTrends, setKeywordTrends] = useState({});
   const [authors, setAuthors] = useState([]);
   const [areas, setAreas] = useState([]);
+  const [citationData, setCitationData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('keywords');
 
@@ -38,12 +39,14 @@ export default function ResearchIntelligence() {
       client.get('/analytics/keyword-trends'),
       client.get('/analytics/top-authors?limit=10'),
       client.get('/analytics/area-distribution'),
+      client.get('/analytics/citation-network').catch(() => ({ data: null }))
     ])
-      .then(([kw, kt, au, ar]) => {
+      .then(([kw, kt, au, ar, cit]) => {
         setKeywords(kw.data.topics || []);
         setKeywordTrends(kt.data.keyword_trends || {});
         setAuthors(au.data.authors || []);
         setAreas(ar.data.areas || []);
+        if (cit.data) setCitationData(cit.data);
       })
       .catch(() => {})
       .finally(() => setLoading(false));
@@ -98,7 +101,11 @@ export default function ResearchIntelligence() {
         </button>
         <button className={`tab-btn ${activeTab === 'authors' ? 'active' : ''}`} onClick={() => setActiveTab('authors')}>
           <Users size={14} style={{ display: 'inline', verticalAlign: -2, marginRight: 4 }} />
-          Top Authors
+          Authors
+        </button>
+        <button className={`tab-btn ${activeTab === 'network' ? 'active' : ''}`} onClick={() => setActiveTab('network')}>
+          <Network size={14} style={{ display: 'inline', verticalAlign: -2, marginRight: 4 }} />
+          Citation Network
         </button>
       </div>
 
@@ -248,6 +255,63 @@ export default function ResearchIntelligence() {
           </div>
         </div>
       )}
+
+      {/* --- Citation Network Tab --- */}
+      {activeTab === 'network' && citationData && (
+        <div className="card" style={{ padding: '1.5rem', animation: 'fadeIn 0.4s ease' }}>
+          <h2 style={{ fontSize: '1.1rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)' }}>
+            <Network size={18} style={{ color: 'var(--primary)' }} />
+            Deep Citation Network (Mock)
+          </h2>
+          <div style={{ position: 'relative', width: '100%', height: '400px', background: 'var(--bg-app)', borderRadius: 'var(--radius-lg)', overflow: 'hidden' }}>
+            <svg width="100%" height="100%" viewBox="0 0 600 400">
+              <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="22" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="var(--text-muted)" />
+                </marker>
+              </defs>
+              {citationData.links.map((link, i) => {
+                // Hardcode some positions for the mock graph
+                const positions = {
+                  "Paper A (Core)": { x: 300, y: 200 },
+                  "Paper B (Citation)": { x: 150, y: 100 },
+                  "Paper C (Citation)": { x: 150, y: 300 },
+                  "Paper D (Reference)": { x: 450, y: 100 },
+                  "Paper E (Reference)": { x: 450, y: 200 },
+                  "Paper F (Reference)": { x: 550, y: 300 },
+                };
+                const source = positions[link.source] || {x: 300, y: 200};
+                const target = positions[link.target] || {x: 300, y: 200};
+                return (
+                  <line 
+                    key={i} x1={source.x} y1={source.y} x2={target.x} y2={target.y} 
+                    stroke="var(--border-color)" strokeWidth="2" markerEnd="url(#arrowhead)" 
+                  />
+                );
+              })}
+              {citationData.nodes.map((node, i) => {
+                const positions = {
+                  "Paper A (Core)": { x: 300, y: 200 },
+                  "Paper B (Citation)": { x: 150, y: 100 },
+                  "Paper C (Citation)": { x: 150, y: 300 },
+                  "Paper D (Reference)": { x: 450, y: 100 },
+                  "Paper E (Reference)": { x: 450, y: 200 },
+                  "Paper F (Reference)": { x: 550, y: 300 },
+                };
+                const pos = positions[node.id] || {x: 300, y: 200};
+                const color = COLORS[node.group % COLORS.length];
+                return (
+                  <g key={i} transform={`translate(${pos.x}, ${pos.y})`}>
+                    <circle r="16" fill={color} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }} />
+                    <text y="30" textAnchor="middle" fill="var(--text-primary)" fontSize="10px" fontWeight="600">{node.id}</text>
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

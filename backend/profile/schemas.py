@@ -10,6 +10,9 @@ class ProfileCreate(BaseModel):
     research_interests: str
     keywords: str
     research_area: str
+    academic_history: Optional[str] = "[]"
+    publications_json: Optional[str] = "[]"
+    patents_json: Optional[str] = "[]"
 
 
 class ProfileUpdate(BaseModel):
@@ -19,6 +22,9 @@ class ProfileUpdate(BaseModel):
     research_interests: Optional[str] = None
     keywords: Optional[str] = None
     research_area: Optional[str] = None
+    academic_history: Optional[str] = None
+    publications_json: Optional[str] = None
+    patents_json: Optional[str] = None
 
 
 class ProfileResponse(BaseModel):
@@ -30,6 +36,9 @@ class ProfileResponse(BaseModel):
     research_interests: str
     keywords: str
     research_area: str
+    academic_history: Optional[str] = None
+    publications_json: Optional[str] = None
+    patents_json: Optional[str] = None
 
     class Config:
         from_attributes = True

@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Toaster } from 'react-hot-toast';
+import RoleRoute from './components/RoleRoute';
+import DashboardRouter from './components/DashboardRouter';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
 import ResearchSearch from './pages/ResearchSearch';
 import FundingSearch from './pages/FundingSearch';
 import PatentSearch from './pages/PatentSearch';
@@ -27,8 +29,11 @@ const PrivateRoute = ({ children }) => {
   return token ? children : <Navigate to="/login" replace />;
 };
 
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || 'placeholder-client-id';
+
 export default function App() {
   return (
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
     <BrowserRouter>
       <Toaster
         position="top-right"
@@ -54,8 +59,8 @@ export default function App() {
             <AppLayout />
           </PrivateRoute>
         }>
-          <Route index element={<Navigate to="/login" replace />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route index element={<Navigate to="/dashboard" replace />} />
+          <Route path="dashboard" element={<DashboardRouter />} />
           <Route path="research"  element={<ResearchSearch />} />
           <Route path="funding"   element={<FundingSearch />} />
           <Route path="patents"   element={<PatentSearch />} />
@@ -74,14 +79,23 @@ export default function App() {
           <Route path="innovation-scoring"      element={<InnovationScoring />} />
           <Route path="innovation-dashboard"    element={<InnovationDashboard />} />
 
-          {/* Milestone 4 */}
-          <Route path="executive-dashboard" element={<ExecutiveDashboard />} />
-          <Route path="reports"             element={<Reports />} />
+          {/* Milestone 4 / Protected */}
+          <Route path="executive-dashboard" element={
+            <RoleRoute allowedRoles={['ADMIN']}>
+              <ExecutiveDashboard />
+            </RoleRoute>
+          } />
+          <Route path="reports" element={
+            <RoleRoute allowedRoles={['INNOVATION_MANAGER', 'ADMIN']}>
+              <Reports />
+            </RoleRoute>
+          } />
         </Route>
 
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }

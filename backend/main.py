@@ -18,18 +18,21 @@ from recommendation.router import router as recommendation_router
 from analytics.router import router as analytics_router
 from innovation.router import router as innovation_router
 from reports.router import router as reports_router
+from alerts.router import router as alerts_router
 
 # Import database utilities
 from database.db import engine
 from database import models
 from database.db import Base
+from database.migrate import run_migrations
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Create all database tables on startup."""
+    """Create all database tables on startup and apply migrations."""
     Base.metadata.create_all(bind=engine)
-    print("[OK] Database tables created / verified")
+    run_migrations()
+    print("[OK] Database tables created / verified / migrated")
     yield
     print("[STOP] Shutting down AI Research Funding Platform")
 
@@ -73,6 +76,7 @@ app.include_router(recommendation_router)
 app.include_router(analytics_router)
 app.include_router(innovation_router)
 app.include_router(reports_router)
+app.include_router(alerts_router)
 
 
 # ── Root endpoint ─────────────────────────────────────────────────────────────
@@ -108,3 +112,4 @@ def root():
 @app.get("/health", tags=["Health"])
 def health_check():
     return {"status": "healthy", "service": "AI Research Funding Platform"}
+

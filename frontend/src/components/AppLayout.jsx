@@ -1,40 +1,70 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Search, DollarSign, Award, User, LogOut, Zap, BarChart3, Target, TrendingUp, Brain, PieChart, Sun, Moon, Cpu, Star, Rocket, Sparkles, FileDown } from 'lucide-react';
+import { LayoutDashboard, Search, DollarSign, Award, User, LogOut, Zap, BarChart3, Target, TrendingUp, Brain, PieChart, Sun, Moon, Cpu, Star, Rocket, FileText } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useTheme } from '../context/ThemeContext';
+import NotificationPanel from './NotificationPanel';
 
-const navItems = [
-  { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/research',  icon: Search,          label: 'Research Papers' },
-  { to: '/funding',   icon: DollarSign,      label: 'Funding' },
-  { to: '/patents',   icon: Award,           label: 'Patents' },
-  { to: '/profile',   icon: User,            label: 'My Profile' },
-];
+const getNavItemsForRole = (role) => {
+  const defaultProfile = { to: '/profile', icon: User, label: 'My Profile' };
 
-const m2NavItems = [
-  { to: '/research-dashboard',    icon: BarChart3,   label: 'Research Dashboard' },
-  { to: '/grant-recommendations', icon: Target,      label: 'Grant Recommendations' },
-  { to: '/publication-trends',    icon: TrendingUp,  label: 'Publication Trends' },
-  { to: '/research-intelligence', icon: Brain,       label: 'Research Intelligence' },
-  { to: '/funding-analytics',     icon: PieChart,    label: 'Funding Analytics' },
-];
-
-const m3NavItems = [
-  { to: '/patent-analytics',        icon: BarChart3,  label: 'Patent Analytics' },
-  { to: '/technology-intelligence',  icon: Cpu,        label: 'Technology Intelligence' },
-  { to: '/innovation-scoring',       icon: Star,       label: 'Innovation Scoring' },
-  { to: '/innovation-dashboard',     icon: Rocket,     label: 'Innovation Dashboard' },
-];
-
-const m4NavItems = [
-  { to: '/executive-dashboard',  icon: Sparkles,   label: 'Executive Dashboard' },
-  { to: '/reports',              icon: FileDown,   label: 'Reports & Export' },
-];
+  switch (role) {
+    case 'RESEARCHER':
+      return [
+        { section: 'Main Menu', items: [
+          { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+          { to: '/research',  icon: Search,          label: 'Research Papers' },
+          { to: '/funding',   icon: DollarSign,      label: 'Funding' },
+          defaultProfile
+        ]}
+      ];
+    case 'STARTUP_FOUNDER':
+      return [
+        { section: 'Main Menu', items: [
+          { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+          { to: '/funding',   icon: DollarSign,      label: 'Funding' },
+          { to: '/patents',   icon: Award,           label: 'Patents' },
+          defaultProfile
+        ]},
+        { section: 'Innovation', items: [
+          { to: '/technology-intelligence', icon: Cpu, label: 'Tech Intelligence' }
+        ]}
+      ];
+    case 'INNOVATION_MANAGER':
+      return [
+        { section: 'Main Menu', items: [
+          { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+          defaultProfile
+        ]},
+        { section: 'Intelligence & Innovation', items: [
+          { to: '/patent-analytics',        icon: BarChart3,  label: 'Patent Analytics' },
+          { to: '/technology-intelligence', icon: Cpu,        label: 'Tech Intelligence' },
+          { to: '/innovation-scoring',      icon: Star,       label: 'Innovation Scoring' },
+          { to: '/reports',                 icon: FileText,   label: 'Reports' },
+        ]}
+      ];
+    case 'ADMIN':
+      return [
+        { section: 'Main Menu', items: [
+          { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+          { to: '/reports',   icon: FileText,        label: 'Reports' },
+          defaultProfile
+        ]}
+      ];
+    default:
+      return [
+        { section: 'Main Menu', items: [
+          { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+          defaultProfile
+        ]}
+      ];
+  }
+};
 
 export default function AppLayout() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const navSections = getNavItemsForRole(user.role || 'RESEARCHER');
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -66,52 +96,22 @@ export default function AppLayout() {
         </div>
 
         <nav className="sidebar-nav">
-          <div className="nav-section-label">Main Menu</div>
-          {navItems.map(({ to, icon: Icon, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
-            >
-              <Icon className="nav-icon" size={18} />
-              {label}
-            </NavLink>
-          ))}
-
-          <div className="nav-section-label" style={{ marginTop: '0.75rem' }}>Intelligence</div>
-          {m2NavItems.map(({ to, icon: Icon, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
-            >
-              <Icon className="nav-icon" size={18} />
-              {label}
-            </NavLink>
-          ))}
-
-          <div className="nav-section-label" style={{ marginTop: '0.75rem' }}>Innovation</div>
-          {m3NavItems.map(({ to, icon: Icon, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
-            >
-              <Icon className="nav-icon" size={18} />
-              {label}
-            </NavLink>
-          ))}
-
-          <div className="nav-section-label" style={{ marginTop: '0.75rem' }}>Milestone 4</div>
-          {m4NavItems.map(({ to, icon: Icon, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
-            >
-              <Icon className="nav-icon" size={18} />
-              {label}
-            </NavLink>
+          {navSections.map((section, idx) => (
+            <div key={section.section}>
+              <div className="nav-section-label" style={{ marginTop: idx > 0 ? '0.75rem' : '0' }}>
+                {section.section}
+              </div>
+              {section.items.map(({ to, icon: Icon, label }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
+                >
+                  <Icon className="nav-icon" size={18} />
+                  {label}
+                </NavLink>
+              ))}
+            </div>
           ))}
         </nav>
 
@@ -138,6 +138,9 @@ export default function AppLayout() {
 
       {/* Main */}
       <main className="main-content">
+        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '10px 24px', borderBottom: '1px solid var(--border-color)', background: 'var(--bg-card)' }}>
+          <NotificationPanel />
+        </div>
         <div className="page-container">
           <Outlet />
         </div>

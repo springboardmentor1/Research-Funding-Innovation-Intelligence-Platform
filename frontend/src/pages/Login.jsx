@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogIn, Eye, EyeOff, Zap, Sparkles, ArrowRight, Shield, Brain, TrendingUp, Target, BarChart3, Globe, Lock, ChevronRight, Sun, Moon, UserX, AlertTriangle } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { GoogleLogin } from '@react-oauth/google';
 import client from '../api/client';
 import { useTheme } from '../context/ThemeContext';
 
@@ -70,6 +71,21 @@ export default function Login() {
       setError(detail);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const res = await client.post('/auth/google', {
+        token: credentialResponse.credential
+      });
+      localStorage.setItem('token', res.data.access_token);
+      localStorage.setItem('user', JSON.stringify(res.data.user));
+      toast.success('Successfully logged in with Google!');
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Google authentication failed.');
+      setErrorType('generic');
     }
   };
 
@@ -276,6 +292,24 @@ export default function Login() {
               </span>
             </button>
           </form>
+
+          {/* Divider */}
+          <div className="login-divider">
+            <div className="divider-line" />
+            <span>OR</span>
+            <div className="divider-line" />
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={() => {
+                setError('Google sign in failed');
+                setErrorType('generic');
+              }}
+              useOneTap
+            />
+          </div>
 
           {/* Divider */}
           <div className="login-divider">
