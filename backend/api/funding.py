@@ -3,9 +3,10 @@ import pandas as pd
 
 funding_bp = Blueprint("funding", __name__)
 
-# ------------------------------------------
-# Load Dataset Once
-# ------------------------------------------
+
+# =====================================================
+# LOAD DATASET ONCE
+# =====================================================
 
 df = pd.read_csv(
     "../datasets/funding/nih_funding.csv",
@@ -16,9 +17,10 @@ print("Funding records loaded:", len(df))
 
 df = df.fillna("")
 
-# ------------------------------------------
-# Convert Numeric Columns
-# ------------------------------------------
+
+# =====================================================
+# CONVERT NUMERIC COLUMNS
+# =====================================================
 
 if "award_amount" in df.columns:
     df["award_amount"] = pd.to_numeric(
@@ -33,15 +35,90 @@ if "fiscal_year" in df.columns:
     ).fillna(0)
 
 
-# ------------------------------------------
-# Funding API
-# ------------------------------------------
+# =====================================================
+# CREATE PROJECT URL
+# =====================================================
+
+def get_project_url(row):
+
+    # -------------------------------------------------
+    # 1. If dataset already contains a URL
+    # -------------------------------------------------
+
+    possible_url_columns = [
+        "project_url",
+        "project_link",
+        "url",
+        "link",
+        "nih_url"
+    ]
+
+    for column in possible_url_columns:
+
+        if column in row.index:
+
+            value = str(row[column]).strip()
+
+            if value and value.lower() not in ["nan", "none"]:
+
+                if value.startswith("http://") or value.startswith("https://"):
+                    return value
+
+
+    # -------------------------------------------------
+    # 2. Try using project number
+    # -------------------------------------------------
+
+    possible_project_columns = [
+        "project_number",
+        "project_num",
+        "application_number",
+        "core_project_num"
+    ]
+
+    for column in possible_project_columns:
+
+        if column in row.index:
+
+            project_number = str(row[column]).strip()
+
+            if project_number and project_number.lower() not in [
+                "nan",
+                "none"
+            ]:
+
+                # NIH RePORTER project search
+                return (
+                    "https://reporter.nih.gov/search/"
+                    + project_number
+                )
+
+
+    # -------------------------------------------------
+    # 3. No URL available
+    # -------------------------------------------------
+
+    return ""
+
+
+# =====================================================
+# FUNDING API
+# =====================================================
 
 @funding_bp.route("/funding", methods=["GET"])
 def funding():
 
-    page = request.args.get("page", 1, type=int)
-    per_page = request.args.get("per_page", 20, type=int)
+    page = request.args.get(
+        "page",
+        1,
+        type=int
+    )
+
+    per_page = request.args.get(
+        "per_page",
+        20,
+        type=int
+    )
 
     search = request.args.get(
         "search",
@@ -67,11 +144,17 @@ def funding():
         type=str
     )
 
+
+    # =================================================
+    # COPY DATAFRAME
+    # =================================================
+
     filtered_df = df.copy()
 
-    # ------------------------------------------
-    # Search
-    # ------------------------------------------
+
+    # =================================================
+    # SEARCH
+    # =================================================
 
     if search:
 
@@ -80,37 +163,49 @@ def funding():
             filtered_df["project_title"]
             .astype(str)
             .str.lower()
-            .str.contains(search, na=False)
+            .str.contains(
+                search,
+                na=False
+            )
 
             |
 
             filtered_df["organization"]
             .astype(str)
             .str.lower()
-            .str.contains(search, na=False)
+            .str.contains(
+                search,
+                na=False
+            )
 
             |
 
             filtered_df["principal_investigator"]
             .astype(str)
             .str.lower()
-            .str.contains(search, na=False)
+            .str.contains(
+                search,
+                na=False
+            )
 
         ]
 
-    # ------------------------------------------
-    # Fiscal Year Filter
-    # ------------------------------------------
+
+    # =================================================
+    # FISCAL YEAR FILTER
+    # =================================================
 
     if year != "":
 
         filtered_df = filtered_df[
-            filtered_df["fiscal_year"].astype(str) == year
+            filtered_df["fiscal_year"]
+            .astype(str) == year
         ]
 
-    # ------------------------------------------
-    # Organization Filter
-    # ------------------------------------------
+
+    # =================================================
+    # ORGANIZATION FILTER
+    # =================================================
 
     if organization != "":
 
@@ -118,9 +213,10 @@ def funding():
             filtered_df["organization"] == organization
         ]
 
-    # ------------------------------------------
-    # Sorting
-    # ------------------------------------------
+
+    # =================================================
+    # SORTING
+    # =================================================
 
     if sort == "newest":
 
@@ -164,9 +260,10 @@ def funding():
             ascending=False
         )
 
-    # ------------------------------------------
-    # Pagination
-    # ------------------------------------------
+
+    # =================================================
+    # PAGINATION
+    # =================================================
 
     total_records = len(filtered_df)
 
@@ -175,15 +272,34 @@ def funding():
     ) // per_page
 
     start = (page - 1) * per_page
+
     end = start + per_page
 
-    paginated_df = filtered_df.iloc[start:end]
+    paginated_df = filtered_df.iloc[start:end].copy()
+
+
+    # =================================================
+    # ADD PROJECT URL
+    # =================================================
+
+    paginated_df["project_url"] = paginated_df.apply(
+        get_project_url,
+        axis=1
+    )
+
+
+    # =================================================
+    # RESPONSE
+    # =================================================
 
     return jsonify({
 
         "page": page,
+
         "per_page": per_page,
+
         "total_records": total_records,
+
         "total_pages": total_pages,
 
         "data": paginated_df.to_dict(

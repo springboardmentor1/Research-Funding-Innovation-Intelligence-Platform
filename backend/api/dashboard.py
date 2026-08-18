@@ -5,245 +5,442 @@ dashboard_bp = Blueprint("dashboard", __name__)
 
 
 # ==========================================================
-# Dashboard KPI Counts
+# DATASET PATHS
+# ==========================================================
+
+PUBLICATIONS_PATH = "../datasets/publications/openalex_cleaned.csv"
+FUNDING_PATH = "../datasets/funding/nih_funding.csv"
+PATENTS_PATH = "../datasets/patents/patents.csv"
+ORGANIZATIONS_PATH = "../datasets/organizations/organizations.csv"
+RESEARCHERS_PATH = "../datasets/researchers/researchers.csv"
+
+
+# ==========================================================
+# LOAD DATASETS ONCE
+# ==========================================================
+
+print("\n==============================================")
+print("Loading dashboard datasets...")
+print("==============================================")
+
+try:
+    publications = pd.read_csv(
+        PUBLICATIONS_PATH,
+        low_memory=False
+    ).fillna("")
+
+    print(f"✓ Publications loaded: {len(publications):,}")
+
+except Exception as e:
+    print("✗ Publications loading error:", e)
+    publications = pd.DataFrame()
+
+
+try:
+    funding = pd.read_csv(
+        FUNDING_PATH,
+        low_memory=False
+    ).fillna("")
+
+    print(f"✓ Funding loaded: {len(funding):,}")
+
+except Exception as e:
+    print("✗ Funding loading error:", e)
+    funding = pd.DataFrame()
+
+
+try:
+    patents = pd.read_csv(
+        PATENTS_PATH,
+        low_memory=False
+    ).fillna("")
+
+    print(f"✓ Patents loaded: {len(patents):,}")
+
+except Exception as e:
+    print("✗ Patents loading error:", e)
+    patents = pd.DataFrame()
+
+
+try:
+    organizations = pd.read_csv(
+        ORGANIZATIONS_PATH,
+        low_memory=False
+    ).fillna("")
+
+    print(f"✓ Organizations loaded: {len(organizations):,}")
+
+except Exception as e:
+    print("✗ Organizations loading error:", e)
+    organizations = pd.DataFrame()
+
+
+try:
+    researchers = pd.read_csv(
+        RESEARCHERS_PATH,
+        low_memory=False
+    ).fillna("")
+
+    print(f"✓ Researchers loaded: {len(researchers):,}")
+
+except Exception as e:
+    print("✗ Researchers loading error:", e)
+    researchers = pd.DataFrame()
+
+
+print("==============================================")
+print("Dashboard datasets ready.")
+print("==============================================\n")
+
+
+# ==========================================================
+# PRE-CALCULATE DASHBOARD COUNTS
+# ==========================================================
+
+dashboard_counts = {
+    "publications": len(publications),
+    "funding": len(funding),
+    "patents": len(patents),
+    "organizations": len(organizations),
+    "researchers": len(researchers)
+}
+
+
+# ==========================================================
+# PRE-CALCULATE PUBLICATION TRENDS
+# ==========================================================
+
+if (
+    not publications.empty
+    and "publication_year" in publications.columns
+):
+
+    publication_trends_data = (
+        publications
+        .groupby("publication_year")
+        .size()
+        .reset_index(name="count")
+        .sort_values("publication_year")
+        .fillna("")
+        .to_dict(orient="records")
+    )
+
+else:
+
+    publication_trends_data = []
+
+
+# ==========================================================
+# PRE-CALCULATE PUBLICATION TYPES
+# ==========================================================
+
+if (
+    not publications.empty
+    and "type" in publications.columns
+):
+
+    publication_types_data = (
+        publications
+        .groupby("type")
+        .size()
+        .reset_index(name="count")
+        .sort_values("count", ascending=False)
+        .fillna("")
+        .to_dict(orient="records")
+    )
+
+else:
+
+    publication_types_data = []
+
+
+# ==========================================================
+# PRE-CALCULATE FUNDING TRENDS
+# ==========================================================
+
+if (
+    not funding.empty
+    and "fiscal_year" in funding.columns
+):
+
+    funding_trends_data = (
+        funding
+        .groupby("fiscal_year")
+        .size()
+        .reset_index(name="count")
+        .sort_values("fiscal_year")
+        .fillna("")
+        .to_dict(orient="records")
+    )
+
+else:
+
+    funding_trends_data = []
+
+
+# ==========================================================
+# PRE-CALCULATE PATENT COUNTRIES
+# ==========================================================
+
+if (
+    not patents.empty
+    and "Applicant Country" in patents.columns
+):
+
+    patent_country_series = (
+        patents["Applicant Country"]
+        .fillna("Unknown")
+        .astype(str)
+        .str.replace("#", "", regex=False)
+        .str.strip()
+    )
+
+    patent_countries_data = (
+        patent_country_series
+        .value_counts()
+        .head(10)
+        .reset_index()
+    )
+
+    patent_countries_data.columns = [
+        "country",
+        "count"
+    ]
+
+    patent_countries_data = (
+        patent_countries_data
+        .to_dict(orient="records")
+    )
+
+else:
+
+    patent_countries_data = []
+
+
+# ==========================================================
+# PRE-CALCULATE ANALYTICS
+# ==========================================================
+
+# -----------------------
+# Top Patent Country
+# -----------------------
+
+if (
+    not patents.empty
+    and "Applicant Country" in patents.columns
+):
+
+    country_series = (
+        patents["Applicant Country"]
+        .fillna("Unknown")
+        .astype(str)
+        .str.replace("#", "", regex=False)
+        .str.strip()
+    )
+
+    if not country_series.empty:
+        top_country = country_series.mode().iloc[0]
+    else:
+        top_country = "Unknown"
+
+else:
+
+    top_country = "Unknown"
+
+
+# -----------------------
+# Top Publication Type
+# -----------------------
+
+if (
+    not publications.empty
+    and "type" in publications.columns
+):
+
+    type_series = (
+        publications["type"]
+        .fillna("Unknown")
+        .astype(str)
+        .str.strip()
+    )
+
+    if not type_series.empty:
+        top_type = type_series.mode().iloc[0]
+    else:
+        top_type = "Unknown"
+
+else:
+
+    top_type = "Unknown"
+
+
+# -----------------------
+# Top Organization
+# -----------------------
+
+if not organizations.empty:
+
+    if "organization_name" in organizations.columns:
+
+        org_series = (
+            organizations["organization_name"]
+            .fillna("")
+            .astype(str)
+            .str.strip()
+        )
+
+    elif "display_name" in organizations.columns:
+
+        org_series = (
+            organizations["display_name"]
+            .fillna("")
+            .astype(str)
+            .str.strip()
+        )
+
+    elif "name" in organizations.columns:
+
+        org_series = (
+            organizations["name"]
+            .fillna("")
+            .astype(str)
+            .str.strip()
+        )
+
+    else:
+
+        org_series = pd.Series(dtype=str)
+
+    org_series = org_series[org_series != ""]
+
+    if not org_series.empty:
+        top_org = org_series.iloc[0]
+    else:
+        top_org = "Unknown"
+
+else:
+
+    top_org = "Unknown"
+
+
+# -----------------------
+# Average Citations
+# -----------------------
+
+if (
+    not publications.empty
+    and "cited_by_count" in publications.columns
+):
+
+    citation_values = pd.to_numeric(
+        publications["cited_by_count"],
+        errors="coerce"
+    )
+
+    avg_citations = round(
+        citation_values.mean(),
+        2
+    )
+
+    if pd.isna(avg_citations):
+        avg_citations = 0
+
+else:
+
+    avg_citations = 0
+
+
+# Store analytics in memory
+dashboard_analytics_data = {
+
+    "top_country": top_country,
+
+    "top_type": top_type,
+
+    "top_org": top_org,
+
+    "avg_citations": avg_citations
+
+}
+
+
+print("Dashboard analytics pre-calculated.")
+
+
+# ==========================================================
+# DASHBOARD KPI COUNTS
 # ==========================================================
 
 @dashboard_bp.route("/dashboard")
 def dashboard():
 
-    publications = pd.read_csv("../datasets/publications/openalex_cleaned.csv")
-    funding = pd.read_csv("../datasets/funding/nih_funding.csv", low_memory=False)
-    patents = pd.read_csv("../datasets/patents/patents.csv", low_memory=False)
-    organizations = pd.read_csv("../datasets/organizations/organizations.csv")
-    researchers = pd.read_csv("../datasets/researchers/researchers.csv")
-
-    return jsonify({
-        "publications": len(publications),
-        "funding": len(funding),
-        "patents": len(patents),
-        "organizations": len(organizations),
-        "researchers": len(researchers)
-    })
+    return jsonify(dashboard_counts)
 
 
 # ==========================================================
-# Recent Publications
+# RECENT PUBLICATIONS
 # ==========================================================
 
 @dashboard_bp.route("/recent-activity")
 def recent_activity():
 
-    publications = pd.read_csv("../datasets/publications/openalex_cleaned.csv")
+    if publications.empty:
+        return jsonify([])
 
     recent = publications.head(10)
 
     return jsonify(
-        recent.fillna("").to_dict(orient="records")
+        recent
+        .fillna("")
+        .to_dict(orient="records")
     )
 
 
 # ==========================================================
-# Publication Trends
+# PUBLICATION TRENDS
 # ==========================================================
 
 @dashboard_bp.route("/publication-trends")
 def publication_trends():
 
-    df = pd.read_csv("../datasets/publications/openalex_cleaned.csv")
-
-    trends = (
-        df.groupby("publication_year")
-          .size()
-          .reset_index(name="count")
-          .sort_values("publication_year")
-    )
-
-    return jsonify(
-        trends.fillna("").to_dict(orient="records")
-    )
+    return jsonify(publication_trends_data)
 
 
 # ==========================================================
-# Publication Types
+# PUBLICATION TYPES
 # ==========================================================
 
 @dashboard_bp.route("/publication-types")
 def publication_types():
 
-    df = pd.read_csv("../datasets/publications/openalex_cleaned.csv")
-
-    publication_types = (
-        df.groupby("type")
-          .size()
-          .reset_index(name="count")
-          .sort_values("count", ascending=False)
-    )
-
-    return jsonify(
-        publication_types.fillna("").to_dict(orient="records")
-    )
+    return jsonify(publication_types_data)
 
 
 # ==========================================================
-# Funding Trends
+# FUNDING TRENDS
 # ==========================================================
 
 @dashboard_bp.route("/funding-trends")
 def funding_trends():
 
-    df = pd.read_csv(
-        "../datasets/funding/nih_funding.csv",
-        low_memory=False
-    )
+    return jsonify(funding_trends_data)
 
-    trends = (
-        df.groupby("fiscal_year")
-          .size()
-          .reset_index(name="count")
-          .sort_values("fiscal_year")
-    )
-
-    return jsonify(
-        trends.fillna("").to_dict(orient="records")
-    )
 
 # ==========================================================
-# Patent Countries
+# PATENT COUNTRIES
 # ==========================================================
 
 @dashboard_bp.route("/patent-countries")
 def patent_countries():
 
-    df = pd.read_csv(
-        "../datasets/patents/patents.csv",
-        low_memory=False
-    )
-
-    if "Applicant Country" in df.columns:
-
-        df["Applicant Country"] = (
-            df["Applicant Country"]
-            .fillna("Unknown")
-            .astype(str)
-            .str.replace("#", "", regex=False)
-            .str.strip()
-        )
-
-        countries = (
-            df["Applicant Country"]
-            .value_counts()
-            .head(10)                    # Top 10 countries only
-            .reset_index()
-        )
-
-        countries.columns = ["country", "count"]
-
-    else:
-
-        countries = pd.DataFrame({
-            "country": [],
-            "count": []
-        })
-
-    return jsonify(
-        countries.to_dict(orient="records")
-    )
+    return jsonify(patent_countries_data)
 
 
 # ==========================================================
-# Dashboard Analytics
+# DASHBOARD ANALYTICS
 # ==========================================================
 
 @dashboard_bp.route("/dashboard/analytics")
 def dashboard_analytics():
 
-    publications = pd.read_csv(
-        "../datasets/publications/openalex_cleaned.csv"
-    )
-
-    patents = pd.read_csv(
-        "../datasets/patents/patents.csv",
-        low_memory=False
-    )
-
-    organizations = pd.read_csv(
-        "../datasets/organizations/organizations.csv"
-    )
-
-    # -----------------------
-    # Top Patent Country
-    # -----------------------
-
-    if "Applicant Country" in patents.columns:
-
-        top_country = (
-            patents["Applicant Country"]
-            .fillna("Unknown")
-            .astype(str)
-            .str.replace("#", "", regex=False)
-            .mode()[0]
-        )
-
-    else:
-
-        top_country = "Unknown"
-
-    # -----------------------
-    # Top Publication Type
-    # -----------------------
-
-    if "type" in publications.columns:
-
-        top_type = (
-            publications["type"]
-            .fillna("Unknown")
-            .mode()[0]
-        )
-
-    else:
-
-        top_type = "Unknown"
-
-    # -----------------------
-    # Top Organization
-    # -----------------------
-
-    if "organization_name" in organizations.columns:
-
-        top_org = organizations["organization_name"].iloc[0]
-
-    elif "display_name" in organizations.columns:
-
-        top_org = organizations["display_name"].iloc[0]
-
-    elif "name" in organizations.columns:
-
-        top_org = organizations["name"].iloc[0]
-
-    else:
-
-        top_org = "Unknown"
-
-    # -----------------------
-    # Average Citations
-    # -----------------------
-
-    if "cited_by_count" in publications.columns:
-
-        avg_citations = round(
-            publications["cited_by_count"].mean(),
-            2
-        )
-
-    else:
-
-        avg_citations = 0
-
-    return jsonify({
-
-        "top_country": top_country,
-        "top_type": top_type,
-        "top_org": top_org,
-        "avg_citations": avg_citations
-
-    })
+    return jsonify(dashboard_analytics_data)

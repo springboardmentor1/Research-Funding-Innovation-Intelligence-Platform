@@ -4,84 +4,63 @@ function NotificationPopup({ alerts }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    if (!alerts || alerts.length === 0) return;
+
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 8000);
+    }, 10000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [alerts]);
 
   if (!visible || !alerts || alerts.length === 0) {
     return null;
   }
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: "25px",
-        right: "25px",
-        width: "360px",
-        background: "#ffffff",
-        borderRadius: "12px",
-        boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
-        padding: "20px",
-        zIndex: 9999,
-        animation: "slideIn 0.4s ease"
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "15px"
-        }}
-      >
-        <h3 style={{ margin: 0 }}>
-          🔔 Research Updates
-        </h3>
+    <div className="research-notification">
+      <div className="notification-glow"></div>
+
+      <div className="notification-header">
+        <div className="notification-title">
+          <span className="notification-bell">🔔</span>
+
+          <div>
+            <strong>Research Updates</strong>
+            <span>Latest platform activity</span>
+          </div>
+        </div>
 
         <button
+          className="notification-close"
           onClick={() => setVisible(false)}
-          style={{
-            border: "none",
-            background: "transparent",
-            fontSize: "18px",
-            cursor: "pointer"
-          }}
+          aria-label="Close notifications"
         >
-          ✖
+          ×
         </button>
       </div>
 
-      {alerts.map((alert, index) => (
-        <p
-          key={index}
-          style={{
-            margin: "10px 0",
-            color: "#374151",
-            fontSize: "15px"
-          }}
-        >
-          {alert}
-        </p>
-      ))}
+      <div className="notification-list">
+        {alerts.map((alert, index) => (
+          <div
+            className="notification-item"
+            key={index}
+          >
+            <span className="notification-marker"></span>
 
-      <style>
-        {`
-          @keyframes slideIn{
-            from{
-              transform:translateX(120%);
-              opacity:0;
-            }
-            to{
-              transform:translateX(0);
-              opacity:1;
-            }
-          }
-        `}
-      </style>
+            <p>{alert}</p>
+
+            <span className="notification-arrow">
+              →
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="notification-footer">
+        <span className="notification-live-dot"></span>
+        Live research intelligence
+      </div>
     </div>
   );
 }

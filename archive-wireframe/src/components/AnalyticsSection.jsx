@@ -32,18 +32,7 @@ function AnalyticsSection() {
 
   if (error) {
     return (
-      <div
-        style={{
-          background: "#fff",
-          padding: "30px",
-          borderRadius: "12px",
-          textAlign: "center",
-          color: "#dc2626",
-          fontWeight: "bold",
-          marginTop: "30px",
-          boxShadow: "0 4px 12px rgba(0,0,0,.08)",
-        }}
-      >
+      <div className="analytics-error">
         {error}
       </div>
     );
@@ -51,75 +40,70 @@ function AnalyticsSection() {
 
   const cards = [
     {
-      title: "🌍 Top Patent Country",
+      title: "Top Patent Country",
       value: analytics.top_country || "N/A",
+      icon: "🌍",
       color: "#2563eb",
     },
     {
-      title: "📚 Top Publication Type",
+      title: "Top Publication Type",
       value: analytics.top_type || "N/A",
+      icon: "📚",
       color: "#16a34a",
     },
     {
-      title: "🏢 Top Organization",
+      title: "Top Organization",
       value: analytics.top_org || "N/A",
+      icon: "🏢",
       color: "#9333ea",
     },
     {
-      title: "⭐ Average Citations",
+      title: "Average Citations",
       value: analytics.avg_citations ?? "0",
+      icon: "⭐",
       color: "#f59e0b",
     },
   ];
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-        gap: "20px",
-        marginTop: "35px",
-      }}
-    >
-      {cards.map((card, index) => (
-        <div
-          key={index}
-          style={{
-            background: "#fff",
-            borderRadius: "14px",
-            padding: "25px",
-            boxShadow: "0 4px 15px rgba(0,0,0,.08)",
-            borderTop: `5px solid ${card.color}`,
-            transition: "0.3s",
-          }}
-        >
-          <h3
-            style={{
-              margin: 0,
-              color: "#6b7280",
-              fontSize: "17px",
-              fontWeight: "600",
-            }}
-          >
-            {card.title}
-          </h3>
-
-          <div
-            style={{
-              marginTop: "18px",
-              fontSize: "28px",
-              fontWeight: "bold",
-              color: "#111827",
-              wordBreak: "break-word",
-            }}
-          >
-            {card.value}
-          </div>
+    <section className="analytics-section">
+      <div className="section-heading">
+        <div>
+          <span className="section-eyebrow">DATA ANALYTICS</span>
+          <h2>Platform Analytics</h2>
         </div>
-      ))}
-    </div>
+      </div>
+
+      <div className="analytics-grid">
+        {cards.map((card, index) => (
+          <div
+            className="analytics-card"
+            key={index}
+            style={{
+              "--analytics-accent": card.color,
+              "--analytics-delay": `${index * 80}ms`,
+            }}
+          >
+            <div className="analytics-top-line"></div>
+
+            <div className="analytics-icon">
+              {card.icon}
+            </div>
+
+            <div className="analytics-title">
+              {card.title}
+            </div>
+
+            <div className="analytics-value">
+              {card.value}
+            </div>
+
+            <div className="analytics-orb"></div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
-
 
 export default AnalyticsSection;

@@ -20,34 +20,73 @@ function StatisticsSummary() {
   if (!counts) return null;
 
   const total =
-    counts.publications +
-    counts.funding +
-    counts.patents +
-    counts.organizations +
-    counts.researchers;
+    Number(counts.publications) +
+    Number(counts.funding) +
+    Number(counts.patents) +
+    Number(counts.organizations) +
+    Number(counts.researchers);
+
+  const stats = [
+    {
+      value: total,
+      label: "Total Records",
+      icon: "◈",
+      color: "#111111",
+    },
+    {
+      value: counts.publications,
+      label: "Research Papers",
+      icon: "▣",
+      color: "#2563eb",
+    },
+    {
+      value: counts.patents,
+      label: "Patents",
+      icon: "◇",
+      color: "#f97316",
+    },
+    {
+      value: counts.funding,
+      label: "Funding Projects",
+      icon: "◉",
+      color: "#16a34a",
+    },
+  ];
 
   return (
-    <div className="summary-stats">
-      <div className="summary-item">
-        <h3>{total.toLocaleString()}</h3>
-        <p>Total Records</p>
+    <section className="statistics-section">
+      <div className="section-heading">
+        <div>
+          <span className="section-eyebrow">PLATFORM SCALE</span>
+          <h2>Statistics Overview</h2>
+        </div>
       </div>
 
-      <div className="summary-item">
-        <h3>{counts.publications}</h3>
-        <p>Research Papers</p>
-      </div>
+      <div className="summary-stats">
+        {stats.map((stat, index) => (
+          <div
+            className="summary-item"
+            key={index}
+            style={{
+              "--stat-accent": stat.color,
+              "--stat-delay": `${index * 70}ms`,
+            }}
+          >
+            <div className="stat-icon">
+              {stat.icon}
+            </div>
 
-      <div className="summary-item">
-        <h3>{counts.patents}</h3>
-        <p>Patents</p>
-      </div>
+            <h3>
+              {Number(stat.value).toLocaleString()}
+            </h3>
 
-      <div className="summary-item">
-        <h3>{counts.funding}</h3>
-        <p>Funding Projects</p>
+            <p>{stat.label}</p>
+
+            <div className="stat-progress"></div>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -14,17 +14,32 @@ import Patents from "./pages/Patents";
 import Organizations from "./pages/Organizations";
 import Researchers from "./pages/Researchers";
 import Reports from "./pages/Reports";
+import Profile from "./pages/Profile";
+
 
 function App() {
   return (
     <SearchProvider>
+
       <BrowserRouter>
+
         <Routes>
 
-          {/* Public Route */}
-          <Route path="/login" element={<Login />} />
+          {/* =====================================================
+              PUBLIC ROUTE
+          ===================================================== */}
 
-          {/* Protected Routes */}
+          <Route
+            path="/login"
+            element={
+              <Login />
+            }
+          />
+
+
+          {/* =====================================================
+              DASHBOARD
+          ===================================================== */}
 
           <Route
             path="/"
@@ -35,6 +50,11 @@ function App() {
             }
           />
 
+
+          {/* =====================================================
+              SEARCH
+          ===================================================== */}
+
           <Route
             path="/search"
             element={
@@ -43,6 +63,11 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+
+          {/* =====================================================
+              PUBLICATIONS
+          ===================================================== */}
 
           <Route
             path="/publications"
@@ -53,7 +78,10 @@ function App() {
             }
           />
 
-          {/* NEW Publication Details Page */}
+
+          {/* =====================================================
+              PUBLICATION DETAILS
+          ===================================================== */}
 
           <Route
             path="/publication/:doi"
@@ -64,6 +92,11 @@ function App() {
             }
           />
 
+
+          {/* =====================================================
+              FUNDING
+          ===================================================== */}
+
           <Route
             path="/funding"
             element={
@@ -72,6 +105,11 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+
+          {/* =====================================================
+              PATENTS
+          ===================================================== */}
 
           <Route
             path="/patents"
@@ -82,6 +120,11 @@ function App() {
             }
           />
 
+
+          {/* =====================================================
+              ORGANIZATIONS
+          ===================================================== */}
+
           <Route
             path="/organizations"
             element={
@@ -90,6 +133,11 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+
+          {/* =====================================================
+              RESEARCHERS
+          ===================================================== */}
 
           <Route
             path="/researchers"
@@ -100,6 +148,11 @@ function App() {
             }
           />
 
+
+          {/* =====================================================
+              REPORTS
+          ===================================================== */}
+
           <Route
             path="/reports"
             element={
@@ -109,10 +162,28 @@ function App() {
             }
           />
 
+
+          {/* =====================================================
+              PROFILE
+          ===================================================== */}
+
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+
+
         </Routes>
+
       </BrowserRouter>
+
     </SearchProvider>
   );
 }
+
 
 export default App;

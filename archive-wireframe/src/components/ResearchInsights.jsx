@@ -3,6 +3,7 @@ import { getResearchInsights } from "../api/researchInsightsApi";
 
 function ResearchInsights() {
   const [insights, setInsights] = useState(null);
+  const [activeCard, setActiveCard] = useState(null);
 
   useEffect(() => {
     async function loadInsights() {
@@ -18,7 +19,11 @@ function ResearchInsights() {
   }, []);
 
   if (!insights) {
-    return <h3>Loading Research Intelligence...</h3>;
+    return (
+      <div className="insights-loading">
+        Loading Research Intelligence...
+      </div>
+    );
   }
 
   const cards = [
@@ -27,95 +32,93 @@ function ResearchInsights() {
       title: "Top Research Area",
       value: insights.top_area,
       color: "#2563eb",
+      glow: "rgba(37,99,235,.16)",
     },
     {
       icon: "🌍",
       title: "Most Active Country",
       value: insights.top_country,
       color: "#16a34a",
+      glow: "rgba(22,163,74,.16)",
     },
     {
       icon: "💰",
       title: "Top Funding Organization",
       value: insights.top_organization,
       color: "#f59e0b",
+      glow: "rgba(245,158,11,.16)",
     },
     {
       icon: "👨‍🔬",
       title: "Top Researcher",
       value: insights.top_researcher,
       color: "#9333ea",
+      glow: "rgba(147,51,234,.16)",
     },
     {
       icon: "📈",
       title: "Trending Technology",
       value: insights.trending,
       color: "#ef4444",
+      glow: "rgba(239,68,68,.16)",
     },
     {
       icon: "📚",
       title: "Indexed Publications",
       value: Number(insights.total_publications).toLocaleString(),
       color: "#0ea5e9",
+      glow: "rgba(14,165,233,.16)",
     },
   ];
 
   return (
-    <div style={{ marginTop: "30px" }}>
-      <h2 style={{ marginBottom: "20px" }}>
-        🧠 Research Intelligence
-      </h2>
+    <section className="research-insights-section">
+      <div className="section-heading">
+        <div>
+          <span className="section-eyebrow">INTELLIGENCE LAYER</span>
+          <h2>🧠 Research Intelligence</h2>
+        </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-          gap: "20px",
-        }}
-      >
+        <span className="live-indicator">
+          <span className="live-dot"></span>
+          Live Insights
+        </span>
+      </div>
+
+      <div className="research-insights-grid">
         {cards.map((card, index) => (
           <div
             key={index}
+            className={`research-insight-card ${
+              activeCard === index ? "is-active" : ""
+            }`}
             style={{
-              background: "#fff",
-              borderRadius: "12px",
-              padding: "20px",
-              boxShadow: "0 4px 12px rgba(0,0,0,.08)",
-              borderLeft: `6px solid ${card.color}`,
+              "--insight-accent": card.color,
+              "--insight-glow": card.glow,
+              "--card-delay": `${index * 70}ms`,
             }}
+            onMouseEnter={() => setActiveCard(index)}
+            onMouseLeave={() => setActiveCard(null)}
           >
-            <div
-              style={{
-                fontSize: "28px",
-                marginBottom: "10px",
-              }}
-            >
-              {card.icon}
+            <div className="insight-shine"></div>
+
+            <div className="insight-icon-wrap">
+              <span className="insight-icon">{card.icon}</span>
             </div>
 
-            <div
-              style={{
-                color: "#6b7280",
-                fontSize: "14px",
-              }}
-            >
-              {card.title}
+            <div className="insight-content">
+              <span className="insight-title">{card.title}</span>
+
+              <div className="insight-value" title={card.value}>
+                {card.value}
+              </div>
             </div>
 
-            <div
-              style={{
-                marginTop: "8px",
-                fontWeight: "bold",
-                fontSize: "20px",
-                color: "#1f2937",
-              }}
-            >
-              {card.value}
-            </div>
+            <div className="insight-accent-line"></div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

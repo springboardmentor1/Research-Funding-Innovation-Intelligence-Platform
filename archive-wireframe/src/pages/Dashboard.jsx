@@ -6,101 +6,178 @@ import StatisticsSummary from "../components/StatisticsSummary";
 import ChartSection from "../components/ChartSection";
 import AnalyticsSection from "../components/AnalyticsSection";
 import DashboardInsights from "../components/DashboardInsights";
+import ResearchChatbot from "../components/ResearchChatbot";
+
 
 function Dashboard() {
-  const today = new Date();
 
-  const formattedDate = today.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  /* =====================================================
+     DYNAMIC GREETING
+  ===================================================== */
 
-  const currentHour = today.getHours();
+  const currentHour = new Date().getHours();
 
   let greeting = "Good Evening";
 
   if (currentHour < 12) {
+
     greeting = "Good Morning";
+
   } else if (currentHour < 17) {
+
     greeting = "Good Afternoon";
+
   }
 
+
   return (
+
     <Layout>
 
-      {/* Dashboard Banner */}
+      {/* =====================================================
+          DASHBOARD HEADER
+      ===================================================== */}
+
       <DashboardHeader />
 
-      {/* Greeting Card */}
-      <div className="summary-card">
-        <h2>{greeting} 👋</h2>
+
+      {/* =====================================================
+          GREETING CARD
+      ===================================================== */}
+
+      <div className="summary-card dashboard-greeting">
+
+        <h2>
+
+          {greeting}
+
+          <span className="greeting-icon">
+            👋
+          </span>
+
+        </h2>
+
 
         <p>
-          Welcome to the{" "}
+
+          Welcome to{" "}
+
           <strong>
-            Research Funding & Innovation Intelligence Platform
-          </strong>.
+            the Research Funding & Innovation Intelligence Platform
+          </strong>
+
+          .
+
           Explore publications, funding opportunities, patents,
           research organizations, and researcher profiles from one
           centralized dashboard.
+
         </p>
 
-        <p
-          style={{
-            marginTop: "10px",
-            color: "#6b7280",
-          }}
-        >
-          📅 {formattedDate}
-        </p>
       </div>
 
-      {/* KPI Cards */}
+
+      {/* =====================================================
+          KPI CARDS
+      ===================================================== */}
+
       <KPISection />
 
-      {/* NEW Research Intelligence */}
+
+      {/* =====================================================
+          RESEARCH INTELLIGENCE
+      ===================================================== */}
+
       <ResearchInsights />
 
-      {/* Statistics Summary */}
+
+      {/* =====================================================
+          STATISTICS SUMMARY
+      ===================================================== */}
+
       <StatisticsSummary />
 
-      {/* Platform Overview */}
-      <div className="summary-card">
-        <h2>Platform Overview</h2>
+
+      {/* =====================================================
+          PLATFORM OVERVIEW
+      ===================================================== */}
+
+      <div className="summary-card platform-overview">
+
+        <h2>
+          Platform Overview
+        </h2>
+
 
         <p>
+
           This platform integrates multiple research datasets into one
           intelligent dashboard. Users can search publications,
           discover funding opportunities, analyze patent activity,
           explore research organizations and researcher profiles,
           visualize trends, generate reports, and gain research
           intelligence through analytics.
+
         </p>
+
       </div>
 
-      {/* Charts */}
+
+      {/* =====================================================
+          RESEARCH ANALYTICS CHARTS
+      ===================================================== */}
+
       <ChartSection />
 
-      {/* Analytics */}
+
+      {/* =====================================================
+          ANALYTICS SECTION
+      ===================================================== */}
+
       <AnalyticsSection />
 
-      {/* Latest Publications, Emerging Technologies & Alerts */}
+
+      {/* =====================================================
+          DASHBOARD INSIGHTS
+      ===================================================== */}
+
       <DashboardInsights />
 
-      {/* Footer */}
-      <div className="dashboard-footer">
+
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
+
+      <footer className="dashboard-footer">
+
         <strong>
           Research Funding & Innovation Intelligence Platform
         </strong>
 
+
         <br />
 
-        Powered by OpenAlex • NIH Funding • Google Patents
-      </div>
+
+        <span>
+          Powered by OpenAlex • NIH Funding • Google Patents
+        </span>
+
+      </footer>
+
+
+      {/* =====================================================
+          RESEARCHHUB AI CHATBOT
+          Floating dashboard assistant
+      ===================================================== */}
+
+      <ResearchChatbot />
+
 
     </Layout>
+
   );
+
 }
+
 
 export default Dashboard;

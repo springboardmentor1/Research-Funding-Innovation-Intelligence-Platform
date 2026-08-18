@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { getDashboardCounts } from "../api/dashboardApi";
 
+import {
+  FiFileText,
+  FiDollarSign,
+  FiAward,
+  FiBriefcase,
+  FiUsers
+} from "react-icons/fi";
+
 function KPISection() {
   const [counts, setCounts] = useState({
     publications: 0,
@@ -19,7 +27,6 @@ function KPISection() {
         const data = await getDashboardCounts();
 
         setCounts(data);
-
         setError(false);
       } catch (error) {
         console.error(error);
@@ -29,15 +36,12 @@ function KPISection() {
       }
     }
 
-    // Initial Load
     loadDashboard();
 
-    // Refresh every 30 seconds
     const interval = setInterval(() => {
       loadDashboard();
     }, 30000);
 
-    // Cleanup
     return () => clearInterval(interval);
   }, []);
 
@@ -59,52 +63,63 @@ function KPISection() {
       title: "Publications",
       value: counts.publications,
       className: "kpi-publications",
-      icon: "📚",
+      icon: <FiFileText />,
       footer: "Research papers indexed",
     },
+
     {
       title: "Funding",
       value: counts.funding,
       className: "kpi-funding",
-      icon: "💰",
+      icon: <FiDollarSign />,
       footer: "Active funded projects",
     },
+
     {
       title: "Patents",
       value: counts.patents,
       className: "kpi-patents",
-      icon: "📜",
+      icon: <FiAward />,
       footer: "Registered patents",
     },
+
     {
       title: "Organizations",
       value: counts.organizations,
       className: "kpi-organizations",
-      icon: "🏢",
+      icon: <FiBriefcase />,
       footer: "Research institutions",
     },
+
     {
       title: "Researchers",
       value: counts.researchers,
       className: "kpi-researchers",
-      icon: "👨‍🔬",
+      icon: <FiUsers />,
       footer: "Research profiles",
     },
   ];
 
   return (
     <div className="kpi-grid">
+
       {cards.map((card, index) => (
+
         <div
           key={index}
           className={`kpi-card ${card.className}`}
         >
+
           <div className="kpi-header">
-            <span className="kpi-icon">{card.icon}</span>
+
+            <span className="kpi-icon">
+              {card.icon}
+            </span>
 
             <span className="kpi-title">
               {card.title}
             </span>
+
           </div>
 
           <div className="kpi-value">
@@ -112,10 +127,14 @@ function KPISection() {
           </div>
 
           <div className="kpi-footer">
-            ✔ {card.footer}
+            <span className="kpi-check">✓</span>
+            {card.footer}
           </div>
+
         </div>
+
       ))}
+
     </div>
   );
 }

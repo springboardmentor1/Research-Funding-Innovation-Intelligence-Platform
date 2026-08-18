@@ -4,159 +4,373 @@ import { SearchContext } from "../context/SearchContext";
 import { Link, useNavigate } from "react-router-dom";
 import { getNotifications } from "../api/notificationApi";
 
+import {
+  FiBell,
+  FiUser,
+  FiSearch,
+  FiLogOut,
+} from "react-icons/fi";
+
+
 function TopNavbar() {
+
   const { search, setSearch } = useContext(SearchContext);
+
   const navigate = useNavigate();
 
   const [showNotifications, setShowNotifications] = useState(false);
+
   const [notifications, setNotifications] = useState([]);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+
+  /* =====================================================
+     GET LOGGED-IN USER
+  ===================================================== */
+
+  const user = JSON.parse(
+    localStorage.getItem("user")
+  );
+
+
+  /* =====================================================
+     LOAD NOTIFICATIONS
+  ===================================================== */
 
   useEffect(() => {
+
     async function loadNotifications() {
+
       try {
+
         const data = await getNotifications();
+
         setNotifications(data);
+
       } catch (error) {
-        console.error(error);
+
+        console.error(
+          "Notification Error:",
+          error
+        );
+
       }
+
     }
 
     loadNotifications();
+
   }, []);
 
+
+  /* =====================================================
+     SEARCH
+  ===================================================== */
+
   const handleSearch = () => {
-    if (!search.trim()) return;
+
+    if (!search.trim()) {
+      return;
+    }
+
     navigate("/search");
+
   };
+
+
+  /* =====================================================
+     PROFILE
+  ===================================================== */
+
+  const handleProfile = () => {
+
+    navigate("/profile");
+
+  };
+
+
+  /* =====================================================
+     LOGOUT
+  ===================================================== */
 
   const handleLogout = () => {
+
     localStorage.removeItem("user");
+
+    localStorage.removeItem("access_token");
+
     navigate("/login");
+
   };
 
+
   return (
-    <>
-      <header className="top-navbar">
 
-        {/* ---------------- Logo ---------------- */}
+    <header className="top-navbar">
 
-        <Link
-  to="/"
-  className="logo"
-  aria-label="ResearchHub AI Home"
->
-  <img
-    src="/logo.png"
-    alt="ResearchHub AI logo"
-    className="logo-image"
-  />
 
-  <div className="logo-text">
-    <h2>ResearchHub AI</h2>
-    <span>Research Intelligence Platform</span>
-  </div>
-</Link>
+      {/* =====================================================
+          LOGO
+      ===================================================== */}
 
-        {/* ---------------- Search ---------------- */}
+      <Link
+        to="/"
+        className="logo"
+        aria-label="ResearchHub AI Home"
+      >
 
-        <div className="navbar-right">
+        <img
+          src="/logo.png"
+          alt="ResearchHub AI logo"
+          className="logo-image"
+        />
 
-          <input
-            className="search-box"
-            type="text"
-            placeholder="Search Publications, Patents, Funding..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") handleSearch();
-            }}
-          />
+        <div className="logo-text">
 
-          <button
-            className="search-btn"
-            onClick={handleSearch}
-          >
-            Search
-          </button>
+          <h2>
+            ResearchHub AI
+          </h2>
+
+          <span>
+            Research Intelligence Platform
+          </span>
 
         </div>
 
-        {/* ---------------- Right ---------------- */}
+      </Link>
 
-        <div className="navbar-right">
 
-          {/* Notification */}
+      {/* =====================================================
+          SEARCH
+      ===================================================== */}
 
-          <div className="notification-wrapper">
+      <div className="navbar-search">
 
-            <button
-              className="notification-btn"
-              onClick={() =>
-                setShowNotifications(!showNotifications)
-              }
-            >
-              🔔
-            </button>
+        <input
+          className="search-box"
+          type="text"
+          placeholder="Search Publications, Patents, Funding..."
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+          onKeyDown={(e) => {
+
+            if (e.key === "Enter") {
+
+              handleSearch();
+
+            }
+
+          }}
+        />
+
+
+        <button
+          className="search-btn"
+          onClick={handleSearch}
+          aria-label="Search"
+        >
+
+          <FiSearch />
+
+          <span>
+            Search
+          </span>
+
+        </button>
+
+      </div>
+
+
+      {/* =====================================================
+          RIGHT SIDE
+      ===================================================== */}
+
+      <div className="navbar-right">
+
+
+        {/* =================================================
+            NOTIFICATIONS
+        ================================================= */}
+
+        <div className="notification-wrapper">
+
+          <button
+            className="notification-btn"
+            onClick={() =>
+              setShowNotifications(
+                !showNotifications
+              )
+            }
+            aria-label="Notifications"
+          >
+
+            <FiBell />
+
+          </button>
+
+
+          {/* Notification Count */}
+
+          {notifications.length > 0 && (
 
             <span className="notification-count">
+
               {notifications.length}
+
             </span>
 
-          </div>
-
-          {/* User */}
-
-          <div className="user-name">
-            👋 {user?.name}
-          </div>
-
-          {/* Logout */}
-
-          <button
-            className="logout-btn"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
+          )}
 
         </div>
 
-        {/* Notification Dropdown */}
 
-        {showNotifications && (
+        {/* =================================================
+            USER / PROFILE
+        ================================================= */}
 
-          <div className="notification-panel">
+        <button
+          className="user-name"
+          onClick={handleProfile}
+          aria-label="Open profile"
+          type="button"
+        >
 
-            <h3>🔔 Research Updates</h3>
+          <FiUser />
 
-            {notifications.map((item, index) => (
+          <span>
+            {user?.name || "User"}
+          </span>
 
-              <div
-                key={index}
-                className="notification-item"
-              >
+        </button>
 
-                <div className="notification-message">
-                  {item.icon} {item.message}
-                </div>
 
-                <div className="notification-time">
-                  {item.time}
-                </div>
+        {/* =================================================
+            LOGOUT
+        ================================================= */}
+
+        <button
+          className="logout-btn"
+          onClick={handleLogout}
+          aria-label="Logout"
+          type="button"
+        >
+
+          <FiLogOut />
+
+          <span>
+            Logout
+          </span>
+
+        </button>
+
+      </div>
+
+
+      {/* =====================================================
+          NOTIFICATION DROPDOWN
+      ===================================================== */}
+
+      {showNotifications && (
+
+        <div className="notification-panel">
+
+
+          {/* Notification Header */}
+
+          <h3>
+
+            <FiBell />
+
+            <span>
+              Research Updates
+            </span>
+
+          </h3>
+
+
+          {/* =================================================
+              NO NOTIFICATIONS
+          ================================================= */}
+
+          {notifications.length === 0 ? (
+
+            <div className="notification-item">
+
+              <div className="notification-message">
+
+                No new research updates
 
               </div>
 
-            ))}
+            </div>
 
-          </div>
+          ) : (
 
-        )}
 
-      </header>
-    </>
+            /* =================================================
+               NOTIFICATION LIST
+            ================================================= */
+
+            notifications.map(
+              (item, index) => (
+
+                <div
+                  key={index}
+                  className="notification-item"
+                >
+
+                  <div className="notification-message">
+
+
+                    {/* Notification Icon */}
+
+                    {item.icon && (
+
+                      <span className="notification-item-icon">
+
+                        {item.icon}
+
+                      </span>
+
+                    )}
+
+
+                    {/* Notification Message */}
+
+                    <span>
+
+                      {item.message}
+
+                    </span>
+
+                  </div>
+
+
+                  {/* Notification Time */}
+
+                  <div className="notification-time">
+
+                    {item.time}
+
+                  </div>
+
+                </div>
+
+              )
+            )
+
+          )}
+
+        </div>
+
+      )}
+
+    </header>
+
   );
+
 }
+
 
 export default TopNavbar;
