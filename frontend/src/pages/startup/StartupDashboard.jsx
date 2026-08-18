@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import patentService from '../../services/patentService';
 
 export default function StartupDashboard() {
+  const [patentStats, setPatentStats] = useState({ total: 0, pending: 0 });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const data = await patentService.getPatents();
+        const total = data.length;
+        const pending = data.filter(p => p.status !== 'GRANTED').length;
+        setPatentStats({ total, pending });
+      } catch (error) {
+        console.error("Failed to fetch patents for dashboard", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchStats();
+  }, []);
+
   return (
     <div className="p-8 bg-slate-900 min-h-screen text-white">
       <div className="max-w-6xl mx-auto">
@@ -15,7 +35,11 @@ export default function StartupDashboard() {
           </div>
           <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
             <h3 className="font-semibold text-lg mb-2 text-slate-300">Active Patents</h3>
-            <p className="text-3xl font-bold text-purple-400">3 (2 Pending)</p>
+            {loading ? (
+              <p className="text-3xl font-bold text-purple-400 opacity-50">Loading...</p>
+            ) : (
+              <p className="text-3xl font-bold text-purple-400">{patentStats.total} ({patentStats.pending} Pending)</p>
+            )}
           </div>
           <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
             <h3 className="font-semibold text-lg mb-2 text-slate-300">Investment Rating</h3>

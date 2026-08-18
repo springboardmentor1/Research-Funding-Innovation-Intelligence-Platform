@@ -5,6 +5,7 @@ from datetime import datetime, date
 class PatentResponse(BaseModel):
     patent_id: str
     external_patent_id: str
+    patent_number: Optional[str] = None
     user_id: str
     title: str
     abstract: Optional[str]

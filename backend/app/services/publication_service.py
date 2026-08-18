@@ -33,20 +33,18 @@ def fetch_and_sync_publications(db: Session, user_id: str, limit: int = 10, page
     try:
         profile = get_profile_by_user(db, user_id)
     except HTTPException:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Please create a research profile first to establish search context."
-        )
+        profile = None
 
     # 2. Build search query from profile fields
     query_parts = []
-    if profile.research_domain:
-        query_parts.append(profile.research_domain)
-    if profile.research_subdomain:
-        query_parts.append(profile.research_subdomain)
-    if profile.keywords:
-        # Append keywords (or split them if comma-separated, let's just append)
-        query_parts.append(profile.keywords)
+    if profile:
+        if profile.research_domain:
+            query_parts.append(profile.research_domain)
+        if profile.research_subdomain:
+            query_parts.append(profile.research_subdomain)
+        if profile.keywords:
+            # Append keywords (or split them if comma-separated, let's just append)
+            query_parts.append(profile.keywords)
     
     search_query = " ".join(query_parts)
     if not search_query.strip():

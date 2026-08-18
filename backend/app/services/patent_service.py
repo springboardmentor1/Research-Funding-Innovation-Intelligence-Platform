@@ -24,13 +24,13 @@ def parse_date(date_str: Optional[str]) -> Optional[date]:
         except Exception:
             return None
 
-def generate_mock_patents(user_id: str, profile: ResearchProfile, limit: int) -> List[dict]:
+def generate_mock_patents(user_id: str, profile: Optional[ResearchProfile], limit: int) -> List[dict]:
     """Generates highly realistic patent mock records based on the user's research profile."""
-    domain = profile.research_domain or "Technology"
-    subdomain = profile.research_subdomain or "Innovation"
-    keywords_list = [k.strip() for k in profile.keywords.split(",")] if profile.keywords else ["innovation"]
+    domain = (profile.research_domain if profile else None) or "Technology"
+    subdomain = (profile.research_subdomain if profile else None) or "Innovation"
+    keywords_list = [k.strip() for k in profile.keywords.split(",")] if profile and profile.keywords else ["innovation"]
     primary_kw = keywords_list[0] if keywords_list else "system"
-    org = profile.organization or "Global Tech Corp"
+    org = (profile.organization if profile else None) or "Global Tech Corp"
 
     mock_results = []
     for i in range(1, limit + 1):
@@ -57,21 +57,19 @@ def fetch_and_sync_patents(db: Session, user_id: str, limit: int = 10, page: int
     try:
         profile = get_profile_by_user(db, user_id)
     except HTTPException:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Please create a research profile first to establish search context."
-        )
+        profile = None
 
     # 2. Build search query from profile fields
     query_parts = []
-    if profile.research_domain:
-        query_parts.append(profile.research_domain)
-    if profile.research_subdomain:
-        query_parts.append(profile.research_subdomain)
-    if profile.keywords:
-        query_parts.append(profile.keywords)
-    if profile.technology_areas:
-        query_parts.append(profile.technology_areas)
+    if profile:
+        if profile.research_domain:
+            query_parts.append(profile.research_domain)
+        if profile.research_subdomain:
+            query_parts.append(profile.research_subdomain)
+        if profile.keywords:
+            query_parts.append(profile.keywords)
+        if profile.technology_areas:
+            query_parts.append(profile.technology_areas)
 
     search_query = " ".join(query_parts)
     if not search_query.strip():
@@ -120,6 +118,7 @@ def fetch_and_sync_patents(db: Session, user_id: str, limit: int = 10, page: int
 
                     patents_data.append({
                         "external_patent_id": lens_id,
+                        "patent_number": doc.get("patent_number") or lens_id,
                         "title": title_str,
                         "abstract": abstract_str,
                         "inventors": inventors_str,
@@ -154,6 +153,7 @@ def fetch_and_sync_patents(db: Session, user_id: str, limit: int = 10, page: int
 
         new_patent = Patent(
             external_patent_id=item["external_patent_id"],
+            patent_number=item.get("patent_number"),
             user_id=user_id,
             title=item["title"][:500],
             abstract=item["abstract"][:4000] if item["abstract"] else None,

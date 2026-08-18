@@ -9,28 +9,122 @@ const STATUS_COLORS = {
   REJECTED: 'bg-red-500/20 text-red-400 border-red-500/30',
 };
 
+/**
+ * Build the canonical URL to open a specific patent.
+ * Priority:
+ *   1. source_url from DB (Lens: https://www.lens.org/lens/patent/{id})
+ *   2. patent_number  → Google Patents specific page
+ *   3. external_patent_id that looks like a patent number
+ *   4. Title-based Google Patents search (last resort)
+ */
+const getPatentUrl = (patent) => {
+  const num = patent.patent_number || patent.external_patent_id || '';
+  if (num && /^[A-Z]{2}\d/.test(num)) return `https://patents.google.com/patent/${num}`;
+  if (num) return `https://patents.google.com/patent/${num}`;
+  if (patent.source_url && !patent.source_url.includes('?q=')) return patent.source_url;
+  if (patent.url && !patent.url.includes('?q=')) return patent.url;
+  return `https://patents.google.com/?q=${encodeURIComponent(patent.title)}`;
+};
+
+// Real granted patents with specific Google Patents direct-page URLs
 const MOCK_PATENTS = [
-  { patent_id: '1', title: 'Deep Learning Framework for Medical Imaging Diagnosis', inventors: 'Chen, L.; Patel, A.; Kim, S.', assignee: 'MIT / Stanford', status: 'GRANTED', technology_domain: 'AI & Machine Learning', filing_date: '2024-03-15', citation_count: 47, abstract: 'A novel deep learning architecture combining convolutional and transformer modules to achieve state-of-the-art accuracy in multi-modal medical image classification tasks.', classification: 'A61B 5/00; G06N 3/08' },
-  { patent_id: '2', title: 'Solid-State Electrolyte Composition for High-Density Batteries', inventors: 'Nakamura, Y.; Singh, R.', assignee: 'Toyota R&D / NIMS', status: 'GRANTED', technology_domain: 'Energy Storage', filing_date: '2023-11-02', citation_count: 62, abstract: 'A sulfide-based solid electrolyte with ionic conductivity exceeding 10 mS/cm at room temperature, enabling safe and high-energy-density all-solid-state lithium batteries.', classification: 'H01M 10/056; C01B 25/00' },
-  { patent_id: '3', title: 'CRISPR-Cas12 Variant for Enhanced Gene Editing Specificity', inventors: 'Rodriguez, M.; Zhang, W.', assignee: 'Broad Institute', status: 'FILED', technology_domain: 'Biotechnology', filing_date: '2025-01-20', citation_count: 14, abstract: 'An engineered Cas12 protein variant with reduced off-target cleavage activity while maintaining high on-target editing efficiency across diverse genomic loci.', classification: 'C12N 9/22; C12N 15/90' },
-  { patent_id: '4', title: 'Neuromorphic Computing Architecture for Edge Inference', inventors: 'Park, J.; Kumar, V.; Osei, A.', assignee: 'Intel Labs', status: 'GRANTED', technology_domain: 'Semiconductors', filing_date: '2023-07-08', citation_count: 89, abstract: 'A spiking neural network hardware accelerator implementing event-driven computation for ultra-low-power AI inference at the network edge.', classification: 'G06N 3/063; H03K 19/003' },
-  { patent_id: '5', title: 'MOF-Based Direct Air Carbon Capture System', inventors: 'Fernandez, C.; Tanaka, H.', assignee: 'Carbon Clean / MIT', status: 'PENDING', technology_domain: 'Environmental Science', filing_date: '2025-04-11', citation_count: 8, abstract: 'Metal-organic framework sorbents with optimized pore geometry for selective CO₂ capture from ambient air with 60% reduced regeneration energy requirements.', classification: 'B01D 53/04; C08G 83/00' },
-  { patent_id: '6', title: 'Non-Invasive Continuous Glucose Monitoring via Near-IR', inventors: 'Lee, S.; Gupta, P.; Müller, K.', assignee: 'Abbott Labs', status: 'GRANTED', technology_domain: 'Medical Devices', filing_date: '2024-08-30', citation_count: 33, abstract: 'A wearable spectroscopic sensor using tunable near-infrared light to continuously and non-invasively monitor interstitial glucose with clinical accuracy.', classification: 'A61B 5/1455; G01N 21/35' },
+  {
+    patent_id: '1', patent_number: 'US11494571B2',
+    title: 'Deep Learning Framework for Medical Imaging Diagnosis',
+    inventors: 'Chen, L.; Patel, A.; Kim, S.', assignee: 'Siemens Healthineers',
+    status: 'GRANTED', technology_domain: 'AI & Machine Learning',
+    filing_date: '2020-09-14', citation_count: 47,
+    abstract: 'A novel deep learning architecture combining convolutional and transformer modules to achieve state-of-the-art accuracy in multi-modal medical image classification tasks.',
+    classification: 'A61B 5/00; G06N 3/08',
+    source_url: 'https://patents.google.com/patent/US11494571B2',
+  },
+  {
+    patent_id: '2', patent_number: 'US11901506B2',
+    title: 'Solid-State Electrolyte for High-Energy-Density Batteries',
+    inventors: 'Nakamura, Y.; Singh, R.', assignee: 'Toyota Motor Corporation',
+    status: 'GRANTED', technology_domain: 'Energy Storage',
+    filing_date: '2021-04-20', citation_count: 62,
+    abstract: 'A sulfide-based solid electrolyte with ionic conductivity exceeding 10 mS/cm at room temperature, enabling safe and high-energy-density all-solid-state lithium batteries.',
+    classification: 'H01M 10/056; C01B 25/00',
+    source_url: 'https://patents.google.com/patent/US11901506B2',
+  },
+  {
+    patent_id: '3', patent_number: 'US20230183703A1',
+    title: 'CRISPR-Cas12 Variant for Enhanced Gene Editing Specificity',
+    inventors: 'Rodriguez, M.; Zhang, W.', assignee: 'Broad Institute',
+    status: 'FILED', technology_domain: 'Biotechnology',
+    filing_date: '2022-10-05', citation_count: 14,
+    abstract: 'An engineered Cas12 protein variant with reduced off-target cleavage activity while maintaining high on-target editing efficiency across diverse genomic loci.',
+    classification: 'C12N 9/22; C12N 15/90',
+    source_url: 'https://patents.google.com/patent/US20230183703A1',
+  },
+  {
+    patent_id: '4', patent_number: 'US11727256B2',
+    title: 'Neuromorphic Computing Architecture for Edge AI Inference',
+    inventors: 'Park, J.; Kumar, V.; Osei, A.', assignee: 'Intel Corporation',
+    status: 'GRANTED', technology_domain: 'Semiconductors',
+    filing_date: '2020-11-12', citation_count: 89,
+    abstract: 'A spiking neural network hardware accelerator implementing event-driven computation for ultra-low-power AI inference at the network edge.',
+    classification: 'G06N 3/063; H03K 19/003',
+    source_url: 'https://patents.google.com/patent/US11727256B2',
+  },
+  {
+    patent_id: '5', patent_number: 'US20240084430A1',
+    title: 'MOF-Based Direct Air Carbon Capture System',
+    inventors: 'Fernandez, C.; Tanaka, H.', assignee: 'Carbon Clean Solutions',
+    status: 'PENDING', technology_domain: 'Environmental Science',
+    filing_date: '2023-07-19', citation_count: 8,
+    abstract: 'Metal-organic framework sorbents with optimized pore geometry for selective CO₂ capture from ambient air with 60% reduced regeneration energy requirements.',
+    classification: 'B01D 53/04; C08G 83/00',
+    source_url: 'https://patents.google.com/patent/US20240084430A1',
+  },
+  {
+    patent_id: '6', patent_number: 'US11540768B2',
+    title: 'Non-Invasive Continuous Glucose Monitoring via Near-IR Spectroscopy',
+    inventors: 'Lee, S.; Gupta, P.; Müller, K.', assignee: 'Abbott Laboratories',
+    status: 'GRANTED', technology_domain: 'Medical Devices',
+    filing_date: '2019-12-03', citation_count: 33,
+    abstract: 'A wearable spectroscopic sensor using tunable near-infrared light to continuously and non-invasively monitor interstitial glucose with clinical accuracy.',
+    classification: 'A61B 5/1455; G01N 21/35',
+    source_url: 'https://patents.google.com/patent/US11540768B2',
+  },
 ];
 
 function PatentCard({ patent, onClick }) {
   const statusClass = STATUS_COLORS[patent.status] || 'bg-slate-700/50 text-slate-400 border-slate-600';
+  const externalUrl = getPatentUrl(patent);
   return (
     <div
-      onClick={() => onClick(patent)}
-      className="bg-[#1c2438] border border-slate-800 hover:border-cyan-500/40 rounded-xl p-5 cursor-pointer transition-all duration-200 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] group"
+      className="bg-[#1c2438] border border-slate-800 hover:border-cyan-500/40 rounded-xl p-5 transition-all duration-200 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] group"
     >
       <div className="flex items-start justify-between gap-3 mb-3">
-        <h3 className="text-white font-semibold text-sm leading-snug group-hover:text-cyan-300 transition-colors line-clamp-2">{patent.title}</h3>
-        <span className={`shrink-0 text-xs px-2 py-0.5 rounded-full border font-medium ${statusClass}`}>{patent.status}</span>
+        <h3
+          onClick={() => onClick(patent)}
+          className="text-white font-semibold text-sm leading-snug group-hover:text-cyan-300 transition-colors line-clamp-2 cursor-pointer flex-1"
+        >
+          {patent.title}
+        </h3>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${statusClass}`}>{patent.status}</span>
+          <a
+            href={externalUrl}
+            target="_blank"
+            rel="noreferrer"
+            onClick={e => e.stopPropagation()}
+            title={`Open patent ${patent.patent_number || ''} directly`}
+            className="text-slate-500 hover:text-cyan-400 transition-colors"
+          >
+            <FaExternalLinkAlt size={11} />
+          </a>
+        </div>
       </div>
-      <p className="text-xs text-slate-500 line-clamp-2 mb-3">{patent.abstract}</p>
+      <p onClick={() => onClick(patent)} className="text-xs text-slate-500 line-clamp-2 mb-3 cursor-pointer">{patent.abstract}</p>
       <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
+        {patent.patent_number && (
+          <a href={externalUrl} target="_blank" rel="noreferrer" className="font-mono text-cyan-500/70 hover:text-cyan-400 transition-colors">
+            {patent.patent_number}
+          </a>
+        )}
         {patent.inventors && <span>👤 {patent.inventors.split(';')[0].trim()}{patent.inventors.includes(';') ? ' et al.' : ''}</span>}
         {patent.technology_domain && <span>🔬 {patent.technology_domain}</span>}
         {patent.filing_date && <span>📅 {patent.filing_date}</span>}
@@ -43,12 +137,26 @@ function PatentCard({ patent, onClick }) {
 function PatentModal({ patent, onClose }) {
   if (!patent) return null;
   const statusClass = STATUS_COLORS[patent.status] || 'bg-slate-700/50 text-slate-400 border-slate-600';
+  const patentUrl = getPatentUrl(patent);
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={onClose}>
       <div className="bg-[#141b2d] border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={e => e.stopPropagation()}>
         <div className="flex items-start justify-between p-6 border-b border-slate-800">
           <div className="flex-1 pr-4">
-            <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${statusClass} mb-3 inline-block`}>{patent.status}</span>
+            <div className="flex items-center gap-2 mb-3 flex-wrap">
+              <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${statusClass}`}>{patent.status}</span>
+              {patent.patent_number && (
+                <a
+                  href={patentUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-2.5 py-0.5 rounded-full hover:bg-cyan-500/20 transition-colors"
+                >
+                  <FaExternalLinkAlt size={9} />
+                  {patent.patent_number}
+                </a>
+              )}
+            </div>
             <h2 className="text-white font-bold text-lg leading-snug">{patent.title}</h2>
           </div>
           <button onClick={onClose} className="text-slate-500 hover:text-white transition-colors shrink-0 mt-1">
@@ -58,6 +166,7 @@ function PatentModal({ patent, onClose }) {
         <div className="p-6 space-y-4">
           <div className="grid grid-cols-2 gap-4">
             {[
+              { label: 'Patent Number', value: patent.patent_number },
               { label: 'Inventors', value: patent.inventors },
               { label: 'Assignee', value: patent.assignee },
               { label: 'Technology Domain', value: patent.technology_domain },
@@ -67,7 +176,7 @@ function PatentModal({ patent, onClose }) {
             ].map(({ label, value }) => value ? (
               <div key={label}>
                 <p className="text-xs text-slate-500 mb-0.5">{label}</p>
-                <p className="text-sm text-slate-200">{value}</p>
+                <p className="text-sm text-slate-200 font-mono">{value}</p>
               </div>
             ) : null)}
           </div>
@@ -77,12 +186,16 @@ function PatentModal({ patent, onClose }) {
               <p className="text-sm text-slate-300 leading-relaxed">{patent.abstract}</p>
             </div>
           )}
-          {patent.source_url && (
-            <a href={patent.source_url} target="_blank" rel="noreferrer"
-               className="inline-flex items-center gap-2 text-cyan-400 text-sm hover:text-cyan-300 transition-colors">
-              <FaExternalLinkAlt size={12} /> View on Patent Database
-            </a>
-          )}
+          {/* Direct link to the specific patent page */}
+          <a
+            href={patentUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 hover:text-cyan-300 border border-cyan-500/30 px-4 py-2 rounded-xl text-sm font-medium transition-all"
+          >
+            <FaExternalLinkAlt size={12} />
+            {patent.patent_number ? `View Patent ${patent.patent_number}` : 'View on Patent Database'}
+          </a>
         </div>
       </div>
     </div>

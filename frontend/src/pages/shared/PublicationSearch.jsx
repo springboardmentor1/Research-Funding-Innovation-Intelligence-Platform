@@ -1,15 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { FaChartLine, FaSearch, FaBook, FaFire, FaSpinner } from 'react-icons/fa';
+import { FaChartLine, FaSearch, FaSpinner, FaExternalLinkAlt, FaBook, FaSync } from 'react-icons/fa';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
   BarChart, Bar
 } from 'recharts';
 import dashboardService from '../../services/dashboardService';
+import publicationService from '../../services/publicationService';
+
+// Build the canonical link to a research paper:
+// DOI → doi.org (resolves to publisher page), else source_url, else Semantic Scholar search
+const getPaperUrl = (pub) => {
+  if (pub.doi) {
+    const doi = pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`;
+    return doi;
+  }
+  return pub.source_url || `https://www.semanticscholar.org/search?q=${encodeURIComponent(pub.title)}&sort=Relevance`;
+};
+
+// Helpers for analytics links
+const scholarUrl = (topic) =>
+  `https://scholar.google.com/scholar?q=${encodeURIComponent(topic)}`;
+const semanticUrl = (kw) =>
+  `https://www.semanticscholar.org/search?q=${encodeURIComponent(kw)}&sort=Relevance`;
 
 export default function PublicationSearch() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [papers, setPapers] = useState([]);
+  const [papersLoading, setPapersLoading] = useState(false);
+  const [paperSearch, setPaperSearch] = useState('');
+  const [syncing, setSyncing] = useState(false);
 
   useEffect(() => {
     const fetchPublications = async () => {
@@ -26,7 +47,33 @@ export default function PublicationSearch() {
       }
     };
     fetchPublications();
+    loadPapers();
   }, []);
+
+  const loadPapers = async () => {
+    setPapersLoading(true);
+    try {
+      const result = await publicationService.getPublications();
+      if (Array.isArray(result) && result.length > 0) setPapers(result);
+    } catch (e) {
+      // silently fail — user may not have synced yet
+    } finally {
+      setPapersLoading(false);
+    }
+  };
+
+  const handleSyncPapers = async () => {
+    setSyncing(true);
+    try {
+      await publicationService.searchPublications();
+      await loadPapers();
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setSyncing(false);
+    }
+  };
+
 
   const summary = data?.summary_metrics || {};
   
@@ -173,6 +220,7 @@ export default function PublicationSearch() {
                 <th className="pb-3 font-medium">Publications</th>
                 <th className="pb-3 font-medium">Trend</th>
                 <th className="pb-3 font-medium">Citations</th>
+                <th className="pb-3 font-medium">Link</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/50">
@@ -182,6 +230,16 @@ export default function PublicationSearch() {
                   <td className="py-4">{row.pubs}</td>
                   <td className="py-4 font-semibold text-emerald-400">{row.trend}</td>
                   <td className="py-4">{row.citations}</td>
+                  <td className="py-4">
+                    <a
+                      href={scholarUrl(row.topic)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 text-xs font-medium transition-colors"
+                    >
+                      <FaExternalLinkAlt size={10} /> Google Scholar
+                    </a>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -194,11 +252,109 @@ export default function PublicationSearch() {
         <h3 className="text-sm font-semibold text-white mb-4">Research Keywords Cloud</h3>
         <div className="flex flex-wrap gap-3">
           {keywords.map((kw, idx) => (
-            <span key={idx} className="px-4 py-2 bg-slate-700/50 text-slate-300 rounded-full text-sm hover:bg-slate-700 hover:text-white transition-colors cursor-pointer">
+            <a
+              key={idx}
+              href={semanticUrl(kw)}
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 bg-slate-700/50 text-slate-300 rounded-full text-sm hover:bg-purple-500/20 hover:text-purple-300 hover:border-purple-500/40 border border-transparent transition-all"
+            >
               {kw}
-            </span>
+            </a>
           ))}
         </div>
+      </div>
+
+      {/* ── My Research Papers ─────────────────────────────────────────── */}
+      <div className="bg-[#1c2438] border border-slate-800 rounded-2xl p-5">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h3 className="text-white font-bold text-lg">My Research Papers</h3>
+            <p className="text-xs text-slate-500 mt-0.5">Your synced publications — click any title to open the actual paper</p>
+          </div>
+          <div className="flex items-center gap-3">
+            {/* Search */}
+            <div className="relative">
+              <FaSearch className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500" size={11} />
+              <input
+                type="text"
+                value={paperSearch}
+                onChange={e => setPaperSearch(e.target.value)}
+                placeholder="Filter papers..."
+                className="bg-[#0f1523] border border-slate-700 focus:border-purple-500 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 outline-none w-44 transition-colors"
+              />
+            </div>
+            {/* Sync */}
+            <button
+              onClick={handleSyncPapers}
+              disabled={syncing || papersLoading}
+              className="flex items-center gap-1.5 bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/30 px-3 py-1.5 rounded-lg text-xs font-medium transition-all disabled:opacity-60"
+            >
+              <FaSync size={11} className={syncing ? 'animate-spin' : ''} />
+              {syncing ? 'Syncing…' : 'Sync Papers'}
+            </button>
+          </div>
+        </div>
+
+        {papersLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="w-6 h-6 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+          </div>
+        ) : papers.length === 0 ? (
+          <div className="text-center py-12 text-slate-500">
+            <FaBook size={36} className="mx-auto mb-3 opacity-30" />
+            <p className="text-sm">No papers synced yet.</p>
+            <p className="text-xs mt-1">Click <span className="text-purple-400 font-medium">Sync Papers</span> to import your publications from OpenAlex.</p>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {papers
+              .filter(p => !paperSearch || p.title?.toLowerCase().includes(paperSearch.toLowerCase()) || p.authors?.toLowerCase().includes(paperSearch.toLowerCase()))
+              .map(pub => {
+                const paperUrl = getPaperUrl(pub);
+                const isOpenAccess = pub.open_access;
+                return (
+                  <div key={pub.publication_id || pub.openalex_id} className="bg-[#0f1523] border border-slate-800 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        {/* Title — clicking opens the real paper */}
+                        <a
+                          href={paperUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sm font-semibold text-white group-hover:text-purple-300 transition-colors leading-snug line-clamp-2 flex items-start gap-1.5"
+                        >
+                          {pub.title}
+                          <FaExternalLinkAlt size={10} className="mt-1 shrink-0 opacity-50 group-hover:opacity-100" />
+                        </a>
+                        <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 text-xs text-slate-500">
+                          {pub.authors && <span>👤 {pub.authors.split(',').slice(0, 2).join(', ')}{pub.authors.includes(',') ? ' et al.' : ''}</span>}
+                          {pub.journal && <span>📖 {pub.journal}</span>}
+                          {pub.publication_year && <span>📅 {pub.publication_year}</span>}
+                          {pub.citation_count > 0 && <span className="text-amber-400/70">⭐ {pub.citation_count} citations</span>}
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-end gap-1.5 shrink-0">
+                        {isOpenAccess && (
+                          <span className="text-[10px] px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full">Open Access</span>
+                        )}
+                        {pub.doi && (
+                          <a
+                            href={`https://doi.org/${pub.doi.replace(/^https?:\/\/doi\.org\//, '')}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[10px] font-mono text-cyan-500/70 hover:text-cyan-400 transition-colors"
+                          >
+                            DOI: {pub.doi.replace(/^https?:\/\/doi\.org\//, '')}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        )}
       </div>
 
     </div>

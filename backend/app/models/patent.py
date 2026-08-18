@@ -28,6 +28,12 @@ class Patent(Base):
         nullable=False
     )
 
+    patent_number = Column(
+        String(255),
+        nullable=True
+    )
+
+
     # Must match users.id type (String/UUID)
     user_id = Column(
         String(36),
@@ -107,6 +113,7 @@ class Patent(Base):
         return {
             "patent_id": self.patent_id,
             "external_patent_id": self.external_patent_id,
+            "patent_number": self.patent_number,
             "user_id": self.user_id,
             "title": self.title,
             "abstract": self.abstract,
