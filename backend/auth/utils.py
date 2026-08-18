@@ -1,4 +1,4 @@
-from passlib.context import CryptContext
+import bcrypt
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 import os
@@ -10,15 +10,15 @@ SECRET_KEY = os.getenv("SECRET_KEY", "fallback_secret_key")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 60))
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+    """Hash a password using bcrypt."""
+    return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    """Verify a plain password against a bcrypt hash."""
+    return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
 
 
 def create_access_token(data: dict, expires_delta: timedelta = None) -> str:

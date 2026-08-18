@@ -4,8 +4,23 @@ from database.db import get_db
 from database.models import User, Profile, ResearchPaper, FundingOpportunity, Patent
 from funding.loader import search_funding, get_all_funding
 from patents.loader import get_all_patents
+from dashboard.executive import get_executive_summary
 
 router = APIRouter(prefix="/dashboard", tags=["Dashboard"])
+
+
+@router.get("/executive")
+def executive_dashboard():
+    """
+    Executive Dashboard — aggregated intelligence summary.
+
+    Returns combined metrics from research, funding, patents,
+    technology intelligence, innovation scoring, and commercialization.
+    """
+    try:
+        return get_executive_summary()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to build executive summary: {str(e)}")
 
 
 @router.get("/{user_id}")

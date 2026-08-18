@@ -1,16 +1,31 @@
-Grant,Organization,Area,Amount,Deadline,Description
-AI Healthcare Innovation,DST,AI,₹10 Lakhs,2025-03-31,Funding for AI-driven diagnostics and treatment planning systems
-Robotics Research Grant,DRDO,Robotics,₹25 Lakhs,2025-06-15,Advanced robotics for defense and industrial automation
-Startup Seed Fund,BIRAC,Healthcare,₹50 Lakhs,2025-04-30,Early-stage funding for healthcare technology startups
-Smart Agriculture AI,ICAR,AI,₹15 Lakhs,2025-05-01,AI solutions for crop yield prediction and pest management
-Deep Learning Research,SERB,Machine Learning,₹20 Lakhs,2025-07-31,Fundamental research in deep learning architectures
-Quantum Computing Initiative,DST,Quantum Computing,₹1 Crore,2025-09-30,Research in quantum algorithms and quantum hardware
-NLP for Indian Languages,MeitY,NLP,₹30 Lakhs,2025-08-15,Natural language processing for Indic scripts and dialects
-Cybersecurity Research Fund,NCSC,Cybersecurity,₹18 Lakhs,2025-10-01,AI-based threat detection and cybersecurity frameworks
-Clean Energy AI,MNRE,Energy,₹40 Lakhs,2025-11-30,AI optimization for solar and wind energy systems
-Autonomous Vehicles Grant,NITI Aayog,Robotics,₹60 Lakhs,2025-12-31,Research and prototyping of autonomous transportation systems
-Computer Vision Grant,SERB,Computer Vision,₹12 Lakhs,2025-04-15,Novel approaches in object detection and scene understanding
-IoT Healthcare Devices,DBT,Healthcare,₹22 Lakhs,2025-06-01,Connected medical devices for remote patient monitoring
-Federated Learning Fund,TCS Research,Machine Learning,₹8 Lakhs,2025-05-15,Privacy-preserving machine learning using federated approaches
-Drug Discovery AI,DST,Bioinformatics,₹35 Lakhs,2025-08-31,AI models for drug target identification and molecule generation
-Educational Technology Fund,UGC,Education Technology,₹5 Lakhs,2025-03-15,AI-powered personalized learning and assessment tools
+Grant,Organization,Area,Amount,Deadline,Description,Country,Eligibility,Keywords
+"AI Healthcare Innovation",DST,AI,₹10 Lakhs,2025-03-31,"Funding for AI-driven diagnostics and treatment planning systems",India,"Universities, Research Labs","Artificial Intelligence,Healthcare,Diagnostics,Deep Learning"
+"Robotics Research Grant",DRDO,Robotics,₹25 Lakhs,2025-06-15,"Advanced robotics for defense and industrial automation",India,"Government Labs, IITs","Robotics,Automation,Defense,Control Systems"
+"Startup Seed Fund",BIRAC,Healthcare,₹50 Lakhs,2025-04-30,"Early-stage funding for healthcare technology startups",India,"Startups, Incubators","Healthcare,Biotech,Medical Devices,Innovation"
+"Smart Agriculture AI",ICAR,AI,₹15 Lakhs,2025-05-01,"AI solutions for crop yield prediction and pest management",India,"Agricultural Universities, Research Institutes","Artificial Intelligence,Agriculture,Crop Prediction,IoT"
+"Deep Learning Research",SERB,Machine Learning,₹20 Lakhs,2025-07-31,"Fundamental research in deep learning architectures",India,"Universities, Research Scholars","Deep Learning,Neural Networks,Machine Learning,Computer Vision"
+"Quantum Computing Initiative",DST,Quantum Computing,₹1 Crore,2025-09-30,"Research in quantum algorithms and quantum hardware",India,"IITs, IISERs, National Labs","Quantum Computing,Quantum Algorithms,Quantum Hardware,Physics"
+"NLP for Indian Languages",MeitY,NLP,₹30 Lakhs,2025-08-15,"Natural language processing for Indic scripts and dialects",India,"Universities, Tech Companies","NLP,Language Processing,Indian Languages,Machine Learning"
+"Cybersecurity Research Fund",NCSC,Cybersecurity,₹18 Lakhs,2025-10-01,"AI-based threat detection and cybersecurity frameworks",India,"Universities, Security Labs","Cybersecurity,Threat Detection,Network Security,AI"
+"Clean Energy AI",MNRE,Energy,₹40 Lakhs,2025-11-30,"AI optimization for solar and wind energy systems",India,"Research Institutes, Energy Labs","AI,Clean Energy,Solar,Wind,Optimization"
+"Autonomous Vehicles Grant",NITI Aayog,Robotics,₹60 Lakhs,2025-12-31,"Research and prototyping of autonomous transportation systems",India,"IITs, Industry Partners","Autonomous Vehicles,Self-Driving,Computer Vision,Robotics"
+"Computer Vision Grant",SERB,Computer Vision,₹12 Lakhs,2025-04-15,"Novel approaches in object detection and scene understanding",India,"Universities, Research Scholars","Computer Vision,Object Detection,Image Processing,Deep Learning"
+"IoT Healthcare Devices",DBT,Healthcare,₹22 Lakhs,2025-06-01,"Connected medical devices for remote patient monitoring",India,"Biotech Companies, Hospitals","IoT,Healthcare,Medical Devices,Remote Monitoring"
+"Federated Learning Fund",TCS Research,Machine Learning,₹8 Lakhs,2025-05-15,"Privacy-preserving machine learning using federated approaches",India,"Universities, Research Labs","Federated Learning,Privacy,Machine Learning,Distributed Computing"
+"Drug Discovery AI",DST,Bioinformatics,₹35 Lakhs,2025-08-31,"AI models for drug target identification and molecule generation",India,"Pharma Companies, Research Labs","Drug Discovery,AI,Bioinformatics,Molecular Design"
+"Educational Technology Fund",UGC,Education Technology,₹5 Lakhs,2025-03-15,"AI-powered personalized learning and assessment tools",India,"Universities, EdTech Companies","Education,AI,Personalized Learning,Assessment"
+"NSF AI Research Institutes",NSF,AI,₹2 Crore,2025-09-01,"Large-scale AI research institute funding for breakthrough research",USA,"Universities, Research Consortia","Artificial Intelligence,Machine Learning,Deep Learning,Foundation Models"
+"EU Horizon AI Grant",European Commission,AI,₹1.5 Crore,2025-10-15,"Collaborative AI research across European institutions",EU,"EU Universities, Research Labs","AI,Machine Learning,Ethics,Responsible AI"
+"Blockchain Innovation Fund",NASSCOM,Blockchain,₹15 Lakhs,2025-07-01,"Blockchain technology for enterprise and public sector applications",India,"Startups, Tech Companies","Blockchain,Smart Contracts,DeFi,Web3"
+"Data Science Excellence Grant",IISC,Data Science,₹18 Lakhs,2025-06-30,"Advanced data science research and big data analytics",India,"Universities, Data Labs","Data Science,Big Data,Analytics,Machine Learning"
+"LLM Research Grant",Microsoft Research,AI,₹25 Lakhs,2025-08-01,"Research on large language models and generative AI applications",Global,"Universities, Research Labs","Large Language Models,Generative AI,NLP,Transformer"
+"Medical AI Innovation Fund",ICMR,Healthcare,₹30 Lakhs,2025-09-15,"AI applications in medical diagnosis and treatment optimization",India,"Medical Colleges, Hospitals","Medical AI,Diagnosis,Healthcare,Deep Learning"
+"Edge Computing Research",Intel Research,AI,₹12 Lakhs,2025-07-15,"Edge AI computing for real-time inference and IoT applications",Global,"Universities, Tech Labs","Edge Computing,IoT,Real-Time AI,Embedded Systems"
+"Cyber Defense AI Grant",CERT-In,Cybersecurity,₹20 Lakhs,2025-11-01,"AI-powered cyber defense and incident response systems",India,"Government Labs, Security Firms","Cybersecurity,AI Defense,Incident Response,Threat Intelligence"
+"Open Source AI Fund",Google Research,AI,₹10 Lakhs,2025-12-15,"Support for open-source AI tools and framework development",Global,"Developers, Research Labs","Open Source,AI,Machine Learning,Tools"
+"Climate AI Research",UNEP,AI,₹45 Lakhs,2025-10-30,"AI applications for climate change mitigation and adaptation",Global,"Universities, Environmental Orgs","Climate AI,Sustainability,Environment,Machine Learning"
+"Fintech Innovation Grant",RBI Innovation Hub,Blockchain,₹20 Lakhs,2025-08-15,"Blockchain and AI solutions for financial services innovation",India,"Fintech Startups, Banks","Fintech,Blockchain,AI,Digital Payments"
+"3D Vision and Graphics Grant",NVIDIA Research,Computer Vision,₹15 Lakhs,2025-09-30,"Advanced 3D computer vision and neural rendering research",Global,"Universities, Graphics Labs","3D Vision,Neural Rendering,Computer Vision,NeRF"
+"Privacy-Preserving AI Grant",MEITY,AI,₹14 Lakhs,2025-11-15,"Research on privacy-preserving AI techniques and differential privacy",India,"Universities, Privacy Labs","Privacy,Differential Privacy,Federated Learning,AI Ethics"
+"Semiconductor AI Design",Ministry of Electronics,AI,₹50 Lakhs,2025-12-01,"AI-assisted semiconductor and chip design methodologies",India,"IITs, Semiconductor Companies","Semiconductor,Chip Design,AI,EDA"
+"Space Technology AI",ISRO,AI,₹40 Lakhs,2026-01-15,"AI applications in space technology and satellite data analysis",India,"Space Research Labs, Universities","Space Technology,Satellite,AI,Remote Sensing"

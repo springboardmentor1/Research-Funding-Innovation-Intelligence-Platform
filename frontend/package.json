@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage"
   },
@@ -18,15 +19,17 @@
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-hot-toast": "^2.6.0",
-    "react-router-dom": "^7.18.1"
+    "react-router-dom": "^7.18.1",
+    "recharts": "^3.10.0"
   },
   "devDependencies": {
-    "@testing-library/react": "^14.0.0",
     "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
     "@vitest/ui": "^1.0.0",
+    "jsdom": "^29.1.1",
     "oxlint": "^1.71.0",
     "vite": "^8.1.1",
     "vitest": "^1.0.0"

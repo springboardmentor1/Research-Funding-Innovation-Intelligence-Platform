@@ -1,11 +1,19 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserPlus, Eye, EyeOff, Zap } from 'lucide-react';
+import { UserPlus, Eye, EyeOff, Zap, Sparkles, ArrowRight, CheckCircle, Sun, Moon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import client from '../api/client';
+import { useTheme } from '../context/ThemeContext';
+
+const FEATURES = [
+  'AI-powered funding recommendations',
+  'Publication trend analytics',
+  'Research intelligence dashboard',
+];
 
 export default function Register() {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
   const [form, setForm]       = useState({ username: '', email: '', password: '', confirmPassword: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState('');
@@ -13,6 +21,8 @@ export default function Register() {
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
+
+  const pwdStrength = form.password.length >= 10 ? 'strong' : form.password.length >= 6 ? 'medium' : form.password.length > 0 ? 'weak' : '';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +51,13 @@ export default function Register() {
       toast.success('Account created! Please sign in.');
       navigate('/login');
     } catch (err) {
-      setError(err.response?.data?.detail || 'Registration failed.');
+      if (err.response) {
+        setError(err.response.data?.detail || 'Registration failed.');
+      } else if (err.request) {
+        setError('Cannot connect to server. Please make sure the backend is running on port 8000.');
+      } else {
+        setError('Registration failed. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
@@ -49,11 +65,37 @@ export default function Register() {
 
   return (
     <div className="auth-page">
-      <div className="auth-card">
+      {/* Theme toggle */}
+      <button
+        className="theme-toggle-btn theme-toggle-auth"
+        onClick={toggleTheme}
+        title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        id="theme-toggle-register"
+      >
+        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
+
+      <div className="auth-orb auth-orb-1" />
+      <div className="auth-orb auth-orb-2" />
+      <div className="auth-orb auth-orb-3" />
+
+      <div className="auth-card" style={{ animation: 'fadeInUp 0.6s ease', maxWidth: '460px' }}>
         <div className="auth-logo">
-          <div className="logo-mark"><Zap size={32} color="white" /></div>
+          <div className="logo-mark">
+            <Zap size={30} color="white" />
+          </div>
           <h1>Create Account</h1>
           <p>Join the AI Research Funding Platform</p>
+        </div>
+
+        {/* Features */}
+        <div style={{ marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+          {FEATURES.map(f => (
+            <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+              <CheckCircle size={13} style={{ color: 'var(--accent-success)', flexShrink: 0 }} />
+              {f}
+            </div>
+          ))}
         </div>
 
         {error && (
@@ -110,6 +152,21 @@ export default function Register() {
                 {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
+            {pwdStrength && (
+              <div style={{ marginTop: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ flex: 1, height: 3, borderRadius: 100, background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+                  <div style={{
+                    width: pwdStrength === 'strong' ? '100%' : pwdStrength === 'medium' ? '60%' : '30%',
+                    height: '100%', borderRadius: 100, transition: 'all 0.3s ease',
+                    background: pwdStrength === 'strong' ? 'var(--gradient-success)' : pwdStrength === 'medium' ? 'var(--gradient-funding)' : 'linear-gradient(135deg, #ef4444, #dc2626)',
+                  }} />
+                </div>
+                <span style={{
+                  fontSize: '0.65rem', fontWeight: 600, textTransform: 'uppercase',
+                  color: pwdStrength === 'strong' ? '#34d399' : pwdStrength === 'medium' ? '#fbbf24' : '#f87171',
+                }}>{pwdStrength}</span>
+              </div>
+            )}
           </div>
 
           <div className="form-group">
@@ -129,16 +186,20 @@ export default function Register() {
             type="submit"
             className="btn btn-primary btn-full"
             disabled={loading}
+            style={{ marginTop: '0.5rem', height: '48px', fontSize: '0.95rem' }}
           >
-            {loading ? <span className="loading-spinner" /> : <UserPlus size={16} />}
+            {loading ? <span className="loading-spinner" /> : <UserPlus size={18} />}
             {loading ? 'Creating account…' : 'Create Account'}
           </button>
         </form>
 
-        <div className="auth-link">
-          Already have an account?{' '}
-          <Link to="/login">Sign in →</Link>
+        <div className="auth-divider">
+          <span>Already a member?</span>
         </div>
+
+        <Link to="/login" className="btn btn-secondary btn-full" style={{ gap: '0.5rem' }}>
+          Sign In <ArrowRight size={15} />
+        </Link>
       </div>
     </div>
   );

@@ -5,39 +5,39 @@ from typing import List, Dict, Any
 PATENTS_CSV_PATH = os.path.join(os.path.dirname(__file__), "..", "dataset", "patents.csv")
 
 
-def search_patents(technology: str) -> List[Dict[str, Any]]:
+def _load_df() -> pd.DataFrame:
+    """Load the patents CSV, filling NA values."""
+    csv_path = os.path.abspath(PATENTS_CSV_PATH)
+    if not os.path.exists(csv_path):
+        raise FileNotFoundError(f"Patents dataset not found at {csv_path}")
+    return pd.read_csv(csv_path).fillna("")
+
+
+def search_patents(query: str) -> List[Dict[str, Any]]:
     """
-    Search patents by technology area (case-insensitive, partial match).
-    Also searches within the Title and Abstract columns.
-    
+    Search patents by keyword (case-insensitive, partial match).
+    Searches across Title, Technology, Abstract, Assignee, Country, and CPC Class.
+
     Args:
-        technology: Technology keyword
+        query: Search keyword
 
     Returns:
         List of matching patent dicts
     """
-    csv_path = os.path.abspath(PATENTS_CSV_PATH)
+    df = _load_df()
+    q = query.lower()
 
-    if not os.path.exists(csv_path):
-        raise FileNotFoundError(f"Patents dataset not found at {csv_path}")
+    # Search across multiple columns
+    searchable = ["Title", "Technology", "Abstract", "Assignee", "Country", "CPC Class", "Inventor"]
+    mask = pd.Series([False] * len(df), index=df.index)
+    for col in searchable:
+        if col in df.columns:
+            mask = mask | df[col].str.lower().str.contains(q, na=False)
 
-    df = pd.read_csv(csv_path).fillna("")
-    tech_lower = technology.lower()
-
-    # Search in Technology, Title, and Abstract columns
-    mask = (
-        df["Technology"].str.lower().str.contains(tech_lower, na=False) |
-        df["Title"].str.lower().str.contains(tech_lower, na=False) |
-        df["Abstract"].str.lower().str.contains(tech_lower, na=False)
-    )
-    results = df[mask].to_dict(orient="records")
-    return results
+    return df[mask].to_dict(orient="records")
 
 
 def get_all_patents() -> List[Dict[str, Any]]:
     """Return all patents."""
-    csv_path = os.path.abspath(PATENTS_CSV_PATH)
-    if not os.path.exists(csv_path):
-        raise FileNotFoundError(f"Patents dataset not found at {csv_path}")
-    df = pd.read_csv(csv_path).fillna("")
+    df = _load_df()
     return df.to_dict(orient="records")

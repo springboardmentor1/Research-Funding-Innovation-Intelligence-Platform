@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, BookOpen, ExternalLink, Users, Calendar } from 'lucide-react';
+import { Search, BookOpen, ExternalLink, Users, Calendar, Sparkles, Hash, Eye } from 'lucide-react';
 import client from '../api/client';
 
 export default function ResearchSearch() {
@@ -28,13 +28,20 @@ export default function ResearchSearch() {
     }
   };
 
-  const quickSearches = ['Machine Learning', 'Computer Vision', 'NLP', 'Quantum Computing', 'Bioinformatics'];
+  const quickSearches = ['Machine Learning', 'Computer Vision', 'NLP', 'Quantum Computing', 'Bioinformatics', 'Cybersecurity'];
 
   return (
     <div style={{ animation: 'fadeIn 0.4s ease' }}>
-      <div className="page-header">
-        <h1>Research Papers</h1>
-        <p>Search 250M+ academic papers via the OpenAlex API</p>
+      {/* Hero */}
+      <div className="intel-hero" style={{ marginBottom: '1.5rem' }}>
+        <div className="intel-hero-content">
+          <div className="intel-badge">
+            <BookOpen size={12} />
+            OpenAlex Integration
+          </div>
+          <h1>Research Papers</h1>
+          <p>Search 250M+ academic papers via the OpenAlex API — discover groundbreaking research instantly.</p>
+        </div>
       </div>
 
       {/* Search Bar */}
@@ -48,6 +55,7 @@ export default function ResearchSearch() {
               placeholder="Search by topic, keyword, or author…"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
+              style={{ height: '48px', fontSize: '0.9rem' }}
             />
           </div>
           <button
@@ -55,6 +63,7 @@ export default function ResearchSearch() {
             type="submit"
             className="btn btn-primary"
             disabled={loading || !topic.trim()}
+            style={{ height: '48px', paddingInline: '1.5rem' }}
           >
             {loading ? <span className="loading-spinner" /> : <Search size={16} />}
             {loading ? 'Searching…' : 'Search'}
@@ -65,18 +74,18 @@ export default function ResearchSearch() {
       {/* Quick Searches */}
       {!searched && (
         <div style={{ marginBottom: '2rem' }}>
-          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.75rem' }}>
-            Popular topics:
+          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '0.6rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <Sparkles size={12} /> Popular topics:
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
             {quickSearches.map((q) => (
               <button
                 key={q}
-                className="btn btn-ghost"
-                style={{ padding: '0.4rem 0.9rem', fontSize: '0.8rem' }}
+                className="keyword-tag size-md"
                 onClick={() => { setTopic(q); }}
+                style={{ cursor: 'pointer' }}
               >
-                {q}
+                <Hash size={11} /> {q}
               </button>
             ))}
           </div>
@@ -85,7 +94,6 @@ export default function ResearchSearch() {
 
       {error && <div className="alert alert-error">⚠️ {error}</div>}
 
-      {/* Results */}
       {loading && (
         <div className="loading-overlay">
           <div className="loading-spinner" />
@@ -111,14 +119,24 @@ export default function ResearchSearch() {
               Found <strong style={{ color: 'var(--text-primary)' }}>{results.length}</strong> papers for "
               <strong style={{ color: 'var(--accent-primary)' }}>{topic}</strong>"
             </p>
-            <span className="badge badge-green">✓ Saved to DB</span>
+            <span className="badge badge-green" style={{ padding: '0.3rem 0.7rem' }}>✓ Saved to DB</span>
           </div>
 
           <div className="results-grid">
             {results.map((paper, i) => (
-              <div key={paper.id || i} className="result-card" id={`paper-${i}`}>
+              <div
+                key={paper.id || i}
+                className="result-card"
+                id={`paper-${i}`}
+                style={{
+                  borderLeft: '3px solid var(--accent-primary)',
+                  background: 'linear-gradient(135deg, rgba(99,102,241,0.05) 0%, var(--bg-card) 100%)',
+                  animationDelay: `${i * 0.04}s`,
+                  animation: 'fadeInUp 0.4s ease backwards',
+                }}
+              >
                 <div className="result-title">
-                  <BookOpen size={14} style={{ display: 'inline', marginRight: '6px', opacity: 0.6 }} />
+                  <BookOpen size={14} style={{ display: 'inline', marginRight: '6px', color: 'var(--accent-primary)', opacity: 0.8 }} />
                   {paper.title}
                 </div>
                 <div className="result-meta">

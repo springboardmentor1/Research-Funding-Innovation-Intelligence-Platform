@@ -1,40 +1,73 @@
 version: '3.8'
 
 services:
+  # ── Backend (FastAPI) ───────────────────────────────────────
   backend:
     build:
-      context: .
-      dockerfile: Dockerfile.dev
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rfiip-backend
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend:/app/backend
-      - ./backend/research_platform.db:/app/research_platform.db
     environment:
-      - DATABASE_URL=sqlite:///./research_platform.db
-      - SECRET_KEY=dev_secret_key_change_in_production
-      - ACCESS_TOKEN_EXPIRE_MINUTES=60
-    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+      - DATABASE_URL=${DATABASE_URL:-postgresql://rfiip:rfiip_secret@db:5432/research_platform}
+      - SECRET_KEY=${SECRET_KEY:-dev_secret_key_change_in_production}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES:-60}
+    volumes:
+      - backend-data:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
     networks:
-      - ai-research
+      - rfiip-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
 
+  # ── Frontend (React + Nginx) ────────────────────────────────
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile.frontend.dev
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rfiip-frontend
     ports:
-      - "5173:5173"
-    volumes:
-      - ./frontend:/app/frontend
-      - /app/frontend/node_modules
-    environment:
-      - VITE_API_BASE_URL=http://backend:8000
+      - "5173:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     networks:
-      - ai-research
-    command: npm run dev -- --host
+      - rfiip-network
+    restart: unless-stopped
+
+  # ── PostgreSQL (Production Database) ────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: rfiip-postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-rfiip}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-rfiip_secret}
+      - POSTGRES_DB=${POSTGRES_DB:-research_platform}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - rfiip-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rfiip"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  backend-data:
+  postgres-data:
 
 networks:
-  ai-research:
+  rfiip-network:
     driver: bridge

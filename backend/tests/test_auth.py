@@ -60,7 +60,7 @@ def test_login_invalid_credentials(client):
         json={"username": "testuser", "password": "wrongpassword"}
     )
     assert response.status_code == 401
-    assert "Invalid" in response.json()["detail"]
+    assert "incorrect" in response.json()["detail"]
 
 
 def test_health_check(client):

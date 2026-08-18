@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User, Save, CheckCircle } from 'lucide-react';
+import { User, Save, CheckCircle, Sparkles, GraduationCap, MapPin, Building2, Hash, FileText } from 'lucide-react';
 import toast from 'react-hot-toast';
 import client from '../api/client';
 
@@ -22,7 +22,6 @@ export default function Profile() {
   const [saved, setSaved]       = useState(false);
   const [error, setError]       = useState('');
 
-  // Load existing profile
   useEffect(() => {
     if (!user.id) { setFetching(false); return; }
     client.get(`/profile/${user.id}`)
@@ -37,7 +36,7 @@ export default function Profile() {
           research_area:      p.research_area || ''
         });
       })
-      .catch(() => {}) // profile doesn't exist yet — fine
+      .catch(() => {})
       .finally(() => setFetching(false));
   }, []);
 
@@ -64,6 +63,9 @@ export default function Profile() {
     }
   };
 
+  const completionPct = [form.name, form.university, form.department, form.research_area, form.research_interests, form.keywords]
+    .filter(Boolean).length / 6 * 100;
+
   if (fetching) return (
     <div className="loading-overlay">
       <div className="loading-spinner" />
@@ -72,34 +74,53 @@ export default function Profile() {
   );
 
   return (
-    <div style={{ animation: 'fadeIn 0.4s ease', maxWidth: '700px' }}>
-      <div className="page-header">
-        <h1>Research Profile</h1>
-        <p>Your profile helps us personalize funding and paper recommendations</p>
+    <div style={{ animation: 'fadeIn 0.4s ease', maxWidth: '780px' }}>
+      {/* Hero */}
+      <div className="intel-hero" style={{ marginBottom: '1.5rem' }}>
+        <div className="intel-hero-content">
+          <div className="intel-badge">
+            <GraduationCap size={12} />
+            Research Profile
+          </div>
+          <h1 style={{ fontSize: '1.75rem' }}>Research Profile</h1>
+          <p>Your profile powers AI-driven funding recommendations and personalized research insights.</p>
+        </div>
       </div>
 
-      {/* Avatar Card */}
-      <div className="card" style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+      {/* Profile Card */}
+      <div className="card" style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1.25rem', padding: '1.25rem 1.5rem' }}>
         <div style={{
-          width: 64, height: 64, borderRadius: '50%',
+          width: 64, height: 64, borderRadius: 'var(--radius-md)',
           background: 'var(--gradient-main)', display: 'flex',
           alignItems: 'center', justifyContent: 'center',
-          fontSize: '1.75rem', fontWeight: 700, flexShrink: 0
+          fontSize: '1.75rem', fontWeight: 800, flexShrink: 0,
+          fontFamily: 'Outfit, sans-serif', color: 'white',
+          boxShadow: '0 0 25px rgba(99,102,241,0.3)',
         }}>
           {(user.username || 'U')[0].toUpperCase()}
         </div>
-        <div>
-          <div style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--text-primary)' }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--text-primary)', fontFamily: 'Outfit, sans-serif' }}>
             {user.username}
           </div>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{user.email}</div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-            User ID: #{user.id}
+          <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>{user.email}</div>
+          {/* Completion Bar */}
+          <div style={{ marginTop: '0.6rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div style={{ flex: 1, height: 5, borderRadius: 100, background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+              <div style={{
+                width: `${completionPct}%`, height: '100%', borderRadius: 100,
+                background: completionPct === 100 ? 'var(--gradient-success)' : 'var(--gradient-main)',
+                transition: 'width 0.8s ease',
+              }} />
+            </div>
+            <span style={{ fontSize: '0.7rem', fontWeight: 600, color: completionPct === 100 ? '#34d399' : '#a5b4fc' }}>
+              {Math.round(completionPct)}% complete
+            </span>
           </div>
         </div>
         {saved && (
-          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-success)' }}>
-            <CheckCircle size={16} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-success)', animation: 'fadeInUp 0.3s ease' }}>
+            <CheckCircle size={18} />
             <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>Saved</span>
           </div>
         )}
@@ -107,53 +128,39 @@ export default function Profile() {
 
       {error && <div className="alert alert-error" id="profile-error">⚠️ {error}</div>}
 
-      <div className="card">
+      <div className="card" style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit} id="profile-form">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <div className="form-group">
-              <label htmlFor="profile-name">Full Name *</label>
-              <input
-                id="profile-name"
-                name="name"
-                type="text"
-                placeholder="Dr. Jane Smith"
-                value={form.name}
-                onChange={handleChange}
-              />
+              <label htmlFor="profile-name">
+                <User size={13} style={{ display: 'inline', verticalAlign: -2, marginRight: 5 }} />
+                Full Name *
+              </label>
+              <input id="profile-name" name="name" type="text" placeholder="Dr. Jane Smith" value={form.name} onChange={handleChange} />
             </div>
             <div className="form-group">
-              <label htmlFor="profile-university">University / Institution *</label>
-              <input
-                id="profile-university"
-                name="university"
-                type="text"
-                placeholder="IIT Bombay"
-                value={form.university}
-                onChange={handleChange}
-              />
+              <label htmlFor="profile-university">
+                <Building2 size={13} style={{ display: 'inline', verticalAlign: -2, marginRight: 5 }} />
+                University / Institution *
+              </label>
+              <input id="profile-university" name="university" type="text" placeholder="IIT Bombay" value={form.university} onChange={handleChange} />
             </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <div className="form-group">
-              <label htmlFor="profile-department">Department</label>
-              <input
-                id="profile-department"
-                name="department"
-                type="text"
-                placeholder="Computer Science"
-                value={form.department}
-                onChange={handleChange}
-              />
+              <label htmlFor="profile-department">
+                <MapPin size={13} style={{ display: 'inline', verticalAlign: -2, marginRight: 5 }} />
+                Department
+              </label>
+              <input id="profile-department" name="department" type="text" placeholder="Computer Science" value={form.department} onChange={handleChange} />
             </div>
             <div className="form-group">
-              <label htmlFor="profile-area">Research Area *</label>
-              <select
-                id="profile-area"
-                name="research_area"
-                value={form.research_area}
-                onChange={handleChange}
-              >
+              <label htmlFor="profile-area">
+                <Sparkles size={13} style={{ display: 'inline', verticalAlign: -2, marginRight: 5 }} />
+                Research Area *
+              </label>
+              <select id="profile-area" name="research_area" value={form.research_area} onChange={handleChange}>
                 <option value="">Select your primary area</option>
                 {RESEARCH_AREAS.map((a) => (
                   <option key={a} value={a}>{a}</option>
@@ -163,44 +170,41 @@ export default function Profile() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="profile-interests">Research Interests</label>
+            <label htmlFor="profile-interests">
+              <FileText size={13} style={{ display: 'inline', verticalAlign: -2, marginRight: 5 }} />
+              Research Interests
+            </label>
             <textarea
-              id="profile-interests"
-              name="research_interests"
+              id="profile-interests" name="research_interests"
               placeholder="Describe your research interests in detail…"
-              value={form.research_interests}
-              onChange={handleChange}
-              rows={3}
+              value={form.research_interests} onChange={handleChange} rows={3}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="profile-keywords">Keywords (comma-separated)</label>
+            <label htmlFor="profile-keywords">
+              <Hash size={13} style={{ display: 'inline', verticalAlign: -2, marginRight: 5 }} />
+              Keywords (comma-separated)
+            </label>
             <input
-              id="profile-keywords"
-              name="keywords"
-              type="text"
+              id="profile-keywords" name="keywords" type="text"
               placeholder="e.g., neural networks, medical imaging, federated learning"
-              value={form.keywords}
-              onChange={handleChange}
+              value={form.keywords} onChange={handleChange}
             />
             {form.keywords && (
-              <div style={{ marginTop: '0.5rem', display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+              <div style={{ marginTop: '0.6rem', display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
                 {form.keywords.split(',').map(k => k.trim()).filter(Boolean).map(k => (
-                  <span key={k} className="badge badge-purple">{k}</span>
+                  <span key={k} className="keyword-tag size-sm" style={{ animation: 'fadeInUp 0.2s ease' }}>{k}</span>
                 ))}
               </div>
             )}
           </div>
 
           <button
-            id="profile-save-btn"
-            type="submit"
-            className="btn btn-primary"
-            disabled={loading}
-            style={{ marginTop: '0.5rem' }}
+            id="profile-save-btn" type="submit" className="btn btn-primary"
+            disabled={loading} style={{ marginTop: '0.75rem', height: '46px', paddingInline: '2rem' }}
           >
-            {loading ? <span className="loading-spinner" /> : <Save size={16} />}
+            {loading ? <span className="loading-spinner" /> : <Save size={17} />}
             {loading ? 'Saving…' : 'Save Profile'}
           </button>
         </form>

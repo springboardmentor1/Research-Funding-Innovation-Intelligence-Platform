@@ -14,6 +14,10 @@ from research.router import router as research_router
 from funding.router import router as funding_router
 from patents.router import router as patents_router
 from dashboard.router import router as dashboard_router
+from recommendation.router import router as recommendation_router
+from analytics.router import router as analytics_router
+from innovation.router import router as innovation_router
+from reports.router import router as reports_router
 
 # Import database utilities
 from database.db import engine
@@ -31,29 +35,29 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="AI Research Funding Platform",
+    title="AI Research Funding & Innovation Intelligence Platform",
     description=(
         "A comprehensive platform connecting researchers with funding opportunities, "
         "research papers (via OpenAlex), and patent data. "
-        "Built with FastAPI + SQLite for Milestone 1."
+        "Milestone 2: Funding Recommendations, Grant Matching, Publication Trends, "
+        "Research Intelligence Dashboard. "
+        "Milestone 3: Patent Analytics, Innovation Scoring, Technology Intelligence, "
+        "Commercialization Recommendations. "
+        "Milestone 4: Executive Dashboard, Reports & Export (PDF/Excel), "
+        "Analytics Integration, Docker Deployment."
     ),
-    version="1.0.0",
+    version="4.0.0",
     lifespan=lifespan,
     docs_url="/docs",
     redoc_url="/redoc"
 )
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
-# Allow React dev server (localhost:5173) and any other local origin
+# Allow all origins during development to prevent CORS preflight failures
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:3000",
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -65,14 +69,18 @@ app.include_router(research_router)
 app.include_router(funding_router)
 app.include_router(patents_router)
 app.include_router(dashboard_router)
+app.include_router(recommendation_router)
+app.include_router(analytics_router)
+app.include_router(innovation_router)
+app.include_router(reports_router)
 
 
 # ── Root endpoint ─────────────────────────────────────────────────────────────
 @app.get("/", tags=["Health"])
 def root():
     return {
-        "message": "AI Research Funding Platform API is running!",
-        "version": "1.0.0",
+        "message": "AI Research Funding & Innovation Intelligence Platform is running!",
+        "version": "4.0.0",
         "docs": "/docs",
         "endpoints": {
             "auth": "/auth/register | /auth/login | /auth/logout",
@@ -80,7 +88,19 @@ def root():
             "research": "/research/search?topic=<keyword>",
             "funding": "/funding?area=<area>",
             "patents": "/patents?technology=<tech>",
-            "dashboard": "/dashboard/{user_id}"
+            "dashboard": "/dashboard/{user_id}",
+            "executive_dashboard": "/dashboard/executive",
+            "recommendations": "/recommendations?user_id=<id>",
+            "publication_trends": "/analytics/publication-trends",
+            "top_keywords": "/analytics/top-keywords",
+            "intelligence": "/analytics/dashboard",
+            "funding_analytics": "/analytics/funding",
+            "patent_analytics": "/analytics/patents",
+            "innovation_analytics": "/analytics/innovation",
+            "commercialization": "/analytics/commercialization",
+            "innovation_module": "/innovation/dashboard | /innovation/scores | /innovation/commercialization",
+            "reports_pdf": "/reports/funding/pdf | /reports/research/pdf | /reports/patent/pdf | /reports/innovation/pdf",
+            "reports_excel": "/reports/funding/excel | /reports/patent/excel | /reports/research/excel",
         }
     }
 
