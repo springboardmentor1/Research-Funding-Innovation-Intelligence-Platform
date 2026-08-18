@@ -27,6 +27,8 @@ class User(Base):
 
     patents = relationship("Patent", back_populates="user")
 
+    publications = relationship("Publication")
+
     profile = relationship(
         "ResearchProfile",
         back_populates="user",

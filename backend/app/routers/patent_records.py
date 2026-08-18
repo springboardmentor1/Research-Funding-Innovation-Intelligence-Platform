@@ -21,6 +21,15 @@ def create_patent( patent: PatentCreate, db: Session = Depends(get_db), current_
 def get_patents( db: Session = Depends(get_db), current_user: User = Depends(get_current_user) ):
     return db.query(Patent).filter(Patent.user_id == current_user.id).all()
 
+@router.get("/{patent_id}", response_model=PatentResponse)
+def get_patent_by_id( patent_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user) ):
+    patent = db.query(Patent).filter( Patent.id == patent_id, Patent.user_id == current_user.id ).first()
+    
+    if not patent:
+        raise HTTPException(status_code=404, detail="Patent not found")
+    
+    return patent
+
 @router.put("/{patent_id}", response_model=PatentResponse)
 def update_patent( patent_id: int, patent: PatentUpdate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user) ):
     patent_query = db.query(Patent).filter( Patent.id == patent_id, Patent.user_id == current_user.id )

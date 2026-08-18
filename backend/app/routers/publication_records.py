@@ -54,6 +54,30 @@ def get_publications(
 
     return publications
 
+@router.get("/{publication_id}", response_model=PublicationResponse)
+def get_publication_by_id(
+    publication_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+
+    publication = (
+        db.query(Publication)
+        .filter(
+            Publication.id == publication_id,
+            Publication.user_id == current_user.id
+        )
+        .first()
+    )
+
+    if not publication:
+        raise HTTPException(
+            status_code=404,
+            detail="Publication not found"
+        )
+
+    return publication
+
 @router.put("/{publication_id}", response_model=PublicationResponse)
 def update_publication(
     publication_id: int,

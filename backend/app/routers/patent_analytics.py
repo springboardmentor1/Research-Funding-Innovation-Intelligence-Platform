@@ -107,7 +107,8 @@ def technology_intelligence(
         intelligence.append({
             "technology": technology,
             "patent_count": count,
-            "trend": trend
+            "trend": trend,
+            "insight": f"Your {technology} patents show {trend.lower()} potential with {count} patent(s)"
         })
 
     return intelligence

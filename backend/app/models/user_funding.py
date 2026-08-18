@@ -3,6 +3,7 @@ from sqlalchemy import Integer
 from sqlalchemy import ForeignKey
 from sqlalchemy import String
 from sqlalchemy import DateTime
+from sqlalchemy import UniqueConstraint
 from sqlalchemy.sql import func
 
 from sqlalchemy.orm import relationship
@@ -12,6 +13,9 @@ from app.database.database import Base
 
 class UserFunding(Base):
     __tablename__ = "user_funding"
+    __table_args__ = (
+        UniqueConstraint('user_id', 'funding_id', name='unique_user_funding'),
+    )
 
     id = Column(Integer, primary_key=True, index=True)
 
@@ -33,8 +37,13 @@ class UserFunding(Base):
     )
 
     saved_at = Column(
-    DateTime(timezone=True),
-    server_default=func.now()
+        DateTime(timezone=True),
+        server_default=func.now()
+    )
+    
+    created_at = Column(
+        DateTime(timezone=True),
+        server_default=func.now()
     )
 
     applied_at = Column(

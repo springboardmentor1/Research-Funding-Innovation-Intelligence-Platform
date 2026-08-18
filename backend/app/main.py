@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.database.database import Base, engine
 
@@ -25,8 +26,21 @@ from app.routers import patent_records
 
 from app.routers import patent_analytics
 
+from app.routers import semantic_scholar
+from app.routers import crossref
+from app.routers import gov_funding
+
 app = FastAPI(
     title="Research Funding Platform"
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 Base.metadata.create_all(bind=engine)
@@ -51,6 +65,10 @@ app.include_router(publication_records.router)
 app.include_router(patent_records.router)
 
 app.include_router(patent_analytics.router)
+
+app.include_router(semantic_scholar.router)
+app.include_router(crossref.router)
+app.include_router(gov_funding.router)
 
 @app.get("/")
 def home():

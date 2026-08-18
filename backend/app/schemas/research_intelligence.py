@@ -1,9 +1,19 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class PublicationTrendResponse(BaseModel):
     year: int
     publication_count: int
+
+
+class PublicationDetail(BaseModel):
+    id: int
+    title: str
+    author: str
+    year: int
+    citations: int
+    status: str
 
 
 class ResearchDashboardResponse(BaseModel):
@@ -19,3 +29,4 @@ class ResearchDashboardResponse(BaseModel):
     total_recommendations: int
 
     publication_trends: list[PublicationTrendResponse]
+    publications: list[PublicationDetail] = []

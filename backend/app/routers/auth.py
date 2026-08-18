@@ -38,65 +38,89 @@ def register(
             detail="Email already registered"
         )
 
-    new_user = User(
-        full_name=request.full_name,
-        email=request.email,
-        password_hash=hash_password(request.password),
-        role_id=request.role_id,
-        organization_id=request.organization_id
-    )
+    try:
+        new_user = User(
+            full_name=request.full_name,
+            email=request.email,
+            password_hash=hash_password(request.password),
+            role_id=request.role_id,
+            organization_id=request.organization_id
+        )
 
-    db.add(new_user)
-    db.commit()
-    db.refresh(new_user)
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)
 
-    return {
-        "message": "User registered successfully",
-        "user": new_user
-    }
+        return {
+            "message": "User registered successfully",
+            "user": new_user
+        }
+    except Exception as e:
+        db.rollback()
+        print(f"Registration error: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Registration failed: {str(e)}"
+        )
 
 @router.post("/login")
 def login(
     request: UserLogin,
     db: Session = Depends(get_db)
 ):
-
+    print(f"Login attempt for email: {request.email}")
+    
     user = db.query(User).filter(
         User.email == request.email
     ).first()
 
     if not user:
+        print(f"User not found: {request.email}")
         raise HTTPException(
             status_code=401,
             detail="Invalid email or password"
         )
 
+    print(f"User found: {user.email}, attempting password verification")
+    
     if not verify_password(
         request.password,
         user.password_hash
     ):
+        print(f"Password verification failed for: {request.email}")
         raise HTTPException(
             status_code=401,
             detail="Invalid email or password"
         )
 
-    token = create_access_token(
-        {
-            "sub": str(user.id),
-            "role": user.role.role_name
+    print(f"Password verification successful for: {request.email}")
+    
+    try:
+        token = create_access_token(
+            {
+                "sub": str(user.id),
+                "role": user.role.role_name
+            }
+        )
+        
+        print(f"Token created successfully for: {request.email}")
+        
+        return {
+            "access_token": token,
+            "token_type": "bearer",
+            "user": {
+                "id": user.id,
+                "full_name": user.full_name,
+                "email": user.email,
+                "role": user.role.role_name
+            }
         }
-    )
-
-    return {
-        "access_token": token,
-        "token_type": "bearer",
-        "user": {
-            "id": user.id,
-            "full_name": user.full_name,
-            "email": user.email,
-            "role": user.role.role_name
-        }
-    }
+    except Exception as e:
+        print(f"Error creating token: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail="Error creating authentication token"
+        )
 
 @router.post("/token")
 def login_for_swagger(

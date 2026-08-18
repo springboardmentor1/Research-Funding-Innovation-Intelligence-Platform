@@ -24,5 +24,7 @@ class Publication(Base):
     citation_count = Column(Integer, default=0)
 
     research_area = Column(String(200))
+    
+    status = Column(String(50), default="Published")
 
-    user = relationship("User")
+    user = relationship("User", back_populates="publications")

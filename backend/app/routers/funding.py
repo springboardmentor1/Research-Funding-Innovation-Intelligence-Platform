@@ -1,8 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+import logging
 
 from app.auth.oauth2 import get_current_user
 from app.database.database import get_db
+
+logger = logging.getLogger(__name__)
 
 from app.models.funding import FundingOpportunity
 from app.models.research_profile import ResearchProfile
@@ -18,6 +21,7 @@ from app.schemas.funding import (
 )
 
 from app.services.recommendation_service import calculate_match_score
+from app.services.gov_funding_service import get_combined_funding_opportunities
 
 from datetime import datetime
 
@@ -59,11 +63,139 @@ def create_funding(
     return new_funding
 
 
-@router.get("/", response_model=list[FundingResponse])
+@router.get("/")
 def get_all_funding(
+    search: str = None,
+    use_external_api: bool = False,
     db: Session = Depends(get_db)
 ):
-    return db.query(FundingOpportunity).all()
+    """
+    Get funding opportunities from external APIs (NSF, NIH, Grants.gov) or local database.
+    Prioritizes local database for minimal loading time, with external API as optional enhancement.
+    """
+    # Always start with local database for immediate response
+    query = db.query(FundingOpportunity)
+    
+    if search:
+        search_term = f"%{search}%"
+        logger.info(f"Searching local database for funding with term: '{search}'")
+        query = query.filter(
+            (FundingOpportunity.title.ilike(search_term)) |
+            (FundingOpportunity.agency.ilike(search_term)) |
+            (FundingOpportunity.research_area.ilike(search_term)) |
+            (FundingOpportunity.description.ilike(search_term)) |
+            (FundingOpportunity.eligibility.ilike(search_term)) |
+            (FundingOpportunity.keywords.ilike(search_term))
+        )
+    
+    db_results = query.all()
+    logger.info(f"Found {len(db_results)} funding opportunities in local database")
+    
+    # If external API is requested and search term is provided, try to enhance results
+    if use_external_api and search:
+        logger.info(f"Attempting to enhance results with external API for term: '{search}'")
+        import asyncio
+        try:
+            raw_results = asyncio.run(get_combined_funding_opportunities(keyword=search, limit=20))
+            logger.info(f"External API raw results received")
+            
+            # Log any errors from external APIs
+            if raw_results.get("errors"):
+                logger.warning(f"External API errors: {raw_results['errors']}")
+            
+            # Transform external API results to match local database format
+            transformed_results = []
+            
+            # Process NSF results
+            if raw_results.get("nsf") and "response" in raw_results["nsf"] and "award" in raw_results["nsf"]["response"]:
+                logger.info(f"Processing {len(raw_results['nsf']['response']['award'])} NSF results")
+                for award in raw_results["nsf"]["response"]["award"]:
+                    transformed_results.append({
+                        "id": f"nsf-{award.get('id', '')}",
+                        "title": award.get("title", ""),
+                        "agency": "NSF",
+                        "description": award.get("abstractText", ""),
+                        "research_area": award.get("researchArea", "General"),
+                        "keywords": award.get("text", ""),
+                        "eligibility": award.get("awardeeAddress", ""),
+                        "amount": float(award.get("fundsObligated", 0)) if award.get("fundsObligated") else None,
+                        "deadline": None,
+                        "country": "US",
+                        "application_url": f"https://www.nsf.gov/awardsearch/showAward?AWD_NUMBER={award.get('id', '')}"
+                    })
+            
+            # Process NIH results
+            if raw_results.get("nih") and "results" in raw_results["nih"]:
+                logger.info(f"Processing {len(raw_results['nih']['results'])} NIH results")
+                for project in raw_results["nih"]["results"]:
+                    transformed_results.append({
+                        "id": f"nih-{project.get('project_id', '')}",
+                        "title": project.get("project_title", ""),
+                        "agency": "NIH",
+                        "description": project.get("abstract_text", ""),
+                        "research_area": project.get("project_terms", "General") if isinstance(project.get("project_terms"), str) else "General",
+                        "keywords": project.get("project_terms", ""),
+                        "eligibility": project.get("org_name", ""),
+                        "amount": float(project.get("total_cost", 0)) if project.get("total_cost") else None,
+                        "deadline": None,
+                        "country": "US",
+                        "application_url": f"https://reporter.nih.gov/project-details/{project.get('project_id', '')}"
+                    })
+            
+            # Process Grants.gov results
+            if raw_results.get("grants_gov") and "data" in raw_results["grants_gov"] and "oppHits" in raw_results["grants_gov"]["data"]:
+                logger.info(f"Processing {len(raw_results['grants_gov']['data']['oppHits'])} Grants.gov results")
+                for opp in raw_results["grants_gov"]["data"]["oppHits"]:
+                    transformed_results.append({
+                        "id": f"grants-{opp.get('oppNumber', '')}",
+                        "title": opp.get("opportunityTitle", ""),
+                        "agency": opp.get("agencyCode", "Grants.gov"),
+                        "description": opp.get("description", ""),
+                        "research_area": opp.get("fundingActivityCategory", "General"),
+                        "keywords": opp.get("cfdAnumber", ""),
+                        "eligibility": opp.get("eligibilityCategory", ""),
+                        "amount": None,
+                        "deadline": opp.get("closeDate", None),
+                        "country": "US",
+                        "application_url": opp.get("opportunityUrl", "")
+                    })
+            
+            logger.info(f"Transformed {len(transformed_results)} external API results")
+            
+            # If external API returned results, combine with database results
+            if transformed_results:
+                logger.info(f"Combining {len(db_results)} database results with {len(transformed_results)} external API results")
+                # Convert database results to dict format for consistency
+                db_results_dict = [
+                    {
+                        "id": funding.id,
+                        "title": funding.title,
+                        "agency": funding.agency,
+                        "description": funding.description,
+                        "research_area": funding.research_area,
+                        "keywords": funding.keywords,
+                        "eligibility": funding.eligibility,
+                        "amount": funding.amount,
+                        "deadline": funding.deadline,
+                        "country": funding.country,
+                        "application_url": funding.application_url
+                    }
+                    for funding in db_results
+                ]
+                # Return combined results
+                return db_results_dict + transformed_results
+            else:
+                logger.warning("No results from external APIs, returning database results only")
+                return db_results
+                
+        except Exception as e:
+            logger.error(f"Error calling external APIs: {str(e)}")
+            # Always fall back to database results on any error
+            logger.info("Returning database results due to external API error")
+            return db_results
+    
+    # Return database results by default (fastest path)
+    return db_results
 
 
 @router.get(
@@ -190,6 +322,9 @@ def apply_funding(
         "data": saved
     }
 
+
+
+
 @router.get("/{funding_id}", response_model=FundingResponse)
 def get_funding_by_id(
     funding_id: int,
@@ -277,10 +412,8 @@ def get_recommendations(
     )
 
     if not profile:
-        raise HTTPException(
-            status_code=404,
-            detail="Research profile not found"
-        )
+        # Return empty list for users without a research profile
+        return []
 
     funding_list = db.query(FundingOpportunity).all()
 
@@ -356,3 +489,9 @@ def save_funding(
         "message": "Funding saved successfully",
         "data": saved
     }
+
+
+
+
+
+
