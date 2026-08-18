@@ -1,19 +1,38 @@
 version: '3.8'
 
 services:
+  backend:
+    build: ./backend
+    container_name: innovation_platform_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - DATABASE_URL=sqlite:///./innovation_platform.db
+    volumes:
+      - ./backend/innovation_platform.db:/app/innovation_platform.db
+
+  frontend:
+    build: ./frontend
+    container_name: innovation_platform_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
   db:
     image: postgres:16-alpine
     container_name: innovation_platform_db
     restart: always
     environment:
       POSTGRES_USER: postgres
-      # Set any password you prefer here
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: innovation_platform
     ports:
       - "5432:5432"
     volumes:
-      # This volume persists your database data on your computer so it doesn't get lost when the container stops
       - postgres_data:/var/lib/postgresql/data
 
 volumes:

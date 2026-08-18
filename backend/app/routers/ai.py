@@ -27,9 +27,9 @@ def handle_ai_chat(
     directly to Gemini or local mock NLP summaries.
     """
     profile = get_profile_by_user_id(db, current_user.id)
-    profile_data = {}
+    profile_data = {"email": current_user.email, "role": current_user.role}
     if profile:
-        profile_data = {
+        profile_data.update({
             "first_name": profile.first_name,
             "last_name": profile.last_name,
             "organization": profile.organization,
@@ -38,7 +38,7 @@ def handle_ai_chat(
             "research_domains": profile.research_domains,
             "keywords": profile.keywords,
             "technology_areas": profile.technology_areas
-        }
+        })
         
     ai_response_text = get_context_aware_chat(
         query=req.message,

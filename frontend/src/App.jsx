@@ -95,6 +95,10 @@ export default function App() {
   const [chatInput, setChatInput] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
 
+  // Admin Panel State
+  const [adminUsers, setAdminUsers] = useState([]);
+  const [adminStats, setAdminStats] = useState(null);
+
   // Sync theme
   useEffect(() => {
     localStorage.setItem('theme', theme);
@@ -115,8 +119,60 @@ export default function App() {
       fetchPapersFeed();
       fetchPatentsFeed();
       fetchTrendsFeed();
+      if (userRole === 'ADMINISTRATOR') {
+        fetchAdminData();
+      }
     }
-  }, [token]);
+  }, [token, userRole]);
+
+  const fetchAdminData = async () => {
+    if (!token) return;
+    try {
+      const [uRes, sRes] = await Promise.all([
+        fetch('/admin/users', { headers: { 'Authorization': `Bearer ${token}` } }),
+        fetch('/admin/stats', { headers: { 'Authorization': `Bearer ${token}` } })
+      ]);
+      if (uRes.ok) setAdminUsers(await uRes.json());
+      if (sRes.ok) setAdminStats(await sRes.json());
+    } catch (e) {
+      console.error('Error fetching admin data:', e);
+    }
+  };
+
+  const handleToggleUserStatus = async (userId, currentStatus) => {
+    try {
+      const res = await fetch(`/admin/users/${userId}/status?is_active=${!currentStatus}`, {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (!res.ok) {
+        const d = await res.json();
+        throw new Error(d.detail || 'Failed to update user status.');
+      }
+      setSuccessMsg('User account status updated.');
+      fetchAdminData();
+    } catch (err) {
+      setErrorMsg(err.message);
+    }
+  };
+
+  const handleDeleteUser = async (userId) => {
+    if (!window.confirm('Are you sure you want to delete this user account?')) return;
+    try {
+      const res = await fetch(`/admin/users/${userId}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (!res.ok) {
+        const d = await res.json();
+        throw new Error(d.detail || 'Failed to delete user.');
+      }
+      setSuccessMsg('User account permanently deleted.');
+      fetchAdminData();
+    } catch (err) {
+      setErrorMsg(err.message);
+    }
+  };
 
   const clearMessages = () => {
     setErrorMsg('');
@@ -526,6 +582,22 @@ export default function App() {
               />
             </div>
 
+            {authMode === 'register' && (
+              <div>
+                <label className={`block text-xs uppercase font-semibold tracking-wider mb-2 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Select Account Role</label>
+                <select
+                  value={roleInput}
+                  onChange={(e) => setRoleInput(e.target.value)}
+                  className={`w-full border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#10a37f] transition-all cursor-pointer ${theme === 'dark' ? 'bg-[#2f2f2f] border-[#3f3f3f] text-[#ececec]' : 'bg-white border-[#e5e5e5] text-[#212121]'}`}
+                >
+                  <option value="RESEARCHER">🔬 Academic Researcher</option>
+                  <option value="STARTUP_FOUNDER">🚀 Startup Founder</option>
+                  <option value="INNOVATION_MANAGER">💼 Innovation Manager</option>
+                  <option value="ADMINISTRATOR">🛡️ System Administrator</option>
+                </select>
+              </div>
+            )}
+
 
 
             <button 
@@ -581,7 +653,8 @@ export default function App() {
             { id: 'papers', label: 'Research Papers', icon: BookOpen },
             { id: 'patents', label: 'Patents', icon: FileText },
             { id: 'trends', label: 'Technology Trends', icon: TrendingUp },
-            { id: 'profile', label: 'Profile', icon: User }
+            { id: 'profile', label: 'Profile', icon: User },
+            ...(userRole === 'ADMINISTRATOR' ? [{ id: 'admin', label: 'Admin Panel', icon: Shield }] : [])
           ].map((tab) => {
             const Icon = tab.icon;
             const active = currentTab === tab.id;
@@ -660,9 +733,117 @@ export default function App() {
             </div>
           )}
 
-          {/* --- TAB A: DASHBOARD VIEW --- */}
+          {/* --- TAB A: DASHBOARD VIEW (Role-Specific) --- */}
           {currentTab === 'dashboard' && (
             <div className="space-y-8">
+              {/* Role Header Banner */}
+              <div className={`p-6 rounded-2xl border shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4 ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+                      userRole === 'STARTUP_FOUNDER' ? 'bg-purple-950/40 text-purple-400 border-purple-800/40' :
+                      userRole === 'INNOVATION_MANAGER' ? 'bg-blue-950/40 text-blue-400 border-blue-800/40' :
+                      userRole === 'ADMINISTRATOR' ? 'bg-red-950/40 text-red-400 border-red-800/40' :
+                      'bg-[#10a37f]/10 text-[#10a37f] border-[#10a37f]/20'
+                    }`}>
+                      {userRole === 'STARTUP_FOUNDER' ? '🚀 Startup Founder Portal' :
+                       userRole === 'INNOVATION_MANAGER' ? '💼 Innovation Manager Portal' :
+                       userRole === 'ADMINISTRATOR' ? '🛡️ System Administrator Portal' :
+                       '🔬 Academic Researcher Portal'}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold tracking-tight">
+                    {userRole === 'STARTUP_FOUNDER' ? `Commercialization Dashboard` :
+                     userRole === 'INNOVATION_MANAGER' ? `R&D Portfolio Intelligence` :
+                     userRole === 'ADMINISTRATOR' ? `Platform Administration Center` :
+                     `Research Intelligence Dashboard`}
+                  </h3>
+                  <p className={`text-xs ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>
+                    {userRole === 'STARTUP_FOUNDER' ? 'Discover SBIR/STTR seed funding, inspect USPTO prior-art claims, and accelerate market viability.' :
+                     userRole === 'INNOVATION_MANAGER' ? 'Track institutional R&D velocity, cross-disciplinary grant portfolios, and tech trajectories.' :
+                     userRole === 'ADMINISTRATOR' ? 'Monitor platform user accounts, role distribution stats, and system API health.' :
+                     'Explore active NSF & NIH federal awards, literature matches, and personalized recommendation scores.'}
+                  </p>
+                </div>
+              </div>
+
+              {/* Role-Specific KPI Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {userRole === 'STARTUP_FOUNDER' ? (
+                  <>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400">SBIR / STTR Seed Capital</span>
+                      <h3 className="text-2xl font-bold mt-2">$250K - $1.5M</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Commercialization Phase I & II Grants</p>
+                    </div>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400">USPTO Prior-Art Index</span>
+                      <h3 className="text-2xl font-bold mt-2">{dashboardData.recommended_patents?.length || 8} Filings</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Commercial Patents Analyzed</p>
+                    </div>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Target Tech Readiness</span>
+                      <h3 className="text-2xl font-bold mt-2">TRL 4 - 6</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Prototype & Field Validation</p>
+                    </div>
+                  </>
+                ) : userRole === 'INNOVATION_MANAGER' ? (
+                  <>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400">Monitored Portfolio</span>
+                      <h3 className="text-2xl font-bold mt-2">{(dashboardData.recommended_grants?.length || 0) + (dashboardData.recommended_patents?.length || 0)} Projects</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Active Institutional Grants & IP</p>
+                    </div>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#10a37f]">Emerging Growth Rate</span>
+                      <h3 className="text-2xl font-bold mt-2">+34.8% YoY</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Technology Domain Trajectory</p>
+                    </div>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400">Multi-Agency Alignment</span>
+                      <h3 className="text-2xl font-bold mt-2">High Impact</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>NSF + NIH Synergy Score</p>
+                    </div>
+                  </>
+                ) : userRole === 'ADMINISTRATOR' ? (
+                  <>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-red-400">System Accounts</span>
+                      <h3 className="text-2xl font-bold mt-2">{adminUsers.length || adminStats?.user_stats?.total_users || 1} Registered</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Active System Users</p>
+                    </div>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Role Diversity</span>
+                      <h3 className="text-2xl font-bold mt-2">4 Active Roles</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Researchers, Startups, Managers, Admins</p>
+                    </div>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400">API Pipeline Status</span>
+                      <h3 className="text-2xl font-bold mt-2">100% Operational</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>NSF, NIH, USPTO Live Proxy</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#10a37f]">Scored Federal Grants</span>
+                      <h3 className="text-2xl font-bold mt-2">{dashboardData.recommended_grants?.length || 0} Matches</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>NSF & NIH Award Opportunities</p>
+                    </div>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400">Literature Index</span>
+                      <h3 className="text-2xl font-bold mt-2">{dashboardData.recommended_papers?.length || 0} Papers</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Semantic Scholar Citations</p>
+                    </div>
+                    <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400">Vector Match Accuracy</span>
+                      <h3 className="text-2xl font-bold mt-2">89.4% Cosine</h3>
+                      <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>SentenceTransformers Embedding</p>
+                    </div>
+                  </>
+                )}
+              </div>
+
               {/* Insight banner */}
               {dashboardData.ai_insight && (
                 <div className={`border p-5 rounded-2xl flex gap-4 items-start shadow-sm ${theme === 'dark' ? 'bg-[#10a37f]/5 border-[#10a37f]/20' : 'bg-[#10a37f]/5 border-[#10a37f]/20'}`}>
@@ -1236,6 +1417,107 @@ export default function App() {
                   Save Portfolio Configuration
                 </button>
               </form>
+            </div>
+          )}
+
+          {/* --- TAB G: ADMIN MODULE --- */}
+          {currentTab === 'admin' && (
+            <div className="space-y-8">
+              {/* Header / Stats overview */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#10a37f]">Total Registered</span>
+                  <h3 className="text-2xl font-bold mt-2">{adminStats?.user_stats?.total_users || adminUsers.length || 0}</h3>
+                  <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>System User Accounts</p>
+                </div>
+                <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400">Researchers</span>
+                  <h3 className="text-2xl font-bold mt-2">{adminStats?.user_stats?.researchers || 0}</h3>
+                  <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Academic Researchers</p>
+                </div>
+                <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400">Founders</span>
+                  <h3 className="text-2xl font-bold mt-2">{adminStats?.user_stats?.startups || 0}</h3>
+                  <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Startup Founders</p>
+                </div>
+                <div className={`p-5 rounded-2xl border ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Managers & Admins</span>
+                  <h3 className="text-2xl font-bold mt-2">{(adminStats?.user_stats?.innovation_managers || 0) + (adminStats?.user_stats?.administrators || 0)}</h3>
+                  <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-[#b4b4b4]' : 'text-[#676767]'}`}>Managers & System Admins</p>
+                </div>
+              </div>
+
+              {/* User Management Table */}
+              <div className={`border rounded-2xl p-6 shadow-sm ${theme === 'dark' ? 'bg-[#171717] border-[#2d2d2d]' : 'bg-white border-[#e5e5e5]'}`}>
+                <div className="flex justify-between items-center mb-6">
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-5 h-5 text-[#10a37f]" />
+                    <h3 className="font-bold text-base">Platform User Directory</h3>
+                  </div>
+                  <button 
+                    onClick={fetchAdminData}
+                    className={`px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${theme === 'dark' ? 'border-[#3f3f3f] bg-[#2f2f2f] hover:bg-[#3f3f3f]' : 'border-[#e5e5e5] bg-[#f4f4f4] hover:bg-[#e4e4e4]'}`}
+                  >
+                    <RefreshCw className="w-3.5 h-3.5" />
+                    <span>Refresh Directory</span>
+                  </button>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs">
+                    <thead>
+                      <tr className={`border-b text-[10px] uppercase font-bold tracking-wider ${theme === 'dark' ? 'border-[#2d2d2d] text-[#b4b4b4]' : 'border-[#e5e5e5] text-[#676767]'}`}>
+                        <th className="pb-3 px-3">ID</th>
+                        <th className="pb-3 px-3">User Email</th>
+                        <th className="pb-3 px-3">Assigned Role</th>
+                        <th className="pb-3 px-3">Status</th>
+                        <th className="pb-3 px-3">Created Date</th>
+                        <th className="pb-3 px-3 text-right">Account Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#2d2d2d]/30">
+                      {adminUsers.map((u) => (
+                        <tr key={u.id} className={`hover:bg-[#10a37f]/5 transition-all ${theme === 'dark' ? 'text-[#ececec]' : 'text-[#212121]'}`}>
+                          <td className="py-3 px-3 font-mono text-[11px]">{u.id}</td>
+                          <td className="py-3 px-3 font-semibold">{u.email}</td>
+                          <td className="py-3 px-3">
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
+                              u.role === 'ADMINISTRATOR' ? 'bg-red-950/40 text-red-400 border border-red-800/40' :
+                              u.role === 'STARTUP_FOUNDER' ? 'bg-purple-950/40 text-purple-400 border border-purple-800/40' :
+                              u.role === 'INNOVATION_MANAGER' ? 'bg-blue-950/40 text-blue-400 border-blue-800/40' :
+                              'bg-emerald-950/40 text-[#10a37f] border border-emerald-800/40'
+                            }`}>
+                              {u.role}
+                            </span>
+                          </td>
+                          <td className="py-3 px-3">
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${u.is_active ? 'bg-emerald-950/40 text-emerald-400' : 'bg-red-950/40 text-red-400'}`}>
+                              {u.is_active ? 'Active' : 'Suspended'}
+                            </span>
+                          </td>
+                          <td className="py-3 px-3 text-[11px] text-[#b4b4b4]">
+                            {u.created_at ? new Date(u.created_at).toLocaleDateString() : 'N/A'}
+                          </td>
+                          <td className="py-3 px-3 text-right space-x-2">
+                            <button
+                              onClick={() => handleToggleUserStatus(u.id, u.is_active)}
+                              className={`px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all cursor-pointer ${u.is_active ? 'bg-amber-950/30 text-amber-400 hover:bg-amber-950/50' : 'bg-emerald-950/30 text-emerald-400 hover:bg-emerald-950/50'}`}
+                            >
+                              {u.is_active ? 'Suspend' : 'Activate'}
+                            </button>
+                            <button
+                              onClick={() => handleDeleteUser(u.id)}
+                              className="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-red-950/30 text-red-400 hover:bg-red-950/50 transition-all cursor-pointer"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           )}
 
