@@ -1,49 +1,63 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes.user import router as user_router
+from app.database.connection import engine, Base
+from app.models.user import User  # Import user model to register it in SQLAlchemy metadata
+from app.models.profile import ResearchProfile  # Import profile model to register it in metadata
+from app.models.publication import Publication  # Import publication model to register it in metadata
+from app.models.patent import Patent  # Import patent model to register it in metadata
+from app.routes.auth import router as auth_router
+from app.routes.profile import router as profile_router
+from app.routes.publication import router as publication_router
+from app.routes.patent import router as patent_router
+from app.routes.dashboard import router as dashboard_router
 from app.routes.funding import router as funding_router
-from app.routes.intelligence import router as intelligence_router
-from app.database import engine, Base, SessionLocal
-from app.services.seed_service import seed_funding_opportunities
+from app.routes.innovation_dashboard import router as innovation_dashboard_router
+from app.routes.executive_dashboard import router as executive_dashboard_router
+from app.routes.reports import router as reports_router
 
-# Create tables
-Base.metadata.create_all(bind=engine)
-
-# Seed funding opportunities
-db = SessionLocal()
+# Attempt to create database tables on startup.
+# Note: In production development, Alembic migrations are preferred.
 try:
-    seed_funding_opportunities(db)
-finally:
-    db.close()
+    Base.metadata.create_all(bind=engine)
+except Exception as e:
+    print(f"Database connection or table creation failed on startup: {e}")
 
 app = FastAPI(
-    title="Research Funding & Innovation Intelligence Platform",
+    title="Research Funding & Innovation Intelligence Platform API",
+    description="AI-powered platform backend helping discover grants, analyze technology trends, and evaluate innovation standing.",
     version="1.0.0"
 )
 
-# Enable CORS for frontend integration
+# Enable CORS for frontend applications
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include routers
-app.include_router(user_router)
+# Register routes
+app.include_router(auth_router)
+app.include_router(profile_router)
+app.include_router(publication_router)
+app.include_router(patent_router)
+app.include_router(dashboard_router)
 app.include_router(funding_router)
-app.include_router(intelligence_router)
+app.include_router(innovation_dashboard_router)
+app.include_router(executive_dashboard_router)
+app.include_router(reports_router)
+
+
+
 
 @app.get("/")
-def root():
+def home():
     return {
-        "message": "Research Funding & Innovation Intelligence API connected successfully!"
-    }
-
-@app.get("/health")
-def health():
-    return {
-        "status": "Healthy",
-        "service": "Innovation Intelligence Service"
+        "message": "Research Funding & Innovation Intelligence Platform API is Running Successfully!"
     }
