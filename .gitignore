@@ -1,11 +1,50 @@
-backend/venv/
+# Python
 venv/
+.venv/
 __pycache__/
 *.pyc
-.env
-.vscode/
-.idea/
+*.pyo
+*.pyd
+.pytest_cache/
+verify_test.db
+full_flow_test.db
+
+# Database files (local dev only)
 *.db
+
+# Environment Configs
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# React / Node.js
 node_modules/
 dist/
+build/
 .eslintcache
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Backend temp outputs
+backend/audit_output.txt
+backend/outputs/
+backend/reports/
+
+# Verification scripts (dev only)
+backend/verify_*.py
+backend/test_sample_user_flows.py
