@@ -373,18 +373,38 @@ def seed_database_and_analytics():
                 {"domain": "Cybersecurity & Microchips", "count": 120}
             ],
             "top_funding_agencies": [
-                {"agency": "National Science Foundation (NSF)", "grant_count": 320, "budget_millions": 1450},
-                {"agency": "National Institutes of Health (NIH)", "grant_count": 280, "budget_millions": 1820},
-                {"agency": "DARPA Defense Sciences", "grant_count": 190, "budget_millions": 950},
-                {"agency": "Horizon Europe Research Council", "grant_count": 240, "budget_millions": 1100},
-                {"agency": "Department of Energy (ARPA-E)", "grant_count": 110, "budget_millions": 680}
+                {"agency": "National Science Foundation (NSF)", "count": 320, "budget_millions": 1450},
+                {"agency": "National Institutes of Health (NIH)", "count": 280, "budget_millions": 1820},
+                {"agency": "DARPA Defense Sciences", "count": 190, "budget_millions": 950},
+                {"agency": "Horizon Europe Research Council", "count": 240, "budget_millions": 1100},
+                {"agency": "Department of Energy (ARPA-E)", "count": 110, "budget_millions": 680}
             ],
             "country_distribution": [
                 {"country": "United States", "count": 680},
                 {"country": "European Union", "count": 340},
                 {"country": "United Kingdom", "count": 140},
                 {"country": "Japan", "count": 80}
-            ]
+            ],
+            "application_deadline_timeline": {
+                "timeline": [
+                    {"year": 2024, "count": 150},
+                    {"year": 2025, "count": 380},
+                    {"year": 2026, "count": 420},
+                    {"year": 2027, "count": 290}
+                ]
+            },
+            "funding_type_distribution": [
+                {"type": "Grant", "count": 520},
+                {"type": "Contract", "count": 310},
+                {"type": "Fellowship", "count": 180},
+                {"type": "Award", "count": 230}
+            ],
+            "funding_amount_statistics": {
+                "total_funding_amount": 5150000000,
+                "average_funding_amount": 4153225,
+                "max_funding_amount": 15000000,
+                "min_funding_amount": 50000
+            }
         }
         with open(funding_json_path, "w", encoding="utf-8") as f:
             json.dump(funding_analytics, f, indent=2)
