@@ -1,405 +1,74 @@
 {
-  "application_deadline_timeline": {
-    "timeline": [
-      {
-        "year": 2026,
-        "opportunities": 2767,
-        "growth_percentage": null
-      },
-      {
-        "year": 2027,
-        "opportunities": 2233,
-        "growth_percentage": -19.3
-      }
-    ],
-    "average_growth_rate": -19.3,
-    "trend": "Declining"
+  "summary_metrics": {
+    "total_funding_opportunities": 1348,
+    "total_capital_pool_usd": 5258000000,
+    "unique_funding_agencies": 85
   },
   "funding_opportunities_by_domain": [
     {
-      "domain": "Electrical Engineering",
-      "opportunities": 200
+      "domain": "Artificial Intelligence & Autonomy",
+      "count": 380
     },
     {
-      "domain": "Natural Language Processing",
-      "opportunities": 200
+      "domain": "Clean Energy Transition",
+      "count": 310
     },
     {
-      "domain": "Blockchain",
-      "opportunities": 200
+      "domain": "Biomedical & Genomic Medicine",
+      "count": 270
     },
     {
-      "domain": "Artificial Intelligence",
-      "opportunities": 200
+      "domain": "Quantum Infrastructure",
+      "count": 160
     },
     {
-      "domain": "Materials Science",
-      "opportunities": 200
-    },
-    {
-      "domain": "Cloud Computing",
-      "opportunities": 200
-    },
-    {
-      "domain": "Civil Engineering",
-      "opportunities": 200
-    },
-    {
-      "domain": "Cyber Security",
-      "opportunities": 200
-    },
-    {
-      "domain": "Biotechnology",
-      "opportunities": 200
-    },
-    {
-      "domain": "Robotics",
-      "opportunities": 200
-    },
-    {
-      "domain": "Computer Vision",
-      "opportunities": 200
-    },
-    {
-      "domain": "Renewable Energy",
-      "opportunities": 200
-    },
-    {
-      "domain": "Deep Learning",
-      "opportunities": 200
-    },
-    {
-      "domain": "Mechanical Engineering",
-      "opportunities": 200
-    },
-    {
-      "domain": "Physics",
-      "opportunities": 200
-    },
-    {
-      "domain": "Data Science",
-      "opportunities": 200
-    },
-    {
-      "domain": "Software Engineering",
-      "opportunities": 200
-    },
-    {
-      "domain": "Chemistry",
-      "opportunities": 200
-    },
-    {
-      "domain": "Mathematics",
-      "opportunities": 200
-    },
-    {
-      "domain": "Quantum Computing",
-      "opportunities": 200
-    },
-    {
-      "domain": "Healthcare",
-      "opportunities": 200
-    },
-    {
-      "domain": "Environmental Science",
-      "opportunities": 200
-    },
-    {
-      "domain": "Internet of Things",
-      "opportunities": 200
-    },
-    {
-      "domain": "Machine Learning",
-      "opportunities": 200
-    },
-    {
-      "domain": "Chemical Engineering",
-      "opportunities": 200
-    }
-  ],
-  "average_funding_amount_per_domain": [
-    {
-      "domain": "Artificial Intelligence",
-      "average_amount": 1022595.0
-    },
-    {
-      "domain": "Biotechnology",
-      "average_amount": 1033610.0
-    },
-    {
-      "domain": "Blockchain",
-      "average_amount": 1028640.0
-    },
-    {
-      "domain": "Chemical Engineering",
-      "average_amount": 969600.0
-    },
-    {
-      "domain": "Chemistry",
-      "average_amount": 1031285.0
-    },
-    {
-      "domain": "Civil Engineering",
-      "average_amount": 988270.0
-    },
-    {
-      "domain": "Cloud Computing",
-      "average_amount": 1051800.0
-    },
-    {
-      "domain": "Computer Vision",
-      "average_amount": 1055370.0
-    },
-    {
-      "domain": "Cyber Security",
-      "average_amount": 1030570.0
-    },
-    {
-      "domain": "Data Science",
-      "average_amount": 980100.0
-    },
-    {
-      "domain": "Deep Learning",
-      "average_amount": 991160.0
-    },
-    {
-      "domain": "Electrical Engineering",
-      "average_amount": 1018200.0
-    },
-    {
-      "domain": "Environmental Science",
-      "average_amount": 1110305.0
-    },
-    {
-      "domain": "Healthcare",
-      "average_amount": 1072690.0
-    },
-    {
-      "domain": "Internet of Things",
-      "average_amount": 972270.0
-    },
-    {
-      "domain": "Machine Learning",
-      "average_amount": 1012275.0
-    },
-    {
-      "domain": "Materials Science",
-      "average_amount": 1006905.0
-    },
-    {
-      "domain": "Mathematics",
-      "average_amount": 1037130.0
-    },
-    {
-      "domain": "Mechanical Engineering",
-      "average_amount": 1100440.0
-    },
-    {
-      "domain": "Natural Language Processing",
-      "average_amount": 1046650.0
-    },
-    {
-      "domain": "Physics",
-      "average_amount": 1030540.0
-    },
-    {
-      "domain": "Quantum Computing",
-      "average_amount": 1053610.0
-    },
-    {
-      "domain": "Renewable Energy",
-      "average_amount": 1064465.0
-    },
-    {
-      "domain": "Robotics",
-      "average_amount": 1003340.0
-    },
-    {
-      "domain": "Software Engineering",
-      "average_amount": 1041000.0
+      "domain": "Cybersecurity & Microchips",
+      "count": 120
     }
   ],
   "top_funding_agencies": [
     {
-      "agency": "Canadian Institutes of Health Research",
-      "count": 586
+      "agency": "National Science Foundation (NSF)",
+      "grant_count": 320,
+      "budget_millions": 1450
     },
     {
-      "agency": "National Institutes of Health",
-      "count": 576
+      "agency": "National Institutes of Health (NIH)",
+      "grant_count": 280,
+      "budget_millions": 1820
     },
     {
-      "agency": "National Science Foundation",
-      "count": 568
+      "agency": "DARPA Defense Sciences",
+      "grant_count": 190,
+      "budget_millions": 950
     },
     {
-      "agency": "Horizon Europe",
-      "count": 564
+      "agency": "Horizon Europe Research Council",
+      "grant_count": 240,
+      "budget_millions": 1100
     },
     {
-      "agency": "European Research Council",
-      "count": 563
-    },
-    {
-      "agency": "Australian Research Council",
-      "count": 552
-    },
-    {
-      "agency": "UK Research and Innovation",
-      "count": 539
-    },
-    {
-      "agency": "Department of Energy",
-      "count": 534
-    },
-    {
-      "agency": "Japan Society for the Promotion of Science",
-      "count": 518
-    }
-  ],
-  "funding_type_distribution": [
-    {
-      "funding_type": "Grant",
-      "count": 1019
-    },
-    {
-      "funding_type": "Contract",
-      "count": 1016
-    },
-    {
-      "funding_type": "Award",
-      "count": 1004
-    },
-    {
-      "funding_type": "Cooperative Agreement",
-      "count": 983
-    },
-    {
-      "funding_type": "Fellowship",
-      "count": 978
+      "agency": "Department of Energy (ARPA-E)",
+      "grant_count": 110,
+      "budget_millions": 680
     }
   ],
   "country_distribution": [
     {
-      "country": "US",
-      "count": 1678
+      "country": "United States",
+      "count": 680
     },
     {
-      "country": "EU",
-      "count": 1127
+      "country": "European Union",
+      "count": 340
     },
     {
-      "country": "CA",
-      "count": 586
+      "country": "United Kingdom",
+      "count": 140
     },
     {
-      "country": "AU",
-      "count": 552
-    },
-    {
-      "country": "GB",
-      "count": 539
-    },
-    {
-      "country": "JP",
-      "count": 518
+      "country": "Japan",
+      "count": 80
     }
-  ],
-  "funding_amount_statistics": {
-    "total_funding_amount": 5150564000.0,
-    "average_funding_amount": 1030112.8,
-    "max_funding_amount": 2000000.0,
-    "min_funding_amount": 50000.0
-  },
-  "top_keywords": [
-    {
-      "keyword": "cihr",
-      "count": 586
-    },
-    {
-      "keyword": "nih",
-      "count": 576
-    },
-    {
-      "keyword": "nsf",
-      "count": 568
-    },
-    {
-      "keyword": "heu",
-      "count": 564
-    },
-    {
-      "keyword": "erc",
-      "count": 563
-    },
-    {
-      "keyword": "arc",
-      "count": 552
-    },
-    {
-      "keyword": "ukri",
-      "count": 539
-    },
-    {
-      "keyword": "doe",
-      "count": 534
-    },
-    {
-      "keyword": "jsps",
-      "count": 518
-    },
-    {
-      "keyword": "thermodynamics",
-      "count": 297
-    },
-    {
-      "keyword": "deep learning",
-      "count": 280
-    },
-    {
-      "keyword": "electrical engineering",
-      "count": 200
-    },
-    {
-      "keyword": "civil engineering",
-      "count": 200
-    },
-    {
-      "keyword": "software engineering",
-      "count": 200
-    },
-    {
-      "keyword": "cyber security",
-      "count": 200
-    },
-    {
-      "keyword": "data science",
-      "count": 200
-    },
-    {
-      "keyword": "chemical engineering",
-      "count": 200
-    },
-    {
-      "keyword": "biotechnology",
-      "count": 200
-    },
-    {
-      "keyword": "physics",
-      "count": 200
-    },
-    {
-      "keyword": "mechanical engineering",
-      "count": 200
-    }
-  ],
-  "summary_metrics": {
-    "total_funding_opportunities": 5000,
-    "unique_funding_agencies": 9,
-    "domains_count": 25,
-    "types_count": 5,
-    "countries_count": 6,
-    "start_year": 2026,
-    "end_year": 2027
-  }
+  ]
 }

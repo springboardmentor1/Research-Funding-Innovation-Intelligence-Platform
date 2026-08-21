@@ -28,37 +28,58 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const fetchAnalytics = async (isRefresh = false) => {
-    if (isRefresh) {
-      setRefreshing(true);
-    } else {
-      setLoading(true);
+  const fetchAnalytics = async (isRefresh = false, isBackground = false) => {
+    if (!isBackground) {
+      if (isRefresh) {
+        setRefreshing(true);
+      } else {
+        setLoading(true);
+      }
     }
-    setError(null);
+    
+    // Only clear errors if it's an explicit user action
+    if (!isBackground) {
+      setError(null);
+    }
 
     try {
       const result = await dashboardService.getDashboardAnalytics();
       setData(result);
+      if (isBackground) {
+        setError(null); // Clear previous background error on success
+      }
     } catch (err) {
       console.error('Failed to fetch dashboard data:', err);
-      if (err.response && err.response.status === 401) {
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('token');
-        setError('Session expired. Redirecting to login page...');
-        setTimeout(() => {
-          navigate('/login');
-        }, 2000);
-      } else {
-        setError(err.response?.data?.detail || 'An error occurred while loading dashboard metrics. Please check if the backend API is running.');
+      // Don't interrupt user flow for background errors, but log them
+      if (!isBackground) {
+        if (err.response && err.response.status === 401) {
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('token');
+          setError('Session expired. Redirecting to login page...');
+          setTimeout(() => {
+            navigate('/login');
+          }, 2000);
+        } else {
+          setError(err.response?.data?.detail || 'An error occurred while loading dashboard metrics. Please check if the backend API is running.');
+        }
       }
     } finally {
-      setLoading(false);
-      setRefreshing(false);
+      if (!isBackground) {
+        setLoading(false);
+        setRefreshing(false);
+      }
     }
   };
 
   useEffect(() => {
     fetchAnalytics();
+    
+    // Set up polling to check for updates from the backend simulator
+    const intervalId = setInterval(() => {
+      fetchAnalytics(false, true);
+    }, 10000); // Check every 10 seconds
+    
+    return () => clearInterval(intervalId);
   }, []);
 
   if (loading) {

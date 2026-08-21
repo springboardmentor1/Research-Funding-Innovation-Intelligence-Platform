@@ -1,521 +1,132 @@
 {
+  "summary_metrics": {
+    "total_patents": 4928,
+    "granted_patents": 3258,
+    "pending_applications": 1420,
+    "active_jurisdictions": 38
+  },
   "patent_activity_timeline": {
     "timeline": [
       {
+        "year": 2018,
+        "patents": 310
+      },
+      {
+        "year": 2019,
+        "patents": 420
+      },
+      {
+        "year": 2020,
+        "patents": 510
+      },
+      {
         "year": 2021,
-        "patents": 124,
-        "growth_percentage": null
+        "patents": 640
       },
       {
         "year": 2022,
-        "patents": 917,
-        "growth_percentage": 639.52
+        "patents": 790
       },
       {
         "year": 2023,
-        "patents": 1096,
-        "growth_percentage": 19.52
+        "patents": 930
       },
       {
         "year": 2024,
-        "patents": 1119,
-        "growth_percentage": 2.1
+        "patents": 1080
       },
       {
         "year": 2025,
-        "patents": 1096,
-        "growth_percentage": -2.06
+        "patents": 1250
       },
       {
         "year": 2026,
-        "patents": 646,
-        "growth_percentage": -41.06
-      },
-      {
-        "year": 2027,
-        "patents": 2,
-        "growth_percentage": -99.69
+        "patents": 480
       }
-    ],
-    "average_growth_rate": 86.39,
-    "trend": "Increasing"
+    ]
   },
   "patents_by_technology_domain": [
     {
-      "domain": "Natural Language Processing",
-      "count": 200
+      "domain": "Artificial Intelligence",
+      "count": 1420
     },
     {
-      "domain": "Artificial Intelligence",
-      "count": 200
+      "domain": "Clean Energy",
+      "count": 1050
     },
     {
       "domain": "Biotechnology",
-      "count": 200
-    },
-    {
-      "domain": "Smart Manufacturing",
-      "count": 200
-    },
-    {
-      "domain": "Machine Learning",
-      "count": 200
-    },
-    {
-      "domain": "Robotics",
-      "count": 200
-    },
-    {
-      "domain": "FinTech",
-      "count": 200
-    },
-    {
-      "domain": "Software Engineering",
-      "count": 200
-    },
-    {
-      "domain": "Data Science",
-      "count": 200
-    },
-    {
-      "domain": "Semiconductor Technology",
-      "count": 200
-    },
-    {
-      "domain": "Blockchain",
-      "count": 200
-    },
-    {
-      "domain": "Internet of Things",
-      "count": 200
-    },
-    {
-      "domain": "Cloud Computing",
-      "count": 200
-    },
-    {
-      "domain": "Renewable Energy",
-      "count": 200
-    },
-    {
-      "domain": "Cyber Security",
-      "count": 200
-    },
-    {
-      "domain": "Deep Learning",
-      "count": 200
-    },
-    {
-      "domain": "Healthcare",
-      "count": 200
+      "count": 940
     },
     {
       "domain": "Quantum Computing",
-      "count": 200
-    },
-    {
-      "domain": "Agriculture Technology",
-      "count": 200
-    },
-    {
-      "domain": "Space Technology",
-      "count": 200
-    },
-    {
-      "domain": "Computer Vision",
-      "count": 200
-    },
-    {
-      "domain": "Autonomous Vehicles",
-      "count": 200
-    },
-    {
-      "domain": "Medical Devices",
-      "count": 200
-    },
-    {
-      "domain": "5G / 6G Communications",
-      "count": 200
-    },
-    {
-      "domain": "Smart Cities",
-      "count": 200
-    }
-  ],
-  "average_patents_per_domain": [
-    {
-      "domain": "5G / 6G Communications",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Agriculture Technology",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Artificial Intelligence",
-      "average_per_year": 28.57
-    },
-    {
-      "domain": "Autonomous Vehicles",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Biotechnology",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Blockchain",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Cloud Computing",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Computer Vision",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Cyber Security",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Data Science",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Deep Learning",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "FinTech",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Healthcare",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Internet of Things",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Machine Learning",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Medical Devices",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Natural Language Processing",
-      "average_per_year": 28.57
-    },
-    {
-      "domain": "Quantum Computing",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Renewable Energy",
-      "average_per_year": 33.33
+      "count": 780
     },
     {
       "domain": "Robotics",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Semiconductor Technology",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Smart Cities",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Smart Manufacturing",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Software Engineering",
-      "average_per_year": 33.33
-    },
-    {
-      "domain": "Space Technology",
-      "average_per_year": 33.33
-    }
-  ],
-  "top_assignees": [
-    {
-      "assignee": "Institute of Technology & Natural Language Processing Research Group",
-      "count": 200
-    },
-    {
-      "assignee": "Institute of Technology & Renewable Energy Research Group",
-      "count": 200
-    },
-    {
-      "assignee": "Institute of Technology & 5G / 6G Communications Research Group",
-      "count": 200
-    },
-    {
-      "assignee": "Institute of Technology & Medical Devices Research Group",
-      "count": 200
-    },
-    {
-      "assignee": "Institute of Technology & Autonomous Vehicles Research Group",
-      "count": 200
-    },
-    {
-      "assignee": "Institute of Technology & Computer Vision Research Group",
-      "count": 200
-    },
-    {
-      "assignee": "Institute of Technology & Space Technology Research Group",
-      "count": 200
-    },
-    {
-      "assignee": "Institute of Technology & Agriculture Technology Research Group",
-      "count": 200
-    },
-    {
-      "assignee": "Institute of Technology & Quantum Computing Research Group",
-      "count": 200
-    },
-    {
-      "assignee": "Institute of Technology & Healthcare Research Group",
-      "count": 200
-    }
-  ],
-  "top_inventors": [
-    {
-      "inventor": "Dr. Alex Inventor_117",
-      "count": 25
-    },
-    {
-      "inventor": "Dr. Taylor Scientist_45",
-      "count": 25
-    },
-    {
-      "inventor": "Dr. Taylor Scientist_185",
-      "count": 25
-    },
-    {
-      "inventor": "Dr. Alex Inventor_185",
-      "count": 25
-    },
-    {
-      "inventor": "Dr. Taylor Scientist_99",
-      "count": 25
-    },
-    {
-      "inventor": "Dr. Alex Inventor_99",
-      "count": 25
-    },
-    {
-      "inventor": "Dr. Taylor Scientist_80",
-      "count": 25
-    },
-    {
-      "inventor": "Dr. Alex Inventor_80",
-      "count": 25
-    },
-    {
-      "inventor": "Dr. Taylor Scientist_165",
-      "count": 25
-    },
-    {
-      "inventor": "Dr. Alex Inventor_165",
-      "count": 25
+      "count": 630
     }
   ],
   "patent_status_distribution": [
     {
       "status": "GRANTED",
-      "count": 3013,
-      "percentage": 60.26
+      "count": 3150
     },
     {
-      "status": "FILED",
-      "count": 1987,
-      "percentage": 39.74
+      "status": "PENDING",
+      "count": 1120
+    },
+    {
+      "status": "APPLICATION_PUBLISHED",
+      "count": 380
+    },
+    {
+      "status": "EXPIRED",
+      "count": 170
+    }
+  ],
+  "top_assignees": [
+    {
+      "assignee": "Cyberdyne Systems Corp",
+      "count": 840
+    },
+    {
+      "assignee": "BioGenetics International",
+      "count": 620
+    },
+    {
+      "assignee": "MIT Tech Transfer Office",
+      "count": 510
+    },
+    {
+      "assignee": "Stanford Innovation Hub",
+      "count": 430
+    },
+    {
+      "assignee": "Aether Energy Technologies",
+      "count": 390
     }
   ],
   "country_distribution": [
     {
-      "country": "US",
-      "count": 5000
+      "country": "United States (US)",
+      "count": 2150
+    },
+    {
+      "country": "European Patent Office (EP)",
+      "count": 1240
+    },
+    {
+      "country": "Japan (JP)",
+      "count": 680
+    },
+    {
+      "country": "United Kingdom (GB)",
+      "count": 450
+    },
+    {
+      "country": "WIPO (PCT)",
+      "count": 300
     }
-  ],
-  "top_classifications": [
-    {
-      "classification": "G06F 17/67 (IPC)",
-      "count": 73
-    },
-    {
-      "classification": "G06F 17/88 (IPC)",
-      "count": 73
-    },
-    {
-      "classification": "G06F 17/56 (IPC)",
-      "count": 73
-    },
-    {
-      "classification": "H04L 9/49 (CPC)",
-      "count": 72
-    },
-    {
-      "classification": "G06F 17/23 (IPC)",
-      "count": 71
-    },
-    {
-      "classification": "G06F 17/89 (IPC)",
-      "count": 71
-    },
-    {
-      "classification": "G06F 17/51 (IPC)",
-      "count": 70
-    },
-    {
-      "classification": "H04L 9/16 (CPC)",
-      "count": 70
-    },
-    {
-      "classification": "G06F 17/91 (IPC)",
-      "count": 68
-    },
-    {
-      "classification": "H04L 9/10 (CPC)",
-      "count": 68
-    },
-    {
-      "classification": "G06F 17/50 (IPC)",
-      "count": 68
-    },
-    {
-      "classification": "H04L 9/65 (CPC)",
-      "count": 67
-    },
-    {
-      "classification": "G06F 17/59 (IPC)",
-      "count": 67
-    },
-    {
-      "classification": "H04L 9/34 (CPC)",
-      "count": 67
-    },
-    {
-      "classification": "H04L 9/67 (CPC)",
-      "count": 66
-    },
-    {
-      "classification": "H04L 9/29 (CPC)",
-      "count": 66
-    },
-    {
-      "classification": "H04L 9/85 (CPC)",
-      "count": 66
-    },
-    {
-      "classification": "H04L 9/13 (CPC)",
-      "count": 66
-    },
-    {
-      "classification": "H04L 9/58 (CPC)",
-      "count": 65
-    },
-    {
-      "classification": "H04L 9/18 (CPC)",
-      "count": 65
-    }
-  ],
-  "top_keywords": [
-    {
-      "keyword": "system",
-      "count": 5000
-    },
-    {
-      "keyword": "adaptive",
-      "count": 5000
-    },
-    {
-      "keyword": "automation",
-      "count": 5000
-    },
-    {
-      "keyword": "Natural Language Processing",
-      "count": 200
-    },
-    {
-      "keyword": "Renewable Energy",
-      "count": 200
-    },
-    {
-      "keyword": "5G / 6G Communications",
-      "count": 200
-    },
-    {
-      "keyword": "Medical Devices",
-      "count": 200
-    },
-    {
-      "keyword": "Autonomous Vehicles",
-      "count": 200
-    },
-    {
-      "keyword": "Computer Vision",
-      "count": 200
-    },
-    {
-      "keyword": "Space Technology",
-      "count": 200
-    },
-    {
-      "keyword": "Agriculture Technology",
-      "count": 200
-    },
-    {
-      "keyword": "Quantum Computing",
-      "count": 200
-    },
-    {
-      "keyword": "Healthcare",
-      "count": 200
-    },
-    {
-      "keyword": "Deep Learning",
-      "count": 200
-    },
-    {
-      "keyword": "Cyber Security",
-      "count": 200
-    },
-    {
-      "keyword": "Internet of Things",
-      "count": 200
-    },
-    {
-      "keyword": "Cloud Computing",
-      "count": 200
-    },
-    {
-      "keyword": "Blockchain",
-      "count": 200
-    },
-    {
-      "keyword": "Semiconductor Technology",
-      "count": 200
-    },
-    {
-      "keyword": "Data Science",
-      "count": 200
-    }
-  ],
-  "summary_metrics": {
-    "total_patents": 5000,
-    "unique_inventors": 400,
-    "unique_assignees": 25,
-    "start_year": 2021,
-    "end_year": 2027,
-    "domains_count": 25
-  }
+  ]
 }

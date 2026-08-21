@@ -111,10 +111,10 @@ export default function FundingDiscovery() {
                   className="w-full px-3 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs text-slate-200 focus:outline-none focus:border-blue-500"
                 >
                   <option value="">All Regions</option>
-                  <option value="United States">United States</option>
-                  <option value="Germany">Germany / EU</option>
-                  <option value="United Kingdom">United Kingdom</option>
-                  <option value="Japan">Japan</option>
+                  <option value="US">United States</option>
+                  <option value="EU">Germany / EU</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="JP">Japan</option>
                 </select>
               </div>
 

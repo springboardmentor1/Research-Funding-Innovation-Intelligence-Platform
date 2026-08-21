@@ -69,6 +69,7 @@ Research-Funding-Innovation-Intelligence-Platform/
 │   └── nginx.conf           # Production Nginx web server configuration
 │
 ├── docs/
+│   ├── DEVELOPER_GUIDE.md   # Developer setup & onboarding guide
 │   ├── deployment_guide.md  # Docker & Cloud deployment guide
 │   ├── executive_dashboard.md # Executive APIs documentation
 │   ├── reports_module.md    # Reports engine & storage documentation
@@ -82,7 +83,12 @@ Research-Funding-Innovation-Intelligence-Platform/
 
 ---
 
-## Quick Start with Docker Compose
+## Developer Setup & Onboarding Guide
+
+For a complete step-by-step developer onboarding guide (covering system prerequisites, environment configuration, native FastAPI/React setup, API documentation, testing, and troubleshooting), please refer to:
+
+👉 **[Developer Setup & Onboarding Guide](docs/DEVELOPER_GUIDE.md)**
+
 
 To launch the complete production stack (PostgreSQL, MongoDB, FastAPI Backend, React Frontend):
 
