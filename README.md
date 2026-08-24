@@ -123,4 +123,3 @@ npm test
 
 ## Contributors
 - **Dr. Sarah Connor** - Principal Investigator
-- **Antigravity** - AI Engineering Partner
