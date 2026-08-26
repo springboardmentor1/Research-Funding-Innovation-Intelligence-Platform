@@ -18,6 +18,7 @@ try:
     from app.models.profile import ResearchProfile
     from app.models.user import User
     from app.services import funding_service
+    from app.models.funding import FundingOpportunity
 except ImportError as e:
     print(f"Error importing modules: {e}")
     sys.exit(1)
@@ -73,6 +74,24 @@ try:
     db.commit()
     db.refresh(test_profile)
 
+    # Seed mock funding opportunity
+    test_funding = FundingOpportunity(
+        funding_id="US-DOE-12345",
+        title="AI Research Grant",
+        funding_agency="Department of Energy",
+        research_domain="Artificial Intelligence",
+        funding_amount=1000000.0,
+        currency="USD",
+        funding_type="Grant",
+        country="US",
+        status="OPEN",
+        source_url="https://example.gov/grant/123",
+        verified=True,
+        keywords="artificial intelligence, neural networks, machine learning"
+    )
+    db.add(test_funding)
+    db.commit()
+
     # Verify Service components
     # A. Profile check
     profile_loaded = db.query(ResearchProfile).filter(ResearchProfile.user_id == test_user.id).first()
@@ -81,7 +100,7 @@ try:
 
     # B. Feature extraction
     features = funding_service.extract_profile_features(profile_loaded)
-    if isinstance(features, dict) and features.get("research_domain") == "Artificial Intelligence":
+    if isinstance(features, dict) and features.get("research_domain", "").lower() == "artificial intelligence":
         checklist["Features Extracted"] = True
 
     # C. Ingest dataset

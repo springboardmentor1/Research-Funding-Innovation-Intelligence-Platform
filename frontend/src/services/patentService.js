@@ -21,6 +21,14 @@ const patentService = {
       params: filters
     });
     return response.data;
+  },
+
+  getGlobalPatents: async (filters = {}) => {
+    const response = await axios.get(`${API_URL}/global/patents`, {
+      headers: getAuthHeaders(),
+      params: filters
+    });
+    return response.data;
   }
 };
 

@@ -6,12 +6,17 @@ from app.database.connection import get_db
 from app.services import funding_service
 from app.services.auth_service import get_current_user
 from app.models.user import User
+from app.schemas.funding import FundingRecommendationResponse
+from pydantic import BaseModel
+
+class RecommendationListResponse(BaseModel):
+    recommendations: List[FundingRecommendationResponse]
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/funding", tags=["Funding Opportunity Recommendations"])
 
-@router.get("/recommendations")
+@router.get("/recommendations", response_model=RecommendationListResponse)
 def get_recommendations(
     country: Optional[str] = Query(None, description="Filter recommendations by country"),
     funding_type: Optional[str] = Query(None, description="Filter recommendations by funding type"),

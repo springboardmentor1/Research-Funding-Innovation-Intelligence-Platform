@@ -1,3 +1,9 @@
+"""
+NOTE: No changes were needed in this file — scheduler.create_scheduler()
+is already correctly wired into the FastAPI lifespan, and it will now
+include the pending-job poller from the fixed scheduler.py. Included as-is
+so all three files are together for reference.
+"""
 import logging
 from contextlib import asynccontextmanager
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSearch, FaFilter, FaBookmark, FaExternalLinkAlt, FaSpinner } from 'react-icons/fa';
+import { FaSearch, FaFilter, FaBookmark, FaExternalLinkAlt, FaSpinner, FaCheckCircle } from 'react-icons/fa';
 import fundingService from '../../services/fundingService';
 
 const fundingTags = ['NSF', 'NIH', 'DARPA', 'DOE', 'NASA', 'Quantum', 'AI/ML', 'Biotech'];
@@ -26,7 +26,8 @@ export default function FundingDiscovery() {
             deadline: item.deadline || item.application_deadline || 'Ongoing',
             eligibility: item.country ? `${item.country} eligible` : 'See guidelines',
             matchScore: item.match_score != null ? Math.round(item.match_score) : 0,
-            url: item.url || item.source_url || '#'
+            url: item.url || item.source_url || '#',
+            verified: item.verified || false
           }));
           setFundingData(mappedData);
         }
@@ -54,6 +55,8 @@ export default function FundingDiscovery() {
             deadline: 'Aug 15, 2026',
             eligibility: 'University, Research Institute',
             matchScore: 94,
+            url: 'https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=505085',
+            verified: true
           },
           {
             title: 'Biomedical Innovation Grant',
@@ -63,6 +66,8 @@ export default function FundingDiscovery() {
             deadline: 'Sep 1, 2026',
             eligibility: 'All Organizations',
             matchScore: 87,
+            url: 'https://grants.nih.gov/grants/guide/pa-files/PAR-22-094.html',
+            verified: true
           }
         ]);
       } finally {
@@ -126,7 +131,14 @@ export default function FundingDiscovery() {
               
               <div className="flex-1 space-y-4">
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-1">{item.title}</h3>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-lg font-bold text-white">{item.title}</h3>
+                    {item.verified && (
+                      <span className="flex items-center gap-1 bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">
+                        <FaCheckCircle size={10} /> Verified
+                      </span>
+                    )}
+                  </div>
                   <p className="text-sm text-slate-400">{item.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-x-8 gap-y-4 text-sm">
@@ -160,9 +172,23 @@ export default function FundingDiscovery() {
                   <button className="p-2.5 text-slate-400 hover:text-white bg-[#0f1523] border border-slate-700 rounded-lg transition-colors">
                     <FaBookmark size={14} />
                   </button>
-                  <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex-1 flex justify-center items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 rounded-lg transition-colors text-sm font-medium shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                    Apply Now <FaExternalLinkAlt size={10} />
-                  </a>
+                  {item.url && item.url !== '#' ? (
+                    <a 
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex justify-center items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 rounded-lg transition-colors text-sm font-medium shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                    >
+                      Apply Now <FaExternalLinkAlt size={10} />
+                    </a>
+                  ) : (
+                    <button 
+                      disabled
+                      className="flex-1 flex justify-center items-center gap-2 bg-slate-700 text-slate-400 cursor-not-allowed px-4 py-2.5 rounded-lg text-sm font-medium"
+                    >
+                      Apply Now <FaExternalLinkAlt size={10} />
+                    </button>
+                  )}
                 </div>
               </div>
 

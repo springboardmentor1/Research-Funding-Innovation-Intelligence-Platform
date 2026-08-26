@@ -11,7 +11,18 @@ DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localho
 if DATABASE_URL.startswith("sqlite"):
     engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 else:
-    engine = create_engine(DATABASE_URL)
+    # FIX: explicit pool settings (was relying on SQLAlchemy defaults, silently
+    # combined with scheduler.py creating ITS OWN separate engine/pool on every
+    # call — multiple independent pools were competing for the DB's total
+    # connection budget, which is why frontend requests hung forever waiting
+    # for a connection). pool_pre_ping avoids handing out dead connections.
+    engine = create_engine(
+        DATABASE_URL,
+        pool_size=10,
+        max_overflow=10,
+        pool_timeout=30,
+        pool_pre_ping=True,
+    )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()

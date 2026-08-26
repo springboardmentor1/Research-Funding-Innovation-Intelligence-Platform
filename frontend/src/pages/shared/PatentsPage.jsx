@@ -9,94 +9,78 @@ const STATUS_COLORS = {
   REJECTED: 'bg-red-500/20 text-red-400 border-red-500/30',
 };
 
-/**
- * Build the canonical URL to open a specific patent.
- * Priority:
- *   1. source_url from DB (Lens: https://www.lens.org/lens/patent/{id})
- *   2. patent_number  → Google Patents specific page
- *   3. external_patent_id that looks like a patent number
- *   4. Title-based Google Patents search (last resort)
- */
-const getPatentUrl = (patent) => {
-  const num = patent.patent_number || patent.external_patent_id || '';
-  if (num && /^[A-Z]{2}\d/.test(num)) return `https://patents.google.com/patent/${num}`;
-  if (num) return `https://patents.google.com/patent/${num}`;
-  if (patent.source_url && !patent.source_url.includes('?q=')) return patent.source_url;
-  if (patent.url && !patent.url.includes('?q=')) return patent.url;
-  return `https://patents.google.com/?q=${encodeURIComponent(patent.title)}`;
+// Map technology domain filter labels → keywords that exist in the actual DB titles/abstracts/classification
+const DOMAIN_KEYWORD_MAP = {
+  'AI & Machine Learning': 'artificial intelligence',
+  'Deep Learning': 'deep learning',
+  'Quantum Computing': 'quantum',
+  'Robotics & Automation': 'robot',
+  'Healthcare & Medical': 'medical',
+  'Semiconductors': 'semiconductor',
+  'Renewable Energy': 'energy',
+  'Blockchain & FinTech': 'blockchain',
+  'IoT & Smart Cities': 'internet of things',
+  '5G / 6G Communications': 'communication',
+  'Biotechnology': 'biotech',
 };
 
-// Real granted patents with specific Google Patents direct-page URLs
-const MOCK_PATENTS = [
-  {
-    patent_id: '1', patent_number: 'US11494571B2',
-    title: 'Deep Learning Framework for Medical Imaging Diagnosis',
-    inventors: 'Chen, L.; Patel, A.; Kim, S.', assignee: 'Siemens Healthineers',
-    status: 'GRANTED', technology_domain: 'AI & Machine Learning',
-    filing_date: '2020-09-14', citation_count: 47,
-    abstract: 'A novel deep learning architecture combining convolutional and transformer modules to achieve state-of-the-art accuracy in multi-modal medical image classification tasks.',
-    classification: 'A61B 5/00; G06N 3/08',
-    source_url: 'https://patents.google.com/patent/US11494571B2',
-  },
-  {
-    patent_id: '2', patent_number: 'US11901506B2',
-    title: 'Solid-State Electrolyte for High-Energy-Density Batteries',
-    inventors: 'Nakamura, Y.; Singh, R.', assignee: 'Toyota Motor Corporation',
-    status: 'GRANTED', technology_domain: 'Energy Storage',
-    filing_date: '2021-04-20', citation_count: 62,
-    abstract: 'A sulfide-based solid electrolyte with ionic conductivity exceeding 10 mS/cm at room temperature, enabling safe and high-energy-density all-solid-state lithium batteries.',
-    classification: 'H01M 10/056; C01B 25/00',
-    source_url: 'https://patents.google.com/patent/US11901506B2',
-  },
-  {
-    patent_id: '3', patent_number: 'US20230183703A1',
-    title: 'CRISPR-Cas12 Variant for Enhanced Gene Editing Specificity',
-    inventors: 'Rodriguez, M.; Zhang, W.', assignee: 'Broad Institute',
-    status: 'FILED', technology_domain: 'Biotechnology',
-    filing_date: '2022-10-05', citation_count: 14,
-    abstract: 'An engineered Cas12 protein variant with reduced off-target cleavage activity while maintaining high on-target editing efficiency across diverse genomic loci.',
-    classification: 'C12N 9/22; C12N 15/90',
-    source_url: 'https://patents.google.com/patent/US20230183703A1',
-  },
-  {
-    patent_id: '4', patent_number: 'US11727256B2',
-    title: 'Neuromorphic Computing Architecture for Edge AI Inference',
-    inventors: 'Park, J.; Kumar, V.; Osei, A.', assignee: 'Intel Corporation',
-    status: 'GRANTED', technology_domain: 'Semiconductors',
-    filing_date: '2020-11-12', citation_count: 89,
-    abstract: 'A spiking neural network hardware accelerator implementing event-driven computation for ultra-low-power AI inference at the network edge.',
-    classification: 'G06N 3/063; H03K 19/003',
-    source_url: 'https://patents.google.com/patent/US11727256B2',
-  },
-  {
-    patent_id: '5', patent_number: 'US20240084430A1',
-    title: 'MOF-Based Direct Air Carbon Capture System',
-    inventors: 'Fernandez, C.; Tanaka, H.', assignee: 'Carbon Clean Solutions',
-    status: 'PENDING', technology_domain: 'Environmental Science',
-    filing_date: '2023-07-19', citation_count: 8,
-    abstract: 'Metal-organic framework sorbents with optimized pore geometry for selective CO₂ capture from ambient air with 60% reduced regeneration energy requirements.',
-    classification: 'B01D 53/04; C08G 83/00',
-    source_url: 'https://patents.google.com/patent/US20240084430A1',
-  },
-  {
-    patent_id: '6', patent_number: 'US11540768B2',
-    title: 'Non-Invasive Continuous Glucose Monitoring via Near-IR Spectroscopy',
-    inventors: 'Lee, S.; Gupta, P.; Müller, K.', assignee: 'Abbott Laboratories',
-    status: 'GRANTED', technology_domain: 'Medical Devices',
-    filing_date: '2019-12-03', citation_count: 33,
-    abstract: 'A wearable spectroscopic sensor using tunable near-infrared light to continuously and non-invasively monitor interstitial glucose with clinical accuracy.',
-    classification: 'A61B 5/1455; G01N 21/35',
-    source_url: 'https://patents.google.com/patent/US11540768B2',
-  },
-];
+/**
+ * Normalise an inventor value from the backend into a display string.
+ * Global patents store inventors as a JSON array ["Name1", "Name2", …],
+ * while user-synced patents store them as a semicolon-separated string.
+ */
+const formatInventors = (inventors) => {
+  if (!inventors) return null;
+  if (Array.isArray(inventors)) {
+    if (inventors.length === 0) return null;
+    const first = inventors[0];
+    return inventors.length > 1 ? `${first} et al.` : first;
+  }
+  if (typeof inventors === 'string') {
+    const parts = inventors.split(';').map(s => s.trim()).filter(Boolean);
+    if (parts.length === 0) return null;
+    return parts.length > 1 ? `${parts[0]} et al.` : parts[0];
+  }
+  return String(inventors);
+};
+
+/**
+ * Build the canonical URL to open a specific patent.
+ */
+const getPatentUrl = (patent) => {
+  // 1. Prioritize the actual source URL from the database
+  const srcUrl = patent.source_url || patent.url || '';
+  if (srcUrl && !srcUrl.includes('?q=') && srcUrl.startsWith('http')) {
+    return srcUrl;
+  }
+  
+  // 2. Try to construct a Lens link using external_id (e.g. lens ID)
+  const extId = (patent.external_id || patent.external_patent_id || '').replace(/^lens-id-/, '');
+  if (extId) {
+    return `https://www.lens.org/lens/patent/${extId}`;
+  }
+  
+  // 3. Fallback to constructing a Lens link using patent_number
+  const num = (patent.patent_number || '').trim();
+  const jur = (patent.jurisdiction || '').trim().toUpperCase();
+  if (num && num.length > 3) {
+    const hasJur = /^[A-Z]{2}/.test(num);
+    const fullNum = (!hasJur && jur) ? `${jur}${num}` : num;
+    // We can search for the specific patent number on Lens
+    return `https://www.lens.org/lens/search/patent/list?q=doc_num:${fullNum}`;
+  }
+  
+  // 4. Last resort: Title search on Lens
+  return `https://www.lens.org/lens/search/patent/list?q=${encodeURIComponent(patent.title || 'patent')}`;
+};
 
 function PatentCard({ patent, onClick }) {
-  const statusClass = STATUS_COLORS[patent.status] || 'bg-slate-700/50 text-slate-400 border-slate-600';
+  const statusUpper = (patent.status || '').toUpperCase();
+  const statusClass = STATUS_COLORS[statusUpper] || 'bg-slate-700/50 text-slate-400 border-slate-600';
   const externalUrl = getPatentUrl(patent);
+  const inventorStr = formatInventors(patent.inventors);
   return (
-    <div
-      className="bg-[#1c2438] border border-slate-800 hover:border-cyan-500/40 rounded-xl p-5 transition-all duration-200 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] group"
-    >
+    <div className="bg-[#1c2438] border border-slate-800 hover:border-cyan-500/40 rounded-xl p-5 transition-all duration-200 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)] group">
       <div className="flex items-start justify-between gap-3 mb-3">
         <h3
           onClick={() => onClick(patent)}
@@ -105,7 +89,7 @@ function PatentCard({ patent, onClick }) {
           {patent.title}
         </h3>
         <div className="flex items-center gap-2 shrink-0">
-          <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${statusClass}`}>{patent.status}</span>
+          <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${statusClass}`}>{statusUpper}</span>
           <a
             href={externalUrl}
             target="_blank"
@@ -125,8 +109,9 @@ function PatentCard({ patent, onClick }) {
             {patent.patent_number}
           </a>
         )}
-        {patent.inventors && <span>👤 {patent.inventors.split(';')[0].trim()}{patent.inventors.includes(';') ? ' et al.' : ''}</span>}
-        {patent.technology_domain && <span>🔬 {patent.technology_domain}</span>}
+        {inventorStr && <span>👤 {inventorStr}</span>}
+        {patent.assignee && <span>🏢 {patent.assignee.length > 40 ? patent.assignee.slice(0, 37) + '…' : patent.assignee}</span>}
+        {patent.jurisdiction && <span>🌍 {patent.jurisdiction}</span>}
         {patent.filing_date && <span>📅 {patent.filing_date}</span>}
         {patent.citation_count > 0 && <span className="text-amber-400/70">⭐ {patent.citation_count} citations</span>}
       </div>
@@ -136,15 +121,17 @@ function PatentCard({ patent, onClick }) {
 
 function PatentModal({ patent, onClose }) {
   if (!patent) return null;
-  const statusClass = STATUS_COLORS[patent.status] || 'bg-slate-700/50 text-slate-400 border-slate-600';
+  const statusUpper = (patent.status || '').toUpperCase();
+  const statusClass = STATUS_COLORS[statusUpper] || 'bg-slate-700/50 text-slate-400 border-slate-600';
   const patentUrl = getPatentUrl(patent);
+  const inventorStr = formatInventors(patent.inventors);
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={onClose}>
       <div className="bg-[#141b2d] border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={e => e.stopPropagation()}>
         <div className="flex items-start justify-between p-6 border-b border-slate-800">
           <div className="flex-1 pr-4">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
-              <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${statusClass}`}>{patent.status}</span>
+              <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${statusClass}`}>{statusUpper}</span>
               {patent.patent_number && (
                 <a
                   href={patentUrl}
@@ -167,10 +154,11 @@ function PatentModal({ patent, onClose }) {
           <div className="grid grid-cols-2 gap-4">
             {[
               { label: 'Patent Number', value: patent.patent_number },
-              { label: 'Inventors', value: patent.inventors },
+              { label: 'Inventors', value: inventorStr },
               { label: 'Assignee', value: patent.assignee },
-              { label: 'Technology Domain', value: patent.technology_domain },
+              { label: 'Jurisdiction', value: patent.jurisdiction },
               { label: 'Filing Date', value: patent.filing_date },
+              { label: 'Publication Date', value: patent.publication_date },
               { label: 'Classification', value: patent.classification },
               { label: 'Citations', value: patent.citation_count },
             ].map(({ label, value }) => value ? (
@@ -186,7 +174,6 @@ function PatentModal({ patent, onClose }) {
               <p className="text-sm text-slate-300 leading-relaxed">{patent.abstract}</p>
             </div>
           )}
-          {/* Direct link to the specific patent page */}
           <a
             href={patentUrl}
             target="_blank"
@@ -208,46 +195,89 @@ export default function PatentsPage() {
   const [syncing, setSyncing] = useState(false);
   const [selectedPatent, setSelectedPatent] = useState(null);
   const [search, setSearch] = useState('');
-  const [filters, setFilters] = useState({ status: '', tech_domain: '', year: '' });
+  const [filters, setFilters] = useState({ status: '', domain: '', year: '', jurisdiction: '' });
   const [showFilters, setShowFilters] = useState(false);
   const [stats, setStats] = useState({ total: 0, granted: 0, filed: 0, citations: 0 });
 
-  const loadPatents = useCallback(async (useFilters = false) => {
+  const loadPatents = useCallback(async () => {
     try {
       setLoading(true);
-      const params = {};
-      if (useFilters) {
-        if (filters.status) params.status = filters.status;
-        if (filters.tech_domain) params.tech_domain = filters.tech_domain;
-        if (filters.year) params.year = parseInt(filters.year);
-        if (search) params.keyword = search;
+
+      const params = { limit: 50 };
+      const globalParams = { limit: 50 };
+
+      if (filters.status) {
+        params.status = filters.status;
+        globalParams.status = filters.status;
       }
-      const data = await patentService.getPatents(params);
-      const displayData = data.length > 0 ? data : MOCK_PATENTS;
+      if (filters.jurisdiction) {
+        globalParams.jurisdiction = filters.jurisdiction;
+      }
+      if (filters.year) {
+        params.year = filters.year;
+        globalParams.year_from = parseInt(filters.year);
+        globalParams.year_to = parseInt(filters.year);
+      }
+
+      // Domain filter → search by keyword in title/abstract/classification
+      const domainKw = filters.domain ? (DOMAIN_KEYWORD_MAP[filters.domain] || filters.domain) : '';
+      if (domainKw && search) {
+        params.tech_domain = filters.domain;
+        globalParams.keyword = domainKw;
+      } else if (domainKw) {
+        params.tech_domain = filters.domain;
+        globalParams.keyword = domainKw;
+      } else if (search) {
+        globalParams.keyword = search;
+      }
+
+      // First try to fetch user's synced patents
+      let data = await patentService.getPatents(params);
+
+      // If no data matches, fallback to global patents
+      if (!data || data.length === 0) {
+        data = await patentService.getGlobalPatents(globalParams);
+      }
+
+      // If domain + search text are both active, do client-side filtering on the search term
+      let displayData = Array.isArray(data) ? data : [];
+      if (domainKw && search) {
+        const q = search.toLowerCase();
+        displayData = displayData.filter(p =>
+          (p.title || '').toLowerCase().includes(q) ||
+          (p.abstract || '').toLowerCase().includes(q) ||
+          (p.assignee || '').toLowerCase().includes(q) ||
+          (p.classification || '').toLowerCase().includes(q) ||
+          JSON.stringify(p.inventors || []).toLowerCase().includes(q)
+        );
+      }
+
       setPatents(displayData);
       setStats({
         total: displayData.length,
-        granted: displayData.filter(p => p.status === 'GRANTED').length,
-        filed: displayData.filter(p => p.status === 'FILED').length,
+        granted: displayData.filter(p => (p.status || '').toUpperCase() === 'GRANTED').length,
+        filed: displayData.filter(p => (p.status || '').toUpperCase() === 'FILED').length,
         citations: displayData.reduce((acc, p) => acc + (p.citation_count || 0), 0)
       });
     } catch (e) {
-      setPatents(MOCK_PATENTS);
-      setStats({ total: MOCK_PATENTS.length, granted: 4, filed: 1, citations: 253 });
+      console.error('Failed to load patents:', e);
+      setPatents([]);
+      setStats({ total: 0, granted: 0, filed: 0, citations: 0 });
     } finally {
       setLoading(false);
     }
   }, [filters, search]);
 
-  useEffect(() => { loadPatents(true); }, []);
+  // Auto-apply on mount and when filters change
+  useEffect(() => { loadPatents(); }, [filters]);
 
   const handleSync = async () => {
     setSyncing(true);
     try {
       await patentService.searchPatents();
-      await loadPatents(false);
+      await loadPatents();
     } catch (e) {
-      await loadPatents(false);
+      await loadPatents();
     } finally {
       setSyncing(false);
     }
@@ -255,14 +285,8 @@ export default function PatentsPage() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    loadPatents(true);
+    loadPatents();
   };
-
-  const filteredPatents = patents.filter(p =>
-    !search || p.title?.toLowerCase().includes(search.toLowerCase()) ||
-    p.inventors?.toLowerCase().includes(search.toLowerCase()) ||
-    p.technology_domain?.toLowerCase().includes(search.toLowerCase())
-  );
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
@@ -270,7 +294,7 @@ export default function PatentsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-white mb-1">Patent Analytics</h2>
-          <p className="text-slate-400 text-sm">Track global patent filings and analyze competitor IP portfolios.</p>
+          <p className="text-slate-400 text-sm">Explore 10,000+ global patent filings across AI, healthcare, quantum, energy & more.</p>
         </div>
         <button
           onClick={handleSync}
@@ -285,9 +309,9 @@ export default function PatentsPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
-          { label: 'Total Patents', value: stats.total, color: 'text-cyan-400' },
+          { label: 'Showing Patents', value: stats.total, color: 'text-cyan-400' },
           { label: 'Granted', value: stats.granted, color: 'text-emerald-400' },
-          { label: 'Filed / Pending', value: stats.filed, color: 'text-blue-400' },
+          { label: 'Filed', value: stats.filed, color: 'text-blue-400' },
           { label: 'Total Citations', value: stats.citations, color: 'text-amber-400' },
         ].map(s => (
           <div key={s.label} className="bg-[#1c2438] border border-slate-800 rounded-xl p-4">
@@ -305,7 +329,7 @@ export default function PatentsPage() {
             type="text"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search by title, inventor, or domain..."
+            placeholder="Search by title, inventor, classification..."
             className="w-full bg-[#1c2438] border border-slate-700 focus:border-cyan-500 rounded-xl pl-9 pr-4 py-2.5 text-sm text-slate-200 outline-none transition-colors"
           />
         </div>
@@ -322,23 +346,70 @@ export default function PatentsPage() {
       </form>
 
       {showFilters && (
-        <div className="bg-[#1c2438] border border-slate-700 rounded-xl p-4 grid grid-cols-3 gap-4">
-          {[
-            { label: 'Status', key: 'status', opts: ['', 'GRANTED', 'FILED', 'PENDING', 'REJECTED'] },
-            { label: 'Year Filed', key: 'year', opts: ['', '2025', '2024', '2023', '2022'] },
-            { label: 'Technology Domain', key: 'tech_domain', opts: ['', 'AI & Machine Learning', 'Energy Storage', 'Biotechnology', 'Semiconductors', 'Medical Devices', 'Environmental Science'] },
-          ].map(f => (
-            <div key={f.key}>
-              <label className="text-xs text-slate-400 mb-1 block">{f.label}</label>
-              <select
-                value={filters[f.key]}
-                onChange={e => setFilters(prev => ({ ...prev, [f.key]: e.target.value }))}
-                className="w-full bg-[#0f1523] border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 outline-none"
-              >
-                {f.opts.map(o => <option key={o} value={o}>{o || 'All'}</option>)}
-              </select>
-            </div>
-          ))}
+        <div className="bg-[#1c2438] border border-slate-700 rounded-xl p-4 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Status */}
+          <div>
+            <label className="text-xs text-slate-400 mb-1 block">Status</label>
+            <select
+              value={filters.status}
+              onChange={e => setFilters(prev => ({ ...prev, status: e.target.value }))}
+              className="w-full bg-[#0f1523] border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 outline-none"
+            >
+              <option value="">All</option>
+              <option value="GRANTED">Granted</option>
+              <option value="FILED">Filed</option>
+            </select>
+          </div>
+          {/* Year Filed */}
+          <div>
+            <label className="text-xs text-slate-400 mb-1 block">Year Filed</label>
+            <select
+              value={filters.year}
+              onChange={e => setFilters(prev => ({ ...prev, year: e.target.value }))}
+              className="w-full bg-[#0f1523] border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 outline-none"
+            >
+              {['', '2026', '2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018'].map(y => (
+                <option key={y} value={y}>{y || 'All Years'}</option>
+              ))}
+            </select>
+          </div>
+          {/* Technology Domain (keyword-based) */}
+          <div>
+            <label className="text-xs text-slate-400 mb-1 block">Technology Domain</label>
+            <select
+              value={filters.domain}
+              onChange={e => setFilters(prev => ({ ...prev, domain: e.target.value }))}
+              className="w-full bg-[#0f1523] border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 outline-none"
+            >
+              <option value="">All Domains</option>
+              {Object.keys(DOMAIN_KEYWORD_MAP).map(d => (
+                <option key={d} value={d}>{d}</option>
+              ))}
+            </select>
+          </div>
+          {/* Jurisdiction */}
+          <div>
+            <label className="text-xs text-slate-400 mb-1 block">Jurisdiction</label>
+            <select
+              value={filters.jurisdiction}
+              onChange={e => setFilters(prev => ({ ...prev, jurisdiction: e.target.value }))}
+              className="w-full bg-[#0f1523] border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 outline-none"
+            >
+              {['', 'US', 'EP', 'WO', 'CN', 'KR', 'JP'].map(j => (
+                <option key={j} value={j}>{j || 'All Jurisdictions'}</option>
+              ))}
+            </select>
+          </div>
+          {/* Clear Filters */}
+          <div className="lg:col-span-4 flex justify-end">
+            <button
+              type="button"
+              onClick={() => setFilters({ status: '', domain: '', year: '', jurisdiction: '' })}
+              className="text-xs text-slate-500 hover:text-cyan-400 transition-colors"
+            >
+              Clear all filters
+            </button>
+          </div>
         </div>
       )}
 
@@ -346,16 +417,24 @@ export default function PatentsPage() {
       {loading ? (
         <div className="flex items-center justify-center py-20">
           <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
+          <span className="ml-3 text-slate-400 text-sm">Loading patents from database…</span>
         </div>
-      ) : filteredPatents.length === 0 ? (
+      ) : patents.length === 0 ? (
         <div className="text-center py-16 text-slate-500">
           <FaRegCopyright size={40} className="mx-auto mb-4 opacity-30" />
-          <p>No patents found. Try syncing or adjusting your filters.</p>
+          <p>No patents match your current filters.</p>
+          <button
+            type="button"
+            onClick={() => { setFilters({ status: '', domain: '', year: '', jurisdiction: '' }); setSearch(''); }}
+            className="mt-3 text-cyan-400 text-sm hover:underline"
+          >
+            Clear all filters
+          </button>
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {filteredPatents.map(patent => (
-            <PatentCard key={patent.patent_id} patent={patent} onClick={setSelectedPatent} />
+          {patents.map((patent, idx) => (
+            <PatentCard key={patent.id || patent.patent_id || idx} patent={patent} onClick={setSelectedPatent} />
           ))}
         </div>
       )}

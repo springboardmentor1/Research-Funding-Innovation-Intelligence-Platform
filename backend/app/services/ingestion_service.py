@@ -1,6 +1,12 @@
 """
 Ingestion orchestration service.
 
+NOTE: No changes were needed in this file — it already correctly accepts
+job_id and processes an existing job when one is passed in. The bug was
+that nothing was calling run_publication_ingestion()/run_patent_ingestion()
+with the job_id of rows created elsewhere (e.g. by an admin endpoint) —
+see the fixed scheduler.py's _process_pending_jobs() for the missing piece.
+
 Coordinates:
 - Calling OpenAlex / Lens iterators
 - Normalising records

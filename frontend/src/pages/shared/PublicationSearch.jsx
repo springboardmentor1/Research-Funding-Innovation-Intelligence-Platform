@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaChartLine, FaSearch, FaSpinner, FaExternalLinkAlt, FaBook, FaSync } from 'react-icons/fa';
+import { FaChartLine, FaSearch, FaSpinner, FaExternalLinkAlt, FaBook, FaSync, FaTimes } from 'react-icons/fa';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
   BarChart, Bar
@@ -8,20 +8,16 @@ import dashboardService from '../../services/dashboardService';
 import publicationService from '../../services/publicationService';
 
 // Build the canonical link to a research paper:
-// DOI → doi.org (resolves to publisher page), else source_url, else Semantic Scholar search
+// For keyword-search results: use pub.link (always set by backend).
+// For legacy local publications: DOI → doi.org, else source_url, else Semantic Scholar.
 const getPaperUrl = (pub) => {
+  if (pub.link) return pub.link;                          // from keyword-search endpoint
   if (pub.doi) {
     const doi = pub.doi.startsWith('http') ? pub.doi : `https://doi.org/${pub.doi}`;
     return doi;
   }
-  return pub.source_url || `https://www.semanticscholar.org/search?q=${encodeURIComponent(pub.title)}&sort=Relevance`;
+  return pub.source_url || pub.url || `https://www.semanticscholar.org/search?q=${encodeURIComponent(pub.title)}&sort=Relevance`;
 };
-
-// Helpers for analytics links
-const scholarUrl = (topic) =>
-  `https://scholar.google.com/scholar?q=${encodeURIComponent(topic)}`;
-const semanticUrl = (kw) =>
-  `https://www.semanticscholar.org/search?q=${encodeURIComponent(kw)}&sort=Relevance`;
 
 export default function PublicationSearch() {
   const [data, setData] = useState(null);
@@ -31,6 +27,14 @@ export default function PublicationSearch() {
   const [papersLoading, setPapersLoading] = useState(false);
   const [paperSearch, setPaperSearch] = useState('');
   const [syncing, setSyncing] = useState(false);
+
+  // FIX: new state for in-app keyword/topic search against global_publications
+  // (previously keyword/topic clicks just opened Google Scholar / Semantic
+  // Scholar in a new tab — they never touched our own backend or DB).
+  const [activeKeyword, setActiveKeyword] = useState(null);
+  const [relatedPapers, setRelatedPapers] = useState([]);
+  const [relatedLoading, setRelatedLoading] = useState(false);
+  const [relatedError, setRelatedError] = useState(null);
 
   useEffect(() => {
     const fetchPublications = async () => {
@@ -74,9 +78,35 @@ export default function PublicationSearch() {
     }
   };
 
+  // FIX: clicking a keyword or trending topic now searches the platform's
+  // own global_publications index (via GET /global/publications?keyword=...)
+  // instead of navigating away to an external site. Requires a
+  // `searchGlobalPublications(keyword)` function in publicationService.js
+  // that calls that endpoint — see the note below the component.
+  const handleKeywordClick = async (keyword) => {
+    setActiveKeyword(keyword);
+    setRelatedLoading(true);
+    setRelatedError(null);
+    try {
+      const results = await publicationService.searchGlobalPublications(keyword);
+      setRelatedPapers(Array.isArray(results) ? results : []);
+    } catch (e) {
+      console.error('Global publication search failed:', e);
+      setRelatedError('Could not load related papers. Please try again.');
+      setRelatedPapers([]);
+    } finally {
+      setRelatedLoading(false);
+    }
+  };
+
+  const closeRelatedPapers = () => {
+    setActiveKeyword(null);
+    setRelatedPapers([]);
+    setRelatedError(null);
+  };
 
   const summary = data?.summary_metrics || {};
-  
+
   // Map publication trends (Line chart)
   const pubData = (data?.publications_by_year || []).map(item => ({
     name: String(item.year),
@@ -120,7 +150,7 @@ export default function PublicationSearch() {
   const keywords = (data?.publications_by_domain || []).map(item => item.domain);
   if (keywords.length === 0) {
     keywords.push(
-      'Quantum Computing', 'AI', 'Neural Networks', 'Genomics', 'Climate Science', 
+      'Quantum Computing', 'AI', 'Neural Networks', 'Genomics', 'Climate Science',
       'Renewable Energy', 'Biotech', 'Materials Science', 'Robotics', 'Nanotechnology',
       'Photonics', 'Synthetic Biology'
     );
@@ -176,7 +206,7 @@ export default function PublicationSearch() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#2d3748" vertical={false} />
                 <XAxis dataKey="name" stroke="#718096" fontSize={12} tickLine={false} axisLine={false} />
                 <YAxis stroke="#718096" fontSize={12} tickLine={false} axisLine={false} />
-                <RechartsTooltip 
+                <RechartsTooltip
                   contentStyle={{ backgroundColor: '#0f1523', border: '1px solid #2d3748', borderRadius: '8px', color: '#fff' }}
                 />
                 <Line type="monotone" dataKey="value" stroke="#a855f7" strokeWidth={3} dot={{ fill: '#0f1523', stroke: '#a855f7', strokeWidth: 2, r: 4 }} activeDot={{ r: 6 }} />
@@ -196,7 +226,7 @@ export default function PublicationSearch() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#2d3748" vertical={false} />
                 <XAxis dataKey="name" stroke="#718096" fontSize={12} tickLine={false} axisLine={false} />
                 <YAxis stroke="#718096" fontSize={12} tickLine={false} axisLine={false} />
-                <RechartsTooltip 
+                <RechartsTooltip
                   cursor={{ fill: 'rgba(255, 255, 255, 0.05)' }}
                   contentStyle={{ backgroundColor: '#0f1523', border: '1px solid #2d3748', borderRadius: '8px', color: '#fff' }}
                 />
@@ -220,7 +250,7 @@ export default function PublicationSearch() {
                 <th className="pb-3 font-medium">Publications</th>
                 <th className="pb-3 font-medium">Trend</th>
                 <th className="pb-3 font-medium">Citations</th>
-                <th className="pb-3 font-medium">Link</th>
+                <th className="pb-3 font-medium">Papers</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/50">
@@ -231,14 +261,16 @@ export default function PublicationSearch() {
                   <td className="py-4 font-semibold text-emerald-400">{row.trend}</td>
                   <td className="py-4">{row.citations}</td>
                   <td className="py-4">
-                    <a
-                      href={scholarUrl(row.topic)}
-                      target="_blank"
-                      rel="noreferrer"
+                    {/* FIX: was an <a href={scholarUrl(...)}> that opened
+                        Google Scholar in a new tab. Now searches our own
+                        global_publications index and shows results below. */}
+                    <button
+                      type="button"
+                      onClick={() => handleKeywordClick(row.topic)}
                       className="inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 text-xs font-medium transition-colors"
                     >
-                      <FaExternalLinkAlt size={10} /> Google Scholar
-                    </a>
+                      <FaSearch size={10} /> View papers
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -252,18 +284,139 @@ export default function PublicationSearch() {
         <h3 className="text-sm font-semibold text-white mb-4">Research Keywords Cloud</h3>
         <div className="flex flex-wrap gap-3">
           {keywords.map((kw, idx) => (
-            <a
+            // FIX: was an <a href={semanticUrl(kw)}> that opened Semantic
+            // Scholar in a new tab. Now searches our own global_publications
+            // index and shows results in the section below.
+            <button
               key={idx}
-              href={semanticUrl(kw)}
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2 bg-slate-700/50 text-slate-300 rounded-full text-sm hover:bg-purple-500/20 hover:text-purple-300 hover:border-purple-500/40 border border-transparent transition-all"
+              type="button"
+              onClick={() => handleKeywordClick(kw)}
+              className={`px-4 py-2 rounded-full text-sm border transition-all ${activeKeyword === kw
+                  ? 'bg-purple-500/20 text-purple-300 border-purple-500/40'
+                  : 'bg-slate-700/50 text-slate-300 border-transparent hover:bg-purple-500/20 hover:text-purple-300 hover:border-purple-500/40'
+                }`}
             >
               {kw}
-            </a>
+            </button>
           ))}
         </div>
       </div>
+
+      {/* ── Related Papers (from OpenAlex live search, shown after a keyword/topic click) ── */}
+      {activeKeyword && (
+        <div className="bg-[#1c2438] border border-purple-500/30 rounded-2xl p-5">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h3 className="text-white font-bold text-lg">
+                Top papers for <span className="text-purple-400">"{activeKeyword}"</span>
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">Sorted by citation count · live from OpenAlex</p>
+            </div>
+            <button
+              type="button"
+              onClick={closeRelatedPapers}
+              className="text-slate-500 hover:text-slate-300 transition-colors"
+              aria-label="Close"
+            >
+              <FaTimes size={14} />
+            </button>
+          </div>
+
+          {relatedLoading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="w-6 h-6 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+              <span className="ml-3 text-slate-400 text-sm">Fetching high-quality papers…</span>
+            </div>
+          ) : relatedError ? (
+            <div className="text-red-400 text-sm bg-red-500/10 p-3 rounded-lg border border-red-500/20">{relatedError}</div>
+          ) : relatedPapers.length === 0 ? (
+            <div className="text-center py-12 text-slate-500">
+              <FaBook size={36} className="mx-auto mb-3 opacity-30" />
+              <p className="text-sm">No papers found for this keyword yet.</p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {relatedPapers.map((pub, idx) => {
+                const paperUrl = getPaperUrl(pub);
+                const kwList = Array.isArray(pub.keywords) ? pub.keywords : [];
+                return (
+                  <div key={pub.id || idx} className="bg-[#0f1523] border border-slate-800 hover:border-purple-500/40 rounded-xl p-4 transition-all group">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        {/* Title + link */}
+                        <a
+                          href={paperUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sm font-semibold text-white group-hover:text-purple-300 transition-colors leading-snug line-clamp-2 flex items-start gap-1.5"
+                        >
+                          {pub.title}
+                          <FaExternalLinkAlt size={10} className="mt-1 shrink-0 opacity-50 group-hover:opacity-100" />
+                        </a>
+
+                        {/* Meta row */}
+                        <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 text-xs text-slate-500">
+                          {pub.authors && pub.authors.length > 0 && (
+                            <span>👤 {pub.authors.slice(0, 2).join(', ')}{pub.authors.length > 2 ? ' et al.' : ''}</span>
+                          )}
+                          {pub.journal && <span>📖 {pub.journal}</span>}
+                          {pub.publication_year && <span>📅 {pub.publication_year}</span>}
+                          {pub.citation_count > 0 && (
+                            <span className="text-amber-400/80 font-medium">⭐ {pub.citation_count.toLocaleString()} citations</span>
+                          )}
+                          {pub.doi_url && (
+                            <a
+                              href={pub.doi_url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="font-mono text-cyan-500/70 hover:text-cyan-400 transition-colors"
+                            >
+                              DOI: {pub.doi}
+                            </a>
+                          )}
+                        </div>
+
+                        {/* Abstract snippet */}
+                        {pub.abstract && (
+                          <p className="mt-2 text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                            {pub.abstract}
+                          </p>
+                        )}
+
+                        {/* Keyword chips */}
+                        {kwList.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5 mt-2">
+                            {kwList.slice(0, 6).map((kw, ki) => (
+                              <span
+                                key={ki}
+                                className="px-2 py-0.5 text-[10px] rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20"
+                              >
+                                {kw}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Open-access badge */}
+                      <div className="flex flex-col items-end gap-1.5 shrink-0">
+                        {pub.open_access && pub.open_access !== 'closed' && (
+                          <span className="text-[10px] px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full whitespace-nowrap">
+                            {pub.open_access === 'gold' ? '🏅 Gold OA' : pub.open_access === 'green' ? '🌿 Green OA' : 'Open Access'}
+                          </span>
+                        )}
+                        {pub.source === 'openalex' && (
+                          <span className="text-[9px] text-slate-600">via OpenAlex</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* ── My Research Papers ─────────────────────────────────────────── */}
       <div className="bg-[#1c2438] border border-slate-800 rounded-2xl p-5">
