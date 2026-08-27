@@ -250,5 +250,194 @@
     "domain_tags": ["5G/6G", "Edge Computing", "Smart Cities", "Autonomous Vehicles", "IoT"],
     "deadline": "2026-12-01",
     "amount": "$1,500,000 - $4,000,000"
+  },
+  {
+    "title": "Andreessen Horowitz (a16z) AI Infrastructure & Foundation Model Fund",
+    "source": "Venture Programs",
+    "description": "Flagship venture fund investing in early-to-growth stage startups building next-generation AI infrastructure, frontier model architectures, and transformative enterprise applications leveraging large language models.",
+    "eligibility_criteria": "Seed to Series B startups with defensible AI technology, strong founding teams, and clear go-to-market strategy.",
+    "domain_tags": ["Artificial Intelligence", "Foundation Models", "Enterprise AI", "Infrastructure"],
+    "deadline": "2026-12-31",
+    "amount": "$5,000,000 - $50,000,000 investment"
+  },
+  {
+    "title": "Sequoia Capital Arc: AI-Native Startup Venture Track",
+    "source": "Venture Programs",
+    "description": "Venture investment program targeting AI-native startups disrupting healthcare, financial services, and developer tooling through novel deep learning architectures and multimodal reasoning systems.",
+    "eligibility_criteria": "Pre-seed to Series A companies with demonstrated product-market fit or exceptional technical moats.",
+    "domain_tags": ["Deep Learning", "Healthcare AI", "Fintech", "Developer Tools"],
+    "deadline": "2026-11-15",
+    "amount": "$1,000,000 - $15,000,000 investment"
+  },
+  {
+    "title": "Khosla Ventures Climate & DeepTech AI Program",
+    "source": "Venture Programs",
+    "description": "Impact-driven venture capital program backing founders applying machine learning and autonomous systems to climate change mitigation, clean energy optimization, and sustainable manufacturing.",
+    "eligibility_criteria": "Early-stage startups demonstrating measurable environmental impact through AI-powered solutions.",
+    "domain_tags": ["Climate Tech", "Clean Energy", "Machine Learning", "Sustainability"],
+    "deadline": "2026-10-30",
+    "amount": "$2,000,000 - $10,000,000 investment"
+  },
+  {
+    "title": "Lightspeed Venture Partners Enterprise AI & Cybersecurity Fund",
+    "source": "Venture Programs",
+    "description": "Growth-stage venture fund focusing on AI-enhanced cybersecurity platforms, automated threat hunting, and zero-trust architecture solutions for enterprise and government customers.",
+    "eligibility_criteria": "Series A to Series C companies with enterprise traction, recurring revenue, and proven security technology.",
+    "domain_tags": ["Cybersecurity", "Enterprise Software", "Threat Intelligence", "Zero-Trust Security"],
+    "deadline": "2026-11-30",
+    "amount": "$5,000,000 - $25,000,000 investment"
+  },
+  {
+    "title": "NEA Ventures Robotics & Autonomous Systems Program",
+    "source": "Venture Programs",
+    "description": "Strategic venture investment in robotics startups pioneering autonomous navigation, warehouse automation, surgical robotics, and industrial IoT platforms powered by reinforcement learning.",
+    "eligibility_criteria": "Startups with working prototypes, pilot deployments, or regulatory approvals in robotics and autonomous systems.",
+    "domain_tags": ["Robotics", "Autonomous Systems", "Reinforcement Learning", "Industrial Automation"],
+    "deadline": "2026-12-15",
+    "amount": "$3,000,000 - $20,000,000 investment"
+  },
+  {
+    "title": "GV (Google Ventures) Quantum Computing & AI Convergence Fund",
+    "source": "Venture Programs",
+    "description": "Venture capital fund dedicated to startups building quantum-classical hybrid algorithms, quantum machine learning frameworks, and fault-tolerant quantum computing platforms.",
+    "eligibility_criteria": "Seed to Series B companies with quantum computing expertise and demonstrated algorithmic advantage.",
+    "domain_tags": ["Quantum Computing", "Quantum Algorithms", "Machine Learning", "High-Performance Computing"],
+    "deadline": "2026-10-25",
+    "amount": "$2,000,000 - $15,000,000 investment"
+  },
+  {
+    "title": "Accel Partners Generative AI & Creative Technology Venture Fund",
+    "source": "Venture Programs",
+    "description": "Early-stage venture fund backing founders creating generative AI tools for content creation, design automation, music synthesis, and interactive media powered by diffusion models and transformers.",
+    "eligibility_criteria": "Pre-seed to Series A startups with innovative generative AI applications and growing user bases.",
+    "domain_tags": ["Generative AI", "Creative Technology", "Diffusion Models", "Natural Language Processing"],
+    "deadline": "2026-11-20",
+    "amount": "$1,000,000 - $8,000,000 investment"
+  },
+  {
+    "title": "UNESCO AI Ethics & Inclusive Digital Transformation Grant",
+    "source": "International Funding Agencies",
+    "description": "International grant program supporting research in AI ethics, algorithmic fairness, and inclusive digital governance frameworks that ensure equitable AI deployment across developing nations.",
+    "eligibility_criteria": "Universities, NGOs, and government research bodies in UNESCO member states. Priority given to Global South institutions.",
+    "domain_tags": ["AI Ethics", "Algorithmic Fairness", "Digital Governance", "Inclusive AI"],
+    "deadline": "2026-11-15",
+    "amount": "$200,000 - $800,000"
+  },
+  {
+    "title": "World Bank Digital Economy & AI Capacity Building Fund",
+    "source": "International Funding Agencies",
+    "description": "Development funding for AI-powered solutions addressing poverty reduction, financial inclusion, digital identity, and smart agriculture in low- and middle-income countries.",
+    "eligibility_criteria": "Government agencies, development organizations, and academic institutions in World Bank member countries.",
+    "domain_tags": ["Financial Inclusion", "Digital Economy", "Agritech", "Machine Learning"],
+    "deadline": "2026-12-01",
+    "amount": "$500,000 - $3,000,000"
+  },
+  {
+    "title": "European Commission Horizon Europe AI & Robotics Cluster Grant",
+    "source": "International Funding Agencies",
+    "description": "Large-scale collaborative research grants under Horizon Europe Pillar II funding trustworthy AI, human-robot interaction, and autonomous systems for smart manufacturing and healthcare.",
+    "eligibility_criteria": "Consortia of at least 3 organizations from 3 different EU Member States or Associated Countries.",
+    "domain_tags": ["Trustworthy AI", "Robotics", "Smart Manufacturing", "Healthcare AI"],
+    "deadline": "2026-10-15",
+    "amount": "€3,000,000 - €12,000,000"
+  },
+  {
+    "title": "Asian Development Bank AI for Sustainable Infrastructure Program",
+    "source": "International Funding Agencies",
+    "description": "International development grants applying AI and predictive analytics to climate-resilient infrastructure planning, disaster risk modeling, and smart urban transportation across Asia-Pacific regions.",
+    "eligibility_criteria": "Government ministries, universities, and approved technical agencies in ADB member countries.",
+    "domain_tags": ["Infrastructure", "Predictive Analytics", "Climate Resilience", "Smart Cities"],
+    "deadline": "2026-11-30",
+    "amount": "$300,000 - $2,000,000"
+  },
+  {
+    "title": "Bill & Melinda Gates Foundation Global Health AI Innovation Grant",
+    "source": "International Funding Agencies",
+    "description": "Philanthropic funding supporting AI-driven diagnostics, epidemic forecasting, drug repurposing, and maternal health monitoring tools targeted at underserved populations worldwide.",
+    "eligibility_criteria": "Research institutions, NGOs, and health organizations with operational capacity in low-resource settings.",
+    "domain_tags": ["Healthcare AI", "Global Health", "Diagnostics", "Epidemiology"],
+    "deadline": "2026-12-15",
+    "amount": "$500,000 - $5,000,000"
+  },
+  {
+    "title": "African Union STISA-2024 AI & Data Science Research Grant",
+    "source": "International Funding Agencies",
+    "description": "Pan-African funding initiative building AI research capacity, data science training pipelines, and indigenous language NLP models across African universities and technology hubs.",
+    "eligibility_criteria": "African universities, research centers, and technology incubators in AU member states.",
+    "domain_tags": ["Natural Language Processing", "Data Science", "Capacity Building", "Artificial Intelligence"],
+    "deadline": "2026-10-31",
+    "amount": "$150,000 - $1,000,000"
+  },
+  {
+    "title": "Inter-American Development Bank Smart City & AI Governance Fund",
+    "source": "International Funding Agencies",
+    "description": "International development grants supporting AI-powered urban planning, public safety analytics, digital citizen services, and algorithmic governance transparency in Latin America and the Caribbean.",
+    "eligibility_criteria": "Municipal governments, academic partners, and civic technology organizations in IDB borrowing member countries.",
+    "domain_tags": ["Smart Cities", "AI Governance", "Urban Planning", "Public Safety"],
+    "deadline": "2026-11-20",
+    "amount": "$250,000 - $1,500,000"
+  },
+  {
+    "title": "National Science Foundation Convergence Accelerator for AI Innovation",
+    "source": "Funding Sources",
+    "description": "Cross-disciplinary convergence funding connecting AI researchers with industry, government, and nonprofit partners to accelerate translational research from laboratory prototypes to deployed societal solutions.",
+    "eligibility_criteria": "Multi-sector teams including academic institutions, industry partners, and government collaborators based in the US.",
+    "domain_tags": ["Translational Research", "Artificial Intelligence", "Cross-Disciplinary", "Technology Transfer"],
+    "deadline": "2026-11-01",
+    "amount": "$3,000,000 - $10,000,000"
+  },
+  {
+    "title": "Wellcome Trust AI & Biomedical Discovery Open Fund",
+    "source": "Funding Sources",
+    "description": "Open-access philanthropic funding supporting bold, high-risk research using AI to tackle fundamental challenges in infectious disease, mental health, and climate-linked health impacts.",
+    "eligibility_criteria": "Researchers at eligible institutions worldwide with a strong biomedical research focus.",
+    "domain_tags": ["Biomedical AI", "Healthcare AI", "Infectious Disease", "Mental Health"],
+    "deadline": "2026-12-10",
+    "amount": "£500,000 - £3,000,000"
+  },
+  {
+    "title": "Schmidt Futures AI2050 Early Career Research Grant",
+    "source": "Funding Sources",
+    "description": "Philanthropic funding program empowering early-career researchers pursuing unconventional, high-impact AI research that reimagines foundational assumptions in machine intelligence and societal impact.",
+    "eligibility_criteria": "Early-career researchers (within 10 years of PhD) at accredited global institutions.",
+    "domain_tags": ["Machine Intelligence", "AI Research", "Foundational AI", "Societal Impact"],
+    "deadline": "2026-10-20",
+    "amount": "$200,000 - $500,000"
+  },
+  {
+    "title": "Chan Zuckerberg Initiative Science & AI for Rare Disease Fund",
+    "source": "Funding Sources",
+    "description": "Direct funding for computational biologists and AI researchers developing diagnostic models, gene therapy target prediction, and patient registry analytics for rare and neglected diseases.",
+    "eligibility_criteria": "Academic researchers and clinical investigators with active rare disease research programs.",
+    "domain_tags": ["Rare Disease", "Computational Biology", "Genomics", "Diagnostics"],
+    "deadline": "2026-11-25",
+    "amount": "$300,000 - $2,000,000"
+  },
+  {
+    "title": "Simons Foundation Mathematics & Theoretical AI Discovery Grant",
+    "source": "Funding Sources",
+    "description": "Pure research funding for mathematicians and theoretical computer scientists exploring the mathematical foundations of deep learning, optimization theory, and information-theoretic bounds on neural architectures.",
+    "eligibility_criteria": "Faculty and senior researchers at accredited institutions with expertise in mathematics and theoretical CS.",
+    "domain_tags": ["Mathematics", "Theoretical AI", "Optimization", "Deep Learning"],
+    "deadline": "2026-12-20",
+    "amount": "$400,000 - $1,500,000"
+  },
+  {
+    "title": "Ford Foundation Technology & Society AI Equity Grant",
+    "source": "Funding Sources",
+    "description": "Social impact funding addressing algorithmic bias, surveillance ethics, labor market disruption, and equitable access to AI-driven public services through interdisciplinary policy research.",
+    "eligibility_criteria": "Nonprofits, think tanks, academic centers, and civil society organizations focused on technology equity.",
+    "domain_tags": ["AI Ethics", "Algorithmic Bias", "Social Impact", "Policy Research"],
+    "deadline": "2026-10-15",
+    "amount": "$150,000 - $750,000"
+  },
+  {
+    "title": "MacArthur Foundation 100&Change AI for Global Challenges Award",
+    "source": "Funding Sources",
+    "description": "Transformative large-scale funding for organizations leveraging AI to address critical global challenges including climate change, education access, criminal justice reform, and pandemic preparedness.",
+    "eligibility_criteria": "Nonprofits, social enterprises, and research institutions with scalable, evidence-based AI solutions.",
+    "domain_tags": ["Global Challenges", "Climate Tech", "Education AI", "Pandemic Preparedness"],
+    "deadline": "2026-11-10",
+    "amount": "$1,000,000 - $10,000,000"
   }
 ]

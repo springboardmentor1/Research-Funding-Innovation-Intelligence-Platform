@@ -31,6 +31,10 @@ class Patent(Base):
     id = Column(Integer, primary_key=True, index=True)
     patent_number = Column(String(100), unique=True, index=True, nullable=False)
     title = Column(String(500), index=True, nullable=False)
+    abstract = Column(Text, nullable=True)
     assignee = Column(String(255), index=True, default="", nullable=True)
     filing_date = Column(String(50), default="", nullable=True)
-    technology_domain = Column(String(255), nullable=True)  # CPC classification
+    technology_domain = Column(String(255), nullable=True)
+    patent_classification = Column(String(255), nullable=True)
+    citation_count = Column(Integer, default=0, nullable=False)
+    cluster_label = Column(String(255), nullable=True)

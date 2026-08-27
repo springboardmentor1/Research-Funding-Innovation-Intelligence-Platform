@@ -25,8 +25,12 @@ scikit-learn>=1.4.0
 
 # Machine Learning & NLP
 sentence-transformers>=2.6.0
+google-genai>=0.2.0
 
 # Testing & Verification
 pytest>=8.0.0
 pytest-asyncio>=0.23.0
 
+# Reports
+reportlab>=4.1.0
+openpyxl>=3.1.2

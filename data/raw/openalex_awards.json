@@ -1,7 +1,7 @@
 {
   "meta": {
-    "count": 30726,
-    "db_response_time_ms": 237,
+    "count": 30844,
+    "db_response_time_ms": 427,
     "page": 1,
     "per_page": 120,
     "groups_count": null,
@@ -54,7 +54,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:35",
-      "relevance_score": 58.22519
+      "relevance_score": 58.156204
     },
     {
       "id": "https://openalex.org/G8979334957",
@@ -98,7 +98,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 57.705303
+      "relevance_score": 57.67375
     },
     {
       "id": "https://openalex.org/G1924097639",
@@ -142,7 +142,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-05-27T17:05:40",
-      "relevance_score": 57.16831
+      "relevance_score": 57.08837
     },
     {
       "id": "https://openalex.org/G639762956",
@@ -176,7 +176,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:43",
-      "relevance_score": 57.16831
+      "relevance_score": 57.08837
     },
     {
       "id": "https://openalex.org/G6971427853",
@@ -210,7 +210,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:43",
-      "relevance_score": 57.16831
+      "relevance_score": 57.08837
     },
     {
       "id": "https://openalex.org/G7283277913",
@@ -244,7 +244,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:43",
-      "relevance_score": 57.16831
+      "relevance_score": 57.08837
     },
     {
       "id": "https://openalex.org/G633311483",
@@ -288,7 +288,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-05-27T17:05:40",
-      "relevance_score": 57.060104
+      "relevance_score": 57.028084
     },
     {
       "id": "https://openalex.org/G3453535745",
@@ -332,7 +332,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-05-27T17:05:40",
-      "relevance_score": 56.962357
+      "relevance_score": 56.931393
     },
     {
       "id": "https://openalex.org/G515764403",
@@ -376,7 +376,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:46",
-      "relevance_score": 56.962357
+      "relevance_score": 56.931393
     },
     {
       "id": "https://openalex.org/G1272794250",
@@ -420,7 +420,7 @@
       "institution_awarded": [],
       "updated_date": "2026-05-14T16:10:57",
       "created_date": "2026-05-14T03:11:01",
-      "relevance_score": 56.503826
+      "relevance_score": 56.439167
     },
     {
       "id": "https://openalex.org/G7174297050",
@@ -475,7 +475,7 @@
       ],
       "updated_date": "2026-05-23T21:21:10",
       "created_date": "2026-05-14T03:11:01",
-      "relevance_score": 56.442135
+      "relevance_score": 56.415627
     },
     {
       "id": "https://openalex.org/G3277526563",
@@ -525,7 +525,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:49",
-      "relevance_score": 56.080826
+      "relevance_score": 56.004314
     },
     {
       "id": "https://openalex.org/G1426329243",
@@ -569,7 +569,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 55.821827
+      "relevance_score": 55.79258
     },
     {
       "id": "https://openalex.org/G2785182107",
@@ -643,7 +643,41 @@
       ],
       "updated_date": "2026-06-22T05:01:31",
       "created_date": "2026-06-19T17:32:59",
-      "relevance_score": 55.81795
+      "relevance_score": 55.741352
+    },
+    {
+      "id": "https://openalex.org/G2638740234",
+      "display_name": "ARTIFICIAL INTELLIGENCE QUANTIFIED (AIQ)",
+      "description": "ARTIFICIAL INTELLIGENCE QUANTIFIED (AIQ)",
+      "funder_award_id": "HR00112520022",
+      "funder": {
+        "id": "https://openalex.org/F4320306078",
+        "display_name": "U.S. Department of Defense",
+        "doi": "10.13039/100000005"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 1698214.0,
+      "currency": "USD",
+      "funding_type": "grant",
+      "funder_scheme": "RESEARCH AND TECHNOLOGY DEVELOPMENT",
+      "start_date": "2025-05-22",
+      "end_date": "2026-11-30",
+      "start_year": 2025,
+      "end_year": 2026,
+      "landing_page_url": "https://www.usaspending.gov/award/ASST_NON_HR00112520022_097/",
+      "doi": null,
+      "provenance": "usaspending",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G2638740234",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-07T05:01:21",
+      "created_date": "2026-08-06T15:06:00",
+      "relevance_score": 55.471165
     },
     {
       "id": "https://openalex.org/G5499072100",
@@ -677,13 +711,13 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:35",
-      "relevance_score": 55.50014
+      "relevance_score": 55.471165
     },
     {
-      "id": "https://openalex.org/G2664847561",
+      "id": "https://openalex.org/G8841542724",
       "display_name": "Artificial Intelligence for Health",
       "description": "Purpose and goal:\r\nThe project aims to increase collaboration between two universities within Artificial Intelligence, with a specific focus on AI for health. Artificial Intelligence has traditionally been an area with an uneven gender distribution with an emphasis on male researchers. The department of Applied IT contributes an equality aspect to the problem area through a greater focus on societal effects such as gender equality/equality, transparency, and justice.\r\n\r\nExpected results and effects:\r\nThe expected effects are an established collaboration between both project parties in the AI area both in research and education.\r\n\r\nApproach and implementation:\r\nDuring the research stay, the incoming researcher will collaborate with researchers at the host organization in the field of artificial intelligence, recommender systems, and information systems. Other activities include participation in seminars and workshops at the host organization.",
-      "funder_award_id": "2023-02588_Vinnova",
+      "funder_award_id": "2023-02588",
       "funder": {
         "id": "https://openalex.org/F4320321030",
         "display_name": "VINNOVA",
@@ -715,13 +749,13 @@
       },
       "co_lead_investigator": null,
       "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G2664847561",
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G8841542724",
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-02-10T15:33:03",
-      "created_date": "2026-03-15T01:01:48",
-      "relevance_score": 55.490356
+      "updated_date": "2026-08-01T05:01:29",
+      "created_date": "2026-07-31T15:59:35",
+      "relevance_score": 55.42342
     },
     {
       "id": "https://openalex.org/G5239532408",
@@ -734,31 +768,70 @@
         "doi": "10.13039/501100002428"
       },
       "funded_outputs": [
+        "https://openalex.org/W3185820380",
         "https://openalex.org/W4205194699",
         "https://openalex.org/W4220910651",
         "https://openalex.org/W4225252134",
+        "https://openalex.org/W4226381537",
+        "https://openalex.org/W4281885833",
+        "https://openalex.org/W4283326183",
+        "https://openalex.org/W4284687674",
         "https://openalex.org/W4293507353",
+        "https://openalex.org/W4296604405",
         "https://openalex.org/W4296989907",
+        "https://openalex.org/W4304731433",
         "https://openalex.org/W4306157932",
+        "https://openalex.org/W4306316911",
         "https://openalex.org/W4307570589",
+        "https://openalex.org/W4309088356",
+        "https://openalex.org/W4313482506",
+        "https://openalex.org/W4320854553",
+        "https://openalex.org/W4321485169",
+        "https://openalex.org/W4323030020",
+        "https://openalex.org/W4327909986",
+        "https://openalex.org/W4366547335",
         "https://openalex.org/W4378946118",
         "https://openalex.org/W4380681872",
+        "https://openalex.org/W4384201236",
+        "https://openalex.org/W4384655771",
+        "https://openalex.org/W4385462379",
         "https://openalex.org/W4385495438",
+        "https://openalex.org/W4385570877",
         "https://openalex.org/W4385722007",
         "https://openalex.org/W4386384576",
+        "https://openalex.org/W4386566770",
+        "https://openalex.org/W4386728934",
+        "https://openalex.org/W4386729241",
+        "https://openalex.org/W4387322908",
+        "https://openalex.org/W4387402792",
+        "https://openalex.org/W4387637485",
         "https://openalex.org/W4387917824",
         "https://openalex.org/W4387934902",
         "https://openalex.org/W4390110975",
+        "https://openalex.org/W4390723067",
+        "https://openalex.org/W4391420791",
+        "https://openalex.org/W4392367469",
+        "https://openalex.org/W4393255711",
         "https://openalex.org/W4393473893",
         "https://openalex.org/W4394044380",
+        "https://openalex.org/W4394697563",
         "https://openalex.org/W4396791914",
+        "https://openalex.org/W4399795204",
         "https://openalex.org/W4402451532",
+        "https://openalex.org/W4402670870",
         "https://openalex.org/W4402742926",
+        "https://openalex.org/W4404314702",
+        "https://openalex.org/W4415250167",
+        "https://openalex.org/W7106477085",
+        "https://openalex.org/W7126430330",
         "https://openalex.org/W7143340926",
         "https://openalex.org/W7155653968",
-        "https://openalex.org/W7160726879"
+        "https://openalex.org/W7160726879",
+        "https://openalex.org/W7161204815",
+        "https://openalex.org/W7166866992",
+        "https://openalex.org/W7169633457"
       ],
-      "funded_outputs_count": 23,
+      "funded_outputs_count": 62,
       "amount": 1005150.0,
       "currency": "EUR",
       "funding_type": "grant",
@@ -777,9 +850,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-06-22T05:01:31",
+      "updated_date": "2026-08-10T05:01:23",
       "created_date": "2026-01-25T23:52:08",
-      "relevance_score": 55.45527
+      "relevance_score": 55.391182
     },
     {
       "id": "https://openalex.org/G8582932476",
@@ -823,7 +896,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 55.22094
+      "relevance_score": 55.15552
     },
     {
       "id": "https://openalex.org/G3914613315",
@@ -867,7 +940,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 55.191845
+      "relevance_score": 55.12627
     },
     {
       "id": "https://openalex.org/G6036077156",
@@ -911,7 +984,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 55.163216
+      "relevance_score": 55.09749
     },
     {
       "id": "https://openalex.org/G4866827594",
@@ -966,7 +1039,7 @@
       ],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 55.08664
+      "relevance_score": 55.057983
     },
     {
       "id": "https://openalex.org/G6449174250",
@@ -1012,7 +1085,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-02T05:01:31",
       "created_date": "2026-06-15T23:39:53",
-      "relevance_score": 54.941166
+      "relevance_score": 54.87266
     },
     {
       "id": "https://openalex.org/G2917456858",
@@ -1067,7 +1140,7 @@
       ],
       "updated_date": "2026-06-18T16:00:26",
       "created_date": "2026-06-18T15:40:48",
-      "relevance_score": 54.782944
+      "relevance_score": 54.715427
     },
     {
       "id": "https://openalex.org/G4298897503",
@@ -1122,7 +1195,7 @@
       ],
       "updated_date": "2026-06-18T16:00:26",
       "created_date": "2026-06-18T15:40:48",
-      "relevance_score": 54.782944
+      "relevance_score": 54.715427
     },
     {
       "id": "https://openalex.org/G6285398448",
@@ -1156,7 +1229,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:25:00",
-      "relevance_score": 54.782944
+      "relevance_score": 54.715427
     },
     {
       "id": "https://openalex.org/G8202589810",
@@ -1211,7 +1284,7 @@
       ],
       "updated_date": "2026-06-18T16:00:26",
       "created_date": "2026-06-18T15:40:48",
-      "relevance_score": 54.782944
+      "relevance_score": 54.715427
     },
     {
       "id": "https://openalex.org/G510732750",
@@ -1232,6 +1305,7 @@
         "https://openalex.org/W3131093433",
         "https://openalex.org/W3217561668",
         "https://openalex.org/W4205368656",
+        "https://openalex.org/W4223432361",
         "https://openalex.org/W4280560514",
         "https://openalex.org/W4283274106",
         "https://openalex.org/W4295424672",
@@ -1240,6 +1314,7 @@
         "https://openalex.org/W4316096796",
         "https://openalex.org/W4316128849",
         "https://openalex.org/W4318256636",
+        "https://openalex.org/W4318328438",
         "https://openalex.org/W4319020467",
         "https://openalex.org/W4319318039",
         "https://openalex.org/W4319453763",
@@ -1247,6 +1322,7 @@
         "https://openalex.org/W4352978505",
         "https://openalex.org/W4367311471",
         "https://openalex.org/W4367627326",
+        "https://openalex.org/W4367856157",
         "https://openalex.org/W4378715620",
         "https://openalex.org/W4378717336",
         "https://openalex.org/W4381429258",
@@ -1282,7 +1358,7 @@
         "https://openalex.org/W7131653609",
         "https://openalex.org/W7154887590"
       ],
-      "funded_outputs_count": 57,
+      "funded_outputs_count": 60,
       "amount": 285000.0,
       "currency": "EUR",
       "funding_type": "grant",
@@ -1307,9 +1383,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-06-25T05:01:32",
+      "updated_date": "2026-08-14T05:01:26",
       "created_date": "2023-11-15T12:19:12",
-      "relevance_score": 54.705338
+      "relevance_score": 54.676983
     },
     {
       "id": "https://openalex.org/G8519435835",
@@ -1339,6 +1415,7 @@
         "https://openalex.org/W3208511381",
         "https://openalex.org/W3217561668",
         "https://openalex.org/W4205368656",
+        "https://openalex.org/W4223432361",
         "https://openalex.org/W4280560514",
         "https://openalex.org/W4283274106",
         "https://openalex.org/W4295424672",
@@ -1349,6 +1426,7 @@
         "https://openalex.org/W4316096796",
         "https://openalex.org/W4316128849",
         "https://openalex.org/W4318256636",
+        "https://openalex.org/W4318328438",
         "https://openalex.org/W4319020467",
         "https://openalex.org/W4319318039",
         "https://openalex.org/W4319453763",
@@ -1360,6 +1438,7 @@
         "https://openalex.org/W4362508320",
         "https://openalex.org/W4367311471",
         "https://openalex.org/W4367627326",
+        "https://openalex.org/W4367856157",
         "https://openalex.org/W4378715620",
         "https://openalex.org/W4378716168",
         "https://openalex.org/W4378717336",
@@ -1417,7 +1496,7 @@
         "https://openalex.org/W7131653609",
         "https://openalex.org/W7154887590"
       ],
-      "funded_outputs_count": 94,
+      "funded_outputs_count": 97,
       "amount": 165000.0,
       "currency": "EUR",
       "funding_type": "grant",
@@ -1442,9 +1521,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-06-25T05:01:32",
+      "updated_date": "2026-08-14T05:01:26",
       "created_date": "2023-11-15T12:23:40",
-      "relevance_score": 54.705338
+      "relevance_score": 54.676983
     },
     {
       "id": "https://openalex.org/G8777088153",
@@ -1456,8 +1535,14 @@
         "display_name": "Ministry of Science and Technology, Taiwan",
         "doi": "10.13039/501100004663"
       },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
+      "funded_outputs": [
+        "https://openalex.org/W2968511306",
+        "https://openalex.org/W3008828973",
+        "https://openalex.org/W3128223486",
+        "https://openalex.org/W4292458048",
+        "https://openalex.org/W7038140573"
+      ],
+      "funded_outputs_count": 5,
       "amount": 5233000.0,
       "currency": "TWD",
       "funding_type": "research",
@@ -1486,9 +1571,154 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-06-19T05:01:24",
-      "created_date": "2026-06-18T18:04:18",
-      "relevance_score": 54.660606
+      "updated_date": "2026-08-06T05:01:25",
+      "created_date": "2026-07-13T04:25:35",
+      "relevance_score": 54.63229
+    },
+    {
+      "id": "https://openalex.org/G497127911",
+      "display_name": "Center for Artificial Intelligence",
+      "description": "This proposal describes an Engineering Research Center for Artificial Intelligence (AI) committed to conduct research in basic AI topics and to apply AI techniques to selected application areas --- namely, oil and gas industry, agribusiness, and health. The Center will also fund studies on the social and economic impact of AI, and will carry activities aimed at technology transfer and knowledge diffusion. The Center will be built on the belief that the next ten years will bring unprecedented advances in AI that will depend both on the collaboration amongst the core areas of AI and between these core areas and applications. The Center for Artificial Intelligence will consist of two intertwined groups of researchers, both of them distributed across the host and associated institutions. One group of researchers, with significant international presence in the AI community, will cover central topics of AI, from knowledge representation to machine learning, with specific emphasis on text and natural language processing, particularly in Portuguese. Current international research trends suggest that the next decade will witness an increased interaction between knowledge representation, decision making, and machine learning; the Center for Artificial Intelligence will focus its attention on the combination of these areas of AI as they are not as closely connected as they should be --- the Center will position itself as a fundamental player in the collaboration amongst core AI topics. A second group of researchers in the Center will focus on three selected application areas with high potential and significant existing expertise in the host institution: oil and gas, agribusiness, and health. The connection between core AI research and application areas will work both ways: the core AI research will address large scale problems in the selected application areas, and will be informed by the large scale challenges in those application areas. A small group of researchers from the humanities is also included in the Center so as to conduct research on the social impact of AI and to identify paths that will guarantee the use of AI for good. The Coordinator of Education and Dissemination of Knowledge will organize video production with research results and will work through fairs and schools to educate the public in broadest terms. The Coordinator of Technology Transfer will work together with well established offices of the host institution to nurture initiatives that will transfer results to the funding entities and to entrepreneurship efforts. (AU)",
+      "funder_award_id": "19/07665-4",
+      "funder": {
+        "id": "https://openalex.org/F4320320997",
+        "display_name": "Funda\u00e7\u00e3o de Amparo \u00e0 Pesquisa do Estado de S\u00e3o Paulo",
+        "doi": "10.13039/501100001807"
+      },
+      "funded_outputs": [
+        "https://openalex.org/W2978853742",
+        "https://openalex.org/W2994722524",
+        "https://openalex.org/W2998530726",
+        "https://openalex.org/W3003487105",
+        "https://openalex.org/W3009474020",
+        "https://openalex.org/W3032668327",
+        "https://openalex.org/W3037334891",
+        "https://openalex.org/W3046351754",
+        "https://openalex.org/W3048845771",
+        "https://openalex.org/W3048972242",
+        "https://openalex.org/W3076103167",
+        "https://openalex.org/W3080604883",
+        "https://openalex.org/W3081185273",
+        "https://openalex.org/W3082185756",
+        "https://openalex.org/W3083591328",
+        "https://openalex.org/W3088335680",
+        "https://openalex.org/W3092184697",
+        "https://openalex.org/W3092846871",
+        "https://openalex.org/W3095368728",
+        "https://openalex.org/W3109302118",
+        "https://openalex.org/W3112764946",
+        "https://openalex.org/W3113380025",
+        "https://openalex.org/W3118430347",
+        "https://openalex.org/W3128266512",
+        "https://openalex.org/W3128324248",
+        "https://openalex.org/W3135424528",
+        "https://openalex.org/W3157526696",
+        "https://openalex.org/W3165906701",
+        "https://openalex.org/W3169838845",
+        "https://openalex.org/W3173715137",
+        "https://openalex.org/W3174111042",
+        "https://openalex.org/W3174751856",
+        "https://openalex.org/W3198094751",
+        "https://openalex.org/W3198183401",
+        "https://openalex.org/W3200709606",
+        "https://openalex.org/W3207165032",
+        "https://openalex.org/W3209081317",
+        "https://openalex.org/W3210652142",
+        "https://openalex.org/W3212104012",
+        "https://openalex.org/W3212334520",
+        "https://openalex.org/W3213087112",
+        "https://openalex.org/W3214971042",
+        "https://openalex.org/W3216278056",
+        "https://openalex.org/W4200050671",
+        "https://openalex.org/W4200075289",
+        "https://openalex.org/W4200227073",
+        "https://openalex.org/W4200274155",
+        "https://openalex.org/W4200275327",
+        "https://openalex.org/W4200423940",
+        "https://openalex.org/W4200524951",
+        "https://openalex.org/W4200557374",
+        "https://openalex.org/W4205840839",
+        "https://openalex.org/W4206457784",
+        "https://openalex.org/W4206569030",
+        "https://openalex.org/W4206939075",
+        "https://openalex.org/W4206944301",
+        "https://openalex.org/W4210943669",
+        "https://openalex.org/W4211015359",
+        "https://openalex.org/W4212962564",
+        "https://openalex.org/W4213113677",
+        "https://openalex.org/W4220833946",
+        "https://openalex.org/W4221052873",
+        "https://openalex.org/W4221077636",
+        "https://openalex.org/W4221122397",
+        "https://openalex.org/W4221154392",
+        "https://openalex.org/W4224903181",
+        "https://openalex.org/W4225166751",
+        "https://openalex.org/W4225725119",
+        "https://openalex.org/W4226232191",
+        "https://openalex.org/W4226435048",
+        "https://openalex.org/W4231195382",
+        "https://openalex.org/W4237285521",
+        "https://openalex.org/W4237313590",
+        "https://openalex.org/W4246829560",
+        "https://openalex.org/W4247901753",
+        "https://openalex.org/W4248717335",
+        "https://openalex.org/W4251882358",
+        "https://openalex.org/W4280580509",
+        "https://openalex.org/W4280611038",
+        "https://openalex.org/W4283012918",
+        "https://openalex.org/W4283690163",
+        "https://openalex.org/W4283782559",
+        "https://openalex.org/W4285194231",
+        "https://openalex.org/W4285342900",
+        "https://openalex.org/W4286903520",
+        "https://openalex.org/W4287553145",
+        "https://openalex.org/W4288046197",
+        "https://openalex.org/W4288046325",
+        "https://openalex.org/W4288076260",
+        "https://openalex.org/W4288422317",
+        "https://openalex.org/W4288907876",
+        "https://openalex.org/W4293231515",
+        "https://openalex.org/W4293733614",
+        "https://openalex.org/W4294295914",
+        "https://openalex.org/W4296598192",
+        "https://openalex.org/W4296905092",
+        "https://openalex.org/W4297627327",
+        "https://openalex.org/W4297650285",
+        "https://openalex.org/W4298125779",
+        "https://openalex.org/W4304701348"
+      ],
+      "funded_outputs_count": 328,
+      "amount": null,
+      "currency": "BRL",
+      "funding_type": "grant",
+      "funder_scheme": "Aux\u00edlio \u00e0 Pesquisa - Programa eScience e Data Science - Centros de Pesquisa Aplicada",
+      "start_date": "2020-08-01",
+      "end_date": "2026-07-31",
+      "start_year": 2020,
+      "end_year": 2026,
+      "landing_page_url": "https://bv.fapesp.br/en/auxilios/19-07665-4/",
+      "doi": null,
+      "provenance": "fapesp_bv",
+      "lead_investigator": {
+        "given_name": "Fabio",
+        "family_name": "Gagliardi Cozman",
+        "orcid": null,
+        "role_start": null,
+        "affiliation": {
+          "name": "Universidade de S\u00e3o Paulo (USP). Centro de Inova\u00e7\u00e3o da USP (INOVA)",
+          "country": "Brazil",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G497127911",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-08T05:01:12",
+      "created_date": "2026-07-13T04:22:39",
+      "relevance_score": 54.354694
     },
     {
       "id": "https://openalex.org/G406630370",
@@ -1532,60 +1762,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:46",
-      "relevance_score": 54.422108
-    },
-    {
-      "id": "https://openalex.org/G497127911",
-      "display_name": "Center for Artificial Intelligence",
-      "description": "This proposal describes an Engineering Research Center for Artificial Intelligence (AI) committed to conduct research in basic AI topics and to apply AI techniques to selected application areas --- namely, oil and gas industry, agribusiness, and health. The Center will also fund studies on the social and economic impact of AI, and will carry activities aimed at technology transfer and knowledge diffusion. The Center will be built on the belief that the next ten years will bring unprecedented advances in AI that will depend both on the collaboration amongst the core areas of AI and between these core areas and applications. The Center for Artificial Intelligence will consist of two intertwined groups of researchers, both of them distributed across the host and associated institutions. One group of researchers, with significant international presence in the AI community, will cover central topics of AI, from knowledge representation to machine learning, with specific emphasis on text and natural language processing, particularly in Portuguese. Current international research trends suggest that the next decade will witness an increased interaction between knowledge representation, decision making, and machine learning; the Center for Artificial Intelligence will focus its attention on the combination of these areas of AI as they are not as closely connected as they should be --- the Center will position itself as a fundamental player in the collaboration amongst core AI topics. A second group of researchers in the Center will focus on three selected application areas with high potential and significant existing expertise in the host institution: oil and gas, agribusiness, and health. The connection between core AI research and application areas will work both ways: the core AI research will address large scale problems in the selected application areas, and will be informed by the large scale challenges in those application areas. A small group of researchers from the humanities is also included in the Center so as to conduct research on the social impact of AI and to identify paths that will guarantee the use of AI for good. The Coordinator of Education and Dissemination of Knowledge will organize video production with research results and will work through fairs and schools to educate the public in broadest terms. The Coordinator of Technology Transfer will work together with well established offices of the host institution to nurture initiatives that will transfer results to the funding entities and to entrepreneurship efforts. (AU)",
-      "funder_award_id": "19/07665-4",
-      "funder": {
-        "id": "https://openalex.org/F4320320997",
-        "display_name": "Funda\u00e7\u00e3o de Amparo \u00e0 Pesquisa do Estado de S\u00e3o Paulo",
-        "doi": "10.13039/501100001807"
-      },
-      "funded_outputs": [
-        "https://openalex.org/W3112764946",
-        "https://openalex.org/W4310687004",
-        "https://openalex.org/W4402858743",
-        "https://openalex.org/W4415110332",
-        "https://openalex.org/W4415149562",
-        "https://openalex.org/W4416697841",
-        "https://openalex.org/W4416697843",
-        "https://openalex.org/W7162414249"
-      ],
-      "funded_outputs_count": 8,
-      "amount": null,
-      "currency": "BRL",
-      "funding_type": "grant",
-      "funder_scheme": "Aux\u00edlio \u00e0 Pesquisa - Programa eScience e Data Science - Centros de Pesquisa Aplicada",
-      "start_date": "2020-08-01",
-      "end_date": "2026-07-31",
-      "start_year": 2020,
-      "end_year": 2026,
-      "landing_page_url": "https://bv.fapesp.br/en/auxilios/19-07665-4/",
-      "doi": null,
-      "provenance": "fapesp_bv",
-      "lead_investigator": {
-        "given_name": "Fabio",
-        "family_name": "Gagliardi Cozman",
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "Universidade de S\u00e3o Paulo (USP). Centro de Inova\u00e7\u00e3o da USP (INOVA)",
-          "country": "Brazil",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G497127911",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-07-14T05:01:28",
-      "created_date": "2026-07-13T04:22:39",
-      "relevance_score": 54.38281
+      "relevance_score": 54.35325
     },
     {
       "id": "https://openalex.org/G1648927131",
@@ -1629,7 +1806,7 @@
       "institution_awarded": [],
       "updated_date": "2026-04-23T00:49:13",
       "created_date": "2026-03-15T01:01:36",
-      "relevance_score": 54.343693
+      "relevance_score": 54.315624
     },
     {
       "id": "https://openalex.org/G3008001860",
@@ -1673,7 +1850,7 @@
       "institution_awarded": [],
       "updated_date": "2026-05-14T16:10:57",
       "created_date": "2026-05-14T03:11:01",
-      "relevance_score": 54.330357
+      "relevance_score": 54.26009
     },
     {
       "id": "https://openalex.org/G7518490959",
@@ -1779,7 +1956,7 @@
       ],
       "updated_date": "2026-06-22T05:01:31",
       "created_date": "2026-06-19T17:32:59",
-      "relevance_score": 54.330357
+      "relevance_score": 54.26009
     },
     {
       "id": "https://openalex.org/G5392220122",
@@ -1823,7 +2000,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-22T05:01:31",
       "created_date": "2026-03-15T01:01:46",
-      "relevance_score": 54.26549
+      "relevance_score": 54.19509
     },
     {
       "id": "https://openalex.org/G438882881",
@@ -1877,7 +2054,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-22T05:01:31",
       "created_date": "2026-03-15T01:01:35",
-      "relevance_score": 54.253464
+      "relevance_score": 54.18017
     },
     {
       "id": "https://openalex.org/G5856701639",
@@ -1921,7 +2098,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 54.253464
+      "relevance_score": 54.18017
     },
     {
       "id": "https://openalex.org/G67456712",
@@ -1987,7 +2164,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-19T05:01:24",
       "created_date": "2026-06-18T18:04:18",
-      "relevance_score": 54.253464
+      "relevance_score": 54.18017
     },
     {
       "id": "https://openalex.org/G7635477404",
@@ -2002,14 +2179,26 @@
       "funded_outputs": [
         "https://openalex.org/W3088716280",
         "https://openalex.org/W4385714612",
+        "https://openalex.org/W4387635420",
         "https://openalex.org/W4389714342",
         "https://openalex.org/W4393063621",
         "https://openalex.org/W4406975142",
+        "https://openalex.org/W4407133196",
         "https://openalex.org/W4409968355",
+        "https://openalex.org/W4411235396",
         "https://openalex.org/W4411885545",
         "https://openalex.org/W4413907699",
+        "https://openalex.org/W4414359337",
+        "https://openalex.org/W4414359428",
+        "https://openalex.org/W4414359550",
         "https://openalex.org/W4414360377",
+        "https://openalex.org/W4414360434",
+        "https://openalex.org/W4414360439",
+        "https://openalex.org/W4414360449",
+        "https://openalex.org/W4414360495",
+        "https://openalex.org/W4414729981",
         "https://openalex.org/W4416067279",
+        "https://openalex.org/W4416085509",
         "https://openalex.org/W4416450649",
         "https://openalex.org/W4416956316",
         "https://openalex.org/W4417032043",
@@ -2045,7 +2234,6 @@
         "https://openalex.org/W7161492868",
         "https://openalex.org/W7161916727",
         "https://openalex.org/W7161916831",
-        "https://openalex.org/W7161917014",
         "https://openalex.org/W7162044152",
         "https://openalex.org/W7162044565",
         "https://openalex.org/W7162219335",
@@ -2086,9 +2274,11 @@
         "https://openalex.org/W7169688445",
         "https://openalex.org/W7169839672",
         "https://openalex.org/W7170152082",
-        "https://openalex.org/W7170154182"
+        "https://openalex.org/W7170154182",
+        "https://openalex.org/W7172172130",
+        "https://openalex.org/W7172172315"
       ],
-      "funded_outputs_count": 87,
+      "funded_outputs_count": 105,
       "amount": 19760512.0,
       "currency": "EUR",
       "funding_type": "grant",
@@ -2107,9 +2297,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-07-26T05:01:18",
+      "updated_date": "2026-08-19T05:01:04",
       "created_date": "2024-05-07T08:48:32",
-      "relevance_score": 54.253464
+      "relevance_score": 54.18017
     },
     {
       "id": "https://openalex.org/G80689357",
@@ -2153,7 +2343,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:35",
-      "relevance_score": 54.253464
+      "relevance_score": 54.18017
     },
     {
       "id": "https://openalex.org/G3371066105",
@@ -2197,7 +2387,7 @@
       "institution_awarded": [],
       "updated_date": "2026-05-27T20:56:53",
       "created_date": "2026-05-27T18:33:32",
-      "relevance_score": 54.186264
+      "relevance_score": 54.158314
     },
     {
       "id": "https://openalex.org/G151430644",
@@ -2241,7 +2431,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-19T05:01:24",
       "created_date": "2026-06-18T20:45:02",
-      "relevance_score": 54.161118
+      "relevance_score": 54.132477
     },
     {
       "id": "https://openalex.org/G4292222460",
@@ -2275,7 +2465,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:25:00",
-      "relevance_score": 54.145287
+      "relevance_score": 54.11738
     },
     {
       "id": "https://openalex.org/G6182172586",
@@ -2324,7 +2514,41 @@
       "institution_awarded": [],
       "updated_date": "2026-04-23T00:49:13",
       "created_date": "2026-03-15T01:01:43",
-      "relevance_score": 54.016346
+      "relevance_score": 53.946297
+    },
+    {
+      "id": "https://openalex.org/G7418105859",
+      "display_name": "Artificial Intelligence Fashion Stylist",
+      "description": "Intelistyle is an artificial intelligence(AI) personal styling service that helps users discover new outfits by matching their existing or new clothes from participating retailers, based on their personal preferences and fashion trends.Personalised fashion styling is a hard to access, expensive service with most shoppers relying on non-personalised advice from magazines and online blogs/retailers. This is similar to the music industry 10 years ago. Services such as Spotify revolutionized the way people purchase and discover music. Our mission is to build the next &quot;Spotify of fashion&quot;, an industry worth $3000bn worldwide and &pound;66bn in the UK. This will generate a significant competitive advantage for our company and will disrupt the fashion industry while partner retailers will increase their average order value(AOV) and user conversion rate(CR) ultimately leading to increased revenue/profit while reducing associated marketing and operational costs. Customers benefit from free styling advice.",
+      "funder_award_id": "133297",
+      "funder": {
+        "id": "https://openalex.org/F4320335087",
+        "display_name": "Innovate UK",
+        "doi": "10.13039/501100006041"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 115291.0,
+      "currency": "GBP",
+      "funding_type": "feasibility_studies",
+      "funder_scheme": null,
+      "start_date": "2018-02-01",
+      "end_date": "2018-10-31",
+      "start_year": 2018,
+      "end_year": 2018,
+      "landing_page_url": "https://gtr.ukri.org/projects?ref=133297",
+      "doi": null,
+      "provenance": "gateway_to_research",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G7418105859",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-07-14T05:01:28",
+      "created_date": "2026-07-13T04:25:00",
+      "relevance_score": 53.945354
     },
     {
       "id": "https://openalex.org/G1930370730",
@@ -2368,41 +2592,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-16T05:01:20",
       "created_date": "2026-06-15T23:39:53",
-      "relevance_score": 53.999836
-    },
-    {
-      "id": "https://openalex.org/G7418105859",
-      "display_name": "Artificial Intelligence Fashion Stylist",
-      "description": "Intelistyle is an artificial intelligence(AI) personal styling service that helps users discover new outfits by matching their existing or new clothes from participating retailers, based on their personal preferences and fashion trends.Personalised fashion styling is a hard to access, expensive service with most shoppers relying on non-personalised advice from magazines and online blogs/retailers. This is similar to the music industry 10 years ago. Services such as Spotify revolutionized the way people purchase and discover music. Our mission is to build the next &quot;Spotify of fashion&quot;, an industry worth $3000bn worldwide and &pound;66bn in the UK. This will generate a significant competitive advantage for our company and will disrupt the fashion industry while partner retailers will increase their average order value(AOV) and user conversion rate(CR) ultimately leading to increased revenue/profit while reducing associated marketing and operational costs. Customers benefit from free styling advice.",
-      "funder_award_id": "133297",
-      "funder": {
-        "id": "https://openalex.org/F4320335087",
-        "display_name": "Innovate UK",
-        "doi": "10.13039/501100006041"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 115291.0,
-      "currency": "GBP",
-      "funding_type": "feasibility_studies",
-      "funder_scheme": null,
-      "start_date": "2018-02-01",
-      "end_date": "2018-10-31",
-      "start_year": 2018,
-      "end_year": 2018,
-      "landing_page_url": "https://gtr.ukri.org/projects?ref=133297",
-      "doi": null,
-      "provenance": "gateway_to_research",
-      "lead_investigator": null,
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G7418105859",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-07-14T05:01:28",
-      "created_date": "2026-07-13T04:25:00",
-      "relevance_score": 53.973125
+      "relevance_score": 53.929844
     },
     {
       "id": "https://openalex.org/G80692147",
@@ -2446,20 +2636,26 @@
       "institution_awarded": [],
       "updated_date": "2026-06-19T05:01:24",
       "created_date": "2026-06-18T21:25:04",
-      "relevance_score": 53.822327
+      "relevance_score": 53.794678
     },
     {
-      "id": "https://openalex.org/G6151142287",
+      "id": "https://openalex.org/G7201223071",
       "display_name": "Socially Embodied Artificial Intelligence",
       "description": "Today\u00b4s interactions with conversational interfaces are still mainly utilitarian and transactional because autonomous social decision-making is still unattainable in most embodied agents, especially in complex environments where multiple participants need to rely on their social skills to better perceive and make decisions. To enable more social and relational types of interactions and applications, this project introduces a Socially Embodied Artificial Intelligence (SE. AI) framework that connects multimodal social perception with multimodal behavior generation in complex social environments. The framework includes a data collection platform that uses teleoperation and mixed reality technologies to enable the creation of robust multimodal, multiparty social datasets, that provide a real-time simulation of task actions, gestures, and other social behaviors. Leveraging data extracted from this platform, novel models for social decision-making (i.e., believable and contingent task, verbal, and non-verbal behavior) for embodied agents will be created using multimodal fusion and deep machine learning techniques. This framework is a paradigm shift compared to how robots learn social behavior today, paving the way for the next generation of socially autonomous embodied agents to be used in a wide range of applications, from healthcare assistants to personalized tutors.",
-      "funder_award_id": "2021-05803_VR",
+      "funder_award_id": "2021-05803",
       "funder": {
         "id": "https://openalex.org/F4320322581",
         "display_name": "Vetenskapsr\u00e5det",
         "doi": "10.13039/501100004359"
       },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
+      "funded_outputs": [
+        "https://openalex.org/W4311376429",
+        "https://openalex.org/W4396645785",
+        "https://openalex.org/W4403913178",
+        "https://openalex.org/W4413321648",
+        "https://openalex.org/W4414051100"
+      ],
+      "funded_outputs_count": 5,
       "amount": 4000000.0,
       "currency": "SEK",
       "funding_type": "fellowship",
@@ -2484,13 +2680,13 @@
       },
       "co_lead_investigator": null,
       "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G6151142287",
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G7201223071",
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-02-10T15:33:03",
-      "created_date": "2026-03-15T01:01:38",
-      "relevance_score": 53.811176
+      "updated_date": "2026-08-01T05:01:29",
+      "created_date": "2026-07-31T15:54:02",
+      "relevance_score": 53.740833
     },
     {
       "id": "https://openalex.org/G353594923",
@@ -2506,10 +2702,14 @@
         "https://openalex.org/W7155378403",
         "https://openalex.org/W7158757693",
         "https://openalex.org/W7160825152",
+        "https://openalex.org/W7161230087",
         "https://openalex.org/W7165027172",
-        "https://openalex.org/W7166569240"
+        "https://openalex.org/W7166569240",
+        "https://openalex.org/W7172340562",
+        "https://openalex.org/W7202060875",
+        "https://openalex.org/W7202081445"
       ],
-      "funded_outputs_count": 5,
+      "funded_outputs_count": 9,
       "amount": 577829.2,
       "currency": "EUR",
       "funding_type": "grant",
@@ -2534,9 +2734,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-07-02T05:01:31",
+      "updated_date": "2026-08-19T05:01:04",
       "created_date": "2025-11-28T12:36:53",
-      "relevance_score": 53.650246
+      "relevance_score": 53.579674
     },
     {
       "id": "https://openalex.org/G7200795588",
@@ -2580,7 +2780,54 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:43",
-      "relevance_score": 53.595463
+      "relevance_score": 53.567993
+    },
+    {
+      "id": "https://openalex.org/G4071123404",
+      "display_name": "Applied Artificial Intelligence Laboratory",
+      "description": "Artificial Intelligence (AI) is a transformative force in healthcare and industry, revolutionizing operations and decision-making. Initially bounded by predefined rules, AI has evolved through machine learning and deep learning algorithms, learning from extensive datasets and adapting to dynamic scenarios. This progress has led to the creation of assisted, augmented, and autonomous systems, aiming to revolutionize patient care and manufacturing processes by integrating and analyzing diverse data sources. In healthcare, AI-driven diagnostic tools analyze medical images and data accurately, helping detect diseases and optimize treatments. Predictive models anticipate patient outcomes for proactive interventions and personalized care. In industry, AI-driven automation streamlines manufacturing and ensures product consistency. As AI continues to evolve, its applications will growth, where emerging technologies like natural language processing and robotics are set to transform patient-provider interactions and manufacturing workflows.\n\nSince its foundation, 2Ai has driven applied AI research, fostering collaboration between academia, industry, and regional development initiatives in Northern Portugal and Europe. 2Ai is dedicated to creating AI innovations to revolutionize healthcare, optimize industrial processes, and promote economic growth, aligned with Sustainable Development Goals (SDGs), particularly SDG 3 (Good Health and Well-being) and SDG 9 (Industry, Innovation, and Infrastructure), and with the Smart Specialization Strategy. Thus, expanding on this alignment, 2Ai will direct, between 2025-2029, its research efforts toward two impact areas:",
+      "funder_award_id": "UID/PRR/05549/2025",
+      "funder": {
+        "id": "https://openalex.org/F4320334779",
+        "display_name": "Funda\u00e7\u00e3o para a Ci\u00eancia e a Tecnologia",
+        "doi": "10.13039/501100001871"
+      },
+      "funded_outputs": [
+        "https://openalex.org/W7161230087",
+        "https://openalex.org/W7163018417",
+        "https://openalex.org/W7165458615",
+        "https://openalex.org/W7166569240",
+        "https://openalex.org/W7166689598",
+        "https://openalex.org/W7171524180"
+      ],
+      "funded_outputs_count": 6,
+      "amount": 43855.64,
+      "currency": "EUR",
+      "funding_type": "grant",
+      "funder_scheme": "FCT",
+      "start_date": "2025-01-01",
+      "end_date": "2026-06-30",
+      "start_year": 2025,
+      "end_year": 2026,
+      "landing_page_url": "https://sciproj.ptcris.pt/177343UID",
+      "doi": "https://doi.org/10.54499/uid/prr/05549/2025",
+      "provenance": "crossref_work",
+      "lead_investigator": {
+        "given_name": "Jo\u00e3o",
+        "family_name": "Lu\u00eds Ara\u00fajo Martins Vila\u00e7a",
+        "orcid": "https://orcid.org/0000-0002-4196-5357",
+        "role_start": null,
+        "affiliation": null
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G4071123404",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-19T05:01:04",
+      "created_date": "2025-10-28T12:09:49",
+      "relevance_score": 53.543224
     },
     {
       "id": "https://openalex.org/G2831296418",
@@ -2624,104 +2871,7 @@
       "institution_awarded": [],
       "updated_date": "2026-05-14T16:10:57",
       "created_date": "2026-05-14T03:11:01",
-      "relevance_score": 53.57834
-    },
-    {
-      "id": "https://openalex.org/G4071123404",
-      "display_name": "Applied Artificial Intelligence Laboratory",
-      "description": "Artificial Intelligence (AI) is a transformative force in healthcare and industry, revolutionizing operations and decision-making. Initially bounded by predefined rules, AI has evolved through machine learning and deep learning algorithms, learning from extensive datasets and adapting to dynamic scenarios. This progress has led to the creation of assisted, augmented, and autonomous systems, aiming to revolutionize patient care and manufacturing processes by integrating and analyzing diverse data sources. In healthcare, AI-driven diagnostic tools analyze medical images and data accurately, helping detect diseases and optimize treatments. Predictive models anticipate patient outcomes for proactive interventions and personalized care. In industry, AI-driven automation streamlines manufacturing and ensures product consistency. As AI continues to evolve, its applications will growth, where emerging technologies like natural language processing and robotics are set to transform patient-provider interactions and manufacturing workflows.\n\nSince its foundation, 2Ai has driven applied AI research, fostering collaboration between academia, industry, and regional development initiatives in Northern Portugal and Europe. 2Ai is dedicated to creating AI innovations to revolutionize healthcare, optimize industrial processes, and promote economic growth, aligned with Sustainable Development Goals (SDGs), particularly SDG 3 (Good Health and Well-being) and SDG 9 (Industry, Innovation, and Infrastructure), and with the Smart Specialization Strategy. Thus, expanding on this alignment, 2Ai will direct, between 2025-2029, its research efforts toward two impact areas:",
-      "funder_award_id": "UID/PRR/05549/2025",
-      "funder": {
-        "id": "https://openalex.org/F4320334779",
-        "display_name": "Funda\u00e7\u00e3o para a Ci\u00eancia e a Tecnologia",
-        "doi": "10.13039/501100001871"
-      },
-      "funded_outputs": [
-        "https://openalex.org/W7163018417",
-        "https://openalex.org/W7165458615",
-        "https://openalex.org/W7166569240",
-        "https://openalex.org/W7166689598"
-      ],
-      "funded_outputs_count": 4,
-      "amount": 43855.64,
-      "currency": "EUR",
-      "funding_type": "grant",
-      "funder_scheme": "FCT",
-      "start_date": "2025-01-01",
-      "end_date": "2026-06-30",
-      "start_year": 2025,
-      "end_year": 2026,
-      "landing_page_url": "https://sciproj.ptcris.pt/177343UID",
-      "doi": "https://doi.org/10.54499/uid/prr/05549/2025",
-      "provenance": "crossref_work",
-      "lead_investigator": {
-        "given_name": "Jo\u00e3o",
-        "family_name": "Lu\u00eds Ara\u00fajo Martins Vila\u00e7a",
-        "orcid": "https://orcid.org/0000-0002-4196-5357",
-        "role_start": null,
-        "affiliation": null
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G4071123404",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-07-03T05:01:34",
-      "created_date": "2025-10-28T12:09:49",
-      "relevance_score": 53.570667
-    },
-    {
-      "id": "https://openalex.org/G8585819956",
-      "display_name": "Artificial Intelligence & Optics LaboratorY",
-      "description": "In 2050, France aims to achieve carbon neutrality through an ecological transition. At the heart of the key challenges of this transition, the circular economy relies on the reuse of resources, products, and waste to provide an alternative to the disposable model. Sorting, therefore, becomes a crucial aspect of the waste transformation and valorization sector. Pellenc Selective Technologies offers intelligent machines for the optical control and sorting of waste. Today, these machines need to evolve to enable the sorting of a wider variety of complex waste and meet the growing demands for precision and separability in the future valorization processes. To support this transition, significant innovations in sensors and data analysis methods are necessary. It is in this context that the AIOLY (Artificial Intelligence & Optics Laboratory) joint laboratory is established. AIOLY aims to harness the significant advances in Machine Learning, Deep Learning, and Instrumental Optics to create intelligent spectroscopic sensors that will equip the next generations of waste sorting machines. The AIOLY Labcom will address the following scientific issues: How to process spectral data by integrating data analysis methods from AI with the knowledge of chemometrics? How to optimize the acquisition of optical signals through optical instrumentation (hardware) for new AI-based processing approaches? The AIOLY LabCom is a partnership between the UMR ITAP (INRAE) and Pellenc ST, two internationally recognized entities with complementary expertise in the design of optical sensors based on spectrometry and hyperspectral imaging, as well as in the analysis of in-situ spectroscopic data in complex environments.",
-      "funder_award_id": "ANR-23-LCV2-0015",
-      "funder": {
-        "id": "https://openalex.org/F4320320883",
-        "display_name": "Agence Nationale de la Recherche",
-        "doi": "10.13039/501100001665"
-      },
-      "funded_outputs": [
-        "https://openalex.org/W4414300001"
-      ],
-      "funded_outputs_count": 1,
-      "amount": 362093.38,
-      "currency": "EUR",
-      "funding_type": "grant",
-      "funder_scheme": "LabCom",
-      "start_date": "2024-03-01",
-      "end_date": null,
-      "start_year": 2024,
-      "end_year": null,
-      "landing_page_url": "https://anr.fr/Projet-ANR-23-LCV2-0015",
-      "doi": null,
-      "provenance": "anr_opendata",
-      "lead_investigator": {
-        "given_name": "Ryad",
-        "family_name": "BENDOULA",
-        "orcid": "https://orcid.org/0000-0002-2794-1252",
-        "role_start": null,
-        "affiliation": {
-          "name": "Technologies & m\u00e9thodes pour les agricultures de demain",
-          "country": "France",
-          "ids": [
-            {
-              "id": "200118630A",
-              "type": "rnsr",
-              "asserted_by": "anr"
-            }
-          ]
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G8585819956",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-06-22T05:01:31",
-      "created_date": "2026-06-19T17:32:59",
-      "relevance_score": 53.511353
+      "relevance_score": 53.507687
     },
     {
       "id": "https://openalex.org/G777257747",
@@ -2765,211 +2915,60 @@
       "institution_awarded": [],
       "updated_date": "2026-05-14T16:10:57",
       "created_date": "2026-05-14T03:11:01",
-      "relevance_score": 53.49869
+      "relevance_score": 53.471306
     },
     {
-      "id": "https://openalex.org/G260610314",
-      "display_name": "Low Resource Artificial Intelligence",
-      "description": "The main objective of the lorAI project is to upgrade the Kempelen Institute of Intelligent Technologies (KInIT) to a leading R&I institution in low resource artificial intelligence (LRAI) in Slovakia and Europe (with help of advanced partners \u2013 top European AI research institutes ADAPT, DFKI and CERTH). The core of lorAI\u2019s impact stands on three pillars: 1) nurturing talent and personal capacities, 2) pursuing research excellence in low resource AI (LRAI), and 3) innovation and technology transfer with elaborated outreach programmes. \n\nLRAI represents a global research challenge yet is also relevant to the EU region by developing efficient AI operating with limited resources to increase AI availability (for society and industry) and environmental sustainability. Despite tackling the low complexity and computational costs of AI, Centre of Excellence will explore AI applications for the NLP and Green environment (i.e., domains of energy usage optimization, anomaly detection).  \n\nThe activities of the CoE are grouped into ten focused Excellence programs, which, in synergy, contribute to expected impacts overseen by the call and destination by increasing research capacities and competence, funding acquisition capacities, excellent research with societal and economic impact, engagement of industry and wider R&I ecosystem, and internationalization.  \n\nAligned to Slovak and EU strategies (e.g., Slovak Smart Specialization, Coordinated Plan on AI, Green Deal), the lorAI project builds on a unique opportunity of ongoing programs (e.g., EUs Recovery and Resilience), importance of AI and environmental challenges, to multiply effects of the measures resulting in improving Slovak R&I culture and stimulate reforms.  \n\nThanks to the CoE governance model, autonomy is guaranteed. The diversified budget reduces unexpected disruptions and with cross-cutting themes (international, interdisciplinary, cross-sectoral, transfer oriented) ensures long-term sustainability.",
-      "funder_award_id": "101136646",
+      "id": "https://openalex.org/G8585819956",
+      "display_name": "Artificial Intelligence & Optics LaboratorY",
+      "description": "In 2050, France aims to achieve carbon neutrality through an ecological transition. At the heart of the key challenges of this transition, the circular economy relies on the reuse of resources, products, and waste to provide an alternative to the disposable model. Sorting, therefore, becomes a crucial aspect of the waste transformation and valorization sector. Pellenc Selective Technologies offers intelligent machines for the optical control and sorting of waste. Today, these machines need to evolve to enable the sorting of a wider variety of complex waste and meet the growing demands for precision and separability in the future valorization processes. To support this transition, significant innovations in sensors and data analysis methods are necessary. It is in this context that the AIOLY (Artificial Intelligence & Optics Laboratory) joint laboratory is established. AIOLY aims to harness the significant advances in Machine Learning, Deep Learning, and Instrumental Optics to create intelligent spectroscopic sensors that will equip the next generations of waste sorting machines. The AIOLY Labcom will address the following scientific issues: How to process spectral data by integrating data analysis methods from AI with the knowledge of chemometrics? How to optimize the acquisition of optical signals through optical instrumentation (hardware) for new AI-based processing approaches? The AIOLY LabCom is a partnership between the UMR ITAP (INRAE) and Pellenc ST, two internationally recognized entities with complementary expertise in the design of optical sensors based on spectrometry and hyperspectral imaging, as well as in the analysis of in-situ spectroscopic data in complex environments.",
+      "funder_award_id": "ANR-23-LCV2-0015",
       "funder": {
-        "id": "https://openalex.org/F4320320300",
-        "display_name": "European Commission",
-        "doi": "10.13039/501100000780"
+        "id": "https://openalex.org/F4320320883",
+        "display_name": "Agence Nationale de la Recherche",
+        "doi": "10.13039/501100001665"
       },
       "funded_outputs": [
-        "https://openalex.org/W4415276719",
-        "https://openalex.org/W4415338280",
-        "https://openalex.org/W4416037347",
-        "https://openalex.org/W4416148462",
-        "https://openalex.org/W4416148515",
-        "https://openalex.org/W4416255852",
-        "https://openalex.org/W4416453968",
-        "https://openalex.org/W4417010035",
-        "https://openalex.org/W7124228025",
-        "https://openalex.org/W7125782257",
-        "https://openalex.org/W7130617348",
-        "https://openalex.org/W7133241402",
-        "https://openalex.org/W7139144819",
-        "https://openalex.org/W7139147157",
-        "https://openalex.org/W7140132082",
-        "https://openalex.org/W7160457335",
-        "https://openalex.org/W7163188324",
-        "https://openalex.org/W7163205875",
-        "https://openalex.org/W7163286865",
-        "https://openalex.org/W7164701024",
-        "https://openalex.org/W7165219547",
-        "https://openalex.org/W7166801660",
-        "https://openalex.org/W7166806405",
-        "https://openalex.org/W7166880417"
+        "https://openalex.org/W4414300001",
+        "https://openalex.org/W7169614313"
       ],
-      "funded_outputs_count": 24,
-      "amount": 13999950.0,
+      "funded_outputs_count": 2,
+      "amount": 362093.38,
       "currency": "EUR",
       "funding_type": "grant",
-      "funder_scheme": "HORIZON - HORIZON-CSA",
-      "start_date": "2025-03-01",
-      "end_date": "2031-02-28",
-      "start_year": 2025,
-      "end_year": 2031,
-      "landing_page_url": "https://cordis.europa.eu/project/id/101136646",
-      "doi": "10.3030/101136646",
-      "provenance": "cordis",
+      "funder_scheme": "LabCom",
+      "start_date": "2024-03-01",
+      "end_date": null,
+      "start_year": 2024,
+      "end_year": null,
+      "landing_page_url": "https://anr.fr/Projet-ANR-23-LCV2-0015",
+      "doi": null,
+      "provenance": "anr_opendata",
       "lead_investigator": {
-        "given_name": null,
-        "family_name": null,
-        "orcid": null,
+        "given_name": "Ryad",
+        "family_name": "BENDOULA",
+        "orcid": "https://orcid.org/0000-0002-2794-1252",
         "role_start": null,
         "affiliation": {
-          "name": "KEMPELENOV INSTITUT INTELIGENTNYCH TECHNOLOGII",
-          "country": "SK",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G260610314",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-07-04T05:01:16",
-      "created_date": "2026-03-15T01:01:36",
-      "relevance_score": 53.390255
-    },
-    {
-      "id": "https://openalex.org/G437399167",
-      "display_name": "Artificial Intelligence Data Analysis",
-      "description": "AIDA brings a transformational innovation to the analysis of heliophysics data in four steps. \n\nFirst, AIDA will develop a new open source software called AIDApp written in Python (a free language) and capable of collecting, combining and correlating data from different space missions. AIDApp wants to replace mission-specific tools written for costly languages (such as IDL) that exclude many scientists, students and amateur space enthusiasts from exploring the data, with a much-needed single platform where methods are shared and continuously improved by the whole community. \n\nSecond, AIDA will introduce modern data assimilation, statistical methods and machine learning (ML) to heliophysics data processing. Unlike traditional methods based on human expertise, these methods rely on statistics and information theory to extract features that are hidden in the data. \n\nThird, AIDA will combine real data from space missions with synthetic data from simulations developing a virtual satellite component for AIDApp. This feature will be demonstrated in the comparison with existing mission data and in the planning of new missions (e.g. ESA\u2019s THOR).\n\nFourth, AIDA will deploy in AIDApp methods of Artificial Intelligence (AI) to analyse data flows from heliophysics missions. This task requires bridging together competences in computer science and in heliophysics and pushes well beyond the current state of the art in space data analysis, connecting space researchers with AI, one of the fastest growing trends in modern science and industrial development. \n\nAIDA will use the new AIDApp in selecting key heliophysics problems to produce a database (AIDAdb) of new high-level data products that include catalogs of features and events detected by ML and AI algorithms. Moreover, many of the AI methods developed in AIDA will themselves represent higher-level data products, for instance in the form of trained neural networks that can be stored and reused as a database of coefficients.",
-      "funder_award_id": "776262",
-      "funder": {
-        "id": "https://openalex.org/F4320338481",
-        "display_name": "H2020 LEIT Space",
-        "doi": "10.13039/100010673"
-      },
-      "funded_outputs": [
-        "https://openalex.org/W3205363314"
-      ],
-      "funded_outputs_count": 1,
-      "amount": 1499690.0,
-      "currency": "EUR",
-      "funding_type": "grant",
-      "funder_scheme": "COMPET-4-2017",
-      "start_date": "2018-09-01",
-      "end_date": null,
-      "start_year": 2018,
-      "end_year": null,
-      "landing_page_url": "https://cordis.europa.eu/project/id/776262",
-      "doi": "http://dx.doi.org/10.3030/776262",
-      "provenance": "crossref_work",
-      "lead_investigator": null,
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G437399167",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-04-26T01:01:14",
-      "created_date": "2022-12-12T13:50:09",
-      "relevance_score": 53.390255
-    },
-    {
-      "id": "https://openalex.org/G6573914646",
-      "display_name": "Artificial Intelligence, Real People",
-      "description": "Purpose and goal:\r\nThe project\u00b4s aim was to try to answer the question \"By using Artificial Intelligence and Machine Learning methods, can the Labor Market and Social Administration\u00b4s (ASF) data on the labor market and financial assistance help us understand why some Malm\u00f6 residents seeking support are better equipped for the labor market than others?\"\nThe project has succeeded in answering this question, and the answer is: no. \nA main reason for this is deficiencies in the data and deficiencies in connection with the registration of data.\r\n\r\nExpected results and effects:\r\nThe project has identified shortcomings in data and data management. \nThe organizational learning that the project has stimulated means that ASF is now preparing to remedy the shortcomings so that the administration will be ready to take the next step on its so-called AI journey.\nThe project\u00b4s final report describes the measures the project recommends to the administration. \nThe report is available on the project\u00b4s My AI page: https://my.ai.se/projects/258, under Resources.\r\n\r\nApproach and implementation:\r\nThe first part of the project was carried out as a degree project that ended with a Bachelor\u00b4s thesis, also available at the project\u00b4s My AI page. The second part was carried out as a project employment. \nThe implementation has largely been in line with the plan for the project that was described in the proposal to Vinnova (on the project\u00b4s My AI page, under Resources), with a number of work packages focused on data analysis as well as a work package focused on the democratic and ethical implications of using AI in social services. The project has, as planned, published a final report.",
-      "funder_award_id": "2022-02647_Vinnova",
-      "funder": {
-        "id": "https://openalex.org/F4320321030",
-        "display_name": "VINNOVA",
-        "doi": "10.13039/501100001858"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 600000.0,
-      "currency": "SEK",
-      "funding_type": "grant",
-      "funder_scheme": "Project grant",
-      "start_date": "2022-11-15",
-      "end_date": "2023-12-21",
-      "start_year": 2022,
-      "end_year": 2023,
-      "landing_page_url": "https://www.vr.se/english/swecris.html",
-      "doi": null,
-      "provenance": "swecris_vinnova",
-      "lead_investigator": {
-        "given_name": null,
-        "family_name": "Jim Samuelsson",
-        "orcid": null,
-        "role_start": "2022-11-15",
-        "affiliation": {
-          "name": "MALM\u00d6 KOMMUN",
-          "country": "Sweden",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G6573914646",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [
-        {
-          "id": "https://openalex.org/I4210125917",
-          "display_name": "Malm\u00f6 Municipality",
-          "ror": "https://ror.org/02vs70k74",
-          "country_code": "SE",
-          "type": "government",
-          "lineage": [
-            "https://openalex.org/I4210125917"
+          "name": "Technologies & m\u00e9thodes pour les agricultures de demain",
+          "country": "France",
+          "ids": [
+            {
+              "id": "200118630A",
+              "type": "rnsr",
+              "asserted_by": "anr"
+            }
           ]
         }
-      ],
-      "updated_date": "2026-05-23T21:21:10",
-      "created_date": "2026-03-15T01:01:48",
-      "relevance_score": 53.390255
-    },
-    {
-      "id": "https://openalex.org/G66869072",
-      "display_name": "Artificial Intelligence beyond quality",
-      "description": "In the automotive industry, quality is the key differentiating factor. Scraps and defects represent a major risk to performance\nand competitiveness, leading to very high costs. Besides, there is no specific solution in the market for the automatic quality\ncontrol of defects in plastic injection and painting defects, forcing manufacturers to maintain primitive techniques based on\nhuman vision, that can be time-consuming and costly.\nBy applying Artificial Intelligence (AI) to visual inspections, organisations can identify defects by matching patterns to images\nthat were previously analysed and classified. They could be detected up to 90% more accurately than humans. In addition,\nreduction of personnel costs, rework, and scrap yields a total cost reduction of approximately 9% (~ \u20ac26 billion). A new\nmarket report from Market&Market claims that automotive AI will reach \u20ac9.37 billion by 2025, at a CAGR of 38.46%.\nTECHEYE\u00ae is an innovative solution offering a fully automated directional vision system coupled with a self-calibration\nlighting unit, based on Neural Networks. It comprises suitable hardware for images acquisition, a communications system\nand software for image processing and analysis.\nOur algorithms can automate visual inspection activities, even under complex conditions like variable position, orientation of\nunits or tough lighting conditions. TECHEYE\u00ae is able to classify injection faults: gusts, ampoules, pores and scratches.\nWe offer an affordable web service, user-friendly as plug and play, enabling defect classification. TECHEYE\u00ae can be really\nsuitable for automotive OEMs and plastic injection companies to enhance their production lines, the quality assurance and\ncost reduction.\nINOVALABS is a technical consulting company founded in 2004 in Vigo (Spain), providing services related to the definition\nof innovation and competitiveness strategies, and design of R&D projects. TECHEYE\u00ae will boost the company revenues\nstreams over a new market niche",
-      "funder_award_id": "889409",
-      "funder": {
-        "id": "https://openalex.org/F4320320300",
-        "display_name": "European Commission",
-        "doi": "10.13039/501100000780"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 50000.0,
-      "currency": "EUR",
-      "funding_type": "commercial",
-      "funder_scheme": "H2020 - SME-1",
-      "start_date": "2019-12-01",
-      "end_date": "2020-03-31",
-      "start_year": 2019,
-      "end_year": 2020,
-      "landing_page_url": "https://cordis.europa.eu/project/id/889409",
-      "doi": "10.3030/889409",
-      "provenance": "cordis",
-      "lead_investigator": {
-        "given_name": null,
-        "family_name": null,
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "INOVALABS DIGITAL, SL",
-          "country": "ES",
-          "ids": null
-        }
       },
       "co_lead_investigator": null,
       "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G66869072",
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G8585819956",
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-02-10T15:33:03",
-      "created_date": "2026-03-15T01:01:36",
-      "relevance_score": 53.390255
+      "updated_date": "2026-07-31T05:01:12",
+      "created_date": "2026-07-13T04:59:37",
+      "relevance_score": 53.44064
     },
     {
       "id": "https://openalex.org/G1307576235",
@@ -3003,7 +3002,7 @@
       "institution_awarded": [],
       "updated_date": "2026-04-26T01:01:14",
       "created_date": "2025-03-09T10:03:06",
-      "relevance_score": 53.369045
+      "relevance_score": 53.341766
     },
     {
       "id": "https://openalex.org/G2435000432",
@@ -3060,7 +3059,155 @@
       "institution_awarded": [],
       "updated_date": "2026-06-21T05:01:21",
       "created_date": "2026-06-19T17:32:59",
-      "relevance_score": 53.369045
+      "relevance_score": 53.341766
+    },
+    {
+      "id": "https://openalex.org/G260610314",
+      "display_name": "Low Resource Artificial Intelligence",
+      "description": "The main objective of the lorAI project is to upgrade the Kempelen Institute of Intelligent Technologies (KInIT) to a leading R&I institution in low resource artificial intelligence (LRAI) in Slovakia and Europe (with help of advanced partners \u2013 top European AI research institutes ADAPT, DFKI and CERTH). The core of lorAI\u2019s impact stands on three pillars: 1) nurturing talent and personal capacities, 2) pursuing research excellence in low resource AI (LRAI), and 3) innovation and technology transfer with elaborated outreach programmes. \n\nLRAI represents a global research challenge yet is also relevant to the EU region by developing efficient AI operating with limited resources to increase AI availability (for society and industry) and environmental sustainability. Despite tackling the low complexity and computational costs of AI, Centre of Excellence will explore AI applications for the NLP and Green environment (i.e., domains of energy usage optimization, anomaly detection).  \n\nThe activities of the CoE are grouped into ten focused Excellence programs, which, in synergy, contribute to expected impacts overseen by the call and destination by increasing research capacities and competence, funding acquisition capacities, excellent research with societal and economic impact, engagement of industry and wider R&I ecosystem, and internationalization.  \n\nAligned to Slovak and EU strategies (e.g., Slovak Smart Specialization, Coordinated Plan on AI, Green Deal), the lorAI project builds on a unique opportunity of ongoing programs (e.g., EUs Recovery and Resilience), importance of AI and environmental challenges, to multiply effects of the measures resulting in improving Slovak R&I culture and stimulate reforms.  \n\nThanks to the CoE governance model, autonomy is guaranteed. The diversified budget reduces unexpected disruptions and with cross-cutting themes (international, interdisciplinary, cross-sectoral, transfer oriented) ensures long-term sustainability.",
+      "funder_award_id": "101136646",
+      "funder": {
+        "id": "https://openalex.org/F4320320300",
+        "display_name": "European Commission",
+        "doi": "10.13039/501100000780"
+      },
+      "funded_outputs": [
+        "https://openalex.org/W4415276719",
+        "https://openalex.org/W4415338280",
+        "https://openalex.org/W4416037347",
+        "https://openalex.org/W4416148462",
+        "https://openalex.org/W4416148515",
+        "https://openalex.org/W4416255852",
+        "https://openalex.org/W4416453968",
+        "https://openalex.org/W4417010035",
+        "https://openalex.org/W7124228025",
+        "https://openalex.org/W7125782257",
+        "https://openalex.org/W7133241402",
+        "https://openalex.org/W7139144819",
+        "https://openalex.org/W7139147157",
+        "https://openalex.org/W7140132082",
+        "https://openalex.org/W7160457335",
+        "https://openalex.org/W7163188324",
+        "https://openalex.org/W7163205875",
+        "https://openalex.org/W7163286865",
+        "https://openalex.org/W7164701024",
+        "https://openalex.org/W7165219547",
+        "https://openalex.org/W7166801660",
+        "https://openalex.org/W7166806405",
+        "https://openalex.org/W7166880417"
+      ],
+      "funded_outputs_count": 23,
+      "amount": 13999950.0,
+      "currency": "EUR",
+      "funding_type": "grant",
+      "funder_scheme": "HORIZON - HORIZON-CSA",
+      "start_date": "2025-03-01",
+      "end_date": "2031-02-28",
+      "start_year": 2025,
+      "end_year": 2031,
+      "landing_page_url": "https://cordis.europa.eu/project/id/101136646",
+      "doi": "10.3030/101136646",
+      "provenance": "cordis",
+      "lead_investigator": {
+        "given_name": null,
+        "family_name": null,
+        "orcid": null,
+        "role_start": null,
+        "affiliation": {
+          "name": "KEMPELENOV INSTITUT INTELIGENTNYCH TECHNOLOGII",
+          "country": "SK",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G260610314",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-11T05:01:24",
+      "created_date": "2026-07-13T04:29:53",
+      "relevance_score": 53.319466
+    },
+    {
+      "id": "https://openalex.org/G437399167",
+      "display_name": "Artificial Intelligence Data Analysis",
+      "description": "AIDA brings a transformational innovation to the analysis of heliophysics data in four steps. \n\nFirst, AIDA will develop a new open source software called AIDApp written in Python (a free language) and capable of collecting, combining and correlating data from different space missions. AIDApp wants to replace mission-specific tools written for costly languages (such as IDL) that exclude many scientists, students and amateur space enthusiasts from exploring the data, with a much-needed single platform where methods are shared and continuously improved by the whole community. \n\nSecond, AIDA will introduce modern data assimilation, statistical methods and machine learning (ML) to heliophysics data processing. Unlike traditional methods based on human expertise, these methods rely on statistics and information theory to extract features that are hidden in the data. \n\nThird, AIDA will combine real data from space missions with synthetic data from simulations developing a virtual satellite component for AIDApp. This feature will be demonstrated in the comparison with existing mission data and in the planning of new missions (e.g. ESA\u2019s THOR).\n\nFourth, AIDA will deploy in AIDApp methods of Artificial Intelligence (AI) to analyse data flows from heliophysics missions. This task requires bridging together competences in computer science and in heliophysics and pushes well beyond the current state of the art in space data analysis, connecting space researchers with AI, one of the fastest growing trends in modern science and industrial development. \n\nAIDA will use the new AIDApp in selecting key heliophysics problems to produce a database (AIDAdb) of new high-level data products that include catalogs of features and events detected by ML and AI algorithms. Moreover, many of the AI methods developed in AIDA will themselves represent higher-level data products, for instance in the form of trained neural networks that can be stored and reused as a database of coefficients.",
+      "funder_award_id": "776262",
+      "funder": {
+        "id": "https://openalex.org/F4320338481",
+        "display_name": "H2020 LEIT Space",
+        "doi": "10.13039/100010673"
+      },
+      "funded_outputs": [
+        "https://openalex.org/W3205363314"
+      ],
+      "funded_outputs_count": 1,
+      "amount": 1499690.0,
+      "currency": "EUR",
+      "funding_type": "grant",
+      "funder_scheme": "COMPET-4-2017",
+      "start_date": "2018-09-01",
+      "end_date": null,
+      "start_year": 2018,
+      "end_year": null,
+      "landing_page_url": "https://cordis.europa.eu/project/id/776262",
+      "doi": "http://dx.doi.org/10.3030/776262",
+      "provenance": "crossref_work",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G437399167",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-04-26T01:01:14",
+      "created_date": "2022-12-12T13:50:09",
+      "relevance_score": 53.319466
+    },
+    {
+      "id": "https://openalex.org/G66869072",
+      "display_name": "Artificial Intelligence beyond quality",
+      "description": "In the automotive industry, quality is the key differentiating factor. Scraps and defects represent a major risk to performance\nand competitiveness, leading to very high costs. Besides, there is no specific solution in the market for the automatic quality\ncontrol of defects in plastic injection and painting defects, forcing manufacturers to maintain primitive techniques based on\nhuman vision, that can be time-consuming and costly.\nBy applying Artificial Intelligence (AI) to visual inspections, organisations can identify defects by matching patterns to images\nthat were previously analysed and classified. They could be detected up to 90% more accurately than humans. In addition,\nreduction of personnel costs, rework, and scrap yields a total cost reduction of approximately 9% (~ \u20ac26 billion). A new\nmarket report from Market&Market claims that automotive AI will reach \u20ac9.37 billion by 2025, at a CAGR of 38.46%.\nTECHEYE\u00ae is an innovative solution offering a fully automated directional vision system coupled with a self-calibration\nlighting unit, based on Neural Networks. It comprises suitable hardware for images acquisition, a communications system\nand software for image processing and analysis.\nOur algorithms can automate visual inspection activities, even under complex conditions like variable position, orientation of\nunits or tough lighting conditions. TECHEYE\u00ae is able to classify injection faults: gusts, ampoules, pores and scratches.\nWe offer an affordable web service, user-friendly as plug and play, enabling defect classification. TECHEYE\u00ae can be really\nsuitable for automotive OEMs and plastic injection companies to enhance their production lines, the quality assurance and\ncost reduction.\nINOVALABS is a technical consulting company founded in 2004 in Vigo (Spain), providing services related to the definition\nof innovation and competitiveness strategies, and design of R&D projects. TECHEYE\u00ae will boost the company revenues\nstreams over a new market niche",
+      "funder_award_id": "889409",
+      "funder": {
+        "id": "https://openalex.org/F4320320300",
+        "display_name": "European Commission",
+        "doi": "10.13039/501100000780"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 50000.0,
+      "currency": "EUR",
+      "funding_type": "commercial",
+      "funder_scheme": "H2020 - SME-1",
+      "start_date": "2019-12-01",
+      "end_date": "2020-03-31",
+      "start_year": 2019,
+      "end_year": 2020,
+      "landing_page_url": "https://cordis.europa.eu/project/id/889409",
+      "doi": "10.3030/889409",
+      "provenance": "cordis",
+      "lead_investigator": {
+        "given_name": null,
+        "family_name": null,
+        "orcid": null,
+        "role_start": null,
+        "affiliation": {
+          "name": "INOVALABS DIGITAL, SL",
+          "country": "ES",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G66869072",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-02-10T15:33:03",
+      "created_date": "2026-03-15T01:01:36",
+      "relevance_score": 53.319466
     },
     {
       "id": "https://openalex.org/G4051905275",
@@ -3104,7 +3251,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-04T16:12:53",
       "created_date": "2026-06-04T14:10:37",
-      "relevance_score": 53.32927
+      "relevance_score": 53.302017
     },
     {
       "id": "https://openalex.org/G2717720702",
@@ -3138,7 +3285,7 @@
       "institution_awarded": [],
       "updated_date": "2026-04-26T01:01:14",
       "created_date": "2022-12-12T13:22:29",
-      "relevance_score": 53.31046
+      "relevance_score": 53.283226
     },
     {
       "id": "https://openalex.org/G4457988006",
@@ -3182,7 +3329,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:36",
-      "relevance_score": 53.31046
+      "relevance_score": 53.283226
     },
     {
       "id": "https://openalex.org/G6814690871",
@@ -3196,11 +3343,21 @@
       },
       "funded_outputs": [
         "https://openalex.org/W3004493409",
+        "https://openalex.org/W3165610663",
+        "https://openalex.org/W3198497195",
+        "https://openalex.org/W4221152196",
+        "https://openalex.org/W4221155233",
+        "https://openalex.org/W4226480372",
         "https://openalex.org/W4280495998",
         "https://openalex.org/W4280573897",
         "https://openalex.org/W4281396470",
+        "https://openalex.org/W4283457758",
         "https://openalex.org/W4283834598",
+        "https://openalex.org/W4287073335",
+        "https://openalex.org/W4287626954",
         "https://openalex.org/W4294775271",
+        "https://openalex.org/W4307309765",
+        "https://openalex.org/W4309047717",
         "https://openalex.org/W4312877943",
         "https://openalex.org/W4312945054",
         "https://openalex.org/W4321012778",
@@ -3243,13 +3400,13 @@
         "https://openalex.org/W4410636558",
         "https://openalex.org/W4415231414",
         "https://openalex.org/W6906301200",
+        "https://openalex.org/W6962237953",
         "https://openalex.org/W7009620652",
         "https://openalex.org/W7036295764",
         "https://openalex.org/W7046775912",
-        "https://openalex.org/W7102328916",
         "https://openalex.org/W7134186208"
       ],
-      "funded_outputs_count": 53,
+      "funded_outputs_count": 63,
       "amount": 3987130.87,
       "currency": "EUR",
       "funding_type": "fellowship",
@@ -3278,9 +3435,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-06-22T05:01:31",
-      "created_date": "2026-03-15T01:01:36",
-      "relevance_score": 53.31046
+      "updated_date": "2026-08-12T05:01:26",
+      "created_date": "2026-07-13T04:29:53",
+      "relevance_score": 53.283226
     },
     {
       "id": "https://openalex.org/G8084396017",
@@ -3293,18 +3450,21 @@
         "doi": "10.13039/100010665"
       },
       "funded_outputs": [
+        "https://openalex.org/W4221155233",
+        "https://openalex.org/W4226480372",
         "https://openalex.org/W4280495998",
         "https://openalex.org/W4281396470",
+        "https://openalex.org/W4307309765",
         "https://openalex.org/W4382318189",
         "https://openalex.org/W4386242314",
         "https://openalex.org/W4386387159",
         "https://openalex.org/W4386907005",
         "https://openalex.org/W4396227507",
+        "https://openalex.org/W4398795981",
         "https://openalex.org/W4399503701",
-        "https://openalex.org/W4404518233",
-        "https://openalex.org/W7168973189"
+        "https://openalex.org/W4404518233"
       ],
-      "funded_outputs_count": 10,
+      "funded_outputs_count": 13,
       "amount": 3987130.8,
       "currency": "EUR",
       "funding_type": "grant",
@@ -3323,9 +3483,64 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-07-19T05:00:56",
+      "updated_date": "2026-08-07T05:01:21",
       "created_date": "2022-12-12T09:41:20",
-      "relevance_score": 53.31046
+      "relevance_score": 53.283226
+    },
+    {
+      "id": "https://openalex.org/G8903488963",
+      "display_name": "Artificial Intelligence, Real People",
+      "description": "Purpose and goal:\r\nThe project\u00b4s aim was to try to answer the question \"By using Artificial Intelligence and Machine Learning methods, can the Labor Market and Social Administration\u00b4s (ASF) data on the labor market and financial assistance help us understand why some Malm\u00f6 residents seeking support are better equipped for the labor market than others?\"\nThe project has succeeded in answering this question, and the answer is: no. \nA main reason for this is deficiencies in the data and deficiencies in connection with the registration of data.\r\n\r\nExpected results and effects:\r\nThe project has identified shortcomings in data and data management. \nThe organizational learning that the project has stimulated means that ASF is now preparing to remedy the shortcomings so that the administration will be ready to take the next step on its so-called AI journey.\nThe project\u00b4s final report describes the measures the project recommends to the administration. \nThe report is available on the project\u00b4s My AI page: https://my.ai.se/projects/258, under Resources.\r\n\r\nApproach and implementation:\r\nThe first part of the project was carried out as a degree project that ended with a Bachelor\u00b4s thesis, also available at the project\u00b4s My AI page. The second part was carried out as a project employment. \nThe implementation has largely been in line with the plan for the project that was described in the proposal to Vinnova (on the project\u00b4s My AI page, under Resources), with a number of work packages focused on data analysis as well as a work package focused on the democratic and ethical implications of using AI in social services. The project has, as planned, published a final report.",
+      "funder_award_id": "2022-02647",
+      "funder": {
+        "id": "https://openalex.org/F4320321030",
+        "display_name": "VINNOVA",
+        "doi": "10.13039/501100001858"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 600000.0,
+      "currency": "SEK",
+      "funding_type": "grant",
+      "funder_scheme": "Project grant",
+      "start_date": "2022-11-15",
+      "end_date": "2023-12-21",
+      "start_year": 2022,
+      "end_year": 2023,
+      "landing_page_url": "https://www.vr.se/english/swecris.html",
+      "doi": null,
+      "provenance": "swecris_vinnova",
+      "lead_investigator": {
+        "given_name": null,
+        "family_name": "Jim Samuelsson",
+        "orcid": null,
+        "role_start": "2022-11-15",
+        "affiliation": {
+          "name": "MALM\u00d6 KOMMUN",
+          "country": "Sweden",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G8903488963",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [
+        {
+          "id": "https://openalex.org/I4210125917",
+          "display_name": "Malm\u00f6 Municipality",
+          "ror": "https://ror.org/02vs70k74",
+          "country_code": "SE",
+          "type": "government",
+          "lineage": [
+            "https://openalex.org/I4210125917"
+          ]
+        }
+      ],
+      "updated_date": "2026-08-01T05:01:29",
+      "created_date": "2026-07-31T15:59:35",
+      "relevance_score": 53.283226
     },
     {
       "id": "https://openalex.org/G8985102260",
@@ -3338,8 +3553,10 @@
         "doi": "10.13039/501100000780"
       },
       "funded_outputs": [
+        "https://openalex.org/W2895916153",
         "https://openalex.org/W2920947047",
         "https://openalex.org/W2969316154",
+        "https://openalex.org/W2969558084",
         "https://openalex.org/W2986123904",
         "https://openalex.org/W3004769246",
         "https://openalex.org/W3014085370",
@@ -3357,17 +3574,20 @@
         "https://openalex.org/W3169457606",
         "https://openalex.org/W3180646966",
         "https://openalex.org/W3188632786",
+        "https://openalex.org/W3195565911",
         "https://openalex.org/W3199616307",
         "https://openalex.org/W3210691583",
         "https://openalex.org/W4200588565",
         "https://openalex.org/W4210954776",
         "https://openalex.org/W4221028302",
+        "https://openalex.org/W4221154158",
         "https://openalex.org/W4221159243",
         "https://openalex.org/W4238281284",
         "https://openalex.org/W4250015740",
         "https://openalex.org/W4251030504",
         "https://openalex.org/W4286905595",
         "https://openalex.org/W4287871176",
+        "https://openalex.org/W4288099769",
         "https://openalex.org/W4307219223",
         "https://openalex.org/W4385695866",
         "https://openalex.org/W4393480757",
@@ -3379,7 +3599,7 @@
         "https://openalex.org/W6969069089",
         "https://openalex.org/W6986794327"
       ],
-      "funded_outputs_count": 40,
+      "funded_outputs_count": 45,
       "amount": 1499690.0,
       "currency": "EUR",
       "funding_type": "research",
@@ -3408,9 +3628,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-06-22T05:01:31",
-      "created_date": "2026-03-15T01:01:36",
-      "relevance_score": 53.31046
+      "updated_date": "2026-08-09T05:01:25",
+      "created_date": "2026-07-13T04:29:53",
+      "relevance_score": 53.283226
     },
     {
       "id": "https://openalex.org/G982831038",
@@ -3444,7 +3664,7 @@
       "institution_awarded": [],
       "updated_date": "2026-04-26T01:01:14",
       "created_date": "2022-12-12T14:41:20",
-      "relevance_score": 53.31046
+      "relevance_score": 53.283226
     },
     {
       "id": "https://openalex.org/G2549633817",
@@ -3488,7 +3708,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-19T05:01:24",
       "created_date": "2026-06-18T21:25:04",
-      "relevance_score": 53.256145
+      "relevance_score": 53.22954
     },
     {
       "id": "https://openalex.org/G8928733405",
@@ -3532,7 +3752,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-19T05:01:24",
       "created_date": "2026-06-18T21:25:04",
-      "relevance_score": 53.256145
+      "relevance_score": 53.22954
     },
     {
       "id": "https://openalex.org/G7845066601",
@@ -3593,7 +3813,109 @@
       ],
       "updated_date": "2026-05-23T21:21:10",
       "created_date": "2026-03-15T01:01:49",
-      "relevance_score": 53.18933
+      "relevance_score": 53.118492
+    },
+    {
+      "id": "https://openalex.org/G3048621659",
+      "display_name": "WORKSHOP ON TRUSTED ARTIFICIAL INTELLIGENCE",
+      "description": "WORKSHOP ON TRUSTED ARTIFICIAL INTELLIGENCE",
+      "funder_award_id": "N629092412047",
+      "funder": {
+        "id": "https://openalex.org/F4320306078",
+        "display_name": "U.S. Department of Defense",
+        "doi": "10.13039/100000005"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 10425.0,
+      "currency": "USD",
+      "funding_type": "grant",
+      "funder_scheme": "BASIC AND APPLIED SCIENTIFIC RESEARCH",
+      "start_date": "2024-04-15",
+      "end_date": "2024-10-31",
+      "start_year": 2024,
+      "end_year": 2024,
+      "landing_page_url": "https://www.usaspending.gov/award/ASST_NON_N629092412047_097/",
+      "doi": null,
+      "provenance": "usaspending",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G3048621659",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-07T05:01:21",
+      "created_date": "2026-08-06T15:06:00",
+      "relevance_score": 53.110878
+    },
+    {
+      "id": "https://openalex.org/G4565555132",
+      "display_name": "ARTIFICIAL INTELLIGENCE QUANTIFIED (AIQ) PROGRAM",
+      "description": "ARTIFICIAL INTELLIGENCE QUANTIFIED (AIQ) PROGRAM",
+      "funder_award_id": "HR00112520028",
+      "funder": {
+        "id": "https://openalex.org/F4320306078",
+        "display_name": "U.S. Department of Defense",
+        "doi": "10.13039/100000005"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 502616.0,
+      "currency": "USD",
+      "funding_type": "grant",
+      "funder_scheme": "RESEARCH AND TECHNOLOGY DEVELOPMENT",
+      "start_date": "2025-05-05",
+      "end_date": "2026-11-05",
+      "start_year": 2025,
+      "end_year": 2026,
+      "landing_page_url": "https://www.usaspending.gov/award/ASST_NON_HR00112520028_097/",
+      "doi": null,
+      "provenance": "usaspending",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G4565555132",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-07T05:01:21",
+      "created_date": "2026-08-06T15:06:00",
+      "relevance_score": 53.110878
+    },
+    {
+      "id": "https://openalex.org/G7273891831",
+      "display_name": "ARTIFICIAL INTELLIGENCE QUANTIFIED (AIQ) PROGRAM",
+      "description": "ARTIFICIAL INTELLIGENCE QUANTIFIED (AIQ) PROGRAM",
+      "funder_award_id": "HR00112520025",
+      "funder": {
+        "id": "https://openalex.org/F4320306078",
+        "display_name": "U.S. Department of Defense",
+        "doi": "10.13039/100000005"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 1161492.0,
+      "currency": "USD",
+      "funding_type": "grant",
+      "funder_scheme": "RESEARCH AND TECHNOLOGY DEVELOPMENT",
+      "start_date": "2025-07-23",
+      "end_date": "2026-10-22",
+      "start_year": 2025,
+      "end_year": 2026,
+      "landing_page_url": "https://www.usaspending.gov/award/ASST_NON_HR00112520025_097/",
+      "doi": null,
+      "provenance": "usaspending",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G7273891831",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-07T05:01:21",
+      "created_date": "2026-08-06T15:06:00",
+      "relevance_score": 53.110878
     },
     {
       "id": "https://openalex.org/G2293286636",
@@ -3648,7 +3970,41 @@
       ],
       "updated_date": "2026-06-17T05:01:35",
       "created_date": "2026-06-16T19:42:47",
-      "relevance_score": 53.105343
+      "relevance_score": 53.078876
+    },
+    {
+      "id": "https://openalex.org/G2475747075",
+      "display_name": "ARTIFICIAL INTELLIGENCE QUANTIFIED (AIQ) PROGRAM",
+      "description": "ARTIFICIAL INTELLIGENCE QUANTIFIED (AIQ) PROGRAM",
+      "funder_award_id": "HR00112520014",
+      "funder": {
+        "id": "https://openalex.org/F4320306078",
+        "display_name": "U.S. Department of Defense",
+        "doi": "10.13039/100000005"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 400000.0,
+      "currency": "USD",
+      "funding_type": "grant",
+      "funder_scheme": "RESEARCH AND TECHNOLOGY DEVELOPMENT",
+      "start_date": "2025-06-18",
+      "end_date": "2027-01-11",
+      "start_year": 2025,
+      "end_year": 2027,
+      "landing_page_url": "https://www.usaspending.gov/award/ASST_NON_HR00112520014_097/",
+      "doi": null,
+      "provenance": "usaspending",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G2475747075",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-07T05:01:21",
+      "created_date": "2026-08-06T15:06:00",
+      "relevance_score": 53.078876
     },
     {
       "id": "https://openalex.org/G6407250815",
@@ -3682,7 +4038,176 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:47",
-      "relevance_score": 53.105343
+      "relevance_score": 53.078876
+    },
+    {
+      "id": "https://openalex.org/G656011626",
+      "display_name": "ALGORITHMIC DIVERGENCE IN ARTIFICIAL INTELLIGENCE",
+      "description": "ALGORITHMIC DIVERGENCE IN ARTIFICIAL INTELLIGENCE",
+      "funder_award_id": "W911NF2010293",
+      "funder": {
+        "id": "https://openalex.org/F4320306078",
+        "display_name": "U.S. Department of Defense",
+        "doi": "10.13039/100000005"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 199624.0,
+      "currency": "USD",
+      "funding_type": "grant",
+      "funder_scheme": "BASIC SCIENTIFIC RESEARCH",
+      "start_date": "2020-07-09",
+      "end_date": "2021-03-08",
+      "start_year": 2020,
+      "end_year": 2021,
+      "landing_page_url": "https://www.usaspending.gov/award/ASST_NON_W911NF2010293_097/",
+      "doi": null,
+      "provenance": "usaspending",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G656011626",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-07T05:01:21",
+      "created_date": "2026-08-06T15:06:00",
+      "relevance_score": 53.078876
+    },
+    {
+      "id": "https://openalex.org/G8343373260",
+      "display_name": "Parameterized Analysis in Artificial Intelligence",
+      "description": "Parameterized Complexity; Fixed-Parameter Tractability; Artificial Intelligence; Machine Learning",
+      "funder_award_id": "Y 1329",
+      "funder": {
+        "id": "https://openalex.org/F4320321181",
+        "display_name": "Austrian Science Fund",
+        "doi": "10.13039/501100002428"
+      },
+      "funded_outputs": [
+        "https://openalex.org/W3013231393",
+        "https://openalex.org/W3105677114",
+        "https://openalex.org/W3110666699",
+        "https://openalex.org/W3149450769",
+        "https://openalex.org/W3173627121",
+        "https://openalex.org/W3175128778",
+        "https://openalex.org/W3183828382",
+        "https://openalex.org/W3215835614",
+        "https://openalex.org/W4206705200",
+        "https://openalex.org/W4225640547",
+        "https://openalex.org/W4283769408",
+        "https://openalex.org/W4283776041",
+        "https://openalex.org/W4283800032",
+        "https://openalex.org/W4285600430",
+        "https://openalex.org/W4285607100",
+        "https://openalex.org/W4285787197",
+        "https://openalex.org/W4286839286",
+        "https://openalex.org/W4287180221",
+        "https://openalex.org/W4290989357",
+        "https://openalex.org/W4308732512",
+        "https://openalex.org/W4313406961",
+        "https://openalex.org/W4316652456",
+        "https://openalex.org/W4321344088",
+        "https://openalex.org/W4321471782",
+        "https://openalex.org/W4327486301",
+        "https://openalex.org/W4362679108",
+        "https://openalex.org/W4367369879",
+        "https://openalex.org/W4368755273",
+        "https://openalex.org/W4376312592",
+        "https://openalex.org/W4380087217",
+        "https://openalex.org/W4382239489",
+        "https://openalex.org/W4382239558",
+        "https://openalex.org/W4382239723",
+        "https://openalex.org/W4383468701",
+        "https://openalex.org/W4383645826",
+        "https://openalex.org/W4384613163",
+        "https://openalex.org/W4384816954",
+        "https://openalex.org/W4385714612",
+        "https://openalex.org/W4385764356",
+        "https://openalex.org/W4386044543",
+        "https://openalex.org/W4386081615",
+        "https://openalex.org/W4386114266",
+        "https://openalex.org/W4386556118",
+        "https://openalex.org/W4386556461",
+        "https://openalex.org/W4387046870",
+        "https://openalex.org/W4387075592",
+        "https://openalex.org/W4387294574",
+        "https://openalex.org/W4387635520",
+        "https://openalex.org/W4388685460",
+        "https://openalex.org/W4389714139",
+        "https://openalex.org/W4389714342",
+        "https://openalex.org/W4389755575",
+        "https://openalex.org/W4389767759",
+        "https://openalex.org/W4389767761",
+        "https://openalex.org/W4389814085",
+        "https://openalex.org/W4389982745",
+        "https://openalex.org/W4390681281",
+        "https://openalex.org/W4391010848",
+        "https://openalex.org/W4391272748",
+        "https://openalex.org/W4391800734",
+        "https://openalex.org/W4391996422",
+        "https://openalex.org/W4393146792",
+        "https://openalex.org/W4393156368",
+        "https://openalex.org/W4395022394",
+        "https://openalex.org/W4395065623",
+        "https://openalex.org/W4395483992",
+        "https://openalex.org/W4395687324",
+        "https://openalex.org/W4396646047",
+        "https://openalex.org/W4396779580",
+        "https://openalex.org/W4398140248",
+        "https://openalex.org/W4399888780",
+        "https://openalex.org/W4400163119",
+        "https://openalex.org/W4400221316",
+        "https://openalex.org/W4400716829",
+        "https://openalex.org/W4400898631",
+        "https://openalex.org/W4401024666",
+        "https://openalex.org/W4401214706",
+        "https://openalex.org/W4401303293",
+        "https://openalex.org/W4402289215",
+        "https://openalex.org/W4403160469",
+        "https://openalex.org/W4403635634",
+        "https://openalex.org/W4403811844",
+        "https://openalex.org/W4404261597",
+        "https://openalex.org/W4404849824",
+        "https://openalex.org/W4404986865",
+        "https://openalex.org/W4405766592",
+        "https://openalex.org/W4406073266",
+        "https://openalex.org/W4407916975",
+        "https://openalex.org/W4408551786",
+        "https://openalex.org/W4409365063",
+        "https://openalex.org/W4409366216",
+        "https://openalex.org/W4413215302",
+        "https://openalex.org/W4414360434",
+        "https://openalex.org/W4414758373",
+        "https://openalex.org/W4414903064",
+        "https://openalex.org/W4415275523",
+        "https://openalex.org/W4416137876",
+        "https://openalex.org/W4416267086",
+        "https://openalex.org/W4416696416",
+        "https://openalex.org/W4417032043"
+      ],
+      "funded_outputs_count": 134,
+      "amount": 1140060.0,
+      "currency": "EUR",
+      "funding_type": "fellowship",
+      "funder_scheme": "FWF START Award",
+      "start_date": "2021-01-01",
+      "end_date": "2026-12-31",
+      "start_year": 2021,
+      "end_year": 2026,
+      "landing_page_url": "https://fwf.ac.at/forschungsradar/10.55776/Y1329",
+      "doi": "10.55776/y1329",
+      "provenance": "openaire_fwf",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G8343373260",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-09T05:01:25",
+      "created_date": "2026-01-25T23:52:08",
+      "relevance_score": 53.00976
     },
     {
       "id": "https://openalex.org/G4301922637",
@@ -3726,49 +4251,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-19T05:01:24",
       "created_date": "2026-06-18T18:04:18",
-      "relevance_score": 53.045425
-    },
-    {
-      "id": "https://openalex.org/G8343373260",
-      "display_name": "Parameterized Analysis in Artificial Intelligence",
-      "description": "Parameterized Complexity; Fixed-Parameter Tractability; Artificial Intelligence; Machine Learning",
-      "funder_award_id": "Y 1329",
-      "funder": {
-        "id": "https://openalex.org/F4320321181",
-        "display_name": "Austrian Science Fund",
-        "doi": "10.13039/501100002428"
-      },
-      "funded_outputs": [
-        "https://openalex.org/W3110666699",
-        "https://openalex.org/W3149450769",
-        "https://openalex.org/W3173627121",
-        "https://openalex.org/W4367369879",
-        "https://openalex.org/W4382239489",
-        "https://openalex.org/W6940102778",
-        "https://openalex.org/W7106827336"
-      ],
-      "funded_outputs_count": 7,
-      "amount": 1140060.0,
-      "currency": "EUR",
-      "funding_type": "fellowship",
-      "funder_scheme": "FWF START Award",
-      "start_date": "2021-01-01",
-      "end_date": "2026-12-31",
-      "start_year": 2021,
-      "end_year": 2026,
-      "landing_page_url": "https://fwf.ac.at/forschungsradar/10.55776/Y1329",
-      "doi": "10.55776/y1329",
-      "provenance": "openaire_fwf",
-      "lead_investigator": null,
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G8343373260",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-06-08T05:03:53",
-      "created_date": "2026-01-25T23:52:08",
-      "relevance_score": 53.036175
+      "relevance_score": 52.98267
     },
     {
       "id": "https://openalex.org/G4086781277",
@@ -3808,7 +4291,7 @@
       "institution_awarded": [],
       "updated_date": "2026-05-27T20:56:53",
       "created_date": "2026-05-27T17:31:41",
-      "relevance_score": 53.029396
+      "relevance_score": 52.958595
     },
     {
       "id": "https://openalex.org/G878381671",
@@ -3852,7 +4335,53 @@
       "institution_awarded": [],
       "updated_date": "2026-05-27T05:04:24",
       "created_date": "2026-05-26T21:49:26",
-      "relevance_score": 52.90492
+      "relevance_score": 52.878582
+    },
+    {
+      "id": "https://openalex.org/G5751001228",
+      "display_name": "Professional knowledge and Artificial Intelligence",
+      "description": "Recent technological developments have once again brought to the fore questions about the relation between professional knowledge and artificial intelligence (AI). This change has created many new issues. On the one hand, every practitioner of a profession is accustomed to relating to the established knowledge in his field. On the other hand, AI can conflict with how knowledge is normally constructed and negotiated within a profession. In the proposed project, the consequences of artificial intelligence for professional knowledge will be investigated on the basis of a case study of the work of helmsmen and captains on board ships. By studying a profession that until recently was mainly based on traded experience and apprenticeships, but which has recently undergone major technological changes, the project highlights how intelligent systems change the challenges, boundaries and content of professional knowledge. Through ethnographic fieldwork and video recordings of ship officers\u2019 and captains\u00b4 work on the bridge, after the introduction of an AI system, the following questions are answered: (a) How is professional knowledge affected by the introduction of artificial intelligence in a workplace? (b) What challenges and tensions arise in the encounter between experience-based professional knowledge and artificial intelligence? The project is expected to contribute to an increased understanding of how technological development changes the conditions for professional work and expertise and sheds light on the role of professional knowledge in the increasingly technological society and working life of the future.",
+      "funder_award_id": "2021-01309",
+      "funder": {
+        "id": "https://openalex.org/F4320324004",
+        "display_name": "Forskningsr\u00e5det om H\u00e4lsa, Arbetsliv och V\u00e4lf\u00e4rd",
+        "doi": "10.13039/501100006636"
+      },
+      "funded_outputs": [
+        "https://openalex.org/W4414914196"
+      ],
+      "funded_outputs_count": 1,
+      "amount": 2000000.0,
+      "currency": "SEK",
+      "funding_type": "grant",
+      "funder_scheme": "Unclassified",
+      "start_date": "2022-01-01",
+      "end_date": "2023-12-31",
+      "start_year": 2022,
+      "end_year": 2023,
+      "landing_page_url": "https://www.vr.se/swecris#/project/2021-01309_Forte",
+      "doi": null,
+      "provenance": "forte",
+      "lead_investigator": {
+        "given_name": "Martin",
+        "family_name": "Viktorelius",
+        "orcid": "",
+        "role_start": null,
+        "affiliation": {
+          "name": "Halmstad University College",
+          "country": "Sweden",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G5751001228",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-01T05:01:29",
+      "created_date": "2026-07-31T15:55:57",
+      "relevance_score": 52.82972
     },
     {
       "id": "https://openalex.org/G6869185441",
@@ -3896,51 +4425,51 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 52.862057
+      "relevance_score": 52.801823
     },
     {
-      "id": "https://openalex.org/G7786149121",
-      "display_name": "Professional knowledge and Artificial Intelligence",
-      "description": "Recent technological developments have once again brought to the fore questions about the relation between professional knowledge and artificial intelligence (AI). This change has created many new issues. On the one hand, every practitioner of a profession is accustomed to relating to the established knowledge in his field. On the other hand, AI can conflict with how knowledge is normally constructed and negotiated within a profession. In the proposed project, the consequences of artificial intelligence for professional knowledge will be investigated on the basis of a case study of the work of helmsmen and captains on board ships. By studying a profession that until recently was mainly based on traded experience and apprenticeships, but which has recently undergone major technological changes, the project highlights how intelligent systems change the challenges, boundaries and content of professional knowledge. Through ethnographic fieldwork and video recordings of ship officers\u2019 and captains\u00b4 work on the bridge, after the introduction of an AI system, the following questions are answered: (a) How is professional knowledge affected by the introduction of artificial intelligence in a workplace? (b) What challenges and tensions arise in the encounter between experience-based professional knowledge and artificial intelligence? The project is expected to contribute to an increased understanding of how technological development changes the conditions for professional work and expertise and sheds light on the role of professional knowledge in the increasingly technological society and working life of the future.",
-      "funder_award_id": "2021-01309_Forte",
+      "id": "https://openalex.org/G8284451915",
+      "display_name": "ChEMoinformaticsplus - Artificial Intelligence in Chemistry",
+      "description": "Chemoinformatics is a major discipline in theoretical chemistry, using artificial intelligence and data sciences to tackle the current social and innovation challenges. Chemoinformatics concerns t...",
+      "funder_award_id": "101050809",
       "funder": {
-        "id": "https://openalex.org/F4320324004",
-        "display_name": "Forskningsr\u00e5det om H\u00e4lsa, Arbetsliv och V\u00e4lf\u00e4rd",
-        "doi": "10.13039/501100006636"
+        "id": "https://openalex.org/F4320335551",
+        "display_name": "Erasmus+",
+        "doi": "10.13039/501100010790"
       },
       "funded_outputs": [],
       "funded_outputs_count": 0,
-      "amount": 2000000.0,
-      "currency": "SEK",
+      "amount": 4473600.0,
+      "currency": "EUR",
       "funding_type": "grant",
-      "funder_scheme": "Unclassified",
-      "start_date": "2022-01-01",
-      "end_date": "2023-12-31",
+      "funder_scheme": "Erasmus Mundus Joint Master",
+      "start_date": "2022-01-31",
+      "end_date": "2028-01-30",
       "start_year": 2022,
-      "end_year": 2023,
-      "landing_page_url": "https://www.vr.se/swecris#/project/2021-01309_Forte",
+      "end_year": 2028,
+      "landing_page_url": "https://erasmus-plus.ec.europa.eu/projects/search/details/101050809",
       "doi": null,
-      "provenance": "forte",
+      "provenance": "erasmus_plus",
       "lead_investigator": {
-        "given_name": "Martin",
-        "family_name": "Viktorelius",
-        "orcid": "",
+        "given_name": null,
+        "family_name": null,
+        "orcid": null,
         "role_start": null,
         "affiliation": {
-          "name": "Halmstad University College",
-          "country": "Sweden",
+          "name": "UNIVERSITE DE STRASBOURG",
+          "country": "FR",
           "ids": null
         }
       },
       "co_lead_investigator": null,
       "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G7786149121",
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G8284451915",
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-02-10T15:33:03",
-      "created_date": "2026-03-15T01:01:44",
-      "relevance_score": 52.85602
+      "updated_date": "2026-07-14T05:01:28",
+      "created_date": "2026-07-13T04:43:06",
+      "relevance_score": 52.755978
     },
     {
       "id": "https://openalex.org/G8133238366",
@@ -3984,7 +4513,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 52.803387
+      "relevance_score": 52.742836
     },
     {
       "id": "https://openalex.org/G6837960250",
@@ -4018,7 +4547,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-16T05:01:48",
       "created_date": "2026-07-15T14:25:51",
-      "relevance_score": 52.797424
+      "relevance_score": 52.73389
     },
     {
       "id": "https://openalex.org/G7693392618",
@@ -4098,173 +4627,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:29:53",
-      "relevance_score": 52.794884
-    },
-    {
-      "id": "https://openalex.org/G8284451915",
-      "display_name": "ChEMoinformaticsplus - Artificial Intelligence in Chemistry",
-      "description": "Chemoinformatics is a major discipline in theoretical chemistry, using artificial intelligence and data sciences to tackle the current social and innovation challenges. Chemoinformatics concerns t...",
-      "funder_award_id": "101050809",
-      "funder": {
-        "id": "https://openalex.org/F4320335551",
-        "display_name": "Erasmus+",
-        "doi": "10.13039/501100010790"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 4473600.0,
-      "currency": "EUR",
-      "funding_type": "grant",
-      "funder_scheme": "Erasmus Mundus Joint Master",
-      "start_date": "2022-01-31",
-      "end_date": "2028-01-30",
-      "start_year": 2022,
-      "end_year": 2028,
-      "landing_page_url": "https://erasmus-plus.ec.europa.eu/projects/search/details/101050809",
-      "doi": null,
-      "provenance": "erasmus_plus",
-      "lead_investigator": {
-        "given_name": null,
-        "family_name": null,
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "UNIVERSITE DE STRASBOURG",
-          "country": "FR",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G8284451915",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-07-14T05:01:28",
-      "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 52.782192
-    },
-    {
-      "id": "https://openalex.org/G5696078662",
-      "display_name": "College Remediation Using Artificial Intelligence",
-      "description": "This project team developed a prototype of a web-based software that used artificial intelligence techniques to provide support for adult learners and remedial college students as they studied basic math.",
-      "funder_award_id": "EDIES10P0108",
-      "funder": {
-        "id": "https://openalex.org/F4320332210",
-        "display_name": "Institute of Education Sciences",
-        "doi": "10.13039/100005246"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 100000.0,
-      "currency": "USD",
-      "funding_type": "contract",
-      "funder_scheme": "Small Business Innovation Research",
-      "start_date": "2010-01-01",
-      "end_date": null,
-      "start_year": 2010,
-      "end_year": null,
-      "landing_page_url": "https://ies.ed.gov/use-work/awards/college-remediation-using-artificial-intelligence",
-      "doi": null,
-      "provenance": "ies_official",
-      "lead_investigator": null,
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G5696078662",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-05-27T20:56:53",
-      "created_date": "2026-05-27T16:18:32",
-      "relevance_score": 52.760612
-    },
-    {
-      "id": "https://openalex.org/G5489670787",
-      "display_name": "Fostering Artificial Intelligence at School",
-      "description": "This project was born from a desire to demystify artificial intelligence (AI) and bring it into the classroom, both in formal and informal settings. Our ultimate goal was to help learners develop ...",
-      "funder_award_id": "2020-1-ES01-KA201-083047",
-      "funder": {
-        "id": "https://openalex.org/F4320335551",
-        "display_name": "Erasmus+",
-        "doi": "10.13039/501100010790"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 216464.0,
-      "currency": "EUR",
-      "funding_type": "grant",
-      "funder_scheme": "Strategic Partnerships for school education",
-      "start_date": "2020-08-31",
-      "end_date": "2023-08-30",
-      "start_year": 2020,
-      "end_year": 2023,
-      "landing_page_url": "https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-ES01-KA201-083047",
-      "doi": null,
-      "provenance": "erasmus_plus",
-      "lead_investigator": {
-        "given_name": null,
-        "family_name": null,
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "UNIVERSIDAD REY JUAN CARLOS",
-          "country": "ES",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G5489670787",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-07-14T05:01:28",
-      "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 52.746582
-    },
-    {
-      "id": "https://openalex.org/G5060625172",
-      "display_name": "Artificial Intelligence for Customer Service",
-      "description": "Userbot provides Artificial Intelligence for Customer Service. We have developed an innovative technology platform based on Machine Learning, Deep learning, Artificial Intelligence and Sentiment Analysis to interact with customers in a natural language on every digital channel. Userbot\u2019s proprietary AI technology that reached TRL7 is developed internally and we are constantly improving it. We are currently working on the automation of customer acquisition and payments, as well as developing a special Agency dashboard. The basic AI remains one of the main areas of investment, optimizing and simplifying the AI model Training and improving the performance of Natural Language Processing. Our team is composed by seasoned experts with commercial and management experience, supported by 4 advisors with decades of experience in the sector. The Milan Polytechnic as partner and shareholder, allows us direct access to technology transfer to artificial\nintelligence research.\nOur success has already been remarkable. In the first 3 months of operation, we received numerous responses, in the Finance, Banking and Insurance sectors, as well as from Startups, SMEs and Public Authorities. Our service is currently used by companies such as Agos, Moovenda, Buzzoole, LeCicogne and PAs such as Regione Emilia Romagna and the Sesto Fiorentino Municipal Authority. In September 2017, we won the Artificial Intelligence Worldwide Software Vendor Selection, from more than 300 Startups and technology companies already established at international level and were awarded a contract with Agos Ducato S.p.A. Financially we can count on over half a million euros of investments. In March 2018, we achieved a capital increase of \u20ac 300,000 with some Business Angels that became part of the shareholders; whilst in July 2018, the equity crowdfunding on Crowdfundme raised \u20ac 200,000, with the entry of 131 new shareholders. The SME instrument phase 1 project is thoroughly aligned to Userbot\u2019s strategy.",
-      "funder_award_id": "854946",
-      "funder": {
-        "id": "https://openalex.org/F4320320300",
-        "display_name": "European Commission",
-        "doi": "10.13039/501100000780"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 50000.0,
-      "currency": "EUR",
-      "funding_type": "commercial",
-      "funder_scheme": "H2020 - SME-1",
-      "start_date": "2019-03-01",
-      "end_date": "2019-08-31",
-      "start_year": 2019,
-      "end_year": 2019,
-      "landing_page_url": "https://cordis.europa.eu/project/id/854946",
-      "doi": "10.3030/854946",
-      "provenance": "cordis",
-      "lead_investigator": {
-        "given_name": null,
-        "family_name": null,
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "USERBOT SRL",
-          "country": "IT",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G5060625172",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-02-10T15:33:03",
-      "created_date": "2026-03-15T01:01:36",
-      "relevance_score": 52.746243
+      "relevance_score": 52.73164
     },
     {
       "id": "https://openalex.org/G6046163532",
@@ -4308,7 +4671,129 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 52.73824
+      "relevance_score": 52.712055
+    },
+    {
+      "id": "https://openalex.org/G5696078662",
+      "display_name": "College Remediation Using Artificial Intelligence",
+      "description": "This project team developed a prototype of a web-based software that used artificial intelligence techniques to provide support for adult learners and remedial college students as they studied basic math.",
+      "funder_award_id": "EDIES10P0108",
+      "funder": {
+        "id": "https://openalex.org/F4320332210",
+        "display_name": "Institute of Education Sciences",
+        "doi": "10.13039/100005246"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 100000.0,
+      "currency": "USD",
+      "funding_type": "contract",
+      "funder_scheme": "Small Business Innovation Research",
+      "start_date": "2010-01-01",
+      "end_date": null,
+      "start_year": 2010,
+      "end_year": null,
+      "landing_page_url": "https://ies.ed.gov/use-work/awards/college-remediation-using-artificial-intelligence",
+      "doi": null,
+      "provenance": "ies_official",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G5696078662",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-05-27T20:56:53",
+      "created_date": "2026-05-27T16:18:32",
+      "relevance_score": 52.699837
+    },
+    {
+      "id": "https://openalex.org/G5489670787",
+      "display_name": "Fostering Artificial Intelligence at School",
+      "description": "This project was born from a desire to demystify artificial intelligence (AI) and bring it into the classroom, both in formal and informal settings. Our ultimate goal was to help learners develop ...",
+      "funder_award_id": "2020-1-ES01-KA201-083047",
+      "funder": {
+        "id": "https://openalex.org/F4320335551",
+        "display_name": "Erasmus+",
+        "doi": "10.13039/501100010790"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 216464.0,
+      "currency": "EUR",
+      "funding_type": "grant",
+      "funder_scheme": "Strategic Partnerships for school education",
+      "start_date": "2020-08-31",
+      "end_date": "2023-08-30",
+      "start_year": 2020,
+      "end_year": 2023,
+      "landing_page_url": "https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-ES01-KA201-083047",
+      "doi": null,
+      "provenance": "erasmus_plus",
+      "lead_investigator": {
+        "given_name": null,
+        "family_name": null,
+        "orcid": null,
+        "role_start": null,
+        "affiliation": {
+          "name": "UNIVERSIDAD REY JUAN CARLOS",
+          "country": "ES",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G5489670787",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-07-14T05:01:28",
+      "created_date": "2026-07-13T04:43:06",
+      "relevance_score": 52.685734
+    },
+    {
+      "id": "https://openalex.org/G5060625172",
+      "display_name": "Artificial Intelligence for Customer Service",
+      "description": "Userbot provides Artificial Intelligence for Customer Service. We have developed an innovative technology platform based on Machine Learning, Deep learning, Artificial Intelligence and Sentiment Analysis to interact with customers in a natural language on every digital channel. Userbot\u2019s proprietary AI technology that reached TRL7 is developed internally and we are constantly improving it. We are currently working on the automation of customer acquisition and payments, as well as developing a special Agency dashboard. The basic AI remains one of the main areas of investment, optimizing and simplifying the AI model Training and improving the performance of Natural Language Processing. Our team is composed by seasoned experts with commercial and management experience, supported by 4 advisors with decades of experience in the sector. The Milan Polytechnic as partner and shareholder, allows us direct access to technology transfer to artificial\nintelligence research.\nOur success has already been remarkable. In the first 3 months of operation, we received numerous responses, in the Finance, Banking and Insurance sectors, as well as from Startups, SMEs and Public Authorities. Our service is currently used by companies such as Agos, Moovenda, Buzzoole, LeCicogne and PAs such as Regione Emilia Romagna and the Sesto Fiorentino Municipal Authority. In September 2017, we won the Artificial Intelligence Worldwide Software Vendor Selection, from more than 300 Startups and technology companies already established at international level and were awarded a contract with Agos Ducato S.p.A. Financially we can count on over half a million euros of investments. In March 2018, we achieved a capital increase of \u20ac 300,000 with some Business Angels that became part of the shareholders; whilst in July 2018, the equity crowdfunding on Crowdfundme raised \u20ac 200,000, with the entry of 131 new shareholders. The SME instrument phase 1 project is thoroughly aligned to Userbot\u2019s strategy.",
+      "funder_award_id": "854946",
+      "funder": {
+        "id": "https://openalex.org/F4320320300",
+        "display_name": "European Commission",
+        "doi": "10.13039/501100000780"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 50000.0,
+      "currency": "EUR",
+      "funding_type": "commercial",
+      "funder_scheme": "H2020 - SME-1",
+      "start_date": "2019-03-01",
+      "end_date": "2019-08-31",
+      "start_year": 2019,
+      "end_year": 2019,
+      "landing_page_url": "https://cordis.europa.eu/project/id/854946",
+      "doi": "10.3030/854946",
+      "provenance": "cordis",
+      "lead_investigator": {
+        "given_name": null,
+        "family_name": null,
+        "orcid": null,
+        "role_start": null,
+        "affiliation": {
+          "name": "USERBOT SRL",
+          "country": "IT",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G5060625172",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-02-10T15:33:03",
+      "created_date": "2026-03-15T01:01:36",
+      "relevance_score": 52.68256
     },
     {
       "id": "https://openalex.org/G6450541304",
@@ -4352,7 +4837,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:43",
-      "relevance_score": 52.69851
+      "relevance_score": 52.67237
     },
     {
       "id": "https://openalex.org/G5394677772",
@@ -4396,7 +4881,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 52.681267
+      "relevance_score": 52.65513
     },
     {
       "id": "https://openalex.org/G7556505264",
@@ -4440,7 +4925,7 @@
       "institution_awarded": [],
       "updated_date": "2026-07-14T05:01:28",
       "created_date": "2026-07-13T04:43:06",
-      "relevance_score": 52.681267
+      "relevance_score": 52.65513
     },
     {
       "id": "https://openalex.org/G8362127029",
@@ -4474,7 +4959,7 @@
       "institution_awarded": [],
       "updated_date": "2026-04-26T01:01:14",
       "created_date": "2022-12-12T14:38:36",
-      "relevance_score": 52.679554
+      "relevance_score": 52.653393
     },
     {
       "id": "https://openalex.org/G6791947685",
@@ -4518,7 +5003,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-10T22:34:43",
       "created_date": "2026-06-10T18:44:13",
-      "relevance_score": 52.66734
+      "relevance_score": 52.641193
     },
     {
       "id": "https://openalex.org/G8525457526",
@@ -4572,7 +5057,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-04T03:01:27",
       "created_date": "2026-06-03T23:22:05",
-      "relevance_score": 52.62362
+      "relevance_score": 52.600266
     },
     {
       "id": "https://openalex.org/G6727436617",
@@ -4616,7 +5101,7 @@
       "institution_awarded": [],
       "updated_date": "2026-05-27T05:04:24",
       "created_date": "2026-05-26T21:49:26",
-      "relevance_score": 52.58916
+      "relevance_score": 52.56308
     },
     {
       "id": "https://openalex.org/G6799374911",
@@ -4660,7 +5145,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-19T05:01:24",
       "created_date": "2026-06-18T21:25:04",
-      "relevance_score": 52.240013
+      "relevance_score": 52.214222
     },
     {
       "id": "https://openalex.org/G3684569326",
@@ -4715,119 +5200,7 @@
       ],
       "updated_date": "2026-05-23T21:21:10",
       "created_date": "2026-03-15T01:01:37",
-      "relevance_score": 52.18729
-    },
-    {
-      "id": "https://openalex.org/G2969899365",
-      "display_name": "Artificial Intelligence for Computer Games",
-      "description": "Purpose and goal:\r\n<p>Computer game developers use powerful tools to create games with realistic graphics and physics. But game characters\u00b4 artificial intelligence (AI) lag behind. Their behavior is usually defined by programmers using simplistic algorithms. Boldai develops a graphical tool for game AI that replaces some of the required programming with an easy to use drag-n-drop interface and algorithms based on a long history of AI research. More game developers can contribute and more realistic behavior results.</p>\r\n\r\nExpected results and effects:\r\n\r\n\r\nApproach and implementation:\r\n",
-      "funder_award_id": "2011-00422_Vinnova",
-      "funder": {
-        "id": "https://openalex.org/F4320321030",
-        "display_name": "VINNOVA",
-        "doi": "10.13039/501100001858"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 300000.0,
-      "currency": "SEK",
-      "funding_type": "grant",
-      "funder_scheme": "Project grant",
-      "start_date": "2011-04-18",
-      "end_date": "2012-03-18",
-      "start_year": 2011,
-      "end_year": 2012,
-      "landing_page_url": "https://www.vr.se/english/swecris.html",
-      "doi": null,
-      "provenance": "swecris_vinnova",
-      "lead_investigator": {
-        "given_name": null,
-        "family_name": "Martin Magnusson",
-        "orcid": null,
-        "role_start": "2011-04-18",
-        "affiliation": {
-          "name": "Boldai AB",
-          "country": "Sweden",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G2969899365",
-      "primary_topic": {
-        "id": "https://openalex.org/T11574",
-        "display_name": "Artificial Intelligence in Games",
-        "score": 0.8557000160217285,
-        "subfield": {
-          "id": "https://openalex.org/subfields/1702",
-          "display_name": "Artificial Intelligence"
-        },
-        "field": {
-          "id": "https://openalex.org/fields/17",
-          "display_name": "Computer Science"
-        },
-        "domain": {
-          "id": "https://openalex.org/domains/3",
-          "display_name": "Physical Sciences"
-        }
-      },
-      "topics": [
-        {
-          "id": "https://openalex.org/T11574",
-          "display_name": "Artificial Intelligence in Games",
-          "score": 0.8557000160217285,
-          "subfield": {
-            "id": "https://openalex.org/subfields/1702",
-            "display_name": "Artificial Intelligence"
-          },
-          "field": {
-            "id": "https://openalex.org/fields/17",
-            "display_name": "Computer Science"
-          },
-          "domain": {
-            "id": "https://openalex.org/domains/3",
-            "display_name": "Physical Sciences"
-          }
-        }
-      ],
-      "institution_awarded": [],
-      "updated_date": "2026-05-23T21:21:10",
-      "created_date": "2026-03-15T01:01:48",
-      "relevance_score": 52.106533
-    },
-    {
-      "id": "https://openalex.org/G1887975770",
-      "display_name": "Artificial intelligence for qubit readout",
-      "description": "Controlling materials on the nanoscale is now sufficiently refined that new methods are needed for fabricating the structures and tuning their performance. In many cases we are reaching the limits of our ability to do this using human control of the process, all the more so when a key consideration is scalability for technological applications. The project identifies quantum devices where artificial intelligence will provide the key to speeding up, scaling up, and opening up new technologies\n\nThe objective is to develop radio-frequency reflectometry for fast and sensitive readout of quantum devices. To achieve optimal sensitivity in this measurement technique, which can approach the quantum limit, impedance matching between the device and the external circuitry is essential to maximize power transfer between them. Artificial intelligence, and in particular machine learning methods such a deep learning, will be used to find the right operation parameters of the radio frequency circuitry and the quantum limited amplifier.\n\nRadio-frequency reflectometry permits rapid readout of charge sensors, quantum devices, and nanomechanical resonators, as well as quantum-dot circuits. This method has the advantage that it does not require a separate charge sensor, making it ideal for circuit scalability. However, the sensitivity is not yet sufficient to measure systems in which coherence is not preserved for relatively long periods of time. For the first time this technique for fast readout will be combined with machine learning methods to reach its full potential. \n\nThis project is key to unleash the potential of quantum technologies by allowing fast measurement of quantum devices, and thus the possibility to control technologically relevant quantum circuits. \n\nA collaboration with University of Basel provides us with the quantum devices we require for our experiments, and a collaboration with the Department of Engineering at University of Oxford allows us to benefit from the expertise of computer scientist dedicated to the study of artificial intelligence, in particular Bayesian optimisation and other machine learning techniques which do not require large amounts of data, which is not available for quantum devices. The number of data sets required to train the machine learning models is large, and therefore our collaborators in IST Austria will provide us with a number of data sets from their laboratory. \n\nThis project falls within the EPSRC Quantum technologies research area.",
-      "funder_award_id": "2281597",
-      "funder": {
-        "id": "https://openalex.org/F4320334627",
-        "display_name": "Engineering and Physical Sciences Research Council",
-        "doi": "10.13039/501100000266"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 0.0,
-      "currency": "GBP",
-      "funding_type": "studentship",
-      "funder_scheme": null,
-      "start_date": "2019-09-30",
-      "end_date": "2023-12-31",
-      "start_year": 2019,
-      "end_year": 2023,
-      "landing_page_url": "https://gtr.ukri.org/projects?ref=2281597",
-      "doi": null,
-      "provenance": "gateway_to_research",
-      "lead_investigator": null,
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G1887975770",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-07-14T05:01:28",
-      "created_date": "2026-07-13T04:25:00",
-      "relevance_score": 52.07348
+      "relevance_score": 52.12258
     },
     {
       "id": "https://openalex.org/G5799122978",
@@ -4871,7 +5244,85 @@
       "institution_awarded": [],
       "updated_date": "2026-06-02T15:58:26",
       "created_date": "2026-03-15T01:01:43",
-      "relevance_score": 52.039608
+      "relevance_score": 52.013977
+    },
+    {
+      "id": "https://openalex.org/G62983488",
+      "display_name": "Artificial Intelligence for Computer Games",
+      "description": "Purpose and goal:\r\n<p>Computer game developers use powerful tools to create games with realistic graphics and physics. But game characters\u00b4 artificial intelligence (AI) lag behind. Their behavior is usually defined by programmers using simplistic algorithms. Boldai develops a graphical tool for game AI that replaces some of the required programming with an easy to use drag-n-drop interface and algorithms based on a long history of AI research. More game developers can contribute and more realistic behavior results.</p>\r\n\r\nExpected results and effects:\r\n\r\n\r\nApproach and implementation:\r\n",
+      "funder_award_id": "2011-00422",
+      "funder": {
+        "id": "https://openalex.org/F4320321030",
+        "display_name": "VINNOVA",
+        "doi": "10.13039/501100001858"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 300000.0,
+      "currency": "SEK",
+      "funding_type": "grant",
+      "funder_scheme": "Project grant",
+      "start_date": "2011-04-18",
+      "end_date": "2012-03-18",
+      "start_year": 2011,
+      "end_year": 2012,
+      "landing_page_url": "https://www.vr.se/english/swecris.html",
+      "doi": null,
+      "provenance": "swecris_vinnova",
+      "lead_investigator": {
+        "given_name": null,
+        "family_name": "Martin Magnusson",
+        "orcid": null,
+        "role_start": "2011-04-18",
+        "affiliation": {
+          "name": "Boldai AB",
+          "country": "Sweden",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G62983488",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-01T05:01:29",
+      "created_date": "2026-07-31T15:59:35",
+      "relevance_score": 52.013977
+    },
+    {
+      "id": "https://openalex.org/G1887975770",
+      "display_name": "Artificial intelligence for qubit readout",
+      "description": "Controlling materials on the nanoscale is now sufficiently refined that new methods are needed for fabricating the structures and tuning their performance. In many cases we are reaching the limits of our ability to do this using human control of the process, all the more so when a key consideration is scalability for technological applications. The project identifies quantum devices where artificial intelligence will provide the key to speeding up, scaling up, and opening up new technologies\n\nThe objective is to develop radio-frequency reflectometry for fast and sensitive readout of quantum devices. To achieve optimal sensitivity in this measurement technique, which can approach the quantum limit, impedance matching between the device and the external circuitry is essential to maximize power transfer between them. Artificial intelligence, and in particular machine learning methods such a deep learning, will be used to find the right operation parameters of the radio frequency circuitry and the quantum limited amplifier.\n\nRadio-frequency reflectometry permits rapid readout of charge sensors, quantum devices, and nanomechanical resonators, as well as quantum-dot circuits. This method has the advantage that it does not require a separate charge sensor, making it ideal for circuit scalability. However, the sensitivity is not yet sufficient to measure systems in which coherence is not preserved for relatively long periods of time. For the first time this technique for fast readout will be combined with machine learning methods to reach its full potential. \n\nThis project is key to unleash the potential of quantum technologies by allowing fast measurement of quantum devices, and thus the possibility to control technologically relevant quantum circuits. \n\nA collaboration with University of Basel provides us with the quantum devices we require for our experiments, and a collaboration with the Department of Engineering at University of Oxford allows us to benefit from the expertise of computer scientist dedicated to the study of artificial intelligence, in particular Bayesian optimisation and other machine learning techniques which do not require large amounts of data, which is not available for quantum devices. The number of data sets required to train the machine learning models is large, and therefore our collaborators in IST Austria will provide us with a number of data sets from their laboratory. \n\nThis project falls within the EPSRC Quantum technologies research area.",
+      "funder_award_id": "2281597",
+      "funder": {
+        "id": "https://openalex.org/F4320334627",
+        "display_name": "Engineering and Physical Sciences Research Council",
+        "doi": "10.13039/501100000266"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 0.0,
+      "currency": "GBP",
+      "funding_type": "studentship",
+      "funder_scheme": null,
+      "start_date": "2019-09-30",
+      "end_date": "2023-12-31",
+      "start_year": 2019,
+      "end_year": 2023,
+      "landing_page_url": "https://gtr.ukri.org/projects?ref=2281597",
+      "doi": null,
+      "provenance": "gateway_to_research",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G1887975770",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-07-14T05:01:28",
+      "created_date": "2026-07-13T04:25:00",
+      "relevance_score": 52.00813
     },
     {
       "id": "https://openalex.org/G2354848991",
@@ -4888,14 +5339,19 @@
         "https://openalex.org/W3203169630",
         "https://openalex.org/W3204557258",
         "https://openalex.org/W3204675332",
+        "https://openalex.org/W3206125562",
         "https://openalex.org/W3208719466",
+        "https://openalex.org/W4200514762",
         "https://openalex.org/W4206860328",
         "https://openalex.org/W4221150252",
         "https://openalex.org/W4282914938",
         "https://openalex.org/W4282972063",
         "https://openalex.org/W4283763090",
         "https://openalex.org/W4286539372",
+        "https://openalex.org/W4300089355",
         "https://openalex.org/W4304185523",
+        "https://openalex.org/W4306403354",
+        "https://openalex.org/W4309774299",
         "https://openalex.org/W4312121211",
         "https://openalex.org/W4312379710",
         "https://openalex.org/W4312403506",
@@ -4928,7 +5384,7 @@
         "https://openalex.org/W4404138357",
         "https://openalex.org/W4406490394"
       ],
-      "funded_outputs_count": 43,
+      "funded_outputs_count": 48,
       "amount": 8763190.67,
       "currency": "EUR",
       "funding_type": "research",
@@ -4969,9 +5425,9 @@
           ]
         }
       ],
-      "updated_date": "2026-06-22T05:01:31",
-      "created_date": "2026-03-15T01:01:36",
-      "relevance_score": 51.989502
+      "updated_date": "2026-08-13T05:01:30",
+      "created_date": "2026-07-13T04:29:53",
+      "relevance_score": 51.963852
     },
     {
       "id": "https://openalex.org/G886864533",
@@ -5005,95 +5461,7 @@
       "institution_awarded": [],
       "updated_date": "2026-04-26T01:01:14",
       "created_date": "2022-12-12T14:03:45",
-      "relevance_score": 51.989502
-    },
-    {
-      "id": "https://openalex.org/G1267630824",
-      "display_name": "Research Programme Artificial Intelligence - 2021",
-      "description": "We are not always aware of it, but artificial intelligence (AI) is gradually penetrating all areas of our lives and our economy. How should we deal with it? Five Flemish universities and five Flemish research institutes - KU Leuven, Universiteit Antwerpen, Universiteit Gent, Universiteit Hasselt, Vrije Universiteit Brussel, Flanders Make, Sirris, VIB, VITO and imec - form a consortium for strategic basic research in AI. The Flemish AI Research Programme is funded by the Department of Economy, Science and Innovation. It is part of a broader policy agenda that also stimulates the use of AI by businesses and organisations, and that focuses on awareness, training and ethical framing.",
-      "funder_award_id": "A21/OC/0086",
-      "funder": {
-        "id": "https://openalex.org/F4320327336",
-        "display_name": "Vlaamse regering",
-        "doi": "10.13039/501100011878"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": null,
-      "currency": null,
-      "funding_type": "grant",
-      "funder_scheme": "Flanders Artificial Intelligence Program - FAIR",
-      "start_date": "2021-01-01",
-      "end_date": "2021-12-31",
-      "start_year": 2021,
-      "end_year": 2021,
-      "landing_page_url": "https://researchportal.be/en/project/ec835a1d-92f9-4dfe-be6a-3b19234db736",
-      "doi": null,
-      "provenance": "vlaamse_regering_fris",
-      "lead_investigator": {
-        "given_name": "Piet",
-        "family_name": "Demeester",
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "UGent",
-          "country": "BE",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G1267630824",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-06-19T05:01:24",
-      "created_date": "2026-06-18T21:25:04",
-      "relevance_score": 51.96437
-    },
-    {
-      "id": "https://openalex.org/G5851686229",
-      "display_name": "Research Programme Artificial Intelligence - 2022",
-      "description": "We are not always aware of it, but artificial intelligence (AI) is gradually penetrating all areas of our lives and our economy. How should we deal with it? Five Flemish universities and five Flemish research institutes - KU Leuven, Universiteit Antwerpen, Universiteit Gent, Universiteit Hasselt, Vrije Universiteit Brussel, Flanders Make, Sirris, VIB, VITO and imec - form a consortium for strategic basic research in AI. The Flemish AI Research Programme is funded by the Department of Economy, Science and Innovation. It is part of a broader policy agenda that also stimulates the use of AI by businesses and organisations, and that focuses on awareness, training and ethical framing.",
-      "funder_award_id": "A22/OC/0016",
-      "funder": {
-        "id": "https://openalex.org/F4320327336",
-        "display_name": "Vlaamse regering",
-        "doi": "10.13039/501100011878"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": null,
-      "currency": null,
-      "funding_type": "grant",
-      "funder_scheme": "Flanders Artificial Intelligence Program - FAIR",
-      "start_date": "2022-01-01",
-      "end_date": "2022-12-31",
-      "start_year": 2022,
-      "end_year": 2022,
-      "landing_page_url": "https://researchportal.be/en/project/dda23022-65e5-49c8-b944-41de172f9e0b",
-      "doi": null,
-      "provenance": "vlaamse_regering_fris",
-      "lead_investigator": {
-        "given_name": "Piet",
-        "family_name": "Demeester",
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "UGent",
-          "country": "BE",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G5851686229",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-06-19T05:01:24",
-      "created_date": "2026-06-18T21:25:04",
-      "relevance_score": 51.96437
+      "relevance_score": 51.963852
     },
     {
       "id": "https://openalex.org/G2563870226",
@@ -5139,7 +5507,95 @@
       "institution_awarded": [],
       "updated_date": "2026-06-22T05:01:31",
       "created_date": "2026-03-15T01:01:46",
-      "relevance_score": 51.942337
+      "relevance_score": 51.916775
+    },
+    {
+      "id": "https://openalex.org/G1267630824",
+      "display_name": "Research Programme Artificial Intelligence - 2021",
+      "description": "We are not always aware of it, but artificial intelligence (AI) is gradually penetrating all areas of our lives and our economy. How should we deal with it? Five Flemish universities and five Flemish research institutes - KU Leuven, Universiteit Antwerpen, Universiteit Gent, Universiteit Hasselt, Vrije Universiteit Brussel, Flanders Make, Sirris, VIB, VITO and imec - form a consortium for strategic basic research in AI. The Flemish AI Research Programme is funded by the Department of Economy, Science and Innovation. It is part of a broader policy agenda that also stimulates the use of AI by businesses and organisations, and that focuses on awareness, training and ethical framing.",
+      "funder_award_id": "A21/OC/0086",
+      "funder": {
+        "id": "https://openalex.org/F4320327336",
+        "display_name": "Vlaamse regering",
+        "doi": "10.13039/501100011878"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": null,
+      "currency": null,
+      "funding_type": "grant",
+      "funder_scheme": "Flanders Artificial Intelligence Program - FAIR",
+      "start_date": "2021-01-01",
+      "end_date": "2021-12-31",
+      "start_year": 2021,
+      "end_year": 2021,
+      "landing_page_url": "https://researchportal.be/en/project/ec835a1d-92f9-4dfe-be6a-3b19234db736",
+      "doi": null,
+      "provenance": "vlaamse_regering_fris",
+      "lead_investigator": {
+        "given_name": "Piet",
+        "family_name": "Demeester",
+        "orcid": null,
+        "role_start": null,
+        "affiliation": {
+          "name": "UGent",
+          "country": "BE",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G1267630824",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-06-19T05:01:24",
+      "created_date": "2026-06-18T21:25:04",
+      "relevance_score": 51.90032
+    },
+    {
+      "id": "https://openalex.org/G5851686229",
+      "display_name": "Research Programme Artificial Intelligence - 2022",
+      "description": "We are not always aware of it, but artificial intelligence (AI) is gradually penetrating all areas of our lives and our economy. How should we deal with it? Five Flemish universities and five Flemish research institutes - KU Leuven, Universiteit Antwerpen, Universiteit Gent, Universiteit Hasselt, Vrije Universiteit Brussel, Flanders Make, Sirris, VIB, VITO and imec - form a consortium for strategic basic research in AI. The Flemish AI Research Programme is funded by the Department of Economy, Science and Innovation. It is part of a broader policy agenda that also stimulates the use of AI by businesses and organisations, and that focuses on awareness, training and ethical framing.",
+      "funder_award_id": "A22/OC/0016",
+      "funder": {
+        "id": "https://openalex.org/F4320327336",
+        "display_name": "Vlaamse regering",
+        "doi": "10.13039/501100011878"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": null,
+      "currency": null,
+      "funding_type": "grant",
+      "funder_scheme": "Flanders Artificial Intelligence Program - FAIR",
+      "start_date": "2022-01-01",
+      "end_date": "2022-12-31",
+      "start_year": 2022,
+      "end_year": 2022,
+      "landing_page_url": "https://researchportal.be/en/project/dda23022-65e5-49c8-b944-41de172f9e0b",
+      "doi": null,
+      "provenance": "vlaamse_regering_fris",
+      "lead_investigator": {
+        "given_name": "Piet",
+        "family_name": "Demeester",
+        "orcid": null,
+        "role_start": null,
+        "affiliation": {
+          "name": "UGent",
+          "country": "BE",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G5851686229",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-06-19T05:01:24",
+      "created_date": "2026-06-18T21:25:04",
+      "relevance_score": 51.90032
     },
     {
       "id": "https://openalex.org/G3649841187",
@@ -5242,7 +5698,7 @@
       "institution_awarded": [],
       "updated_date": "2026-05-23T21:21:10",
       "created_date": "2021-01-29T15:09:20",
-      "relevance_score": 51.9419
+      "relevance_score": 51.876656
     },
     {
       "id": "https://openalex.org/G7729190884",
@@ -5286,87 +5742,7 @@
       "institution_awarded": [],
       "updated_date": "2026-06-19T05:01:24",
       "created_date": "2026-06-18T21:25:04",
-      "relevance_score": 51.897163
-    },
-    {
-      "id": "https://openalex.org/G5002781076",
-      "display_name": "Artificial Intelligence of Medical Things",
-      "description": "Future medicine will be predictive, preventive, personalized and digital. Data and knowledge must be available for research and care provision, as a basis for targeted diagnostics and therapy. Data acquisition, integration and sharing are key to achieving these goals, using high-quality data and new, energy-efficient devices powered by artificial intelligence (AI) algorithms for effective patient care. The Clinical Hospital Center in Split, as a supporter of this project, uses the Hospital Information System (HIS) - a fully digitized system that enables access to patients' health records with digitally available data and documents. The system, as such, supports writing database queries to extract targeted information of well-structured data that can be used to build a large data system for research purposes. This project proposal involves the development of a parallel system, a mirror image of HIS prepared for research purposes, structured in a way that semantically describes the patient with relevant information, enabling data analysis with the aim of improving diagnostics and prognosis. The project will also use knowledge, developed technologies in the field of hardware and software, and experiences from the previous, successfully concluded establishment project financed by the Croatian Science Foundation (Internet of things: research and applications), with the aim of implementing the developed knowledge in new systems that together with data from HIS with the help of the application of artificial intelligence algorithms form a whole whose goal is to gain new knowledge of applications in medicine and thereby improve the patient care. In addition to the creation of the already mentioned new software environment, the project front will also make two contributions with the application of data from HIS, in terms of the creation of new devices, related to applications in emergency medicine (asthma scenario) and sleep medicine.",
-      "funder_award_id": "IP-2025-02-7836",
-      "funder": {
-        "id": "https://openalex.org/F4320322674",
-        "display_name": "Hrvatska Zaklada za Znanost",
-        "doi": "10.13039/501100004488"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 199000.0,
-      "currency": "EUR",
-      "funding_type": "grant",
-      "funder_scheme": "IP",
-      "start_date": "2025-12-15",
-      "end_date": "2028-12-14",
-      "start_year": 2025,
-      "end_year": 2028,
-      "landing_page_url": "https://hrzz.hr/en/funding/project-database/",
-      "doi": null,
-      "provenance": "hrzz",
-      "lead_investigator": {
-        "given_name": "Petar",
-        "family_name": "\u0160oli\u0107",
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "University of Split, Faculty of Electrical Engineering, Mechanical Engineering and Naval Architecture",
-          "country": "Croatia",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": null,
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-06-16T05:01:20",
-      "created_date": "2026-06-15T19:56:53",
-      "relevance_score": 51.877033
-    },
-    {
-      "id": "https://openalex.org/G7428793199",
-      "display_name": "Artificial Intelligence for the Sciences",
-      "description": "\"\"\"Artificial Intelligence for the Sciences\u201d (AI4theSciences) is an innovative, interdisciplinary and intersectoral PhD programme. It aims at training a new generation of researchers at the highest academic level in their main discipline (engineering, physics, biology, chemistry, human and social sciences) and mastering the latest technologies in Artificial Intelligence (AI) and Machine Learning as applied in their own field.\n\nIt will contribute to create an EU AI pool of excellence to tackle the major global challenges we are facing today and to answer to international competition. Both in the private and in academia, there is a lack of scientists capable of running interdisciplinary projects involving both a deep knowledge of a specific application field and a good knowledge of AI techniques.\n\nAI4theSciences programme will recruit 26 PhD students through qualitative HR processes, based on equal opportunities and excellence. They will benefit from a supportive environment to be the scientists of tomorrow. PSL will offer breakthrough research projects proposed by our worldwide renowned research departments, in cooperation with our business partners, plus a strong partnership for technological innovation with the venture capital firm Elaia Partners, dedicated trainings in AI and Machine Learning, and international academic networks. They will be mentored by a pair of PhD supervisors, one specialised in AI and the other specialised in the application field, plus a peer sponsor. AI4theSciences programme will accelerate the emerging \u201cAI PSL Graduate Transverse Program\u201d. Creative outreach events will favor participatory and open science to foster AI4theSciences\u2019s impacts on policy makers as well as civil and economic society making AI accountable.\n\nParis Sciences et Lettres is a unique university of excellence to train this new generation, with 19 schools members pushing the boundaries of a wide spectrum of research areas (45th in 2020 THE ranking).\"",
-      "funder_award_id": "945304",
-      "funder": {
-        "id": "https://openalex.org/F4320338337",
-        "display_name": "H2020 Marie Sk\u0142odowska-Curie Actions",
-        "doi": "10.13039/100010665"
-      },
-      "funded_outputs": [
-        "https://openalex.org/W4376108317"
-      ],
-      "funded_outputs_count": 1,
-      "amount": 2115360.0,
-      "currency": "EUR",
-      "funding_type": "grant",
-      "funder_scheme": "H2020-EU.1.3.",
-      "start_date": "2020-10-01",
-      "end_date": null,
-      "start_year": 2020,
-      "end_year": null,
-      "landing_page_url": "https://cordis.europa.eu/project/id/945304",
-      "doi": "https://doi.org/10.3030/945304",
-      "provenance": "crossref_work",
-      "lead_investigator": null,
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G7428793199",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-04-26T01:01:14",
-      "created_date": "2023-12-27T07:36:47",
-      "relevance_score": 51.877033
+      "relevance_score": 51.871647
     },
     {
       "id": "https://openalex.org/G5863613656",
@@ -5480,7 +5856,88 @@
       "institution_awarded": [],
       "updated_date": "2026-05-23T21:21:10",
       "created_date": "2021-01-29T15:09:20",
-      "relevance_score": 51.874107
+      "relevance_score": 51.8486
+    },
+    {
+      "id": "https://openalex.org/G5002781076",
+      "display_name": "Artificial Intelligence of Medical Things",
+      "description": "Future medicine will be predictive, preventive, personalized and digital. Data and knowledge must be available for research and care provision, as a basis for targeted diagnostics and therapy. Data acquisition, integration and sharing are key to achieving these goals, using high-quality data and new, energy-efficient devices powered by artificial intelligence (AI) algorithms for effective patient care. The Clinical Hospital Center in Split, as a supporter of this project, uses the Hospital Information System (HIS) - a fully digitized system that enables access to patients' health records with digitally available data and documents. The system, as such, supports writing database queries to extract targeted information of well-structured data that can be used to build a large data system for research purposes. This project proposal involves the development of a parallel system, a mirror image of HIS prepared for research purposes, structured in a way that semantically describes the patient with relevant information, enabling data analysis with the aim of improving diagnostics and prognosis. The project will also use knowledge, developed technologies in the field of hardware and software, and experiences from the previous, successfully concluded establishment project financed by the Croatian Science Foundation (Internet of things: research and applications), with the aim of implementing the developed knowledge in new systems that together with data from HIS with the help of the application of artificial intelligence algorithms form a whole whose goal is to gain new knowledge of applications in medicine and thereby improve the patient care. In addition to the creation of the already mentioned new software environment, the project front will also make two contributions with the application of data from HIS, in terms of the creation of new devices, related to applications in emergency medicine (asthma scenario) and sleep medicine.",
+      "funder_award_id": "IP-2025-02-7836",
+      "funder": {
+        "id": "https://openalex.org/F4320322674",
+        "display_name": "Hrvatska Zaklada za Znanost",
+        "doi": "10.13039/501100004488"
+      },
+      "funded_outputs": [],
+      "funded_outputs_count": 0,
+      "amount": 199000.0,
+      "currency": "EUR",
+      "funding_type": "grant",
+      "funder_scheme": "IP",
+      "start_date": "2025-12-15",
+      "end_date": "2028-12-14",
+      "start_year": 2025,
+      "end_year": 2028,
+      "landing_page_url": "https://hrzz.hr/en/funding/project-database/",
+      "doi": null,
+      "provenance": "hrzz",
+      "lead_investigator": {
+        "given_name": "Petar",
+        "family_name": "\u0160oli\u0107",
+        "orcid": null,
+        "role_start": null,
+        "affiliation": {
+          "name": "University of Split, Faculty of Electrical Engineering, Mechanical Engineering and Naval Architecture",
+          "country": "Croatia",
+          "ids": null
+        }
+      },
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": null,
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-06-16T05:01:20",
+      "created_date": "2026-06-15T19:56:53",
+      "relevance_score": 51.811657
+    },
+    {
+      "id": "https://openalex.org/G7428793199",
+      "display_name": "Artificial Intelligence for the Sciences",
+      "description": "\"\"\"Artificial Intelligence for the Sciences\u201d (AI4theSciences) is an innovative, interdisciplinary and intersectoral PhD programme. It aims at training a new generation of researchers at the highest academic level in their main discipline (engineering, physics, biology, chemistry, human and social sciences) and mastering the latest technologies in Artificial Intelligence (AI) and Machine Learning as applied in their own field.\n\nIt will contribute to create an EU AI pool of excellence to tackle the major global challenges we are facing today and to answer to international competition. Both in the private and in academia, there is a lack of scientists capable of running interdisciplinary projects involving both a deep knowledge of a specific application field and a good knowledge of AI techniques.\n\nAI4theSciences programme will recruit 26 PhD students through qualitative HR processes, based on equal opportunities and excellence. They will benefit from a supportive environment to be the scientists of tomorrow. PSL will offer breakthrough research projects proposed by our worldwide renowned research departments, in cooperation with our business partners, plus a strong partnership for technological innovation with the venture capital firm Elaia Partners, dedicated trainings in AI and Machine Learning, and international academic networks. They will be mentored by a pair of PhD supervisors, one specialised in AI and the other specialised in the application field, plus a peer sponsor. AI4theSciences programme will accelerate the emerging \u201cAI PSL Graduate Transverse Program\u201d. Creative outreach events will favor participatory and open science to foster AI4theSciences\u2019s impacts on policy makers as well as civil and economic society making AI accountable.\n\nParis Sciences et Lettres is a unique university of excellence to train this new generation, with 19 schools members pushing the boundaries of a wide spectrum of research areas (45th in 2020 THE ranking).\"",
+      "funder_award_id": "945304",
+      "funder": {
+        "id": "https://openalex.org/F4320338337",
+        "display_name": "H2020 Marie Sk\u0142odowska-Curie Actions",
+        "doi": "10.13039/100010665"
+      },
+      "funded_outputs": [
+        "https://openalex.org/W4376108317",
+        "https://openalex.org/W7117353733"
+      ],
+      "funded_outputs_count": 2,
+      "amount": 2115360.0,
+      "currency": "EUR",
+      "funding_type": "grant",
+      "funder_scheme": "H2020-EU.1.3.",
+      "start_date": "2020-10-01",
+      "end_date": null,
+      "start_year": 2020,
+      "end_year": null,
+      "landing_page_url": "https://cordis.europa.eu/project/id/945304",
+      "doi": "https://doi.org/10.3030/945304",
+      "provenance": "crossref_work",
+      "lead_investigator": null,
+      "co_lead_investigator": null,
+      "investigators": null,
+      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G7428793199",
+      "primary_topic": null,
+      "topics": null,
+      "institution_awarded": [],
+      "updated_date": "2026-08-02T05:01:12",
+      "created_date": "2023-12-27T07:36:47",
+      "relevance_score": 51.811657
     },
     {
       "id": "https://openalex.org/G1743413389",
@@ -5493,8 +5950,8 @@
         "doi": "10.13039/501100002301"
       },
       "funded_outputs": [
+        "https://openalex.org/W4410004951",
         "https://openalex.org/W4417126552",
-        "https://openalex.org/W6903318520",
         "https://openalex.org/W7162893544",
         "https://openalex.org/W7164614403"
       ],
@@ -5527,9 +5984,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-06-22T05:01:31",
-      "created_date": "2026-06-15T23:39:53",
-      "relevance_score": 51.83111
+      "updated_date": "2026-08-14T05:01:26",
+      "created_date": "2026-07-13T04:28:15",
+      "relevance_score": 51.80564
     },
     {
       "id": "https://openalex.org/G6371824193",
@@ -5573,7 +6030,7 @@
       "institution_awarded": [],
       "updated_date": "2026-02-10T15:33:03",
       "created_date": "2026-03-15T01:01:43",
-      "relevance_score": 51.809147
+      "relevance_score": 51.78369
     },
     {
       "id": "https://openalex.org/G7226374309",
@@ -5586,8 +6043,10 @@
         "doi": "10.13039/501100000780"
       },
       "funded_outputs": [
+        "https://openalex.org/W4221146518",
         "https://openalex.org/W4293787223",
         "https://openalex.org/W4307935003",
+        "https://openalex.org/W4308242492",
         "https://openalex.org/W4376108317",
         "https://openalex.org/W4379924669",
         "https://openalex.org/W4383912038",
@@ -5617,7 +6076,7 @@
         "https://openalex.org/W7140328227",
         "https://openalex.org/W7166575844"
       ],
-      "funded_outputs_count": 30,
+      "funded_outputs_count": 32,
       "amount": 2115360.0,
       "currency": "EUR",
       "funding_type": "fellowship",
@@ -5646,9 +6105,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-07-02T05:01:31",
-      "created_date": "2026-03-15T01:01:36",
-      "relevance_score": 51.809147
+      "updated_date": "2026-08-07T05:01:21",
+      "created_date": "2026-07-13T04:29:53",
+      "relevance_score": 51.78369
     },
     {
       "id": "https://openalex.org/G8454656690",
@@ -5726,7 +6185,7 @@
       "institution_awarded": [],
       "updated_date": "2026-05-23T21:21:10",
       "created_date": "2026-05-27T17:05:40",
-      "relevance_score": 51.631134
+      "relevance_score": 51.60578
     },
     {
       "id": "https://openalex.org/G1045782842",
@@ -5744,6 +6203,9 @@
         "https://openalex.org/W3207263146",
         "https://openalex.org/W3209285784",
         "https://openalex.org/W4200634445",
+        "https://openalex.org/W4221143850",
+        "https://openalex.org/W4221145969",
+        "https://openalex.org/W4221153077",
         "https://openalex.org/W4221156680",
         "https://openalex.org/W4224555015",
         "https://openalex.org/W4225775457",
@@ -5757,6 +6219,7 @@
         "https://openalex.org/W4287332845",
         "https://openalex.org/W4294294582",
         "https://openalex.org/W4296399447",
+        "https://openalex.org/W4300051493",
         "https://openalex.org/W4302012265",
         "https://openalex.org/W4321392853",
         "https://openalex.org/W4385482786",
@@ -5779,11 +6242,10 @@
         "https://openalex.org/W4415025653",
         "https://openalex.org/W4417210282",
         "https://openalex.org/W7011720527",
-        "https://openalex.org/W7050964416",
         "https://openalex.org/W7057942044",
         "https://openalex.org/W7123597200"
       ],
-      "funded_outputs_count": 43,
+      "funded_outputs_count": 46,
       "amount": 600000.0,
       "currency": "EUR",
       "funding_type": "grant",
@@ -5818,9 +6280,9 @@
       "primary_topic": null,
       "topics": null,
       "institution_awarded": [],
-      "updated_date": "2026-06-22T05:01:31",
-      "created_date": "2026-06-19T17:32:59",
-      "relevance_score": 51.621437
+      "updated_date": "2026-08-20T05:01:18",
+      "created_date": "2026-07-13T04:59:37",
+      "relevance_score": 51.553894
     },
     {
       "id": "https://openalex.org/G1203962860",
@@ -5832,8 +6294,18 @@
         "display_name": "National Institutes of Health",
         "doi": "10.13039/100000002"
       },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
+      "funded_outputs": [
+        "https://openalex.org/W3082666061",
+        "https://openalex.org/W3202670079",
+        "https://openalex.org/W4210398301",
+        "https://openalex.org/W4286716503",
+        "https://openalex.org/W4307656870",
+        "https://openalex.org/W4311824499",
+        "https://openalex.org/W4322632670",
+        "https://openalex.org/W4411017317",
+        "https://openalex.org/W4412108507"
+      ],
+      "funded_outputs_count": 9,
       "amount": 2553119.0,
       "currency": "USD",
       "funding_type": "intramural",
@@ -5875,301 +6347,9 @@
           ]
         }
       ],
-      "updated_date": "2026-05-23T21:21:10",
-      "created_date": "2026-03-15T01:01:55",
-      "relevance_score": 51.621437
-    },
-    {
-      "id": "https://openalex.org/G1422194824",
-      "display_name": "Trust in Artificial Intelligence",
-      "description": null,
-      "funder_award_id": "35_SONATA_19707",
-      "funder": {
-        "id": "https://openalex.org/F4320322511",
-        "display_name": "Narodowe Centrum Nauki",
-        "doi": "10.13039/501100004281"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 640176.0,
-      "currency": "PLN",
-      "funding_type": "grant",
-      "funder_scheme": "SONATA - HS6",
-      "start_date": null,
-      "end_date": null,
-      "start_year": null,
-      "end_year": null,
-      "landing_page_url": "https://projekty.ncn.gov.pl/",
-      "doi": null,
-      "provenance": "ncn_ranking_lists",
-      "lead_investigator": {
-        "given_name": "Katarzyna",
-        "family_name": "Samson",
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "SWPS Uniwersytet Humanistycznospo\u0142eczny z siedzib\u0105 w Warszawie",
-          "country": "Poland",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G1422194824",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-03-02T23:20:20",
-      "created_date": "2026-03-15T01:01:37",
-      "relevance_score": 51.621437
-    },
-    {
-      "id": "https://openalex.org/G1534593861",
-      "display_name": "Generative aRgumentative Artificial InteLligence",
-      "description": "The GRAIL project aims to study and develop novel, general purpose, generative argumentative AI models, applicable across diverse application domains. Our goal is to create a new generation of AI systems that learn to reason like humans using argumentative reasoning, unlike current generative AI systems. The developed systems will use an explainable argumentation-based reasoning mechanism based on a solid theoretical foundation for building acceptable arguments by applying understandable semantics and leading to explainable and theoretically proven decisions. The proposed reasoning mechanism involves the construction of interactive arguments for or against a belief or action. The reasoner\u2019s decision (i.e., what to believe or do) will rely on the strongest argument, evaluated using a preference relation that compares arguments based on subjective criteria (e.g. beliefs or opinions) or objective criteria (e.g. facts, social or legal norms), along with clear and established acceptability semantics. The reasoner decision depends on the choice of the applied acceptability semantics. This reasoning mechanism ensures that the developed systems will consistently behave as expected. The systems will also be able to explain the trace of their reasoning and the data on which this reasoning is based. Our project aims to develop generative argumentative AI that combines current advances in language modeling and classical generative AI methods with work in computational argumentation. Thus, we seek to (1) better identify and address the limitations of purely statistical models in reasoning tasks, and (2) bridge argumentation theory with NLP to automatically generate the inputs required for an argumentative reasoning mechanism.",
-      "funder_award_id": "ANR-25-CE23-5597",
-      "funder": {
-        "id": "https://openalex.org/F4320320883",
-        "display_name": "Agence Nationale de la Recherche",
-        "doi": "10.13039/501100001665"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 546811.22,
-      "currency": "EUR",
-      "funding_type": "research",
-      "funder_scheme": "AAPG2025",
-      "start_date": "2025-10-01",
-      "end_date": null,
-      "start_year": 2025,
-      "end_year": null,
-      "landing_page_url": "https://anr.fr/Projet-ANR-25-CE23-5597",
-      "doi": null,
-      "provenance": "anr_opendata",
-      "lead_investigator": {
-        "given_name": "Beno\u00eet",
-        "family_name": "CRABB\u00c9",
-        "orcid": "https://orcid.org/0000-0002-0821-0913",
-        "role_start": null,
-        "affiliation": {
-          "name": "UNIVERSIT\u00c9 PARIS CIT\u00c9",
-          "country": "France",
-          "ids": [
-            {
-              "id": "200112497J",
-              "type": "rnsr",
-              "asserted_by": "anr"
-            }
-          ]
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G1534593861",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [
-        {
-          "id": "https://openalex.org/I4210091437",
-          "display_name": "Sorbonne Paris Cit\u00e9",
-          "ror": "https://ror.org/001z21q04",
-          "country_code": "FR",
-          "type": "other",
-          "lineage": [
-            "https://openalex.org/I4210091437"
-          ]
-        }
-      ],
-      "updated_date": "2026-05-23T21:21:10",
-      "created_date": "2026-03-15T01:01:49",
-      "relevance_score": 51.621437
-    },
-    {
-      "id": "https://openalex.org/G1840075983",
-      "display_name": "ARTIFICIAL INTELLIGENCE CARDIOVASCULAR REASONING",
-      "description": null,
-      "funder_award_id": "5r01hl033041-11",
-      "funder": {
-        "id": "https://openalex.org/F4320332161",
-        "display_name": "National Institutes of Health",
-        "doi": "10.13039/100000002"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": null,
-      "currency": "USD",
-      "funding_type": "research",
-      "funder_scheme": "R01",
-      "start_date": "1984-04-01",
-      "end_date": "1998-07-31",
-      "start_year": 1984,
-      "end_year": 1998,
-      "landing_page_url": "https://reporter.nih.gov/project-details/2217163",
-      "doi": null,
-      "provenance": "nih_exporter",
-      "lead_investigator": {
-        "given_name": "WILLIAM J.",
-        "family_name": "LONG",
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "MASSACHUSETTS INSTITUTE OF TECHNOLOGY",
-          "country": "UNITED STATES",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G1840075983",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-02-10T15:33:03",
-      "created_date": "2026-03-15T01:01:55",
-      "relevance_score": 51.621437
-    },
-    {
-      "id": "https://openalex.org/G2206132477",
-      "display_name": "Artificial Intelligence: Digital energy",
-      "description": "In this project, the practical implementations of existing BESSs AI algorithms are compared, applied and implemented within the framework of the new Flemish capacity tariff. In view of the rapid deployment of the project results, so that the companies (engineering and study bureaus, data science and AI companies, electrical engineering companies) can offer services and products, a broader framework is also provided. This framework includes the regulations for implementing BESSs and the techno-economic aspects. Based on our estimate, compared with VLAIO and VEA, we expect that some 3,600 SMEs will directly benefit from the project results.",
-      "funder_award_id": "HBC.2021.0112",
-      "funder": {
-        "id": "https://openalex.org/F4320321732",
-        "display_name": "Agentschap voor Innovatie door Wetenschap en Technologie",
-        "doi": "10.13039/501100003132"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": null,
-      "currency": null,
-      "funding_type": "grant",
-      "funder_scheme": "VLAIO - TETRA Colleges AI",
-      "start_date": "2021-10-01",
-      "end_date": "2023-09-30",
-      "start_year": 2021,
-      "end_year": 2023,
-      "landing_page_url": "https://researchportal.be/en/project/eabcff73-1225-4305-9012-9f4928f94d3e",
-      "doi": null,
-      "provenance": "vlaio_fris",
-      "lead_investigator": {
-        "given_name": "Michael",
-        "family_name": "DAENEN",
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "UHasselt",
-          "country": "BE",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G2206132477",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-06-19T05:01:24",
-      "created_date": "2026-06-18T20:45:02",
-      "relevance_score": 51.621437
-    },
-    {
-      "id": "https://openalex.org/G2388564677",
-      "display_name": "ARTIFICIAL INTELLIGENCE CARDIOVASCULAR REASONING",
-      "description": null,
-      "funder_award_id": "2r01hl033041-09a2",
-      "funder": {
-        "id": "https://openalex.org/F4320332161",
-        "display_name": "National Institutes of Health",
-        "doi": "10.13039/100000002"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": null,
-      "currency": "USD",
-      "funding_type": "research",
-      "funder_scheme": "R01",
-      "start_date": "1984-04-01",
-      "end_date": "1997-07-31",
-      "start_year": 1984,
-      "end_year": 1997,
-      "landing_page_url": "https://reporter.nih.gov/project-details/2217161",
-      "doi": null,
-      "provenance": "nih_exporter",
-      "lead_investigator": {
-        "given_name": "WILLIAM J.",
-        "family_name": "LONG",
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "MASSACHUSETTS INSTITUTE OF TECHNOLOGY",
-          "country": "UNITED STATES",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G2388564677",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [],
-      "updated_date": "2026-02-10T15:33:03",
-      "created_date": "2026-03-15T01:01:55",
-      "relevance_score": 51.621437
-    },
-    {
-      "id": "https://openalex.org/G3086273406",
-      "display_name": "Artificial Intelligence and Competition",
-      "description": "AI algorithms are increasingly being used in markets. It is generally agreed that they create a wealth of value by facilitating economic interactions. However, there are also concerns that when applied to market environments, they could lessen competition and harm consumers. This proposal sets forth an important first step of an articulated research program on AI and Competition. The proposal is structured as three organic projects focusing on two important classes of AI algorithms. The first class, price-setting algorithms, are tools that are used by online merchants to set retail prices. As the algorithms of each merchant interact in a common market, they can mutually learn to defeat competition. We plan to study how these collusive conducts are learned to propose a direction for potential regulation. The second class, recommender systems (RS), are ubiquitous online algorithms that suggest products and content to consumers that are based on their current and past behaviour. For example, Amazon.com uses recommender systems to rank products on search result pages, or to suggest other products that the user may be interested in. The aim of the proposed research project is to assess whether RSs are pro-competitive or anti-competitive by studying how firms endogenously react to RSs in terms of price, product design and entry/exit decisions. Methodologically, these projects rigorously combine ingredients from economics and computer science (CS), departing from the stylized modelling approach of the literature and instead are aimed at analysing state-of- the-art algorithms developed in the CS literature.Algorithms and their impact on market outcomes naturally require an interdisciplinary approach. Dealing with actual algorithms calls for new tools, to supplement the economist\u2019s traditional analytical toolbox. For this reason, an essential part of this research proposal is the creation of a joint research agenda via a \u201cresearch pod\u201d with an associated scientific program.",
-      "funder_award_id": "101098332",
-      "funder": {
-        "id": "https://openalex.org/F4320338453",
-        "display_name": "HORIZON EUROPE European Research Council",
-        "doi": "10.13039/100019180"
-      },
-      "funded_outputs": [],
-      "funded_outputs_count": 0,
-      "amount": 1877793.0,
-      "currency": "EUR",
-      "funding_type": "research",
-      "funder_scheme": "HORIZON-ERC",
-      "start_date": "2023-11-01",
-      "end_date": "2028-10-31",
-      "start_year": 2023,
-      "end_year": 2028,
-      "landing_page_url": "https://cordis.europa.eu/project/id/101098332",
-      "doi": "10.3030/101098332",
-      "provenance": "erc",
-      "lead_investigator": {
-        "given_name": null,
-        "family_name": null,
-        "orcid": null,
-        "role_start": null,
-        "affiliation": {
-          "name": "LUISS LIBERA UNIVERSITA INTERNAZIONALE DEGLI STUDI SOCIALI GUIDO CARLI",
-          "country": "IT",
-          "ids": null
-        }
-      },
-      "co_lead_investigator": null,
-      "investigators": null,
-      "works_api_url": "https://api.openalex.org/works?filter=awards.id:G3086273406",
-      "primary_topic": null,
-      "topics": null,
-      "institution_awarded": [
-        {
-          "id": "https://openalex.org/I56441308",
-          "display_name": "Libera Universit\u00e0 Internazionale degli Studi Sociali Guido Carli",
-          "ror": "https://ror.org/01q8b6q23",
-          "country_code": "IT",
-          "type": "education",
-          "lineage": [
-            "https://openalex.org/I56441308"
-          ]
-        }
-      ],
-      "updated_date": "2026-06-22T05:01:31",
-      "created_date": "2026-03-15T01:01:46",
-      "relevance_score": 51.621437
+      "updated_date": "2026-08-06T05:01:25",
+      "created_date": "2026-07-13T04:25:14",
+      "relevance_score": 51.553894
     }
   ],
   "group_by": []

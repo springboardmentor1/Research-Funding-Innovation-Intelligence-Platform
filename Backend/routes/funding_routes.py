@@ -41,7 +41,7 @@ def search_funding_opportunities(
     ),
     source: Optional[str] = Query(
         None,
-        description="Filter by funding source (e.g., Government Grants, Research Councils)",
+        description="Filter by funding source (e.g., Government Grants, Research Councils, Innovation Funds, Startup Accelerators, Venture Programs, International Funding Agencies, Funding Sources)",
     ),
     deadline_after: Optional[str] = Query(
         None,

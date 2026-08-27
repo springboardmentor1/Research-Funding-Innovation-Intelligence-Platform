@@ -16,6 +16,7 @@ class User(Base):
         nullable=False,
     )  # 'Researcher', 'Startup Founder', 'Innovation Manager', 'Administrator'
     is_active = Column(Boolean, default=True, nullable=False)
+    notification_preferences = Column(String(500), default="{}", nullable=False) # JSON encoded string
     created_at = Column(
         DateTime, default=lambda: datetime.now(timezone.utc), nullable=False
     )

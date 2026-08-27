@@ -1,10 +1,11 @@
+from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from database.db import get_db
 from auth.auth import get_current_user
 from models.user import User
-from schemas.profile_schema import ProfileUpdate, ProfileResponse
-from services.profile_service import get_profile_by_user_id, update_profile
+from schemas.profile_schema import ProfileUpdate, ProfileResponse, ProfileHistoryResponse
+from services.profile_service import get_profile_by_user_id, update_profile, get_profile_history
 
 router = APIRouter(tags=["Research Profiles"])
 
@@ -22,5 +23,13 @@ def update_my_profile(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    """Updates research profile fields (domains, keywords, etc.)."""
+    """Updates research profile fields (domains, keywords, etc.) and creates a history snapshot."""
     return update_profile(db, current_user.id, update_data)
+
+
+@router.get("/profile/history", response_model=List[ProfileHistoryResponse])
+def get_my_profile_history(
+    current_user: User = Depends(get_current_user), db: Session = Depends(get_db)
+):
+    """Returns the full history of profile saves for the current user, newest first."""
+    return get_profile_history(db, current_user.id)

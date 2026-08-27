@@ -30,9 +30,13 @@ class PatentResponse(BaseModel):
     id: int
     patent_number: str
     title: str
+    abstract: Optional[str] = None
     assignee: Optional[str] = ""
     filing_date: Optional[str] = ""
     technology_domain: Optional[str] = ""
+    patent_classification: Optional[str] = ""
+    citation_count: int = 0
+    cluster_label: Optional[str] = None
 
     class Config:
         from_attributes = True
