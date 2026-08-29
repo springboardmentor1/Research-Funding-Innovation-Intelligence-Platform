@@ -10,6 +10,9 @@ import Recommendations from "./pages/Recommendations";
 import Patents from "./pages/Patents";
 import Profile from "./pages/Profile";
 import Commercialization from "./pages/Commercialization";
+import Admin from "./pages/Admin";
+import GrantSearch from "./pages/GrantSearch";
+import Clusters from "./pages/Clusters";
 
 function Navbar() {
   const { user, logout } = useAuth();
@@ -28,9 +31,12 @@ function Navbar() {
       <div className="nav-links">
         {link("/", "Dashboard")}
         {link("/recommendations", "Funding")}
+        {link("/search", "Search")}
         {link("/patents", "Patents")}
+        {link("/clusters", "Themes")}
         {link("/commercialization", "Commercialization")}
         {link("/profile", "Profile")}
+        {user.role === "admin" && link("/admin", "Admin")}
       </div>
       <div className="nav-user">
         <span>{user.full_name || user.email}</span>
@@ -69,6 +75,18 @@ function AppRoutes() {
       } />
       <Route path="/profile" element={
         <ProtectedRoute><Layout><Profile /></Layout></ProtectedRoute>
+      } />
+
+      <Route path="/search" element={
+        <ProtectedRoute><Layout><GrantSearch /></Layout></ProtectedRoute>
+      } />
+
+      <Route path="/clusters" element={
+        <ProtectedRoute><Layout><Clusters /></Layout></ProtectedRoute>
+      } />
+
+      <Route path="/admin" element={
+        <ProtectedRoute roles={["admin"]}><Layout><Admin /></Layout></ProtectedRoute>
       } />
 
       <Route path="*" element={<Navigate to="/" replace />} />

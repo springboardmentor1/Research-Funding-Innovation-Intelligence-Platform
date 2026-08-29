@@ -111,7 +111,7 @@ body {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 20px;
 }
-.stat-value { font-size: 30px; font-weight: 700; color: var(--primary); }
+.stat-value { font-size: 30px; font-weight: 700; color: var(--primary); overflow-wrap: anywhere; }
 .stat-label { color: var(--text-dim); font-size: 13px; margin-top: 4px; }
 .stat-sub { color: var(--accent); font-size: 12px; margin-top: 6px; }
 

@@ -3,6 +3,7 @@
 // see the hybrid engine's behaviour.
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { api } from "../api/client";
 import { useApi } from "../lib/useApi";
 import { Spinner, ErrorBox } from "../components/common";
@@ -42,7 +43,7 @@ export default function Recommendations() {
       {error && error.status === 404 ? (
         <div className="card">
           <p>Create a research profile first to get recommendations.</p>
-          <a className="btn btn-primary" href="/profile">Create profile</a>
+          <Link className="btn btn-primary" to="/profile">Create profile</Link>
         </div>
       ) : loading ? (
         <Spinner label="Ranking opportunities..." />

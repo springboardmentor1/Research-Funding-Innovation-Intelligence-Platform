@@ -3,7 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.routers import (
-    analytics_router, auth, profiles, recommendations, reports_router,
+    admin, analytics_router, auth, clusters_router, funding_search,
+    profiles, recommendations, reports_router,
 )
 
 app = FastAPI(
@@ -20,6 +21,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(admin.router, prefix=settings.API_V1)
 app.include_router(auth.router, prefix=settings.API_V1)
 app.include_router(profiles.router, prefix=settings.API_V1)
 app.include_router(recommendations.router, prefix=settings.API_V1)
@@ -28,6 +30,8 @@ app.include_router(analytics_router.patents, prefix=settings.API_V1)
 app.include_router(analytics_router.score, prefix=settings.API_V1)
 app.include_router(reports_router.commercial, prefix=settings.API_V1)
 app.include_router(reports_router.report_router, prefix=settings.API_V1)
+app.include_router(funding_search.router, prefix=settings.API_V1)
+app.include_router(clusters_router.router, prefix=settings.API_V1)
 
 
 @app.get("/health", tags=["system"])

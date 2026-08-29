@@ -2,6 +2,7 @@
 // Shows the rule-engine recommendations and the PDF/Excel download buttons.
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { api } from "../api/client";
 import { useApi } from "../lib/useApi";
 import { Spinner, ErrorBox } from "../components/common";
@@ -53,7 +54,7 @@ export default function Commercialization() {
       {error && error.status === 404 ? (
         <div className="card">
           <p>Create a research profile first to see commercialization pathways.</p>
-          <a className="btn btn-primary" href="/profile">Create profile</a>
+          <Link className="btn btn-primary" to="/profile">Create profile</Link>
         </div>
       ) : loading ? (
         <Spinner label="Analysing pathways..." />

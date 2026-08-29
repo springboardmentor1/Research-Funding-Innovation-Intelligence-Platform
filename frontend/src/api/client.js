@@ -122,6 +122,7 @@ export const api = {
     topCpc: (n = 15) => request(`/patents/top-cpc?limit=${n}`),
     jurisdictions: (n = 10) => request(`/patents/jurisdictions?limit=${n}`),
     jurisdictionShare: (n = 5) => request(`/patents/jurisdiction-share?top_n=${n}`),
+    clusters: (k = 8) => request(`/patents/clusters?k=${k}`),
   },
   score: {
     me: () => request("/score/me"),
@@ -134,5 +135,23 @@ export const api = {
   reports: {
     excel: () => download("/reports/excel", "rfiip_report.xlsx"),
     pdf: () => download("/reports/pdf", "rfiip_report.pdf"),
+  },
+  admin: {
+    stats: () => request("/admin/stats"),
+    users: (limit = 100) => request(`/admin/users?limit=${limit}`),
+    setActive: (id, isActive) =>
+      request(`/admin/users/${id}/active?is_active=${isActive}`, { method: "PATCH" }),
+  },
+  funding: {
+    search: (params) => {
+      const qs = new URLSearchParams();
+      if (params.q) qs.set("q", params.q);
+      if (params.agency) qs.set("agency", params.agency);
+      if (params.min_award) qs.set("min_award", params.min_award);
+      qs.set("open_only", params.open_only);
+      qs.set("page", params.page || 1);
+      return request(`/funding/search?${qs.toString()}`);
+    },
+    agencies: () => request("/funding/agencies"),
   },
 };

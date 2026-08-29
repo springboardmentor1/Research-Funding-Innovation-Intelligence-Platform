@@ -48,10 +48,10 @@ export function ErrorBox({ error, onRetry }) {
 }
 
 // Simple stat card for dashboard headline numbers.
-export function StatCard({ label, value, sub }) {
+export function StatCard({ label, value, sub, small }) {
   return (
     <div className="stat-card">
-      <div className="stat-value">{value}</div>
+      <div className="stat-value" style={small ? { fontSize: 16, lineHeight: 1.3 } : undefined}>{value}</div>
       <div className="stat-label">{label}</div>
       {sub && <div className="stat-sub">{sub}</div>}
     </div>
