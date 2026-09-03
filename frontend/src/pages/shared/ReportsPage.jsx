@@ -207,7 +207,14 @@ export default function ReportsPage() {
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <button
-                    onClick={() => alert(`Downloading ${report.name}... (In production, this would download the actual file)`)}
+                    onClick={async () => {
+                      try {
+                        await reportService.downloadReport(report.id);
+                      } catch (e) {
+                        console.error('Failed to download report', e);
+                        alert('Failed to download report. Please try again.');
+                      }
+                    }}
                     className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-slate-700 rounded-lg"
                     title="Download"
                   >
