@@ -4,6 +4,19 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 
 export default function PatentAnalysis() {
   const [patents, setPatents] = useState([]);
+
+  const getPatentUrl = (pat) => {
+    if (pat.url && pat.url.startsWith('http')) return pat.url;
+    const num = (pat.patent_number || '').trim();
+    if (num) {
+      return `https://patents.google.com/patent/${num}`;
+    }
+    const extId = (pat.external_id || pat.external_patent_id || '').replace(/^lens-id-/, '');
+    if (extId) {
+      return `https://www.lens.org/lens/patent/${extId}`;
+    }
+    return `https://www.lens.org/lens/search/patent/list?q=${encodeURIComponent(pat.title || 'patent')}`;
+  };
   const [loading, setLoading] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [error, setError] = useState(null);
@@ -153,7 +166,7 @@ export default function PatentAnalysis() {
                     {patents.slice(0, 10).map((pat) => (
                       <tr key={pat.id} className="hover:bg-slate-700/20 transition-colors">
                         <td className="p-4 font-medium text-slate-200 max-w-md truncate">
-                          <a href={`https://patents.google.com/patent/${pat.patent_number || pat.external_patent_id}`} target="_blank" rel="noreferrer" className="hover:text-emerald-400">
+                          <a href={getPatentUrl(pat)} target="_blank" rel="noreferrer" className="hover:text-emerald-400">
                             {pat.title}
                           </a>
                         </td>

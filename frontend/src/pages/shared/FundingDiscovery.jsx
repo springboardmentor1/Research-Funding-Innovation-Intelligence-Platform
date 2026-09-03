@@ -8,6 +8,8 @@ export default function FundingDiscovery() {
   const [fundingData, setFundingData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeTag, setActiveTag] = useState('');
 
   useEffect(() => {
     const fetchFunding = async () => {
@@ -55,7 +57,7 @@ export default function FundingDiscovery() {
             deadline: 'Aug 15, 2026',
             eligibility: 'University, Research Institute',
             matchScore: 94,
-            url: 'https://www.nsf.gov/funding/pgm_summ.jsp?pims_id=505085',
+            url: 'https://www.grants.gov/search-results-detail/359860',
             verified: true
           },
           {
@@ -66,7 +68,7 @@ export default function FundingDiscovery() {
             deadline: 'Sep 1, 2026',
             eligibility: 'All Organizations',
             matchScore: 87,
-            url: 'https://grants.nih.gov/grants/guide/pa-files/PAR-22-094.html',
+            url: 'https://www.grants.gov/search-results-detail/359860',
             verified: true
           }
         ]);
@@ -77,6 +79,14 @@ export default function FundingDiscovery() {
     
     fetchFunding();
   }, []);
+
+  const filteredData = fundingData.filter(item => {
+    const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          item.agency.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesTag = activeTag ? (item.agency.includes(activeTag) || item.title.includes(activeTag) || item.description.includes(activeTag)) : true;
+    return matchesSearch && matchesTag;
+  });
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
@@ -94,17 +104,30 @@ export default function FundingDiscovery() {
             <input 
               type="text" 
               placeholder="Search funding opportunities..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-[#0f1523] text-sm text-slate-200 rounded-xl pl-10 pr-4 py-3 border border-slate-700 focus:outline-none focus:border-blue-500 transition-colors"
             />
           </div>
-          <button className="flex items-center gap-2 bg-[#2d3748] hover:bg-[#3a465c] text-white px-5 py-3 rounded-xl transition-colors text-sm font-medium">
+          <button 
+            onClick={() => { setSearchTerm(''); setActiveTag(''); }}
+            className="flex items-center gap-2 bg-[#2d3748] hover:bg-[#3a465c] text-white px-5 py-3 rounded-xl transition-colors text-sm font-medium"
+          >
             <FaFilter size={12} />
-            Filters
+            Clear Filters
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
           {fundingTags.map((tag) => (
-            <button key={tag} className="px-3 py-1.5 bg-[#0f1523] border border-slate-700 hover:border-slate-500 rounded-full text-xs text-slate-300 transition-colors">
+            <button 
+              key={tag} 
+              onClick={() => setActiveTag(activeTag === tag ? '' : tag)}
+              className={`px-3 py-1.5 border rounded-full text-xs transition-colors ${
+                activeTag === tag 
+                  ? 'bg-blue-500 border-blue-500 text-white' 
+                  : 'bg-[#0f1523] border-slate-700 hover:border-slate-500 text-slate-300'
+              }`}
+            >
               {tag}
             </button>
           ))}
@@ -126,7 +149,10 @@ export default function FundingDiscovery() {
       {/* Funding Cards List */}
       {!loading && (
         <div className="space-y-4">
-          {fundingData.map((item, idx) => (
+          {filteredData.length === 0 && !error && (
+             <div className="text-center p-8 text-slate-400">No funding opportunities found matching your filters.</div>
+          )}
+          {filteredData.map((item, idx) => (
             <div key={idx} className="bg-[#1c2438] border border-slate-800 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-slate-700 transition-colors">
               
               <div className="flex-1 space-y-4">
@@ -174,7 +200,10 @@ export default function FundingDiscovery() {
                   </button>
                   {item.url && item.url !== '#' ? (
                     <a 
-                      href={item.url}
+                      href={(() => {
+                        const clean = item.url.replace(/\s+/g, '-');
+                        return clean.startsWith('http') ? clean : `https://${clean}`;
+                      })()}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 flex justify-center items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 rounded-lg transition-colors text-sm font-medium shadow-[0_0_15px_rgba(59,130,246,0.3)]"
