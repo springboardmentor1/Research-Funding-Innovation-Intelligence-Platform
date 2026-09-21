@@ -1,0 +1,90 @@
+.landing {
+  min-height: 100vh;
+  background: var(--bg-dark, #0d1117);
+  color: var(--text-primary, #e6e6e6);
+  font-family: var(--font-body, "Inter", sans-serif);
+}
+
+.landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+}
+
+.landing-brand {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  color: var(--gold, #d4af37);
+}
+
+.landing-nav-actions { display: flex; gap: 1rem; }
+
+.landing-hero {
+  max-width: 720px;
+  margin: 4rem auto 6rem;
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.landing-hero h1 {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.landing-pitch {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-secondary, #a0a0a0);
+  margin-bottom: 2.5rem;
+}
+
+.landing-cta { display: flex; gap: 1rem; justify-content: center; }
+
+.landing-roles {
+  max-width: 1100px;
+  margin: 0 auto 6rem;
+  padding: 0 3rem;
+}
+
+.landing-roles h2 {
+  text-align: center;
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.role-card {
+  padding: 1.75rem;
+  border: 1px solid var(--border, #2a2f38);
+  position: relative;
+}
+
+.role-tag {
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-size: 0.75rem;
+  color: var(--teal, #4fb0a8);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.role-card h3 { margin: 0.5rem 0 0.75rem; }
+.role-card p { color: var(--text-secondary, #a0a0a0); line-height: 1.5; font-size: 0.95rem; }
+
+.landing-footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary, #a0a0a0);
+  font-family: var(--font-mono, "IBM Plex Mono", monospace);
+  font-size: 0.8rem;
+}
