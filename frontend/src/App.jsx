@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Layout from './components/Layout';
 import LoginPage from './pages/LoginPage';
+import LandingPage from './pages/LandingPage';
 import RegisterPage from './pages/RegisterPage';
 import OverviewPage from './pages/OverviewPage';
 import ProfilePage from './pages/ProfilePage';
@@ -17,8 +18,12 @@ import AdminPage from './pages/AdminPage';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
+  const location = useLocation();
   if (loading) return <div className="auth-shell"><p className="loading-dots">Loading…</p></div>;
-  if (!user) return <Navigate to="/login" replace />;
+  if (!user) {
+    if (location.pathname === '/') return <LandingPage />;
+    return <Navigate to="/login" replace />;
+  }
   return children;
 }
 
